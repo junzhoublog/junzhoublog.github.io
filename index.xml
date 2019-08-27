@@ -6,7 +6,7 @@
     <description>Recent content on Zhou Jun&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 27 Aug 2019 19:48:00 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 27 Aug 2019 21:35:22 +0800</lastBuildDate>
     
 	<atom:link href="https://junzhoublog.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,12 +21,21 @@
     </item>
     
     <item>
+      <title>计算机网络原理</title>
+      <link>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Tue, 27 Aug 2019 21:35:22 +0800</pubDate>
+      
+      <guid>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/</guid>
+      <description>测试 测试</description>
+    </item>
+    
+    <item>
       <title>计算机组成原理笔记</title>
       <link>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 27 Aug 2019 19:48:00 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</guid>
-      <description></description>
+      <description>测试</description>
     </item>
     
     <item>
