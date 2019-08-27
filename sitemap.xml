@@ -10,14 +10,21 @@
   
   <url>
     <loc>https://junzhoublog.github.io/post/</loc>
-    <lastmod>2019-08-27T21:35:22+08:00</lastmod>
+    <lastmod>2019-08-27T22:44:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://junzhoublog.github.io/</loc>
-    <lastmod>2019-08-27T21:35:22+08:00</lastmod>
+    <lastmod>2019-08-27T22:44:46+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://junzhoublog.github.io/post/%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2019-08-27T22:44:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
