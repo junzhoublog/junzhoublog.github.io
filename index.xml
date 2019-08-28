@@ -21,12 +21,12 @@
     </item>
     
     <item>
-      <title>搭建记录</title>
-      <link>https://junzhoublog.github.io/post/%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</link>
+      <title>计算机组成原理笔记</title>
+      <link>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 27 Aug 2019 22:44:46 +0800</pubDate>
       
-      <guid>https://junzhoublog.github.io/post/%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</guid>
-      <description>初始本地基本操作 hugo new site blog cd blog git clone https://github.com/olOwOlo/hugo-theme-even themes/ even &amp;gt;更改文件位置 hugo server &amp;ndash;theme=even &amp;ndash;buildDrafts hugo &amp;ndash;theme=even &amp;ndash;baseUrl=&amp;ldquo;https://junzhoublog.github.io/&amp;quot; cd public git init git remote add origin https://github.com/junzhoublog/junzhoublog.github.io.git git add -A cd ../.. git config &amp;ndash;global user.email &amp;ldquo;1158290245@qq.com&amp;rdquo; git config &amp;ndash;global user.name &amp;ldquo;junzhoublog&amp;rdquo; cd blog\public git commit -m &amp;ldquo;first commit&amp;rdquo; git push -u</description>
+      <guid>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</guid>
+      <description>测试</description>
     </item>
     
     <item>
@@ -39,12 +39,12 @@
     </item>
     
     <item>
-      <title>计算机组成原理笔记</title>
-      <link>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</link>
+      <title>搭建记录</title>
+      <link>https://junzhoublog.github.io/post/%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Tue, 27 Aug 2019 19:48:00 +0800</pubDate>
       
-      <guid>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</guid>
-      <description>测试</description>
+      <guid>https://junzhoublog.github.io/post/%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</guid>
+      <description>初始本地基本操作 hugo new site blog cd blog git clone https://github.com/olOwOlo/hugo-theme-even themes/ even &amp;gt;更改文件位置 hugo server &amp;ndash;theme=even &amp;ndash;buildDrafts hugo &amp;ndash;theme=even &amp;ndash;baseUrl=&amp;ldquo;https://junzhoublog.github.io/&amp;quot; cd public git init git remote add origin https://github.com/junzhoublog/junzhoublog.github.io.git git add -A cd ../.. git config &amp;ndash;global user.email &amp;ldquo;1158290245@qq.com&amp;rdquo; git config &amp;ndash;global user.name &amp;ldquo;junzhoublog&amp;rdquo; cd blog\public git commit -m &amp;ldquo;first commit&amp;rdquo; git push -u</description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Thu, 31 Aug 2017 15:43:48 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/chinese-preview/</guid>
-      <description>$a + b = c$ $$ f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi \xi x} \,d\xi $$ 《长恨歌》是中国唐朝诗人白居易的一首长篇叙事诗。 第一段：贵妃受宠爱 汉皇重色思倾国，御宇多年求不得。杨家有女初</description>
+      <description>$a + b = c$ $$ f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi \xi x} \,d\xi $$ 《长恨歌》是中国唐朝诗人白居易的一首长篇叙事诗。 /outchain/2// 第一段：贵妃受宠爱 汉皇重色思倾国，御宇多年求不得。杨家有女</description>
     </item>
     
   </channel>
