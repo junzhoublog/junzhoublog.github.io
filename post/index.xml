@@ -12,20 +12,20 @@
     
     
     <item>
-      <title>搭建记录</title>
-      <link>https://junzhoublog.github.io/post/%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</link>
+      <title>hugo博客搭建记录</title>
+      <link>https://junzhoublog.github.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Tue, 27 Aug 2019 22:44:46 +0800</pubDate>
       
-      <guid>https://junzhoublog.github.io/post/%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://junzhoublog.github.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/</guid>
       <description>初始本地基本操作 hugo new site blog cd blog git clone https://github.com/olOwOlo/hugo-theme-even themes/ even &amp;gt;更改文件位置 hugo server &amp;ndash;theme=even &amp;ndash;buildDrafts hugo &amp;ndash;theme=even &amp;ndash;baseUrl=&amp;ldquo;https://junzhoublog.github.io/&amp;quot; cd public git init git remote add origin https://github.com/junzhoublog/junzhoublog.github.io.git git add -A cd ../.. git config &amp;ndash;global user.email &amp;ldquo;1158290245@qq.com&amp;rdquo; git config &amp;ndash;global user.name &amp;ldquo;junzhoublog&amp;rdquo; cd blog\public git commit -m &amp;ldquo;first commit&amp;rdquo; git push -u</description>
     </item>
     
     <item>
-      <title>计算机网络原理</title>
-      <link>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/</link>
+      <title>计算机网络原理笔记</title>
+      <link>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 27 Aug 2019 21:35:22 +0800</pubDate>
       
-      <guid>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86/</guid>
+      <guid>https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</guid>
       <description>测试 测试 测试第三次</description>
     </item>
     
