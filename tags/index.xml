@@ -6,60 +6,15 @@
     <description>Recent content in Tags on Zhou Jun&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 27 Aug 2019 22:44:46 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 31 Aug 2019 13:36:33 +0800</lastBuildDate>
     
 	<atom:link href="https://junzhoublog.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>even主题</title>
-      <link>https://junzhoublog.github.io/tags/even%E4%B8%BB%E9%A2%98/</link>
-      <pubDate>Tue, 27 Aug 2019 22:44:46 +0800</pubDate>
-      
-      <guid>https://junzhoublog.github.io/tags/even%E4%B8%BB%E9%A2%98/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://junzhoublog.github.io/tags/hugo/</link>
-      <pubDate>Tue, 27 Aug 2019 22:44:46 +0800</pubDate>
-      
-      <guid>https://junzhoublog.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Dijkstra算法</title>
-      <link>https://junzhoublog.github.io/tags/dijkstra%E7%AE%97%E6%B3%95/</link>
-      <pubDate>Tue, 27 Aug 2019 21:35:22 +0800</pubDate>
-      
-      <guid>https://junzhoublog.github.io/tags/dijkstra%E7%AE%97%E6%B3%95/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>TCP/IP</title>
-      <link>https://junzhoublog.github.io/tags/tcp/ip/</link>
-      <pubDate>Tue, 27 Aug 2019 21:35:22 +0800</pubDate>
-      
-      <guid>https://junzhoublog.github.io/tags/tcp/ip/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>网络</title>
-      <link>https://junzhoublog.github.io/tags/%E7%BD%91%E7%BB%9C/</link>
-      <pubDate>Tue, 27 Aug 2019 21:35:22 +0800</pubDate>
-      
-      <guid>https://junzhoublog.github.io/tags/%E7%BD%91%E7%BB%9C/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>cpu</title>
       <link>https://junzhoublog.github.io/tags/cpu/</link>
-      <pubDate>Tue, 27 Aug 2019 19:48:00 +0800</pubDate>
+      <pubDate>Sat, 31 Aug 2019 13:36:33 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/tags/cpu/</guid>
       <description></description>
@@ -68,7 +23,7 @@
     <item>
       <title>存储和IO</title>
       <link>https://junzhoublog.github.io/tags/%E5%AD%98%E5%82%A8%E5%92%8Cio/</link>
-      <pubDate>Tue, 27 Aug 2019 19:48:00 +0800</pubDate>
+      <pubDate>Sat, 31 Aug 2019 13:36:33 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/tags/%E5%AD%98%E5%82%A8%E5%92%8Cio/</guid>
       <description></description>
@@ -77,7 +32,7 @@
     <item>
       <title>系统总线</title>
       <link>https://junzhoublog.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/</link>
-      <pubDate>Tue, 27 Aug 2019 19:48:00 +0800</pubDate>
+      <pubDate>Sat, 31 Aug 2019 13:36:33 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/</guid>
       <description></description>
