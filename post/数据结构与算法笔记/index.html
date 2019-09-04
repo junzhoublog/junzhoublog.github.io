@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="80">
+<meta itemprop="wordCount" content="841">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 80 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 841 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -138,13 +138,23 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#数据结构概述">数据结构概述</a></li>
+<li><a href="#算法概述">算法概述</a></li>
+<li><a href="#指针">指针</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
-      <blockquote>
+      
+
+<blockquote>
 <p>关于空间使用</p>
-</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -203,6 +213,89 @@ int main()
 }</pre></td></tr></table>
 </div>
 </div>
+<h2 id="数据结构概述">数据结构概述</h2>
+
+<ul>
+<li>定义<br />
+我们如何把现实中大量而反复的问题以特定的数据类型和特定的存储结构保存到主存储器(内存)中，以及在此基础上为实现某个功能（比如查找某个元素，删除某个元素，对所有元素进行排序）而执行的相应的操作，这个相应的操作也叫做算法。<br />
+<strong>数据结构=个体+个体的关系</strong><br />
+<strong>算法=对存储数据的操作</strong><br />
+
+<ul>
+<li>狭义：<br />
+数据结构是专门研究数据存储的问题
+数据的存储包含两方面：个体的存储 + 个体关系的存储<br /></li>
+</ul></li>
+
+<li><p>广义：<br />
+数据结构既包含数据的存储也包含数据的操作
+对存储数据的操作就是算法</p>
+
+<h2 id="算法概述">算法概述</h2></li>
+
+<li><p>狭义：<br />
+算法是和数据的存储方式密切相关</p></li>
+
+<li><p>广义：<br />
+算法和数据的存储方式无关，这就是泛型思想</p></li>
+
+<li><p>衡量算法的标准：<br />
+（1） 时间复杂度<br />
+大概程序要执行的次数，而并非是执行的时间（因为同一程序在不同机器上执行的时间是不一样的，有差异）<br />
+（2） 空间复杂度<br />
+算法执行过程中大概所占用的最大内存<br />
+（3） 难易程度<br />
+（4） 健壮性</p>
+
+<h2 id="指针">指针</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">int i=10; 
+
+int *p = &amp;i;   
+//等价于  
+int *p;   
+p = &amp;i;</pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<p>详解这两部操作：</p>
+</blockquote>
+
+<p>1）、p存放了i的地址，所以我们说p指向了i<br />
+2）、p和i是完全不同的两个变量，修改其中的任意一个变量的值，不会影响另一变量的值<br />
+3）、p指向i，星号p 就是i变量本身。更形象的说所有出现 星号p 的地方都可以换成i，所有出现i的地方都可以换成 星号p<br />
+<strong>指针 和 一维数组</strong><br />
+<em>数组名</em><br />
+一维数组名是个指针常量，<br />
+它存放的是一维数组第一个元素的地址，<br />
+它的值不能被改变<br />
+一维数组名指向的是数组的第一个元素</p>
+
+<p><em>下标和指针的关系</em>
+a[i] &lt;&lt;==&gt;&gt; *(a+i)</p>
+
+<p>假设指针变量的名字为p<br />
+则p+i的值是p+i*(p所指向的变量所占的字节数)</p>
+
+<p><em>指针变量的运算</em><br />
+指针变量不能相加，不能相乘，不能相除<br />
+如果两指针变量属于同一数组，则可以相减<br />
+指针变量可以加减一整数，前提是最终结果不能超过指针允许指向的范围<br />
+  p+i的值是p+i<em>(p所指向的变量所占的字节数)<br />
+   p-i的值是p-i</em>(p所指向的变量所占的字节数)<br />
+p++  &lt;==&gt;   p+1<br />
+p&ndash;  &lt;==&gt;   p-1</p>
+
     </div>
 
     <div class="post-copyright">
