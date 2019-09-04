@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="841">
+<meta itemprop="wordCount" content="1044">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 841 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1044 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -143,6 +143,7 @@
 <li><a href="#数据结构概述">数据结构概述</a></li>
 <li><a href="#算法概述">算法概述</a></li>
 <li><a href="#指针">指针</a></li>
+<li><a href="#结构体">结构体</a></li>
 </ul>
 </nav>
   </div>
@@ -295,6 +296,55 @@ a[i] &lt;&lt;==&gt;&gt; *(a+i)</p>
 p++  &lt;==&gt;   p+1<br />
 p&ndash;  &lt;==&gt;   p-1</p>
 
+<h1 id="结构体">结构体</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">结构体（C++中用类也能实现）
+    为什么会出现结构体
+        为了表示一些复杂的数据，而普通的基本类型变量无法满足要求
+
+    什么叫结构体
+        结构体是用户根据实际需要自己定义的复合数据类型
+
+    如何使用结构体
+        两种方式：
+            struct Student st = {1000, &#34;zhangsan&#34;, 20}
+            struct Student * pst = &amp;st;
+
+            1.
+                st.sid
+            2.
+                pst-&gt;sid
+                pst所指向的结构体变量中的sid这个成员
+
+    注意事项：
+        结构体变量不能加减乘除，但可以相互赋值
+        普通结构体变量和结构体指针变量作为函数参数的传递</pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
