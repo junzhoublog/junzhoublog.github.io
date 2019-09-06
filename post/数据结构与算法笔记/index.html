@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="1195">
+<meta itemprop="wordCount" content="1430">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 1195 字 </span>
+          <span class="more-meta"> 约 1430 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -258,12 +258,12 @@ int main()
 </span><span class="lnt">6
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">int i=10; 
+<pre class="chroma">int i=10;           int* i=10
 
-int *p = &amp;i;   
-//等价于  
-int *p;   
-p = &amp;i;</pre></td></tr></table>
+int *p = &amp;i;        int* *p=&amp;i;
+//等价于            //等价于
+int *p;             int* *p;
+p = &amp;i;             *p=&amp;i;</pre></td></tr></table>
 </div>
 </div>
 <blockquote>
@@ -354,7 +354,7 @@ p&ndash;  &lt;==&gt;   p-1</p>
 </div>
 </div>
 <blockquote>
-<p>(int *) 的解释无论变量占几个字节它都是以第一个字节来表示，此处的(int *)就代表malloc 返回的就不是一个没有意义的地址了而是一个4个字节的整型地址。(这里的强制转换相当于告诉编译器我们返回的到底是整型还是浮点型)</p>
+<p>(int *) 的解释 无论变量占几个字节它都是以第一个字节来表示，此处的(int *)就代表malloc 返回的就不是一个没有意义的地址了而是一个4个字节的整型地址。(这里的强制转换相当于告诉编译器我们返回的到底是整型还是浮点型)</p>
 </blockquote>
 
 <ul>
@@ -369,21 +369,125 @@ p&ndash;  &lt;==&gt;   p-1</p>
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
-</span><span class="lnt">9
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">#include &lt;stdlib.h&gt;
-main()
-{  int *p;
-  fun(&amp;p);
-  …
+<pre class="chroma">main()
+{ int *p;
+ fun(&amp;p);
+ …
 }
 int fun(int **q)
-{  *q=(int *)malloc(4);
-}</pre></td></tr></table>
+{  int s;
+ *q=&amp;s;</pre></td></tr></table>
 </div>
 </div></li>
 </ul>
+
+<blockquote>
+<p>这里主函数调用fun函数为期局部变量s分配内存，单调用结束这块内存就没有了，指针p 就变成了野指针。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"> #include &lt;stdlib.h&gt;
+   main()
+   {  int *p;
+      fun(&amp;p);   //*q=&amp;p
+      …
+   }
+   int fun(int* *q)
+   {  *q=(int *)malloc(4);
+   }</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>int* 类型的变量p发送地址给 int* 类型的指针变量q  这时*q 就是p 的内容了。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+# include &lt;malloc.h&gt;
+
+struct Student
+{
+	int sid;
+	int age;
+};
+
+struct Student * CreateStudent(void);
+void ShowStudent(struct Student *);
+
+int main(void)
+{
+	struct Student * ps;
+
+	ps = CreateStudent();
+	ShowStudent(ps);
+
+	return 0;
+}
+
+void ShowStudent(struct Student * pst)
+{
+	printf(&#34;%d %d\n&#34;, pst-&gt;sid, pst-&gt;age);
+}
+
+struct Student * CreateStudent(void)
+{
+	struct Student * p = (struct Student *)malloc(sizeof(struct Student));
+	p-&gt;sid = 99;
+	p-&gt;age = 88;
+	return p;
+}</pre></td></tr></table>
+</div>
+</div>
+<p>这是一个跨函数使用内存的例子</p>
 
     </div>
 
