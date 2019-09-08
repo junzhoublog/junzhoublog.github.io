@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="4393">
+<meta itemprop="wordCount" content="4422">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 4393 字 </span>
+          <span class="more-meta"> 约 4422 字 </span>
           <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
@@ -1463,7 +1463,7 @@ bool insert_list(PNODE pHead, int pos, int val)
 	PNODE q = p-&gt;pNext;
 	p-&gt;pNext = pNew;
 	pNew-&gt;pNext = q;
-	
+
 	//法二
 	//pNew-&gt;pNext = p-&gt;pNext;
 	//p-&gt;pNext = pNew;
@@ -1491,7 +1491,7 @@ bool delete_list(PNODE pHead, int pos, int * pVal)
 	*pVal = q-&gt;data;  
 
 	//删除p节点后面的结点
-	p-&gt;pNext = p-&gt;pNext-&gt;pNext;
+	p-&gt;pNext = p-&gt;pNext-&gt;pNext;//等价于 p-&gt;pNext = q-&gt;PNext;
 	
 	//释放q所指向的节点所占的内存
 	free(q);
