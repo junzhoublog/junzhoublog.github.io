@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="6882">
+<meta itemprop="wordCount" content="7179">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 6882 字 </span>
-          <span class="more-meta"> 预计阅读 14 分钟 </span>
+          <span class="more-meta"> 约 7179 字 </span>
+          <span class="more-meta"> 预计阅读 15 分钟 </span>
         
       </div>
     </header>
@@ -2363,7 +2363,7 @@ bool out_queue(QUEUE * pQ, int * pVal)
     多增加一个标识是否满的参数<br />
     少用一个元素【通常用此种方式】<br />
     如果front和rear的值相差1，且front&gt;rear,则证明队列已满。<br />
-* 用C语言伪算法表示为：<br />
+  用C语言伪算法表示为：<br />
 if ((rear+1)%数组长度==front)<br />
 已满<br />
 else<br />
@@ -2371,6 +2371,91 @@ else<br />
 
 <h1 id="递归">递归</h1>
 
+<p>汉诺塔</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+void hannuota(int n, char A, char B, char C)
+{
+	/*
+	如果是1个盘子
+	直接将A柱子上的盘子从A移到C
+	否则
+	先将A柱子上的n-1个盘子借助C移到B
+	直接将A柱子上的盘子从A移到C
+	最后将B柱子上的n-1个盘子借助A移到C
+	*/
+	if (1 == n)
+	{
+		printf(&#34;将编号为%d的盘子直接从%c柱子移到%c柱子\n&#34;, n, A, C);
+	}
+	else
+	{
+		hannuota(n - 1, A, C, B);
+		printf(&#34;将编号为%d的盘子直接从%c柱子移到%c柱子\n&#34;, n, A, C);
+		hannuota(n - 1, B, A, C);
+	}
+}
+
+int main(void)
+{
+	char ch1 = &#39;A&#39;;
+	char ch2 = &#39;B&#39;;
+	char ch3 = &#39;C&#39;;
+	int n;
+
+	printf(&#34;请输入要移动盘子的个数: &#34;);
+	scanf(&#34;%d&#34;, &amp;n);
+
+	hannuota(n, &#39;A&#39;, &#39;B&#39;, &#39;C&#39;);
+
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
 <h1 id="非线性结构-树">非线性结构&ndash;树</h1>
 
 <h1 id="非线性结构-图">非线性结构&ndash;图</h1>
