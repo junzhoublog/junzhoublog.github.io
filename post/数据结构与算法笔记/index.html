@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="5326">
+<meta itemprop="wordCount" content="6303">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 5326 字 </span>
-          <span class="more-meta"> 预计阅读 11 分钟 </span>
+          <span class="more-meta"> 约 6303 字 </span>
+          <span class="more-meta"> 预计阅读 13 分钟 </span>
         
       </div>
     </header>
@@ -150,8 +150,16 @@
 <li><a href="#顺序存储-数组的算法">顺序存储 数组的算法</a></li>
 <li><a href="#链式存储-指针的算法">链式存储  指针的算法</a></li>
 </ul></li>
-<li><a href="#线性结构的应用-栈">线性结构的应用&ndash;栈</a></li>
-<li><a href="#线性结构的应用-队列">线性结构的应用&ndash;队列</a></li>
+<li><a href="#线性结构的应用-栈">线性结构的应用&ndash;栈</a>
+<ul>
+<li><a href="#静态栈">静态栈</a></li>
+<li><a href="#动态栈">动态栈</a></li>
+</ul></li>
+<li><a href="#线性结构的应用-队列">线性结构的应用&ndash;队列</a>
+<ul>
+<li><a href="#链式队列">链式队列</a></li>
+<li><a href="#循环队列">循环队列</a></li>
+</ul></li>
 <li><a href="#非线性结构-树">非线性结构&ndash;树</a></li>
 <li><a href="#非线性结构-图">非线性结构&ndash;图</a></li>
 </ul>
@@ -1549,6 +1557,10 @@ bool delete_list(PNODE pHead, int pos, int * pVal)
 <p>静态分配内存（局部变量）&mdash;栈   一种“先进后出”的存储结构<br />
 动态分配内存（malloc new )&mdash;堆   顺序随意<br />
 栈又分 静态栈（功能受限顺序存储）  动态栈（功能受限链式存储）</p>
+
+<h2 id="静态栈">静态栈</h2>
+
+<h2 id="动态栈">动态栈</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt">  1
@@ -1837,8 +1849,490 @@ void clear(PSTACK pS)
 }</pre></td></tr></table>
 </div>
 </div>
+<p>算法（往里放，从里取）
+                出栈
+                压栈</p>
+
+<p>应用
+                函数调用
+                中断
+                表达式求值（用两个栈，一个存放数字，一个存放符号）
+                内存分配
+                缓冲处理
+                迷宫</p>
+
 <h1 id="线性结构的应用-队列">线性结构的应用&ndash;队列</h1>
 
+<p>定义：
+一种可是实现“先进先出”的存储结构
+分类：
+链式队列：用链表实现
+静态队列(用循环队列）：用数组实现</p>
+
+<h2 id="链式队列">链式队列</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;iostream&gt;
+using namespace std;
+
+typedef struct node
+{
+	int data;
+	struct node *pNext;
+}NODE, *PNODE;
+
+class Queue
+{
+public:
+	Queue()
+	{
+		this-&gt;pHead = this-&gt;pTail = new NODE;
+		this-&gt;pHead-&gt;pNext = NULL;
+	}
+	
+	void InQueue(int val)
+	{
+		PNODE pNew = new NODE;
+
+		pNew-&gt;data = val;
+		pNew-&gt;pNext = NULL;
+		
+		pTail-&gt;pNext = pNew; //将pNew挂到队列尾部 
+		pTail = pNew; //注意是尾指针上移
+	
+		return;
+	}
+
+	bool Empty() const
+	{
+		if (this-&gt;pHead == pTail)
+			return true;
+		else
+			return false;
+	}
+
+	int OutQueue()
+	{
+		if (Empty())
+		{
+			cout &lt;&lt;&#34;队列为空，无法出队!&#34; &lt;&lt; endl;
+		}
+		else
+		{
+			PNODE pTemp = pHead-&gt;pNext; //pHead不是要删除的队首元素，pHead-&gt;pNext所指向的元素才是要删除的元素，
+			pHead-&gt;pNext = pTemp-&gt;pNext;
+			int val = pTemp-&gt;data;
+
+			delete pTemp;
+
+			if (NULL == pHead-&gt;pNext) //如果队列为空
+			{
+				pTail = pHead; //尾指针也指向无用的头结点
+			}
+			
+			return val;
+		}
+	}
+
+	//遍历队列
+	void Travers(void) const
+	{
+		PNODE pTemp = pHead-&gt;pNext;
+
+		while (pTemp != NULL)
+		{
+			cout &lt;&lt; pTemp-&gt;data &lt;&lt; &#34;  &#34;;
+			pTemp = pTemp-&gt;pNext;
+		}
+		cout &lt;&lt; endl;
+	}
+
+	void Clear()
+	{
+		while (! this-&gt;Empty())
+		{
+			OutQueue();
+		}
+	}
+	
+	~Queue()
+	{
+		this-&gt;Clear(); 
+		delete pHead;
+	}
+
+private:
+	PNODE pHead, pTail; //pHead指向无用的头结点 pHead-&gt;pNext才是指向队首元素， pTail指向队尾元素
+};
+
+int main(void)
+{
+	Queue Q;
+
+	for (int i=0; i&lt;5; ++i)
+		Q.InQueue(i+1);
+
+	Q.Travers();
+
+	Q.OutQueue();
+	Q.OutQueue();
+
+	Q.Travers();
+
+	Q.Clear();
+	Q.OutQueue();
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="循环队列">循环队列</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+# include &lt;malloc.h&gt;
+
+typedef struct Queue
+{
+	int * pBase;
+	int front;
+	int rear;
+}QUEUE;  
+
+void init(QUEUE *);
+bool en_queue(QUEUE *, int val);  //入队
+void traverse_queue(QUEUE *);
+bool full_queue(QUEUE *);
+bool out_queue(QUEUE *, int *);
+bool emput_queue(QUEUE *);
+
+int main(void)
+{
+	QUEUE Q;
+	int val;
+
+	init(&amp;Q);
+	en_queue(&amp;Q, 1);
+	en_queue(&amp;Q, 2);
+	en_queue(&amp;Q, 3);
+	en_queue(&amp;Q, 4);
+	en_queue(&amp;Q, 5);
+	en_queue(&amp;Q, 6);
+	en_queue(&amp;Q, 7);
+	en_queue(&amp;Q, 8);
+
+	traverse_queue(&amp;Q);
+
+	if ( out_queue(&amp;Q, &amp;val) )
+	{
+		printf(&#34;出队成功，队列出队的元素是: %d\n&#34;, val);
+	}
+	else
+	{
+		printf(&#34;出队失败!\n&#34;);
+	}
+	traverse_queue(&amp;Q);
+
+	return 0;
+}
+
+void init(QUEUE *pQ)
+{
+	pQ-&gt;pBase = (int *)malloc(sizeof(int) * 6);
+	pQ-&gt;front = 0;
+	pQ-&gt;rear = 0;
+}
+
+bool full_queue(QUEUE * pQ)
+{
+	if ( (pQ-&gt;rear + 1) % 6 == pQ-&gt;front  )
+		return true;
+	else
+		return false;
+}
+
+bool en_queue(QUEUE * pQ, int val)
+{
+	if ( full_queue(pQ) )
+	{
+		return false;
+	}
+	else
+	{
+		pQ-&gt;pBase[pQ-&gt;rear] = val;
+		pQ-&gt;rear = (pQ-&gt;rear+1) % 6;
+
+		return true;
+	}
+}
+
+void traverse_queue(QUEUE * pQ)
+{
+	int i = pQ-&gt;front;
+
+	while (i != pQ-&gt;rear)
+	{
+		printf(&#34;%d  &#34;, pQ-&gt;pBase[i]);
+		i = (i+1) % 6;
+	}
+	printf(&#34;\n&#34;);
+
+	return;
+}
+
+bool emput_queue(QUEUE * pQ)
+{
+	if ( pQ-&gt;front == pQ-&gt;rear )
+		return true;
+	else
+		return false;
+}
+
+bool out_queue(QUEUE * pQ, int * pVal)
+{
+	if ( emput_queue(pQ) )
+	{
+		return false;
+	}
+	else
+	{
+		*pVal = pQ-&gt;pBase[pQ-&gt;front];
+		pQ-&gt;front = (pQ-&gt;front+1) % 6;
+
+		return true;
+	}
+}</pre></td></tr></table>
+</div>
+</div>
 <h1 id="非线性结构-树">非线性结构&ndash;树</h1>
 
 <h1 id="非线性结构-图">非线性结构&ndash;图</h1>
