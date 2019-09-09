@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="7561">
+<meta itemprop="wordCount" content="8208">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 7561 字 </span>
-          <span class="more-meta"> 预计阅读 16 分钟 </span>
+          <span class="more-meta"> 约 8208 字 </span>
+          <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
     </header>
@@ -2497,14 +2497,267 @@ int main(void)
 <h3 id="连续存储">连续存储</h3>
 
 <ul>
-<li><p>非线性结构转成线性结构三种方法 先  中  后</p>
+<li>非线性结构转成线性结构三种方法 先  中  后<br />
+优点:查找某个节点的父节点和子节点（也包括判断有没有子节点）方便快速
+缺点：耗用内存空间过大</li>
+</ul>
 
-<h3 id="链式存储">链式存储</h3></li>
+<h3 id="链式存储">链式存储</h3>
+
+<ul>
+<li><p>两个指针域分别指向两个子节点，没有子节点的为空
+优点：耗用内存空间小
+缺点：查找父节点不方便</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+# include &lt;malloc.h&gt;
+
+struct BTNode
+{
+	char data;
+	struct BTNode * pLchild; //p是指针 L是左  child是孩子
+	struct BTNode * pRchild;
+};
+
+void PostTraverseBTree(struct BTNode * pT);
+struct BTNode * CreateBTree(void);
+void PreTraverseBTree(struct BTNode * pT);
+void InTraverseBTree(struct BTNode * pT);
+
+int main(void)
+{
+	struct BTNode * pT = CreateBTree();
+
+	//	PreTraverseBTree(pT);
+	//	InTraverseBTree(pT);
+	PostTraverseBTree(pT);
+
+	return 0;
+}
+
+void PostTraverseBTree(struct BTNode * pT)
+{
+	if (NULL != pT)
+	{
+		if (NULL != pT-&gt;pLchild)
+		{
+			PostTraverseBTree(pT-&gt;pLchild);
+		}
+		if (NULL != pT-&gt;pRchild)
+		{
+			PostTraverseBTree(pT-&gt;pRchild);
+			//pT-&gt;pLchild可以代表整个左子树
+		}
+		printf(&#34;%c\n&#34;, pT-&gt;data);
+	}
+}
+
+void InTraverseBTree(struct BTNode * pT)
+{
+	if (NULL != pT)
+	{
+		if (NULL != pT-&gt;pLchild)
+		{
+			InTraverseBTree(pT-&gt;pLchild);
+		}
+
+		printf(&#34;%c\n&#34;, pT-&gt;data);
+
+		if (NULL != pT-&gt;pRchild)
+		{
+			InTraverseBTree(pT-&gt;pRchild);
+			//pT-&gt;pLchild可以代表整个左子树
+		}
+	}
+}
+
+void PreTraverseBTree(struct BTNode * pT)
+{
+	if (NULL != pT)
+	{
+		printf(&#34;%c\n&#34;, pT-&gt;data);
+
+		if (NULL != pT-&gt;pLchild)
+		{
+			PreTraverseBTree(pT-&gt;pLchild);
+		}
+
+		if (NULL != pT-&gt;pRchild)
+		{
+			PreTraverseBTree(pT-&gt;pRchild);
+			//pT-&gt;pLchild可以代表整个左子树
+		}
+	}
+
+	/*
+	伪算法
+	先访问根节点
+	再先序访问左子树
+	再先序访问右子树
+	*/
+}
+
+struct BTNode * CreateBTree(void)
+{
+	struct BTNode * pA = (struct BTNode *)malloc(sizeof(struct BTNode));
+	struct BTNode * pB = (struct BTNode *)malloc(sizeof(struct BTNode));
+	struct BTNode * pC = (struct BTNode *)malloc(sizeof(struct BTNode));
+	struct BTNode * pD = (struct BTNode *)malloc(sizeof(struct BTNode));
+	struct BTNode * pE = (struct BTNode *)malloc(sizeof(struct BTNode));
+
+	pA-&gt;data = &#39;A&#39;;
+	pB-&gt;data = &#39;B&#39;;
+	pC-&gt;data = &#39;C&#39;;
+	pD-&gt;data = &#39;D&#39;;
+	pE-&gt;data = &#39;E&#39;;
+
+	pA-&gt;pLchild = pB;
+	pA-&gt;pRchild = pC;
+	pB-&gt;pLchild = pB-&gt;pRchild = NULL;
+	pC-&gt;pLchild = pD;
+	pC-&gt;pRchild = NULL;
+	pD-&gt;pLchild = NULL;
+	pD-&gt;pRchild = pE;
+	pE-&gt;pLchild = pE-&gt;pRchild = NULL;
+
+	return pA;
+}</pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 
 <h2 id="一般树的存储">一般树的存储</h2>
 
+<ul>
+<li>普通树转换为二叉树
+左指针域指向它的第一个孩子
+右指针域指向它的下一个兄弟</li>
+</ul>
+
 <h2 id="森林存储">森林存储</h2>
+
+<ul>
+<li>森林转化为二叉树
+将森林中的每个树的节点当做兄弟存储
+左指针域指向它的第一个孩子,
+右指针域指向它的下一个兄弟</li>
+</ul>
 
 <h1 id="非线性结构-图">非线性结构&ndash;图</h1>
 
