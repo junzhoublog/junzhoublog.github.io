@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="8234">
+<meta itemprop="wordCount" content="8230">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 8234 字 </span>
+          <span class="more-meta"> 约 8230 字 </span>
           <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
@@ -322,12 +322,15 @@ p&ndash; &lt;==&gt;   p-1</p>
 
 <h1 id="结构体">结构体</h1>
 
-<p>结构体（C++中用类也能实现）<br />
-* 为什么会出现结构体<br />
-为了表示一些复杂的数据，而普通的基本类型变量无法满足要求<br />
-* 什么叫结构体<br />
-结构体是用户根据实际需要自己定义的复合数据类型<br />
-* 如何使用结构体<br />
+<p>结构体（C++中用类也能实现）</p>
+
+<ul>
+<li>为什么会出现结构体<br />
+为了表示一些复杂的数据，而普通的基本类型变量无法满足要求<br /></li>
+<li>什么叫结构体<br />
+结构体是用户根据实际需要自己定义的复合数据类型<br /></li>
+
+<li><p>如何使用结构体<br />
 两种方式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -344,11 +347,13 @@ struct Student * pst = &amp;st;
 </div>
 </div>
 <blockquote>
-<p>pst所指向的结构体变量中的sid这个成员<br />
-* 注意事项：<br />
+<p>pst所指向的结构体变量中的sid这个成员</p>
+</blockquote></li>
+
+<li><p>注意事项：<br />
 结构体变量不能加减乘除，但可以相互赋值<br />
-普通结构体变量和结构体指针变量作为函数参数的传递</p>
-</blockquote>
+普通结构体变量和结构体指针变量作为函数参数的传递</p></li>
+</ul>
 
 <h1 id="动态分配内存">动态分配内存</h1>
 <div class="highlight"><div class="chroma">
