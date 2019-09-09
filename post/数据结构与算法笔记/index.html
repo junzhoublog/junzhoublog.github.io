@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="7179">
+<meta itemprop="wordCount" content="7510">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 7179 字 </span>
+          <span class="more-meta"> 约 7510 字 </span>
           <span class="more-meta"> 预计阅读 15 分钟 </span>
         
       </div>
@@ -2371,6 +2371,27 @@ else<br />
 
 <h1 id="递归">递归</h1>
 
+<ul>
+<li>函数的调用
+当在一个函数的运行期间调用另一个函数时，在运行被调函数之前，系统需要完成三件事：
+   将所有的实际参数，返回地址等信息传递给被调函数。
+   为被调函数的局部变量（也包括形参）分配存储空间
+   将控制转移到被调函数的入口
+从被调函数返回主调函数之前，系统也要完成三件事：
+   保存被调函数的返回结果
+   释放被调函数所占的存储空间
+   依照被调函数保存的返回地址将控制转移到调用函数</li>
+<li>递归和循环的优缺点比较
+递归：
+易于理解
+速度慢
+存储空间大
+循环：
+  不易理解
+  速度快
+  存储空间小</li>
+</ul>
+
 <p>汉诺塔</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2457,6 +2478,9 @@ int main(void)
 </div>
 </div>
 <h1 id="非线性结构-树">非线性结构&ndash;树</h1>
+
+<p>树的分类：一般树  二叉树（一般二叉树，满二叉树，完全二叉树）  森林<br />
+完全二叉树：如果只是删除了满二叉树最底层最右边的连续若干个节点，这样形成的二叉树就是完全二叉树。满二叉树只是完全二叉树的一个特例。（解决树用数组存储问题）</p>
 
 <h1 id="非线性结构-图">非线性结构&ndash;图</h1>
 
