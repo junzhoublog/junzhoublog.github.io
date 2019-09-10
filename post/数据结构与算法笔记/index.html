@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="8230">
+<meta itemprop="wordCount" content="9782">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 8230 字 </span>
-          <span class="more-meta"> 预计阅读 17 分钟 </span>
+          <span class="more-meta"> 约 9782 字 </span>
+          <span class="more-meta"> 预计阅读 20 分钟 </span>
         
       </div>
     </header>
@@ -2722,6 +2722,447 @@ struct BTNode * CreateBTree(void)
 </div></li>
 </ul>
 
+<blockquote>
+<p>//这是一个二叉树的静态链表存储和遍历实现代码</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define NULL 0
+typedef char TElemType;
+//动态二叉链表
+typedef struct BiTNode{
+	TElemType data;
+	struct BiTNode *lchild, *rchild;
+}BiTNode, *BiTree;
+
+#define MAXSIZE 100
+typedef BiTNode* SElemType;
+typedef struct SqStack{
+	SElemType data[MAXSIZE];
+	int top;//指向栈顶元素
+}SqStack;
+
+//初始化空栈
+void initStack(SqStack &amp;s){
+	s.top = 0;
+}
+
+//判栈空
+bool isEmpty(SqStack s){
+	if (s.top == 0){
+		//printf(&#34;是空栈\n&#34;);//
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+//判栈满
+bool isFull(SqStack s){
+	if (s.top == MAXSIZE){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+//取栈顶元素
+void getTopElem(SqStack s, SElemType &amp;e){
+	if (!isEmpty(s))
+		e = s.data[s.top - 1];
+	else
+		printf(&#34;此栈为空栈，取栈顶元素失败\n&#34;);
+}
+
+//入栈
+void push(SqStack &amp;s, SElemType e){
+	if (!isFull(s)){
+		s.data[s.top] = e;
+		s.top++;
+	}
+	else
+		printf(&#34;此栈已满，入栈操作失败\n&#34;);
+}
+
+//出栈
+void pop(SqStack &amp;s, SElemType &amp;e){
+	if (!isEmpty(s)){
+		e = s.data[s.top - 1];
+		s.top--;
+	}
+	else
+		printf(&#34;此栈为空栈，出栈操作失败\n&#34;);
+}
+
+//利用先序序列建立一颗二叉树，先序序列读入：&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;.&#39;, &#39;.&#39;, &#39;d&#39;, &#39;e&#39;, &#39;.&#39;, &#39;g&#39;, &#39;.&#39;, &#39;.&#39;, &#39;f&#39;, &#39;.&#39;, &#39;.&#39;, &#39;.&#39; 
+//,&#39;.&#39;代表空树
+//测试用例：abc..de.g..f...#
+void createBiTreeByPreOrder(BiTree &amp;T){
+	//按先序次序输入二叉树中节点的值（一个字符），点号字符表示空树，构造二叉链表表示的二叉树
+	//注意：若输入的字符数（不含#号）为n个，则相应的空树即点号就应该有n+1个
+	char ch;
+	scanf_s(&#34;%c&#34;, &amp;ch);
+	//printf(&#34;test:%c\n&#34;, ch);
+	if (ch != &#39;#&#39;){
+		if (ch == &#39;.&#39;){
+			T = NULL;
+		}
+		else{
+			T = (BiTNode *)malloc(sizeof(BiTNode));
+			T-&gt;data = ch;
+			createBiTreeByPreOrder(T-&gt;lchild);
+			createBiTreeByPreOrder(T-&gt;rchild);
+		}
+	}
+}
+
+//先序遍历打印二叉树的递归算法(根、左、右)
+void preOrderPrint(BiTree T){
+	if (T){
+		printf(&#34;%c &#34;, T-&gt;data);
+		preOrderPrint(T-&gt;lchild);
+		preOrderPrint(T-&gt;rchild);
+	}
+}
+
+//先序遍历打印二叉树的非递归算法(根、左、右)
+void preOrderPrint2(BiTree T){
+	SqStack s;
+	initStack(s);
+	BiTNode *p = T;
+	while (p || !isEmpty(s)){
+		if (p){
+			printf(&#34;%c &#34;, p-&gt;data);
+			push(s, p);
+			p = p-&gt;lchild;
+		}
+		else{
+			//printStack(s);
+			pop(s, p);//栈顶指针（当前层的根节点指针）弹出
+			p = p-&gt;rchild;
+		}
+	}
+}
+
+//中序遍历打印二叉树的递归算法（左、根、右）
+void inOrderPrint(BiTree T){
+	if (T){
+		inOrderPrint(T-&gt;lchild);
+		printf(&#34;%c &#34;, T-&gt;data);
+		inOrderPrint(T-&gt;rchild);
+	}
+}
+//中序遍历打印二叉树的非递归算法（左、根、右）
+void inOrderPrint2(BiTree T){
+	SqStack s;
+	initStack(s);
+	BiTNode *p = T;
+	while (p || !isEmpty(s)){
+		if (p){
+			push(s, p);
+			p = p-&gt;lchild;
+		}
+		else{
+			pop(s, p);//栈顶指针（当前层的根节点指针）弹出
+			printf(&#34;%c &#34;, p-&gt;data);
+			p = p-&gt;rchild;
+		}
+	}
+}
+
+//后序遍历打印二叉树的递归算法（左、右、根）
+void postOrderPrint(BiTree T){
+	if (T){
+		postOrderPrint(T-&gt;lchild);
+		postOrderPrint(T-&gt;rchild);
+		printf(&#34;%c &#34;, T-&gt;data);
+	}
+}
+//后序遍历打印二叉树的非递归算法（左、右、根）
+void postOrderPrint2(BiTree T){
+	SqStack s;
+	initStack(s);
+	BiTNode *p = T;
+	while (p || !isEmpty(s)){
+		if (p){
+			push(s, p);
+			p = p-&gt;lchild;
+		}
+		else{
+			BiTNode *top;
+			getTopElem(s, top);//取得栈顶元素
+			if (top-&gt;data &gt; 0){//栈顶元素的右子树还没有被访问过
+				p = top-&gt;rchild;
+				top-&gt;data = -top-&gt;data;//赋右子树已遍历标志
+
+			}
+			else{//栈顶元素的右子树已经访问过了
+				printf(&#34;%c &#34;, -top-&gt;data);
+				pop(s, top);
+				//p = NULL;				
+			}
+		}
+	}
+}
+
+void main(){
+	BiTree T;
+	printf(&#34;请按先序次序输入二叉树各节点的值，以点号表示空树，以#号结束:\n&#34;);
+	createBiTreeByPreOrder(T);
+
+	printf(&#34;先序遍历打印二叉树:\n&#34;);
+	preOrderPrint(T);
+	printf(&#34;\n&#34;);
+
+	printf(&#34;先序遍历打印二叉树（非递归算法）:\n&#34;);
+	preOrderPrint2(T);
+	printf(&#34;\n&#34;);
+
+	printf(&#34;中序遍历打印二叉树:\n&#34;);
+	inOrderPrint(T);
+	printf(&#34;\n&#34;);
+
+	printf(&#34;中序遍历打印二叉树（非递归算法）:\n&#34;);
+	inOrderPrint2(T);
+	printf(&#34;\n&#34;);
+
+	printf(&#34;后序遍历打印二叉树:\n&#34;);
+	postOrderPrint(T);
+	printf(&#34;\n&#34;);
+
+	printf(&#34;后序遍历打印二叉树（非递归算法）:\n&#34;);
+	postOrderPrint2(T);
+	printf(&#34;\n&#34;);
+
+	
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>这是一个二叉树的动态链表存储和遍历的代码</p>
+</blockquote>
+
+<p><img src="/img/数据结构/bt.png" alt="二叉树" /></p>
+
 <h2 id="一般树的存储">一般树的存储</h2>
 
 <ul>
@@ -2742,6 +3183,50 @@ struct BTNode * CreateBTree(void)
 <h1 id="非线性结构-图">非线性结构&ndash;图</h1>
 
 <h1 id="查找和排序">查找和排序</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mermaid 
+graph TD  
+   A --&gt; B  </pre></td></tr></table>
+</div>
+</div>
+<p>mermaid<br />
+graph TD<br />
+   A &ndash;&gt; B</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">flow
+st=&gt;start: Start
+op=&gt;operation: Your Operation
+cond=&gt;condition: Yes or No?
+e=&gt;end
+st-&gt;op-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;op</pre></td></tr></table>
+</div>
+</div>
+<p>mermaid<br />
+graph TD<br />
+    id[带文本的矩形]<br />
+    id4(带文本的圆角矩形)<br />
+    id3&gt;带文本的不对称的矩形]<br />
+    id1{带文本的菱形}<br />
+    id2((带文本的圆形))</p>
 
     </div>
 
