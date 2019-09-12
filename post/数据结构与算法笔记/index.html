@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="9874">
+<meta itemprop="wordCount" content="10179">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 9874 字 </span>
-          <span class="more-meta"> 预计阅读 20 分钟 </span>
+          <span class="more-meta"> 约 10179 字 </span>
+          <span class="more-meta"> 预计阅读 21 分钟 </span>
         
       </div>
     </header>
@@ -3205,8 +3205,124 @@ void main(){
 选择<br />
 快速<br />
 归并<br />
-查找：排序是查找的前提</p>
+查找：排序是查找的前提<br />
+快速排序源代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
 
+int FindPos(int * a, int low, int high);
+void QuickSort(int * a, int low, int high);
+int a[100], n,i;
+int main(void)
+{
+	scanf_s(&#34;%d&#34;, &amp;n);
+	for (i = 0; i &lt; n;i++)
+	{
+		scanf_s(&#34;%d&#34;, &amp;a[i]);
+	}
+	
+	
+
+	QuickSort(a, 0, n-1); //第二个参数表示第一个元素的下标  第三个参数表示最后一个元素的下标
+
+	for (i = 0; i &lt; n; ++i)
+		printf(&#34;%d  &#34;, a[i]);
+	printf(&#34;\n&#34;);
+
+	return 0;
+}
+
+void QuickSort(int * a, int low, int high)
+{
+	int pos;
+
+	if (low &lt; high)
+	{
+		pos = FindPos(a, low, high);
+		QuickSort(a, low, pos - 1);
+		QuickSort(a, pos + 1, high);
+	}
+}
+
+int FindPos(int * a, int low, int high)
+{
+	int val = a[low];
+
+	while (low &lt; high)
+	{
+		while (low &lt; high  &amp;&amp; a[high] &gt;= val)
+			--high;
+		a[low] = a[high];
+
+		while (low &lt; high &amp;&amp; a[low] &lt;= val)
+			++low;
+		a[high] = a[low];
+	}//终止while循环之后low和high一定是相等的
+
+	a[low] = val;
+
+	return high; //high可以改为low, 但不能改为val 也不能改为a[low]  也不能改为a[high]
+}</pre></td></tr></table>
+</div>
+</div>
 <p><a href="https://bestzuo.cn/posts/sort-algorithm.html">排序算法比较与梳理</a></p>
 
 <h1 id="泛型">泛型</h1>
