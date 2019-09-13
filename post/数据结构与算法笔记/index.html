@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="10179">
+<meta itemprop="wordCount" content="10260">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 10179 字 </span>
+          <span class="more-meta"> 约 10260 字 </span>
           <span class="more-meta"> 预计阅读 21 分钟 </span>
         
       </div>
@@ -3264,6 +3264,8 @@ void main(){
 </span><span class="lnt">53
 </span><span class="lnt">54
 </span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
 </span></pre></td>
 <td class="lntd">
 <pre class="chroma"># include &lt;stdio.h&gt;
@@ -3273,16 +3275,18 @@ void QuickSort(int * a, int low, int high);
 int a[100], n,i;
 int main(void)
 {
+	printf(&#34;请输入要排序数字的总数：&#34;);
 	scanf_s(&#34;%d&#34;, &amp;n);
 	for (i = 0; i &lt; n;i++)
 	{
+		printf(&#34;数据：&#34;);
 		scanf_s(&#34;%d&#34;, &amp;a[i]);
 	}
 	
 	
 
 	QuickSort(a, 0, n-1); //第二个参数表示第一个元素的下标  第三个参数表示最后一个元素的下标
-
+	printf(&#34;排序如下：\n&#34;);
 	for (i = 0; i &lt; n; ++i)
 		printf(&#34;%d  &#34;, a[i]);
 	printf(&#34;\n&#34;);
