@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="10369">
+<meta itemprop="wordCount" content="10480">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 10369 字 </span>
+          <span class="more-meta"> 约 10480 字 </span>
           <span class="more-meta"> 预计阅读 21 分钟 </span>
         
       </div>
@@ -3405,7 +3405,84 @@ int main()
 </div>
 <blockquote>
 <p>深度优先搜索</p>
-</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;stdio.h&gt;
+int a[10], book[10], total=0;
+void dfs(int step)
+{
+	int i;
+	if (step ==10)
+	{
+		if (a[1]*100+a[2]*10+a[3]+a[4]*100+a[5]*10+a[6]==a[7]*100+a[8]*10+a[9])
+		{
+			total++;
+			printf(&#34;%d%d%d+%d%d%d=%d%d%d&#34;, a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9]);
+			printf(&#34;\n&#34;);
+		}
+		return;
+	}
+	for (i = 1; i &lt;= 9; i++)
+	{
+		if (book[i]==0)
+		{
+			a[step] = i;
+			book[i] = 1;
+			dfs(step + 1);
+			book[i] = 0;
+		}
+	}
+	return;
+}
+int main()
+{
+	
+	dfs(1);
+	printf(&#34;total=%d&#34;, total / 2);
+	getchar();
+	getchar();
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div></blockquote>
 
     </div>
 
