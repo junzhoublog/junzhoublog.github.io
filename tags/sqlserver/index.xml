@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sqlserver on Zhou Jun&#39;s blog</title>
+    <link>https://junzhoublog.github.io/tags/sqlserver/</link>
+    <description>Recent content in sqlserver on Zhou Jun&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Sep 2019 22:33:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://junzhoublog.github.io/tags/sqlserver/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数据库原理笔记</title>
+      <link>https://junzhoublog.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Tue, 10 Sep 2019 22:33:46 +0800</pubDate>
+      
+      <guid>https://junzhoublog.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/</guid>
+      <description>增 删 改 查 几乎所有的应用软件都需要数据库 数据库与数据结构的区别？ 数据库是在应用软件级别研究数据的存储和操作 外存级别（硬盘） 数据结构是在系统软件</description>
+    </item>
+    
+  </channel>
+</rss>
