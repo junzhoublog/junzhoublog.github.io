@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Zhou Jun&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 31 Aug 2019 13:36:33 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Sep 2019 22:33:46 +0800</lastBuildDate>
     
 	<atom:link href="https://junzhoublog.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>计算机</title>
       <link>https://junzhoublog.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
-      <pubDate>Sat, 31 Aug 2019 13:36:33 +0800</pubDate>
+      <pubDate>Tue, 10 Sep 2019 22:33:46 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>博客</title>
+      <link>https://junzhoublog.github.io/categories/%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sat, 31 Aug 2019 13:19:25 +0800</pubDate>
+      
+      <guid>https://junzhoublog.github.io/categories/%E5%8D%9A%E5%AE%A2/</guid>
       <description></description>
     </item>
     

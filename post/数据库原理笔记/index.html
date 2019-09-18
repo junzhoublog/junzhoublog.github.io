@@ -50,11 +50,11 @@
 
 <meta itemprop="datePublished" content="2019-09-10T22:33:46&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-10T22:33:46&#43;08:00" />
-<meta itemprop="wordCount" content="368">
+<meta itemprop="wordCount" content="506">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="sql server,my sql,db2," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数据库原理笔记"/>
 <meta name="twitter:description" content="增 删 改 查 几乎所有的应用软件都需要数据库 数据库与数据结构的区别？ 数据库是在应用软件级别研究数据的存储和操作 外存级别（硬盘） 数据结构是在系统软件"/>
@@ -128,9 +128,11 @@
 
       <div class="post-meta">
         <span class="post-time"> 2019-09-10 </span>
-        
-          <span class="more-meta"> 约 368 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <div class="post-category">
+            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"> 计算机 </a>
+            </div>
+          <span class="more-meta"> 约 506 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -178,12 +180,19 @@ select<br />
 <h2 id="数据库如何存储数据">数据库如何存储数据</h2>
 
 <p>1.表相关数据<br />
-主键：唯一标识符<br />
+主键：唯一标识符  解决冗余数据问题
 字段=列=属性<br />
 记录=元祖<br />
-表：记录的组合
-外键：一个表中若干字段来自另一个表若干字段的主键或唯一键
-2.</p>
+表：记录的组合<br />
+外键：一个表中若干字段来自另一个表若干字段的主键或唯一键 表事务与表事务之间的联系<br />
+2.create table命令<br />
+3.约束<br />
+定义：对一个表中属性操作的限制<br />
+分类：<br />
+主键约束  不允许重复元素，避免了数据的冗余。<br />
+外键约束  通过外键约束从语法上保证了本事务所关联的其他事物是存在的<br />
+check约束  保证事物属性在一个规定值范围内<br />
+default 保证事物属性一定会有一个值</p>
 
     </div>
 
@@ -203,7 +212,11 @@ select<br />
   
 </div>
 <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="/tags/sql-server/">sql server</a>
+          <a href="/tags/my-sql/">my sql</a>
+          <a href="/tags/db2/">db2</a>
+          </div>
       <nav class="post-nav">
         
         <a class="next" href="/post/docker%E5%92%8Ck8s/">
