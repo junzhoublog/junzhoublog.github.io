@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-10T22:33:46&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-10T22:33:46&#43;08:00" />
-<meta itemprop="wordCount" content="2723">
+<meta itemprop="wordCount" content="3093">
 
 
 
@@ -131,8 +131,8 @@
         <div class="post-category">
             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"> 计算机 </a>
             </div>
-          <span class="more-meta"> 约 2723 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3093 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -599,7 +599,114 @@ select max(sal), lower(ename) from emp;</pre></td></tr></table>
 </div>
 </div>
 <h2 id="group-by-分组-重点">group by (分组)【重点】</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">use scott;
+select * from emp;
 
+--输出每个部门的编号 和 该部门的平均工资
+select deptno, avg(sal) as &#34;部门平均工资&#34; 	
+	from emp 
+	group by deptno 
+
+-- 判断下面语句是否正确
+select deptno, avg(sal) as &#34;部门平均工资&#34;, ename
+	from emp
+	group by deptno 
+
+-- 判断下面语句是否正确
+select deptno, ename
+	from emp
+	group by deptno 
+
+
+总结： 使用了group by 之后 select 中只能出现分组后的整体信息，不能出现组内的详细信息
+
+
+
+group by a, b 的用法
+--error
+select deptno , job, sal
+	from emp
+	group by deptno, job
+
+--error
+select *
+	from emp
+	group by deptno, job
+
+--ok
+select deptno , job, avg(sal) &#34;平均工资&#34;
+	from emp
+	group by deptno, job
+	order by deptno
+--ok
+select deptno , job, avg(sal) &#34;平均工资&#34;, count(*) &#34;部门人数&#34;, sum(sal) &#34;某部门某工作总工资&#34;, min(sal) &#34;某部门某工作最低工资&#34; 
+	from emp
+	group by deptno, job
+	order by deptno
+	
+
+select comm, count(*) 
+	from emp
+	group by comm
+
+select max(sal) from emp; --默认把所有的信息当做一组</pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
