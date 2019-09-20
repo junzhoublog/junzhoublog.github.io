@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-10T22:33:46&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-10T22:33:46&#43;08:00" />
-<meta itemprop="wordCount" content="1128">
+<meta itemprop="wordCount" content="2473">
 
 
 
@@ -131,8 +131,8 @@
         <div class="post-category">
             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"> 计算机 </a>
             </div>
-          <span class="more-meta"> 约 1128 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 2473 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -150,6 +150,10 @@
 <li><a href="#between-在某个范围">between(在某个范围)</a></li>
 <li><a href="#in-属于若干个孤立的值">in(属于若干个孤立的值)</a></li>
 <li><a href="#top-最前面的若干个记录-专属sql-server的语法-不可移植到其他数据库">top(最前面的若干个记录 专属sql server的语法，不可移植到其他数据库)</a></li>
+<li><a href="#null-没有值-空值">null（没有值，空值）</a></li>
+<li><a href="#order-by-以某个字段排序">order by (以某个字段排序)</a></li>
+<li><a href="#模糊查询-搜索时经常用">模糊查询 (搜索时经常用)</a></li>
+<li><a href="#聚合函数-多行记录返回一个值通常用于统计分组信息">聚合函数（多行记录返回一个值通常用于统计分组信息）</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -312,8 +316,251 @@ select * from emp
 </div>
 </div>
 <h2 id="in-属于若干个孤立的值">in(属于若干个孤立的值)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select * from emp where sal in (1500, 3000, 5000)
+等价于
+select * from emp 
+	where sal=1500 or sal=3000 or sal=5000
 
+select * from emp where sal not in (1500, 3000, 5000) --把sal既不是1500 也不是3000也不是5000的记录输出
+等价于
+select * from emp 
+	where sal&lt;&gt;1500 and sal&lt;&gt;3000 and sal&lt;&gt;5000
+		--数据库中不等于有两种表示：  !=    &lt;&gt;   推荐使用第二种
+		--对或取反是并且  对并且取反是或</pre></td></tr></table>
+</div>
+</div>
 <h2 id="top-最前面的若干个记录-专属sql-server的语法-不可移植到其他数据库">top(最前面的若干个记录 专属sql server的语法，不可移植到其他数据库)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select * from emp;
+
+select top 5 * from emp;
+select top 15 percent * from emp; --输出的是3个，不是2个
+
+--把工资在1500到3000之间(包括1500和3000)的员工中工资最高的前4个人的信息输出
+select top 4 * 
+	from emp
+	where sal between 1500 and 3000
+	order by sal desc  --desc降序 不写则默认是升序
+    执行顺序 过滤 排序 前四个</pre></td></tr></table>
+</div>
+</div>
+<h2 id="null-没有值-空值">null（没有值，空值）</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select * from emp;
+--输出奖金非空的员工的信息
+select * from emp where comm &lt;&gt; null; --输出为空 error
+select * from emp where comm != null; --输出为空 error
+
+
+select * from emp where comm = null;--输出为空 error
+	--总结：null不能参与&lt;&gt;  !=  =运算
+
+--null可以参与is  not is
+select * from emp where comm is null; --输出奖金为空的员工的信息
+select * from emp where comm is not null; --输出奖金不为空的员工的信息
+
+
+--任何类型的数据都允许为null
+create table t1 (name nvarchar(20), cnt int, riqi datetime);  
+insert into t1 values (null, null, null)
+select * from t1;
+
+
+select * from emp;
+--输出每个员工的姓名 年薪(包含了奖金)  comm假设是一年的奖金
+select empno, ename, sal*12+comm &#34;年薪&#34; from emp;
+	--本程序证明了：null不能参与任何数据运算 否则结果永远为空
+
+	select ename, sal*12+isnull(comm, 0) &#34;年薪&#34; from emp;
+	--isnull(comm, 0) 如果comm是null 就返回零 否则返回comm的值
+ </pre></td></tr></table>
+</div>
+</div>
+<h2 id="order-by-以某个字段排序">order by (以某个字段排序)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">--asc是升序的意思 默认可以不写  desc是降序
+
+select * from emp order by sal; --默认是按照升序排序
+select * from emp order by deptno, sal; --先按照deptno升序排序，如果deptno相同，再按照sal升序排序
+
+select * from emp order by deptno desc, sal;
+	--先按deptno降序排序 如果deptno相同 再按照sal升序排序
+	--记住sal是升序不是降序
+	--order by a desc, b, c, d    desc只对a产生影响 不会对后面的b  c d 产生影响
+
+select * from emp order by deptno, sal desc
+	--问题：desc是否会对deptno产生影响?
+	--答案：不会
+	--先按deptno升序，如果deptno相同，再按sal降序
+	</pre></td></tr></table>
+</div>
+</div>
+<h2 id="模糊查询-搜索时经常用">模糊查询 (搜索时经常用)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select * from emp 	where ename like &#39;%A%&#39;  --ename只要含有字母A就输出
+select * from emp where ename like &#39;A%&#39;  --ename只要首字母是A的就输出
+select * from emp where ename like &#39;%A&#39;  --ename只要尾字母是A的就输出
+
+
+select * from emp where ename like &#39;_A%&#39; --ename只要第二个字母是A的就输出
+ 
+
+select * from emp where ename like &#39;_[A-F]%&#39; --把ename中第二个字符是A或B或C或D或E或F的记录输出 
+
+
+select * from emp where ename like &#39;_[^A-F]%&#39; --把ename中第二个字符不是A也不是B也不是C也不是D也不是E也不是F的记录输出 
+
+
+
+
+select * from emp where ename like &#39;_[^A-F]%&#39; --把ename中第二个字符不是A也不是B也不是C也不是D也不是E也不是F的记录输出 
+
+
+
+create table student
+(
+	name varchar(20) null
+	,age int
+);
+
+
+insert into student values (&#39;张三&#39;, 88);
+insert into student values (&#39;Tom&#39;, 66);
+insert into student values (&#39;a_b&#39;, 22);
+insert into student values (&#39;c%d&#39;, 44);
+insert into student values (&#39;abc_fe&#39;, 56);
+insert into student values (&#39;haobin&#39;, 25);
+insert into student values (&#39;HaoBin&#39;, 88);
+insert into student values (&#39;c%&#39;, 66)
+insert into student values (&#39;long&#39;&#39;s&#39;, 100)
+select * from student;
+
+select * from student where name like &#39;%\%%&#39; escape &#39;\&#39;  --把name中包含有%的输出 
+select * from student where name like &#39;%\_%&#39; escape &#39;\&#39; --把name中包含有_的输出</pre></td></tr></table>
+</div>
+</div>
+<h2 id="聚合函数-多行记录返回一个值通常用于统计分组信息">聚合函数（多行记录返回一个值通常用于统计分组信息）</h2>
 
     </div>
 
