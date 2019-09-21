@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-10T22:33:46&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-10T22:33:46&#43;08:00" />
-<meta itemprop="wordCount" content="3093">
+<meta itemprop="wordCount" content="4942">
 
 
 
@@ -131,8 +131,8 @@
         <div class="post-category">
             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"> 计算机 </a>
             </div>
-          <span class="more-meta"> 约 3093 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 4942 字 </span>
+          <span class="more-meta"> 预计阅读 10 分钟 </span>
         
       </div>
     </header>
@@ -155,7 +155,18 @@
 <li><a href="#模糊查询-搜索时经常用">模糊查询 (搜索时经常用)</a></li>
 <li><a href="#聚合函数-多行记录返回一个值通常用于统计分组信息">聚合函数（多行记录返回一个值通常用于统计分组信息）</a></li>
 <li><a href="#group-by-分组-重点">group by (分组)【重点】</a></li>
+<li><a href="#having-对分组之后的信息过滤-难点">having[对分组之后的信息过滤 难点]</a></li>
+<li><a href="#连接查询">连接查询</a>
+<ul>
+<li><a href="#内连接">内连接</a></li>
+<li><a href="#外连接">外连接</a></li>
+<li><a href="#完全连接">完全连接</a></li>
+<li><a href="#交叉连接">交叉连接</a></li>
+<li><a href="#自连接">自连接</a></li>
 </ul></li>
+<li><a href="#嵌套查询">嵌套查询</a></li>
+</ul></li>
+<li><a href="#视图">视图</a></li>
 </ul>
 </nav>
   </div>
@@ -707,6 +718,447 @@ select comm, count(*)
 select max(sal) from emp; --默认把所有的信息当做一组</pre></td></tr></table>
 </div>
 </div>
+<h2 id="having-对分组之后的信息过滤-难点">having[对分组之后的信息过滤 难点]</h2>
+
+<ol>
+<li>having子句是用来对分组之后的数据进行过滤，因此使用having时通常都会先使用group by</li>
+
+<li><p>如果没有使用group by 但使用了having 则意味着having 把所有的记录当做一组来进行过滤</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">--输出部门平均工资大于2000的部门的部门编号 部门的平均工资
+select deptno, avg(sal)
+	from emp
+	group by deptno
+	having avg(sal) &gt; 2000
+
+
+--判断下列sql语句是否正确
+select deptno, avg(sal) as &#34;平均工资&#34;
+	from emp
+	group by deptno
+	having avg(sal) &gt; 2000
+
+
+--判断下列sql语句是否正确
+select deptno, avg(sal) as &#34;平均工资&#34;
+	from emp
+	group by deptno
+	having &#34;平均工资&#34; &gt; 2000
+
+--判断下列sql语句是否正确
+select deptno &#34;部门编号&#34;, avg(sal) as &#34;平均工资&#34;
+	from emp
+	group by deptno
+	having deptno &gt; 10
+
+
+--判断下列sql语句是否正确
+select deptno &#34;部门编号&#34;, avg(sal) as &#34;平均工资&#34;
+	from emp
+	group by deptno
+	having &#34;部门编号&#34; &gt; 1
+
+
+
+--判断下列sql语句是否正确
+select deptno, avg(sal) as &#34;平均工资&#34;
+	from emp
+	group by deptno
+	having  deptno &gt; 10
+
+
+--判断下列sql语句是否正确
+select deptno, avg(sal) as &#34;平均工资&#34;
+	from emp
+	group by deptno
+	having count(*) &gt;5 --统计部门个数大于5个的
+
+
+--判断下列sql语句是否正确
+select deptno, avg(sal) as &#34;平均工资&#34;
+	from emp
+	group by deptno
+	having ename like &#39;%A%&#39;
+
+
+
+
+
+
+
+--把姓名不包含A的所有的员工按部门编号分组，
+--统计输出部门平均工资大于2000的部门的部门编号 部门的平均工资
+select deptno, avg(sal) &#34;平均工资&#34;
+	from emp
+	where ename not like &#39;%A%&#39;
+	group by deptno
+	having avg(sal) &gt; 2000
+
+--把工资大于2000，
+--统计输出部门平均工资大于3000的部门的部门编号 部门的平均工资
+select deptno, avg(sal) &#34;平均工资&#34;, count(*) &#34;部门人数&#34;, max(sal) &#34;部门的最高工资&#34;
+	from emp
+	where sal &gt; 2000  --where是对原始的记录过滤
+	group by deptno
+	having avg(sal) &gt; 3000  --对分组之后的记录过滤
+
+
+
+--判断入选语句是否正确
+select deptno, avg(sal) &#34;平均工资&#34;, count(*) &#34;部门人数&#34;, max(sal) &#34;部门的最高工资&#34;
+	from emp	
+	group by deptno
+	having avg(sal) &gt; 3000  --对分组之后的记录过滤
+	where sal &gt; 2000  --where是对原始的记录过滤
+
+总计： 所有select的参数的顺序是不允许变化的，否则编译时出错 
+
+
+
+
+select * from emp;
+
+
+
+select count(*) 
+	from emp 
+	having avg(sal) &gt; 1000
+
+
+
+select ename, sal &#34;工资&#34; 
+	from emp
+	where sal &gt; 2000
+
+select ename, sal &#34;工资&#34; 
+	from emp
+	where &#34;工资&#34;  &gt; 2000
+
+
+
+select deptno, avg(sal) &#34;平均工资&#34;, count(*) &#34;部门人数&#34;, max(sal) &#34;部门的最高工资&#34;
+	into emp_2 //把查询结果放入一个新表
+	from emp
+	where sal &gt; 2000  --where是对原始的记录过滤
+	group by deptno
+	having avg(sal) &gt; 3000  --对分组之后的记录过滤
+
+select * from emp_2</pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
+<h2 id="连接查询">连接查询</h2>
+
+<h3 id="内连接">内连接</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select &#34;E&#34;.ename &#34;员工姓名&#34;, &#34;D&#34;.dname &#34;部门名称&#34;
+	from emp &#34;E&#34;
+	join dept &#34;D&#34;
+	on &#34;E&#34;.deptno = &#34;D&#34;.deptno
+
+
+1.
+	select ... from A, B的用法
+--emp是14行 8 列  dept是5行 3列
+select * from emp, dept
+
+2. 
+	select ... from A, B where ... 的用法
+--输出5行 11列
+select * 
+	from emp, dept 
+	where empno = 7369
+
+3. 
+	select ... from A join B on ... 的用法
+--输出11列 70行
+select *
+	from emp &#34;E&#34;
+	join dept &#34;D&#34;  --join是连接
+	on 1=1  --on连接条件
+
+--输出2列 70行
+select &#34;E&#34;.ename &#34;员工姓名&#34;, &#34;D&#34;.dname &#34;部门名称&#34;
+	from emp &#34;E&#34;
+	join dept &#34;D&#34;  --join是连接
+	on 1=1  --on连接条件  on不能省 有join就必须有on
+
+--判断下面语句是否正确
+select deptno
+	from emp &#34;E&#34;
+	join dept &#34;D&#34;  --join是连接
+	on 1=1 
+
+--判断下面语句是否正确
+select &#34;部门表&#34;.deptno &#34;部门编号&#34;
+	from emp &#34;员工表&#34;
+	join dept &#34;部门表&#34;  --join是连接
+	on 1=1 
+
+
+--考虑下面语句的输出结果是什么
+--答案： 14行 11列
+select *
+	from emp &#34;E&#34;
+	join dept &#34;D&#34;  --join是连接
+	on &#34;E&#34;.deptno = &#34;D&#34;.deptno
+
+--考虑下面语句的输出结果是什么
+--答案：14行 2列
+select &#34;E&#34;.ename &#34;员工姓名&#34;, &#34;D&#34;.dname &#34;部门名称&#34;
+	from emp &#34;E&#34;
+	join dept &#34;D&#34;  --join是连接
+	on &#34;E&#34;.deptno = &#34;D&#34;.deptno
+
+
+
+
+
+
+
+
+select * 
+	from emp, dept
+	where emp.deptno = dept.deptno
+
+等价于
+select * from emp
+	join dept
+	on emp.deptno = dept.deptno
+
+--输出的行数肯定是dept表行数的倍数
+select * from emp, dept 	
+where emp.deptno =10 --5*3=15
+
+--输出的行数肯定是emp表行数的倍数 
+select * from emp, dept  
+	where dept.deptno = 10   --14*1=14
+
+	</pre></td></tr></table>
+</div>
+</div>
+<h3 id="外连接">外连接</h3>
+
+<h3 id="完全连接">完全连接</h3>
+
+<h3 id="交叉连接">交叉连接</h3>
+
+<h3 id="自连接">自连接</h3>
+
+<h2 id="嵌套查询">嵌套查询</h2>
+
+<h1 id="视图">视图</h1>
+
     </div>
 
     <div class="post-copyright">
