@@ -9,6 +9,27 @@
   </url>
   
   <url>
+    <loc>https://junzhoublog.github.io/post/c&#43;&#43;/</loc>
+    <lastmod>2019-09-21T16:01:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://junzhoublog.github.io/post/</loc>
+    <lastmod>2019-09-21T16:01:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://junzhoublog.github.io/</loc>
+    <lastmod>2019-09-21T16:01:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://junzhoublog.github.io/categories/</loc>
     <lastmod>2019-09-10T22:33:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -30,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://junzhoublog.github.io/post/</loc>
-    <lastmod>2019-09-10T22:33:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://junzhoublog.github.io/tags/sqlserver/</loc>
     <lastmod>2019-09-10T22:33:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -45,13 +59,6 @@
   
   <url>
     <loc>https://junzhoublog.github.io/tags/</loc>
-    <lastmod>2019-09-10T22:33:46+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://junzhoublog.github.io/</loc>
     <lastmod>2019-09-10T22:33:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
