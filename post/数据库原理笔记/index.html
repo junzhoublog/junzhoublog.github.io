@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-10T22:33:46&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-10T22:33:46&#43;08:00" />
-<meta itemprop="wordCount" content="5218">
+<meta itemprop="wordCount" content="5932">
 
 
 
@@ -131,8 +131,8 @@
         <div class="post-category">
             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"> 计算机 </a>
             </div>
-          <span class="more-meta"> 约 5218 字 </span>
-          <span class="more-meta"> 预计阅读 11 分钟 </span>
+          <span class="more-meta"> 约 5932 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
         
       </div>
     </header>
@@ -165,9 +165,17 @@
 <li><a href="#自连接">自连接</a></li>
 <li><a href="#联合">联合</a></li>
 </ul></li>
+<li><a href="#分页查询">分页查询</a></li>
+<li><a href="#identity">identity</a></li>
 <li><a href="#嵌套查询">嵌套查询</a></li>
 </ul></li>
 <li><a href="#视图">视图</a></li>
+<li><a href="#事务">事务</a></li>
+<li><a href="#索引">索引</a></li>
+<li><a href="#存储过程">存储过程</a></li>
+<li><a href="#游标">游标</a></li>
+<li><a href="#tl-sql">TL-SQL</a></li>
+<li><a href="#触发器">触发器</a></li>
 </ul>
 </nav>
   </div>
@@ -1293,10 +1301,225 @@ where sal not in(select distinct &#34;e1&#34;.sal from emp&#34;e1&#34; join emp 
 </div>
 </div>
 <h3 id="联合">联合</h3>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select &#34;e1&#34;.ename&#34;姓名&#34;,&#34;e1&#34;.sal&#34;薪水&#34;,&#34;e2&#34;.ename&#34;上司姓名&#34;
+from emp &#34;e1&#34;
+join emp &#34;e2&#34;
+on &#34;e1&#34;.mgr=&#34;e2&#34;.empno
+union 
+select  ename,sal,&#39;老板&#39;from emp where mgr is null</pre></td></tr></table>
+</div>
+</div>
+<h2 id="分页查询">分页查询</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">select top 3 *
+	from emp
+	where empno not in (select top 6 empno from emp order by sal desc)
+	order by sal desc	</pre></td></tr></table>
+</div>
+</div>
+<h2 id="identity">identity</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">create table student3
+(
+	student_id int primary key identity(100, 5), --必须的为student_id赋值
+	student_name nvarchar(200) not null 
+)</pre></td></tr></table>
+</div>
+</div>
 <h2 id="嵌套查询">嵌套查询</h2>
 
 <h1 id="视图">视图</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">求出平均工资最高的部门 的编号和部门的平均工资
+select *
+	from (
+		select deptno, avg(sal) &#34;avg_sal&#34; 
+			from emp 
+			group by deptno	
+	) &#34;T&#34;
+	where &#34;T&#34;.&#34;avg_sal&#34; = (
+		select max(&#34;E&#34;.&#34;avg_sal&#34;) from (
+			select deptno, avg(sal) &#34;avg_sal&#34; 
+				from emp 
+				group by deptno
+		) &#34;E&#34;
+	)
+用视图如下：
+create view emp_1 
+as
+	select deptno, avg(sal) &#34;avg_sal&#34; 
+		from emp 
+		group by deptno
+
+select * from  emp_1
+	where avg_sal  = (select max(avg_sal) from v$_emp_1) 
+
+视图中select必须为计算列指定别名
+--error
+			create view v$_a
+				as 
+					select avg(sal) from emp;
+
+--ok
+			create view v$_a
+				as 
+					select avg(sal) as &#34;avg_sal&#34; from emp;</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>视图只简化了查询 但并不能加快查询速度</p>
+</blockquote>
+
+<h1 id="事务">事务</h1>
+
+<p>实现多个用户对共享资源的同时访问，保证数据的并发处理能力。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">create database Test
+
+use Test
+create table bank
+(
+	customerEname nvarchar(200),
+	currentMoney money 
+)
+insert into bank values (&#39;张三&#39;, 1000)
+insert into bank values (&#39;李四&#39;, 1)
+
+alter table bank add constraint check_currentMoney check(currentMoney&gt;=1)
+
+update bank set currentMoney=currentMoney-1000 where customerEname=&#39;张三&#39;
+update bank set currentMoney=currentMoney+1000 where customerEname=&#39;李四&#39;
+
+begin transaction
+declare @errorSum int
+set @errorSum = 0
+update bank set currentMoney=currentMoney-1000 
+	where customerEname=&#39;张三&#39;
+set @errorSum = @errorSum + @@error
+update bank set currentMoney=currentMoney+1000 
+	where customerEname=&#39;李四&#39;
+set @errorSum = @errorSum + @@error
+if (@errorSum &lt;&gt; 0)
+	begin
+		print &#39;转账失败&#39;
+		rollback transaction
+	end
+else
+	begin
+		print &#39;转账成功&#39;
+		commit transaction
+	end</pre></td></tr></table>
+</div>
+</div>
+<h1 id="索引">索引</h1>
+
+<h1 id="存储过程">存储过程</h1>
+
+<h1 id="游标">游标</h1>
+
+<h1 id="tl-sql">TL-SQL</h1>
+
+<h1 id="触发器">触发器</h1>
 
     </div>
 
