@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="814">
+<meta itemprop="wordCount" content="1039">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 814 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1039 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -387,6 +387,106 @@ void huhuan(int* x, int* y)
 	printf(&#34;%d\n&#34;, *y);/* 3*/
 	*y = *t;
 
+	return;
+}</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &#34;stdio.h&#34;
+
+void huhuan(int*x, int*y);
+
+int main()
+{
+	int a = 3;
+	int b = 5;
+	huhuan(&amp;a, &amp;b);
+	printf(&#34;%d,%d\n&#34;, a, b);//这里并没有改变 还是3 5
+	return 0;
+}
+
+void huhuan(int* x, int* y)
+{
+	printf(&#34;%d,%d\n&#34;, *x, *y) //3 5
+	int *t; 
+	t = x;
+	x = y;
+	y = t;
+	printf(&#34;%d,%d\n&#34;, *x, *y);//5 3 只是把放在指针变量x与y中的 a与b变量的地址交换了位置 a与b变量本身所存放的值没有改变
+	return;
+}</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &#34;stdio.h&#34;
+
+void huhuan(int*x, int*y);
+
+int main()
+{
+	int a = 3;
+	int b = 5;
+	huhuan(&amp;a, &amp;b);
+	printf(&#34;%d,%d\n&#34;, a, b); //该变了
+	return 0;
+}
+
+void huhuan(int* x, int* y)
+{
+	int t;
+	t = *x;
+	*x = *y;
+	*y = t;  
+	printf(&#34;%d,%d\n&#34;, *x, *y); // *x==a  *y==b a与b变量本身所存放的值发生改变
 	return;
 }</pre></td></tr></table>
 </div>
