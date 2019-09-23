@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="1039">
+<meta itemprop="wordCount" content="1214">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 1039 字 </span>
+          <span class="more-meta"> 约 1214 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -146,7 +146,14 @@
 <li><a href="#数组">数组</a></li>
 <li><a href="#函数">函数</a></li>
 <li><a href="#变量的作用域和存储方式">变量的作用域和存储方式</a></li>
-<li><a href="#指针">指针</a></li>
+<li><a href="#指针">指针</a>
+<ul>
+<li><a href="#指针和数组-数组的升级是容器">指针和数组（数组的升级是容器）</a>
+<ul>
+<li><a href="#指针和一维数组">指针和一维数组</a></li>
+<li><a href="#指针和二维数组">指针和二维数组</a></li>
+</ul></li>
+</ul></li>
 <li><a href="#结构体">结构体</a></li>
 <li><a href="#枚举">枚举</a></li>
 </ul>
@@ -491,6 +498,77 @@ void huhuan(int* x, int* y)
 }</pre></td></tr></table>
 </div>
 </div>
+<h2 id="指针和数组-数组的升级是容器">指针和数组（数组的升级是容器）</h2>
+
+<h3 id="指针和一维数组">指针和一维数组</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;stdio.h&gt;
+int main(void)
+{
+	int a[3] = {5,2,7};
+	int b[4][5];
+	int i;
+
+	printf(&#34;%#x\n&#34;, b[0][0]);
+	printf(&#34;%#x\n&#34;, b);//二维数组不是
+	printf(&#34;%#x\n&#34;,&amp;a[0]);
+	printf(&#34;%#x\n&#34;, a); //9行与10行输出结果一样 一维数组名a是一个指针常量 存放的是数组第一个元素的地址
+
+	printf(&#34;%d\n&#34;, *a);//*a==a[0]
+	printf(&#34;%d\n&#34;, *(a+2)); //*(a+1)==a[0+1]==a[1]
+	printf(&#34;%d\n&#34;, *a + 1);// *a + 1==a[0]+1
+
+	for (i = 0; i &lt; 3; ++i)
+	{
+		printf(&#34;%d&#34;, a[i]);
+		
+	}
+	printf(&#34;\n&#34; );
+	for (i = 0; i &lt; 3; ++i)
+	{
+		printf(&#34;%d&#34;, *(a + i));//a[i]==*(a + i)
+
+	}
+	
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h3 id="指针和二维数组">指针和二维数组</h3>
+
 <h1 id="结构体">结构体</h1>
 
 <h1 id="枚举">枚举</h1>
