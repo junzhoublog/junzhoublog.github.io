@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="2475">
+<meta itemprop="wordCount" content="2574">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 2475 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2574 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -148,6 +148,7 @@
 <li><a href="#变量的作用域和存储方式">变量的作用域和存储方式</a></li>
 <li><a href="#指针">指针</a>
 <ul>
+<li><a href="#经典指针程序">经典指针程序</a></li>
 <li><a href="#指针和数组-数组的升级是容器">指针和数组（数组的升级是容器）</a>
 <ul>
 <li><a href="#指针和一维数组">指针和一维数组</a></li>
@@ -156,8 +157,10 @@
 <li><a href="#指针变量的运算">指针变量的运算</a></li>
 <li><a href="#实参与形参是否是同一个变量-与-没有指针只能返回一个值">实参与形参是否是同一个变量 与 没有指针只能返回一个值</a></li>
 </ul></li>
-<li><a href="#动态分配内存-动态数组">动态分配内存（动态数组）</a></li>
+<li><a href="#动态分配内存-动态数组">动态分配内存（动态数组）</a>
+<ul>
 <li><a href="#多级指针">多级指针</a></li>
+</ul></li>
 <li><a href="#结构体">结构体</a></li>
 <li><a href="#枚举">枚举</a></li>
 </ul>
@@ -339,9 +342,7 @@ int main(void)
 
 <h1 id="指针">指针</h1>
 
-<blockquote>
-<p>经典指针程序</p>
-</blockquote>
+<h2 id="经典指针程序">经典指针程序</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -614,9 +615,48 @@ int main(void)
 <h3 id="指针和二维数组">指针和二维数组</h3>
 
 <h2 id="指针变量的运算">指针变量的运算</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">指针变量只能相减  且两个指针变量指向同一块连续存储空间不同存储单元
+# include &lt;stdio.h&gt;
 
-<p>指针变量只能相减  且两个指针变量指向同一块连续存储空间不同存储单元</p>
+int main(void)
+{
+	int i = 5;
+	int j = 10;
+	int * p = &amp;i;
+	int * q = &amp;j;
+	/*int a[5];
+	p = &amp;a[1];
+	q = &amp;a[4];*/
+	printf(&#34;p和q所指向的单元相隔%d个单元\n&#34;, q-p);
 
+	//p - q 没有实际意义
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
 <h2 id="实参与形参是否是同一个变量-与-没有指针只能返回一个值">实参与形参是否是同一个变量 与 没有指针只能返回一个值</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -789,14 +829,14 @@ int main(void)
 </div>
 </div>
 <p>动态内存与静态内存的区别：<br />
-* 静态内存(数组)函数的调用 &mdash;&ndash;栈  先进后出
+* 静态内存(数组)函数的调用 &mdash;&ndash;栈  先进后出<br />
 * 动态内存(malloc) &mdash;&ndash; 堆 顺序随意 堆总是一棵完全二叉树。<br />
 * 堆栈就是栈 栈不是堆 堆不是栈<br />
 * (堆，栈，队列的区别)[<a href="https://www.cnblogs.com/guoxiaoyan/p/8664150.html">https://www.cnblogs.com/guoxiaoyan/p/8664150.html</a>]<br />
 * (深入理解堆与栈
 )[<a href="https://blog.csdn.net/u014608280/article/details/82218079">https://blog.csdn.net/u014608280/article/details/82218079</a>]</p>
 
-<h1 id="多级指针">多级指针</h1>
+<h2 id="多级指针">多级指针</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
