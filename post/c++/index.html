@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="2574">
+<meta itemprop="wordCount" content="3200">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 2574 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3200 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -330,8 +330,215 @@ int main(void)
 </div>
 <h1 id="流程控制">流程控制</h1>
 
-<p>分类：顺序 选择（if 与switch）  循环 （for while ）</p>
+<p>分类：顺序 选择（if 与switch）  循环 （for while ）<br />
+if 空语句问题 if(); 非空语句if() A；</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//求1到任意一个整数之间的数的奇偶数之和sum1sum2、奇偶数之个数cnt1cnt2、奇偶数之平均值avg1avg2
+#include &lt;stdio.h&gt;
 
+int main(void)
+{
+	int i;
+	int sum1 = 0;
+	int sum2 = 0;
+	int cnt1 = 0;
+	int cnt2 = 0;
+	float avg1;
+	double avg2;
+	int len = 0;
+	printf(&#34;请输入任意整数：&#34;);
+	scanf_s(&#34;%d&#34;, &amp;len);
+	for (i = 1; i &lt;= len; ++i)
+	{
+		if (i % 2 == 1)
+		{
+			sum1 += i;//sum = sum + i;
+			++cnt1;
+		}
+		else
+		{
+			sum2 += i;
+			++cnt2;
+		}
+
+	}
+	avg1 = (float)sum1 / cnt1;
+	avg2 = sum2 / cnt2;
+
+	printf(&#34;%d\n&#34;, sum1);
+	printf(&#34;%d\n&#34;, sum2);
+	printf(&#34;%d\n&#34;, cnt1);
+	printf(&#34;%d\n&#34;, cnt2);
+	printf(&#34;%f\n&#34;, avg1);
+	printf(&#34;%lf\n&#34;, avg2);
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>浮点数存储所带来的问题</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">/**
+* C语言中判断浮点数是否等于0
+*/
+# include &lt;stdio.h&gt;
+# include &lt;math.h&gt;
+# define FLOAT_EPS 1e-6
+# define DOUBLE_EPS 1e-15
+
+
+int main(void)
+{
+	float f1 = 0.000001;
+	float f2 = 0.001;
+	double d1 = 0.00001;
+	double d2 = 0.00001;
+
+	//判断浮点数是否等于0
+	//1、单精度浮点数
+	if (fabs(f1) &lt;= FLOAT_EPS)
+	{
+		printf(&#34;%f为0\n&#34;, f1);
+	}
+	else
+	{
+		printf(&#34;%f不为0\n&#34;, f1);
+	}
+	//2、双精度浮点数
+	if (fabs(d1) &lt;= DOUBLE_EPS)
+	{
+		printf(&#34;%lf为0\n&#34;, d1);
+	}
+	else
+	{
+		printf(&#34;%lf不为0\n&#34;, d1);
+	}
+	//判断两个浮点数是否相等
+	//1、单精度浮点数
+	if (fabs(f1 - f2) &lt;= FLOAT_EPS)
+	{
+		printf(&#34;%f 和 %f 相等\n&#34;, f1, f2);
+	}
+	else
+	{
+		printf(&#34;%f 和 %f 不相等\n&#34;, f1, f2);
+	}
+	//2、双精度浮点数
+	if (fabs(d1 - d2) &lt;= DOUBLE_EPS)
+	{
+		printf(&#34;%lf 和 %lf 相等\n&#34;, d1, d2);
+	}
+	else
+	{
+		printf(&#34;%lf 和 %lf 不相等\n&#34;, d1, d2);
+	}
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
 <h1 id="数组">数组</h1>
 
 <h1 id="函数">函数</h1>
