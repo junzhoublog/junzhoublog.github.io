@@ -156,11 +156,9 @@
 </ul></li>
 <li><a href="#指针变量的运算">指针变量的运算</a></li>
 <li><a href="#实参与形参是否是同一个变量-与-没有指针只能返回一个值">实参与形参是否是同一个变量 与 没有指针只能返回一个值</a></li>
-</ul></li>
-<li><a href="#动态分配内存-动态数组">动态分配内存（动态数组）</a>
-<ul>
 <li><a href="#多级指针">多级指针</a></li>
 </ul></li>
+<li><a href="#动态分配内存-动态数组">动态分配内存（动态数组）</a></li>
 <li><a href="#结构体">结构体</a></li>
 <li><a href="#枚举">枚举</a></li>
 </ul>
@@ -700,6 +698,69 @@ int main(void)
 }</pre></td></tr></table>
 </div>
 </div>
+<h2 id="多级指针">多级指针</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i = 10;
+	int * p = &amp;i;  //p只能存放int类型变量的地址
+	int ** q = &amp;p;  //q是int **类型， 所谓int **类型就是指q只能存放int *类型变量的地址， 	
+	int *** r = &amp;q;  //r是int ***类型, 所谓int ***类型就是指r只能存放int ** 类型变量的地址, 
+
+	//printf(&#34;i = %d\n&#34;, ***r); //i 10
+	//printf(&#34;i = %d\n&#34;, **q);
+	//printf(&#34;i = %d\n&#34;, *p);
+
+	//printf(&#34; %#x\n&#34;, **r);// p
+	//printf(&#34; %#x\n&#34;, *r);//q
+	//printf(&#34; %#x\n&#34;, r);//r
+
+	printf(&#34;%#x\n&#34;, i);//以十六进方式制输出i的值
+
+	printf(&#34;%#x\n&#34;, &amp;i);//输出变量i的地址
+	printf(&#34;%#x\n&#34;, &amp;*p);//指针变量p所指向变量i的地址 *p==i
+	printf(&#34;%#x\n&#34;, p);//指针变量p所保存的地址 既是变量i的地址
+	printf(&#34;%#x\n&#34;, **r);// **r==p
+
+	printf(&#34;%#x\n&#34;, &amp;p);//指针变量p本身的地址
+	printf(&#34;%#x\n&#34;, &amp;**r);// **r==p
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
 <h1 id="动态分配内存-动态数组">动态分配内存（动态数组）</h1>
 
 <blockquote>
@@ -836,69 +897,6 @@ int main(void)
 * (深入理解堆与栈
 )[<a href="https://blog.csdn.net/u014608280/article/details/82218079">https://blog.csdn.net/u014608280/article/details/82218079</a>]</p>
 
-<h2 id="多级指针">多级指针</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"># include &lt;stdio.h&gt;
-
-int main(void)
-{
-	int i = 10;
-	int * p = &amp;i;  //p只能存放int类型变量的地址
-	int ** q = &amp;p;  //q是int **类型， 所谓int **类型就是指q只能存放int *类型变量的地址， 	
-	int *** r = &amp;q;  //r是int ***类型, 所谓int ***类型就是指r只能存放int ** 类型变量的地址, 
-
-	//printf(&#34;i = %d\n&#34;, ***r); //i 10
-	//printf(&#34;i = %d\n&#34;, **q);
-	//printf(&#34;i = %d\n&#34;, *p);
-
-	//printf(&#34; %#x\n&#34;, **r);// p
-	//printf(&#34; %#x\n&#34;, *r);//q
-	//printf(&#34; %#x\n&#34;, r);//r
-
-	printf(&#34;%#x\n&#34;, i);//以十六进方式制输出i的值
-
-	printf(&#34;%#x\n&#34;, &amp;i);//输出变量i的地址
-	printf(&#34;%#x\n&#34;, &amp;*p);//指针变量p所指向变量i的地址 *p==i
-	printf(&#34;%#x\n&#34;, p);//指针变量p所保存的地址 既是变量i的地址
-	printf(&#34;%#x\n&#34;, **r);// **r==p
-
-	printf(&#34;%#x\n&#34;, &amp;p);//指针变量p本身的地址
-	printf(&#34;%#x\n&#34;, &amp;**r);// **r==p
-	return 0;
-}</pre></td></tr></table>
-</div>
-</div>
 <h1 id="结构体">结构体</h1>
 
 <h1 id="枚举">枚举</h1>
