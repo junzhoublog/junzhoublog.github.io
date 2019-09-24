@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="3200">
+<meta itemprop="wordCount" content="4766">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 3200 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 4766 字 </span>
+          <span class="more-meta"> 预计阅读 10 分钟 </span>
         
       </div>
     </header>
@@ -539,7 +539,315 @@ int main(void)
 }</pre></td></tr></table>
 </div>
 </div>
+<blockquote>
+<p>多个for循环的嵌套使用</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i, j, k;
+
+	for (i = 0; i &lt; 2; ++i)
+		for (j = 0; j &lt; 3; ++j)
+		{
+			printf(&#34;aaa!\n&#34;);
+			printf(&#34;bbb!\n&#34;);
+			for (k = 0; k &lt; 4; ++k)
+			{
+				printf(&#34;ccc!\n&#34;);
+			}
+		}
+
+
+	return 0;
+}
+//for (1; 2; 3)
+// for (4; 5; 6) 
+//   A;
+//   B;
+//总共两个语句一个内部一个外部：1.// for (4; 5; 6) //   A;  2.  B;
+//执行顺序：[1--&gt;2 (--&gt;4--&gt;5--&gt;A--&gt;6) --&gt;5成立--&gt;A--&gt;6--&gt;5不成立   --&gt;3]
+//[--&gt;2成立(--&gt;4--&gt;5--&gt;A--&gt;6--&gt;5不成立--&gt;3]  --&gt;2不成立--&gt;B
+
+//for (1; 2; 3)
+//for (4; 5; 6)
+//{
+//	A;
+//	B;
+//}
+//总共一个语句 for只控制了一个语句：//for (4; 5; 6){A;B;}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>自增自减比较</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+	int j;
+	int k;
+	int m;
+
+	i = j = 3; //等价于 i = 3;  j = 3;
+	k = i++;//k=i ;i=i+1
+	m = ++j;//j=j+1;m=j
+
+	printf(&#34;i = %d, j = %d, k = %d, m = %d\n&#34;, i, j, k, m);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>三目运算符</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+
+	i = (6&gt; 2 ? 5 : 1); //if (6&gt;2)5;else 1
+	printf(&#34;%d\n&#34;, i);//5
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>逗号表达式</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+	int j = 2;
+
+	i = (j++, ++j, j + 2, j - 3);// 3  4 4-3=1
+	printf(&#34;%d\n&#34;, i);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>for与while相互转换</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int sum = 0;
+	int i;
+
+	//for (i = 1; i &lt; 101; ++i)
+	//{
+	//	sum = sum + i;
+	//}
+	//等价于
+	i = 1;
+	while (i&lt;101)
+	{
+		sum = sum + i;
+		++i;//15行与16行位置不能换
+	}
+	printf(&#34;sum = %d\n&#34;, sum);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<p>判断一个数是否为回文数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int val; //存放待判断的数字
+	int m;
+	int sum = 0;
+
+	printf(&#34;请输入您需要判断的数字:  &#34;);
+	scanf(&#34;%d&#34;, &amp;val);
+	
+	m = val;
+	while (m)
+	{
+		sum = sum * 10 + m%10;
+		m /= 10; 
+	}
+
+	if (sum == val)
+		printf(&#34;Yes!\n&#34;);
+	else
+		printf(&#34;No!\n&#34;);
+
+	return 0;
+}
+//123试数
+//》1 sum = 0* 10 +123 % 10=3        m=123/10=12
+//》2 sum = 3 * 10 + 12 % 10 =32     m = 12 / 10 = 1
+//》3 sum = 32 * 10 + 1 % 10 = 321   m = 1 / 10 =0
+//》4 m=0 退出循环</pre></td></tr></table>
+</div>
+</div>
+<p>斐波拉契序列</p>
+
 <h1 id="数组">数组</h1>
+</blockquote>
 
 <h1 id="函数">函数</h1>
 
@@ -1107,6 +1415,86 @@ int main(void)
 <h1 id="结构体">结构体</h1>
 
 <h1 id="枚举">枚举</h1>
+
+<ul>
+<li><p>局部变量：局部变量也只有局部作用域，它是自动对象（auto），它在程序运行期间不是一直存在，而是只在函数执行期间存在，函数的<strong>一次调用执行结束后，变量被撤销</strong>，其所占用的内存也被收回。&mdash;&ndash;（放在）栈区</p></li>
+
+<li><p>全局变量：全局变量具有全局作用域。全局变量只需在一个源文件中定义，就可以 <strong>作用于所有的源文件</strong>。当然，其他不包含全局变量定义的源文件需要用extern关键字再次声明这个全局变量。&mdash;&ndash;（放在）静态区也称全局数据区</p></li>
+
+<li><p>静态变量：1.静态局部变量2.静态全局变量 &mdash;&ndash;（放在）静态区也称全局数据区</p></li>
+</ul>
+
+<p>静态局部变量：静态局部变量具有局部作用域，它只被初始化一次，自从<strong>第一次被初始化直到程序运行结束都一直存在</strong>，它和全局变量的区别在于全局变量对所有的函数都是可见的，而静态局部变量只对定义自己的函数体始终可见。</p>
+
+<p>静态全局变量：静态全局变量也具有全局作用域，它与全局变量的区别在于如果程序包含多个文件的话，它<strong>作用于定义它的文件里</strong>，不能作用到其它文件里，即被static关键字修饰过的变量具有文件作用域。这样即使两个不同的源文件都定义了相同名字的静态全局变量，它们也是不同的变量。<br />
+总结：把局部变量改变为静态局部变量后是改变了它的存储方式即改变了它的生存期。把全局变量改变为静态全局变量后是改变了它的作用域， 限制了它的使用范围。</p>
+
+<p>栈区 堆区 全局数据区（静态区） 常量区   代码区</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"> #include &lt;stdio.h&gt;
+
+void fun()
+{
+	int j = 0;
+	j++;
+	printf(&#34;%d&#34;, j);
+}
+
+void fun1()
+{
+	static int j = 0;
+	j++;
+	printf(&#34;%d&#34;, j);
+}
+
+void main()
+{
+	int i;
+	for (i = 0; i &lt; 5; i++)
+		fun();//输出结果为11111
+
+	printf(&#34;\n&#34;);
+
+	for (i = 0; i &lt; 5; i++)
+		fun1();//输出结果为12345
+	printf(&#34;\n&#34;);
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>动态变量在子程序中，每次调用都会从它的初始值开始调用，而不管他在函数中经历了什么变化；静态变量会从变化后的值继续改变。 &mdash;&ndash;存储在内存出栈数据区</p>
+</blockquote>
 
     </div>
 
