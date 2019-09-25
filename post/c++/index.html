@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="6153">
+<meta itemprop="wordCount" content="6196">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 6153 字 </span>
+          <span class="more-meta"> 约 6196 字 </span>
           <span class="more-meta"> 预计阅读 13 分钟 </span>
         
       </div>
@@ -161,7 +161,10 @@
 <ul>
 <li><a href="#判断是否为素数">判断是否为素数</a></li>
 </ul></li>
-<li><a href="#变量的作用域和存储方式">变量的作用域和存储方式</a></li>
+<li><a href="#变量的作用域和存储方式">变量的作用域和存储方式</a>
+<ul>
+<li><a href="#动态变量在子程序中-每次调用都会从它的初始值开始调用-而不管他在函数中经历了什么变化-静态变量会从变化后的值继续改变-存储在内存出栈数据区">动态变量在子程序中，每次调用都会从它的初始值开始调用，而不管他在函数中经历了什么变化；静态变量会从变化后的值继续改变。 &mdash;&ndash;存储在内存出栈数据区</a></li>
+</ul></li>
 <li><a href="#指针">指针</a>
 <ul>
 <li><a href="#经典指针程序">经典指针程序</a></li>
@@ -181,10 +184,6 @@
 </ul></li>
 <li><a href="#结构体">结构体</a></li>
 <li><a href="#枚举">枚举</a></li>
-<li><a href="#变量">变量</a>
-<ul>
-<li><a href="#动态变量在子程序中-每次调用都会从它的初始值开始调用-而不管他在函数中经历了什么变化-静态变量会从变化后的值继续改变-存储在内存出栈数据区">动态变量在子程序中，每次调用都会从它的初始值开始调用，而不管他在函数中经历了什么变化；静态变量会从变化后的值继续改变。 &mdash;&ndash;存储在内存出栈数据区</a></li>
-</ul></li>
 </ul>
 </nav>
   </div>
@@ -1101,7 +1100,8 @@ int main(void)
 
 <blockquote>
 <p>函数体现了是面向过程还是面向对象<br />
-c语言是面向过程 学此 能更好的去理解c++中 函数 面向对象</p>
+c语言是面向过程 学此 能更好的去理解c++中 函数 面向对象<br />
+函数是c语言基本单位，类是c++基本单位。</p>
 </blockquote>
 
 <ul>
@@ -1115,8 +1115,11 @@ c语言是面向过程 学此 能更好的去理解c++中 函数 面向对象</p
 <li>return与break的区别;return终止函数 break终止循环。</li>
 <li>函数的分类：库函数与用户自定义函数  传值函数与传地址函数</li>
 <li>函数的声明与定义：声明不开辟内存且可以不写形参名 定义开辟内存且必须有形参名</li>
+<li>如何合理设计函数,函数功能单一化模块化 方便使用。
+<br /></li>
+</ul>
 
-<li><h2 id="判断是否为素数">判断是否为素数</h2>
+<h2 id="判断是否为素数">判断是否为素数</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -1192,11 +1195,86 @@ bool f_prime(int val)
 
 }</pre></td></tr></table>
 </div>
-</div></li>
-</ul>
-
+</div>
 <h1 id="变量的作用域和存储方式">变量的作用域和存储方式</h1>
 
+<ul>
+<li><p>局部变量：局部变量也只有局部作用域，它是自动对象（auto），它在程序运行期间不是一直存在，而是只在函数执行期间存在，函数的<strong>一次调用执行结束后，变量被撤销</strong>，其所占用的内存也被收回。&mdash;&ndash;（放在）栈区</p></li>
+
+<li><p>全局变量：全局变量具有全局作用域。全局变量只需在一个源文件中定义，就可以 <strong>作用于所有的源文件</strong>。当然，其他不包含全局变量定义的源文件需要用extern关键字再次声明这个全局变量。&mdash;&ndash;（放在）静态区也称全局数据区</p></li>
+
+<li><p>静态变量：1.静态局部变量2.静态全局变量 &mdash;&ndash;（放在）静态区也称全局数据区</p></li>
+</ul>
+
+<p>静态局部变量：静态局部变量具有局部作用域，它只被初始化一次，自从<strong>第一次被初始化直到程序运行结束都一直存在</strong>，它和全局变量的区别在于全局变量对所有的函数都是可见的，而静态局部变量只对定义自己的函数体始终可见。</p>
+
+<p>静态全局变量：静态全局变量也具有全局作用域，它与全局变量的区别在于如果程序包含多个文件的话，它<strong>作用于定义它的文件里</strong>，不能作用到其它文件里，即被static关键字修饰过的变量具有文件作用域。这样即使两个不同的源文件都定义了相同名字的静态全局变量，它们也是不同的变量。<br />
+* 总结：把局部变量改变为静态局部变量后是改变了它的存储方式即改变了它的生存期。把全局变量改变为静态全局变量后是改变了它的作用域， 限制了它的使用范围。<br />
+ * 栈区 堆区 全局数据区（静态区） 常量区   代码区</p>
+
+<h2 id="动态变量在子程序中-每次调用都会从它的初始值开始调用-而不管他在函数中经历了什么变化-静态变量会从变化后的值继续改变-存储在内存出栈数据区">动态变量在子程序中，每次调用都会从它的初始值开始调用，而不管他在函数中经历了什么变化；静态变量会从变化后的值继续改变。 &mdash;&ndash;存储在内存出栈数据区</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"> #include &lt;stdio.h&gt;
+
+void fun()
+{
+	int j = 0;
+	j++;
+	printf(&#34;%d&#34;, j);
+}
+
+void fun1()
+{
+	static int j = 0;
+	j++;
+	printf(&#34;%d&#34;, j);
+}
+
+void main()
+{
+	int i;
+	for (i = 0; i &lt; 5; i++)
+		fun();//输出结果为11111
+
+	printf(&#34;\n&#34;);
+
+	for (i = 0; i &lt; 5; i++)
+		fun1();//输出结果为12345
+	printf(&#34;\n&#34;);
+}</pre></td></tr></table>
+</div>
+</div>
 <h1 id="指针">指针</h1>
 
 <h2 id="经典指针程序">经典指针程序</h2>
@@ -1758,85 +1836,6 @@ int main(void)
 
 <h1 id="枚举">枚举</h1>
 
-<h1 id="变量">变量</h1>
-
-<ul>
-<li><p>局部变量：局部变量也只有局部作用域，它是自动对象（auto），它在程序运行期间不是一直存在，而是只在函数执行期间存在，函数的<strong>一次调用执行结束后，变量被撤销</strong>，其所占用的内存也被收回。&mdash;&ndash;（放在）栈区</p></li>
-
-<li><p>全局变量：全局变量具有全局作用域。全局变量只需在一个源文件中定义，就可以 <strong>作用于所有的源文件</strong>。当然，其他不包含全局变量定义的源文件需要用extern关键字再次声明这个全局变量。&mdash;&ndash;（放在）静态区也称全局数据区</p></li>
-
-<li><p>静态变量：1.静态局部变量2.静态全局变量 &mdash;&ndash;（放在）静态区也称全局数据区</p></li>
-</ul>
-
-<p>静态局部变量：静态局部变量具有局部作用域，它只被初始化一次，自从<strong>第一次被初始化直到程序运行结束都一直存在</strong>，它和全局变量的区别在于全局变量对所有的函数都是可见的，而静态局部变量只对定义自己的函数体始终可见。</p>
-
-<p>静态全局变量：静态全局变量也具有全局作用域，它与全局变量的区别在于如果程序包含多个文件的话，它<strong>作用于定义它的文件里</strong>，不能作用到其它文件里，即被static关键字修饰过的变量具有文件作用域。这样即使两个不同的源文件都定义了相同名字的静态全局变量，它们也是不同的变量。<br />
-* 总结：把局部变量改变为静态局部变量后是改变了它的存储方式即改变了它的生存期。把全局变量改变为静态全局变量后是改变了它的作用域， 限制了它的使用范围。<br />
- * 栈区 堆区 全局数据区（静态区） 常量区   代码区</p>
-
-<h2 id="动态变量在子程序中-每次调用都会从它的初始值开始调用-而不管他在函数中经历了什么变化-静态变量会从变化后的值继续改变-存储在内存出栈数据区">动态变量在子程序中，每次调用都会从它的初始值开始调用，而不管他在函数中经历了什么变化；静态变量会从变化后的值继续改变。 &mdash;&ndash;存储在内存出栈数据区</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></pre></td>
-<td class="lntd">
-<pre class="chroma"> #include &lt;stdio.h&gt;
-
-void fun()
-{
-	int j = 0;
-	j++;
-	printf(&#34;%d&#34;, j);
-}
-
-void fun1()
-{
-	static int j = 0;
-	j++;
-	printf(&#34;%d&#34;, j);
-}
-
-void main()
-{
-	int i;
-	for (i = 0; i &lt; 5; i++)
-		fun();//输出结果为11111
-
-	printf(&#34;\n&#34;);
-
-	for (i = 0; i &lt; 5; i++)
-		fun1();//输出结果为12345
-	printf(&#34;\n&#34;);
-}</pre></td></tr></table>
-</div>
-</div>
     </div>
 
     <div class="post-copyright">
