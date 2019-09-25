@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="4766">
+<meta itemprop="wordCount" content="5272">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 4766 字 </span>
-          <span class="more-meta"> 预计阅读 10 分钟 </span>
+          <span class="more-meta"> 约 5272 字 </span>
+          <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
     </header>
@@ -844,10 +844,131 @@ int main(void)
 //》4 m=0 退出循环</pre></td></tr></table>
 </div>
 </div>
-<p>斐波拉契序列</p>
-
-<h1 id="数组">数组</h1>
+<p>求斐波那契数列</p>
 </blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//循环法求斐波那契数列
+#include &lt;stdio.h&gt;
+int main(void)
+{
+	long long  n = 0;
+	long long  f3 = 0, f2 = 1, f1 = 0;
+	long long  total = 0;
+	printf(&#34;请输入斐波那契数列列项数n：&#34;);
+	scanf_s(&#34;%d&#34;, &amp;n);
+	printf(&#34;斐波那契数列为:&#34;);
+	while (n &gt; 0)
+	{
+		n = n - 1;
+		f1 = f2;
+		f2 = f3;
+		f3 = f1 + f2;
+		total = total + f3;
+		printf(&#34;%d.&#34;, f3);
+
+	}
+	printf(&#34;\n&#34;);
+	printf(&#34;第n项为:%d\n&#34;, f3);
+	printf(&#34;前n项和为:%d\n&#34;, total);//只能算到n=44 
+	return 0;
+
+}
+
+//递归法求斐波那契数列
+//#include &lt;stdio.h&gt;
+//int fib(long long);
+//int main(void)
+//{
+//	long long n = 0;
+//	long long total = 0;
+//	long long i;
+//	printf(&#34;请输入斐波那契数列列项数n：&#34;);
+//	scanf_s(&#34;%d&#34;, &amp;n);
+//	printf(&#34;斐波那契数列为：&#34;);
+//	for (i = 1; i &lt;= n; ++i)
+//	{
+//		printf(&#34;%d.&#34;, fib(i));
+//		total = total + fib(i);
+//	}
+//	printf(&#34;\n&#34;);
+//	printf(&#34;第n项为%d\n&#34;, fib(i));
+//	printf(&#34;前n项和为:%d\n&#34;, total);
+//	return 0;
+//}
+//int fib(long long n)
+//{
+//	if (n == 1 || n == 2)
+//	{
+//		return 1;
+//	}
+//	else
+//		return fib(n - 1) + fib(n - 2);
+//}
+//总结：普通递归耗时非常长，远不如循环。</pre></td></tr></table>
+</div>
+</div>
+<h1 id="数组">数组</h1>
 
 <h1 id="函数">函数</h1>
 
