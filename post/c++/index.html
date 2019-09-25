@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="5814">
+<meta itemprop="wordCount" content="6153">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 5814 字 </span>
-          <span class="more-meta"> 预计阅读 12 分钟 </span>
+          <span class="more-meta"> 约 6153 字 </span>
+          <span class="more-meta"> 预计阅读 13 分钟 </span>
         
       </div>
     </header>
@@ -157,7 +157,10 @@
 <li><a href="#break-和continue">break 和continue</a></li>
 </ul></li>
 <li><a href="#数组">数组</a></li>
-<li><a href="#函数">函数</a></li>
+<li><a href="#函数">函数</a>
+<ul>
+<li><a href="#判断是否为素数">判断是否为素数</a></li>
+</ul></li>
 <li><a href="#变量的作用域和存储方式">变量的作用域和存储方式</a></li>
 <li><a href="#指针">指针</a>
 <ul>
@@ -1098,10 +1101,99 @@ int main(void)
 
 <blockquote>
 <p>函数体现了是面向过程还是面向对象<br />
-c语言是面向过程 学此 能更好的去理解c++中 函数 面向对象<br />
-为什么要函数：避免了重复性操作 有利于程序模块化<br />
-函数相当于一个工具</p>
+c语言是面向过程 学此 能更好的去理解c++中 函数 面向对象</p>
 </blockquote>
+
+<ul>
+<li>为什么要函数：避免了重复性操作 有利于程序模块化<br />
+函数相当于一个工具</li>
+<li>什么是函数:<br />
+逻辑上:能够完成特定功能的独立代码块<br />
+物理上：能接受数据处理数据返回结果<br /></li>
+<li>#include &lt;&gt;&ldquo;&rdquo; 区别 ：#include&lt; &gt;编译程序会先到标准函数库中调用文件。
+#include“ ”编译程序会先从当前目录中调用文件。</li>
+<li>return与break的区别;return终止函数 break终止循环。</li>
+<li>函数的分类：库函数与用户自定义函数  传值函数与传地址函数</li>
+<li>函数的声明与定义：声明不开辟内存且可以不写形参名 定义开辟内存且必须有形参名</li>
+
+<li><h2 id="判断是否为素数">判断是否为素数</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;stdio.h&gt;
+bool f_prime(int);
+int main(void)
+{
+	int n;
+	printf(&#34;输入一个数判断是否为素数：&#34;);
+	scanf_s(&#34;%d&#34;, &amp;n);
+	if (f_prime(n))
+	{
+		printf(&#34;yes&#34;);
+	}
+	else
+	{
+		printf(&#34;no&#34;);
+	}
+	return 0;
+}
+bool f_prime(int val)
+{
+	int i;
+	for (i = 2; i &lt; val; ++i)
+	{
+		if (val%i == 0)
+			break;
+	}
+	if (val == i)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}</pre></td></tr></table>
+</div>
+</div></li>
+</ul>
 
 <h1 id="变量的作用域和存储方式">变量的作用域和存储方式</h1>
 
