@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="5272">
+<meta itemprop="wordCount" content="5750">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 5272 字 </span>
-          <span class="more-meta"> 预计阅读 11 分钟 </span>
+          <span class="more-meta"> 约 5750 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
         
       </div>
     </header>
@@ -925,7 +925,7 @@ int main(void)
 		f2 = f3;
 		f3 = f1 + f2;
 		total = total + f3;
-		printf(&#34;%d.&#34;, f3);
+		printf(&#34;%-2d&#34;, f3);//指定显示宽度 
 
 	}
 	printf(&#34;\n&#34;);
@@ -948,7 +948,7 @@ int main(void)
 //	printf(&#34;斐波那契数列为：&#34;);
 //	for (i = 1; i &lt;= n; ++i)
 //	{
-//		printf(&#34;%d.&#34;, fib(i));
+//		printf(&#34;%2d.&#34;, fib(i));
 //		total = total + fib(i);
 //	}
 //	printf(&#34;\n&#34;);
@@ -968,9 +968,131 @@ int main(void)
 //总结：普通递归耗时非常长，远不如循环。</pre></td></tr></table>
 </div>
 </div>
+<blockquote>
+<p>switch(val) {case 1: 语句1；case 2:语句2} case 程序的入口一旦找到就依次向下执行 不在判断其他case  除非break。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int val;
+
+	printf(&#34;请输入您要进入的楼层: &#34;);
+	scanf_s(&#34;%d&#34;, &amp;val);
+
+	switch (val)
+	{
+	case 1:
+		printf(&#34;1层开!\n&#34;);
+		break;
+	case 2:
+		printf(&#34;2层开!\n&#34;);
+		//break;
+	case 3:
+		printf(&#34;3层开!\n&#34;);
+		break;
+	default:
+		printf(&#34;没有盖到这一层!\n&#34;);
+		break;
+	}
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>break 和continue</p>
+</blockquote>
+
+<p>break 用于for与switch都是终止离break最近的for与switch .break不用于if<br />
+continue 用于跳过本次循环余下的语句 直接再去判断while 或者 for中的判断</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+	char ch;
+
+	scanf_s(&#34;%d&#34;, &amp;i);
+	printf(&#34;i = %d\n&#34;, i);
+
+
+	while ((ch = getchar()) != &#39;\n&#39;)
+		continue;
+	int j;
+	scanf_s(&#34;%d&#34;, &amp;j);
+	printf(&#34;j = %d\n&#34;, j);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
 <h1 id="数组">数组</h1>
 
+<p>为了解决大量同类型数据存储问题</p>
+
 <h1 id="函数">函数</h1>
+
+<blockquote>
+<p>函数体现了是面向过程还是面向对象<br />
+c语言是面向过程 学此 能更好的去理解c++中 函数 面向对象<br />
+为什么要函数：避免了重复性操作 有利于程序模块化<br />
+函数相当于一个工具</p>
+</blockquote>
 
 <h1 id="变量的作用域和存储方式">变量的作用域和存储方式</h1>
 
@@ -1456,9 +1578,7 @@ int main(void)
 }</pre></td></tr></table>
 </div>
 </div>
-<blockquote>
 <p>动态一维数组</p>
-</blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><span class="lnt"> 1
@@ -1493,8 +1613,8 @@ int main(void)
 </span><span class="lnt">30
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma"># include &lt;stdio.h&gt;
-# include &lt;malloc.h&gt;
+<pre class="chroma"> #include &lt;stdio.h&gt;
+ #include &lt;malloc.h&gt;
 
 int main(void)
 {
