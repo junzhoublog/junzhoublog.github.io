@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T13:38:36&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T13:38:36&#43;08:00" />
-<meta itemprop="wordCount" content="10480">
+<meta itemprop="wordCount" content="10700">
 
 
 
@@ -131,8 +131,8 @@
         <div class="post-category">
             <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"> 计算机 </a>
             </div>
-          <span class="more-meta"> 约 10480 字 </span>
-          <span class="more-meta"> 预计阅读 21 分钟 </span>
+          <span class="more-meta"> 约 10700 字 </span>
+          <span class="more-meta"> 预计阅读 22 分钟 </span>
         
       </div>
     </header>
@@ -3325,6 +3325,87 @@ int FindPos(int * a, int low, int high)
 </div>
 <blockquote>
 <p>快速排序源代码</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+//冒泡排序
+void sort(int * a, int len)
+{
+	int i, j, t;
+
+	for (i = 0; i &lt; len - 1; ++i)//整体比的次数 比一次就会找到一个最大值 所以比的次数为元素个数减一
+	{
+		for (j = 0; j &lt; len - 1 - i; ++j)//len-1-i 代表还没比出来的最大元素也就是前面几个元素比
+		{
+			if (a[j] &gt; a[j + 1])  // &gt;表示升序 &lt;表示降序
+			{
+				t = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = t;
+			}
+		}
+	}
+}
+
+int main(void)
+{
+	int a[6] = { 10, 2, 8, -8, 11, 0 };
+	int i = 0;
+
+	sort(a, 6);
+
+	for (i = 0; i &lt; 6; ++i)
+	{
+		printf(&#34;%d &#34;, a[i]);
+	}
+	printf(&#34;\n&#34;);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>冒泡排序</p>
 </blockquote>
 
 <p><a href="https://bestzuo.cn/posts/sort-algorithm.html">排序算法比较与梳理</a></p>

@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="6196">
+<meta itemprop="wordCount" content="6968">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 6196 字 </span>
-          <span class="more-meta"> 预计阅读 13 分钟 </span>
+          <span class="more-meta"> 约 6968 字 </span>
+          <span class="more-meta"> 预计阅读 14 分钟 </span>
         
       </div>
     </header>
@@ -184,6 +184,8 @@
 </ul></li>
 <li><a href="#结构体">结构体</a></li>
 <li><a href="#枚举">枚举</a></li>
+<li><a href="#位运算">位运算</a></li>
+<li><a href="#null的含义">null的含义</a></li>
 </ul>
 </nav>
   </div>
@@ -1833,8 +1835,213 @@ int main(void)
 </blockquote>
 
 <h1 id="结构体">结构体</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+# include &lt;malloc.h&gt;
 
+struct Student
+{
+	int age;
+	float score;
+	char name[100];
+};
+
+int main(void)
+{
+	int len;
+	struct Student * pArr;
+	int i, j;
+	struct Student t;
+
+
+	//动态的构造一维数组
+	printf(&#34;请输入学生的个数:\n&#34;);
+	printf(&#34;len = &#34;);
+	scanf(&#34;%d&#34;, &amp;len);
+	pArr = (struct Student *)malloc(len * sizeof(struct Student));
+
+	//输入
+	for (i = 0; i &lt; len; ++i)
+	{
+		printf(&#34;请输入第%d个学生的信息:\n&#34;, i + 1);
+		printf(&#34;age = &#34;);
+		scanf(&#34;%d&#34;, &amp;pArr[i].age);
+
+		printf(&#34;name = &#34;);
+		scanf(&#34;%s&#34;, pArr[i].name);  //name是数组名，本身就已经是数组首元素的地址, 所以pArr[i].name 不能改成 &amp;pArr[i].name
+
+		printf(&#34;score = &#34;);
+		scanf(&#34;%f&#34;, &amp;pArr[i].score);
+	}
+
+	//按学生成绩升序排序 冒泡算法
+	for (i = 0; i &lt; len - 1; ++i)
+	{
+		for (j = 0; j&lt;len - 1 - i; ++j)
+		{
+			if (pArr[j].score &gt; pArr[j + 1].score) //&gt;升序 &lt;降序
+			{
+				t = pArr[j];
+				pArr[j] = pArr[j + 1];
+				pArr[j + 1] = t;
+			}
+		}
+	}
+
+	printf(&#34;\n\n学生的信息是:\n&#34;);
+	//输出
+	for (i = 0; i &lt; len; ++i)
+	{
+		printf(&#34;第%d个学生的信息是:\n&#34;, i + 1);
+		printf(&#34;age = %d\n&#34;, pArr[i].age);
+		printf(&#34;name = %s\n&#34;, pArr[i].name);  //name是数组名，本身就已经是数组首元素的地址, 所以pArr[i].name 不能改成 &amp;pArr[i].name
+		printf(&#34;score = %f\n&#34;, pArr[i].score);
+
+		printf(&#34;\n&#34;);
+	}
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
 <h1 id="枚举">枚举</h1>
+
+<p>定义：把一个事物所有可能的取值一一列举出来
+特点：安全限制了取值范围  但麻烦</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+//只定义了一个数据类型，并没有定义变量， 该数据类型的名字是 enum WeekDay
+enum WeekDay
+{
+	MonDay=1, TuesDay, WednesDay, ThursDay, FriDay, SaturDay, SunDay
+};
+
+int main(void)
+{
+	//int day; //day定义成int类型不合适
+	enum WeekDay day = SunDay;
+	printf(&#34;%d\n&#34;, day);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="位运算">位运算</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&amp; 按位与
+| 按位或
+~ 取反
+^ 按位异或
+&lt;&lt; 按位左移
+&gt;&gt;按位右移</pre></td></tr></table>
+</div>
+</div>
+<h1 id="null的含义">null的含义</h1>
+
+<p>字符串结束标记符&rsquo;\0&rsquo;<br />
+空指针null :null是内存单元编号零 是个地址 计算机规定以零位编号的存储单元不可读不可写 一般用于计算机中断系统使用</p>
+
+<p>指针与数组  指针与结构体
+结构体&ndash;类  malloc&ndash;new
+结构体面向对象面向过程连接</p>
 
     </div>
 
