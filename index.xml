@@ -26,7 +26,7 @@
       <pubDate>Fri, 27 Sep 2019 23:09:10 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/c&#43;&#43;/</guid>
-      <description>面向对象：c中函数（工具）与要操作的数据是分开的，c++中把数据与函数放在一起&amp;mdash;类。 头文件：任何一个要有防卫式声明，解决头文件重</description>
+      <description>面向对象：c中函数（工具）与要操作的数据是分开的，c++中把数据与函数放在一起&amp;mdash;类。 * 头文件：任何一个要有防卫式声明，解决头文件</description>
     </item>
     
     <item>

@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
-<meta itemprop="wordCount" content="7376">
+<meta itemprop="wordCount" content="7547">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-09-21 </span>
         
-          <span class="more-meta"> 约 7376 字 </span>
-          <span class="more-meta"> 预计阅读 15 分钟 </span>
+          <span class="more-meta"> 约 7547 字 </span>
+          <span class="more-meta"> 预计阅读 16 分钟 </span>
         
       </div>
     </header>
@@ -1549,6 +1549,103 @@ int main(void)
 	return 0;
 }</pre></td></tr></table>
 </div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//指针与数组
+#include&lt;stdio.h&gt;
+int main()
+{
+	int x[5] = { 3, 5, 79, 4, 9 };
+	int *a = x;
+	//printf(&#34;%-2d&#34;, *x);//a[0] 3
+	//printf(&#34;%2d&#34;, *a);
+	//printf(&#34;%2d&#34;, x[0]);
+	//printf(&#34;%2d&#34;, a[0]);
+	//printf(&#34;\n&#34;);
+
+	//printf(&#34;%-2d&#34;, *x+1);//a[0]+1=4
+	//printf(&#34;%2d&#34;, (*x)+1);//a[0]+1=4
+	//printf(&#34;%2d&#34;, *(x+ 1));//a[1]  5
+	//printf(&#34;%2d&#34;, *(x + 2));//a[2] 79
+	//printf(&#34;\n&#34;);
+
+	printf(&#34;%d&#34;, *a + 1);//a[0]+1=4
+	printf(&#34;%2d&#34;, (*a) + 1);//a[0]+1=4
+	printf(&#34;%2d&#34;, *(a + 1));//a[1]  5
+	printf(&#34;%2d&#34;, *(a + 2));//a[2] 79//为什么会挨在一起了输出后
+	printf(&#34;\n&#34;);
+
+	//printf(&#34;%-2d&#34;, *a++);//*a=3 *(a=a+1)=5
+	//printf(&#34;%2d&#34;, *a); //5
+	//printf(&#34;%2d&#34;, (*a)++);//*a=5  *a+1=5+1=6
+	//printf(&#34;%2d&#34;, *a);//6
+	//printf(&#34;\n&#34;);
+
+	//printf(&#34;%2d&#34;, *(a++));//3
+	//printf(&#34;%2d&#34;, *a);//5
+	//printf(&#34;\n&#34;);
+
+	//printf(&#34;%-2d&#34;, ++*a);//4
+	//printf(&#34;%2d&#34;, ++(*a));//4  5
+	//printf(&#34;\n&#34;);
+
+	//printf(&#34;%-2d&#34;, *++a);//5
+	//printf(&#34;%2d&#34;, *(++a));//5  79
+	//printf(&#34;\n&#34;);
+	//
+
+
+	return 0;
+}</pre></td></tr></table>
+</div>
 </div>
 <h3 id="指针和二维数组">指针和二维数组</h3>
 
@@ -2042,8 +2139,8 @@ int main(void)
 
 <h1 id="零散笔记">零散笔记</h1>
 
-<p>指针与数组  指针与结构体
-结构体&ndash;类  malloc&ndash;new
+<p>指针与数组  指针与结构体  指针与指针（链表）<br />
+结构体&ndash;类  malloc&ndash;new<br />
 结构体面向对象面向过程连接</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
