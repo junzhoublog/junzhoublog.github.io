@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Php笔记 - Zhou Jun&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="周军" /><meta name="description" content="机房在线管理系统的设计与实现 开发记录 简介： 本系统采用B/S（浏览器服务器模式），以php技术为主，采用thinkphp框架，html&#43;css" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.57.2 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://junzhoublog.github.io/post/php%E7%AC%94%E8%AE%B0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Php笔记" />
+<meta property="og:description" content="机房在线管理系统的设计与实现 开发记录 简介： 本系统采用B/S（浏览器服务器模式），以php技术为主，采用thinkphp框架，html&#43;css" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://junzhoublog.github.io/post/php%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2020-05-21T19:32:31+08:00" />
+<meta property="article:modified_time" content="2020-05-21T19:32:31+08:00" />
+<meta itemprop="name" content="Php笔记">
+<meta itemprop="description" content="机房在线管理系统的设计与实现 开发记录 简介： 本系统采用B/S（浏览器服务器模式），以php技术为主，采用thinkphp框架，html&#43;css">
+
+
+<meta itemprop="datePublished" content="2020-05-21T19:32:31&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-21T19:32:31&#43;08:00" />
+<meta itemprop="wordCount" content="1383">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Php笔记"/>
+<meta name="twitter:description" content="机房在线管理系统的设计与实现 开发记录 简介： 本系统采用B/S（浏览器服务器模式），以php技术为主，采用thinkphp框架，html&#43;css"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Computer</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Computer</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Php笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-21 </span>
+        
+          <span class="more-meta"> 约 1383 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#机房在线管理系统的设计与实现-开发记录">机房在线管理系统的设计与实现 开发记录</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="机房在线管理系统的设计与实现-开发记录">机房在线管理系统的设计与实现 开发记录</h1>
+
+<ul>
+<li>简介：
+本系统采用B/S（浏览器服务器模式），以php技术为主，采用thinkphp框架，html+css+js web前端三大件实现网页，mysql数据库建立系统。<br />
+选用开发工具为免费的vscode。采用phpstudy（apache+php+mysql）集成的php调试环境。<br />
+分析 设计 实现 测试 四个主要章节 绪章 关键技术<br /></li>
+
+<li><p>功能实现：<br />
+1.启动vscode thinkphp的初步配置：可以用build.php 自动生成所需目录 也可手动自己建立。<br />
+2.启动phpstudy 建立网站 根目录定位到应用入口文件index.php 的public目录。注意去修改数据库database.php 配置文件的数据库名等信息与phpstudy 中相同<br />
+3.在view 放入前端写好的html网页 然后在public\staic中放资源文件  images style(css 和jss) 可以在模块下写配置文件config.php&rsquo;view_replace_str&rsquo;  =&gt;  [];然后在html中直接引用相对路径。<br />
+4.其中很多网页要用的左边菜单栏部分可以分离出去然后在其他网页引用， {include file=&ldquo;public/htmenu&rdquo;/}<br />
+5.用phpmyadmin创建数据库<br />
+6.在添加课程和修改课程的内容部分引入UEditor html编辑器 把下载好的ueditor放入public 中然后在html中引入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">1.&lt;script type=&#34;text/javascript&#34; src=&#34;__STATIC__/houtai/ueditor/ueditor.config.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;__STATIC__/houtai/ueditor/ueditor.all.min.js&#34;&gt;&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;__STATIC__/houtai/ueditor/lang/zh-cn/zh-cn.js&#34;&gt;&lt;/script&gt;</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">2.&lt;textarea name=&#34;content&#34;  id=&#34;content&#34;&gt;{$kecheng.content}&lt;/textarea&gt;</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">3.  &lt;script type=&#34;text/javascript&#34;&gt;
+    //实例化编辑器
+    UE.getEditor(&#39;content&#39;, {
+        initialFrameWidth: 1560,
+        initialFrameHeight: 300,
+    });
+&lt;/script&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>7.在index.php中写主界面所采用的登录规则 用post 方式收集管理员信息 $username = $_POST[&lsquo;username&rsquo;]; 然后查询数据库中是否存在管理员的信息，</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">$res = Db::table(&#39;t_admin&#39;)-&gt;where([
+            &#39;username&#39; =&gt; $username,
+            &#39;password&#39; =&gt; $password
+        ])-&gt;find();
+登录成功的同时用 用session保存信息的userinfo  session(&#39;userinfo&#39;, $res); 同时用哪个session获取当前管理员名字等信息  跳转$this-&gt;success(&#34;登录成功&#34;, Url(&#39;index/adminindex&#39;)); 其他注册 规则 修改管理员与老师个人信息方法类似。 </pre></td></tr></table>
+</div>
+</div>
+<p>8.可以进一步完善 添加管理员  用验证器 写验证规则&lt;?php</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">namespace app\admin\validate;
+use think\Validate;
+class index extends Validate
+{
+protected $rule = [
+    &#39;username&#39;  =&gt;  &#39;require|max:25|unique:admin&#39;,
+    &#39;password&#39; =&gt;  &#39;require&#39;,
+];
+protected $message  =   [
+    &#39;username.require&#39; =&gt; &#39;管理员名称必须填写&#39;,
+    &#39;username.max&#39; =&gt; &#39;管理员名称长度不得大于25位&#39;,
+    &#39;username.unique&#39; =&gt; &#39;管理员名称不得重复&#39;,
+    &#39;password.require&#39; =&gt; &#39;管理员密码必须填写&#39;,
+];
+}
+再控制器中去实例化并用post收集表单数据 并check 检查
+public function tianjiaadmina()
+{
+if (request()-&gt;isPost()) {
+	$data = [
+		&#39;username&#39; = &gt; input(&#39;username&#39;),
+			&#39;password&#39; = &gt; input(&#39;password&#39;),
+	];
+	$validate = \think\Loader::validate(&#39;Admin&#39;);
+	if (!$validate-&gt;scene(&#39;add&#39;)-&gt;check($data)) {
+		$this-&gt;error($validate-&gt;getError());
+		die;
+	}
+	if (db(&#39;admin&#39;)-&gt;insert($data)) {
+		return $this-&gt;success(&#39;添加管理员成功！&#39;, &#39;lst&#39;);
+	}
+	else {
+		return $this-&gt;error(&#39;添加管理员失败！&#39;);
+	}
+	return;
+}
+return $this-&gt;fetch();
+}</pre></td></tr></table>
+</div>
+</div>
+<p>9.model 中的php 对数据进行处理 写对数据加工的函数 接收数据 数据对比等 然后把处理的结果交给控制器中的php  对结果进行说明 。控制器调用model的函数方法。登录时验证用户名和密码是否正确。<br />
+10.写个base php  写初始函数_initialize 相当于c++中构造函数  然后让其他php 继承于它。<br />
+改进：同名laoshi mingzi  显示课表问题 还有管理员删除权限等级设置 .<br />
+11.orm它的作用是在关系型数据库和对象之间作一个映射，这样，我们在具体的操作数据库的时候，就不需要再去和复杂的SQL语句打交道，只要像平时操作对象一样操作它就可以了。</p></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">周军</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+            <span class="next-text nav-default">计算机网络面试常见问题</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="email:1158290245@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/junzhoublog" class="iconfont icon-github" title="github"></a>
+      <a href="https://zhuanlan.zhihu.com/p/23014683" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://www.douban.com" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://www.bilibili.com" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://junzhoublog.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">周军</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

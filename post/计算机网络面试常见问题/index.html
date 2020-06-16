@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>计算机网络面试常见问题 - Zhou Jun&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="周军" /><meta name="description" content="网络层 ip协议 问题1：如何理解ip的不可靠和无连接？ 不可靠：指的是不能保证数据报能成功的到达目的地，发生错误时，丢弃该数据包，发送icmp消" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.57.2 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="计算机网络面试常见问题" />
+<meta property="og:description" content="网络层 ip协议 问题1：如何理解ip的不可靠和无连接？ 不可靠：指的是不能保证数据报能成功的到达目的地，发生错误时，丢弃该数据包，发送icmp消" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://junzhoublog.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" />
+<meta property="article:published_time" content="2019-10-23T12:25:33+08:00" />
+<meta property="article:modified_time" content="2019-10-23T12:25:33+08:00" />
+<meta itemprop="name" content="计算机网络面试常见问题">
+<meta itemprop="description" content="网络层 ip协议 问题1：如何理解ip的不可靠和无连接？ 不可靠：指的是不能保证数据报能成功的到达目的地，发生错误时，丢弃该数据包，发送icmp消">
+
+
+<meta itemprop="datePublished" content="2019-10-23T12:25:33&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-23T12:25:33&#43;08:00" />
+<meta itemprop="wordCount" content="2414">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="计算机网络面试常见问题"/>
+<meta name="twitter:description" content="网络层 ip协议 问题1：如何理解ip的不可靠和无连接？ 不可靠：指的是不能保证数据报能成功的到达目的地，发生错误时，丢弃该数据包，发送icmp消"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Computer</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Computer</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">计算机网络面试常见问题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-10-23 </span>
+        
+          <span class="more-meta"> 约 2414 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#网络层">网络层</a>
+<ul>
+<li><a href="#ip协议">ip协议</a></li>
+<li><a href="#icmp">icmp</a></li>
+</ul></li>
+<li><a href="#传输层">传输层</a></li>
+<li><a href="#应用层">应用层</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="网络层">网络层</h1>
+
+<h2 id="ip协议">ip协议</h2>
+
+<p>问题1：如何理解ip的不可靠和无连接？<br />
+不可靠：指的是不能保证数据报能成功的到达目的地，发生错误时，丢弃该数据包，发送icmp消息给信源端。可靠性由上层提供。<br />
+无连接：ip不维护关于后续数据报的状态信息。体现在，ip数据可以不按顺序发送和接收。A发送连续的数据报，到大B不一定是连续的，来回路由选择可能不一样，路线不一样，到达先后顺序不一样。</p>
+
+<p>问题2：ip报文的格式和各个字段的含义？<br />
+见图：</p>
+
+<p>问题3：为什么ip首部中要有总长度字段？<br />
+数据链路层需要填充一些数据以达到数据链路层以太网帧最小的46个字节，ip长度可能更短，所以需要总长度来确定数据部分内容。</p>
+
+<p>问题4：ip首部检验和怎么计算?与icmp、igmp、tcp、udp有什么区别和共同点？<br />
+1.先把检验和字段置0。<br />
+2.对首部中的每个16比特进行求和结果取反码。<br />
+3.结果存在检验和字段中。<br />
+4.收到一份ip数据包后，同样对首部中每个16比特求和结果取反码，取反码后的结果再与前面每个16比特进行求和。<br />
+5.最后结果全为1，表示正确，否则表示错误。
+6.如何使错误的就丢弃该数据包。
+区别：ip 没有将数据包括在内，其他都同时覆盖首部和数据检验码。</p>
+
+<p>问题5：主机和路由器的区别？
+主机从不把数据从一个接口转发到另一个接口，而路由器则要转发数据报。</p>
+
+<p>问题6：ip路由的选择过程是怎样的？
+根据最长匹配原则，找到条目，发送到指定路由器，如果找不到返回一个主机不可达或者网络不可达。</p>
+
+<p>问题7:ip路由的选择特性有什么？
+1.ip路由的选择是逐条进行的。
+ip并不知道到达任何目的的完整路径，只提供下一跳地址。
+2.为一个网络指定一个路由器，而不是为每一个主机。</p>
+
+<p>问题8：ip搜索路由表的步骤？
+主机地址》网络地址》默认选项</p>
+
+<p>问题8：如果路由表中没有默认项，又找不到匹配项，这时如何处理？<br />
+结果取决于由该数据报是由主机产生的还转发的。
+如果是由本机产生的，就给该主机的应用程序返回一个差错，或者主机不可达差错，或者网络不可达差错
+如果是由主机转发的，就给原始的发送一份icmp主机不可达差错报文。</p>
+
+<h2 id="icmp">icmp</h2>
+
+<p>问题1：icmp的层次和作用？
+icmp一般认为是在三层，提供一下差错报文和其他一些需要注意的信息。</p>
+
+<p>问题2：icmp报文分类？
+1.icmp查询报文。2.icmp差错报文。</p>
+
+<p>问题3：icmp主机不可达报文在什么情况下发出？
+在路由器为主机寻路时，没有找到相应路径，向源ip发回icmp主机不可达。</p>
+
+<p>问题4：什么情况下不会导致产生icmp差错报文？
+1.icmp差错报文。
+2.不是ip分片的第一片。
+3.源地址不是单个主机的数据包。
+4.链路层广播的数据报。
+5.目的地址是广播地址或多播地址ip数据表报。</p>
+
+<p>问题5：icmp重定向差错报文是怎样出来的？在何种场合出现？
+r1&mdash;-主机&mdash;&ndash;r2
+1.主机默认路由指向的下一跳是r1,主机发送ip数据报给r1。
+2.r1收到数据报检查路由表，发现下一跳是r2，当数据报发送给r2时，发现发送的接口和接收的端口是一样的，两个路由器同时发送一个icmp报文给主机。
+3.主机接收到icmp报文后，就不再发给r1直接发给r2.</p>
+
+<p>问题6：重定向报文的规则？
+重定向报文由路由器生成。
+重定向报文服务于主机。</p>
+
+<p>问题7：ping命令具体过程是怎样的？
+ping命令是依托于 ICMP协议的， ICMP协议的存在就是为了更高效的转发 IP数据报和提高交付成功的机会。 ping命令除了依托于 ICMP，在局域网下还要借助于 ARP协议， ARP协议能根据 IP地址反查出计算机的 MAC地址。另外 ARP是有缓存的，为了保证 ARP的准确性，计算机会更新ARP缓存。</p>
+
+<h1 id="传输层">传输层</h1>
+
+<p>udp<br />
+问题1：udp和tcp的简单介绍？
+udp是一个简单的面向数据报的运输层协议：进程的每个输出的操作都正好产生一个udp数据报，并组装成一个待发送的ip数据报。
+udp是面向流字符，应用程序产生的全体数据与发送的单个ip数据报可能没有联系。
+tcp检验和时必须的 udp 是可选的。
+tcp传的慢 但可靠 udp 传的快 不可靠
+问题2：为什么要加12个字节的伪首部？
+目的是让udp两次检查数据是否到达正确的目的地。
+ip接收正确的目的程序，传送正确的上层程序
+根据伪报头和数据报得到差错检测值，避免目的端错误的接收错误的数据报</p>
+
+<p>tcp
+问题1：tcp通过哪些方式来保证可靠性?
+1.应用数据被分割成tcp认为最适合发送的数据块
+2.确认机制，发送报文后等待确认。
+3.重发机制，没有收到确认后，重发数据
+4.保持它首部和数据的校验和，缺人数据准确性。
+5.排序 丢弃重复 流量控制。
+问题2：为什么要3次握手 4次挥手
+3次握手：防止已过期请求突然传送到服务器。
+4次挥手：确保数据能够完成传输。当关闭连接时表示对方没有数据要传给你了，并不是对方把所有数据传给你了。</p>
+
+<h1 id="应用层">应用层</h1>
+
+<p>问题1：dns的概念用途
+dns域名解析 运行在udp协议之上，使用53端口。</p>
+
+<p>HTTP 请求是依托于 TCP 连接的，第一次连接的时候会进行 TCP 的三次握手。</p>
+
+<p>HTTP 通过 Keep-Alive 来进行持久连接，通过定时发送一个心跳包，来告诉服务端自己还活跃。</p>
+
+<p>HTTP 连接的断开也会导致 TCP的四次挥手，但是如果服务器判断满足条件，会合并 ACK 和 FIN 信号，进而转化为三次挥手。
+http2.0与http1.1:二进制格式比文本更高效的处理，产生错误更少。完全采用多路复用 能很好的处理多个请求和响应。</p>
+
+<p>局域网无法上网故障诊断方法：<br />
+1.看网络连接窗口 本地连接 是否本地电缆被拔出<br />
+2.检查本地连接状态 看网卡是否正常工作<br />
+2.试着ping远程主机 若ping通怎检查本地防火墙设置，若ping不通怎检查ip 网关 dns设置是否正确。<br />
+568A 绿白 绿 橙白  蓝 蓝白 橙 棕白 棕<br />
+568B 橙白 橙 绿白  蓝 蓝白  绿  棕白 棕<br />
+两台电脑连接ping不通的原因？<br />
+1.网线是否同<br />
+2.是否设置在同一网短<br />
+3两台电脑tcp/ip协议是否安装完整<br />
+4.防火墙是否把icmp 端口给屏蔽了<br />
+vlan虚拟局域网主要特点:使网络更安全，防止大部分网络监听入侵手段，通过虚拟局域网设置访问控制。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">周军</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-10-23
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/php%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Php笔记</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">
+            <span class="next-text nav-default">数据结构与算法练习</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="email:1158290245@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/junzhoublog" class="iconfont icon-github" title="github"></a>
+      <a href="https://zhuanlan.zhihu.com/p/23014683" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://www.douban.com" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://www.bilibili.com" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://junzhoublog.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">周军</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>数据结构与算法练习 - Zhou Jun&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="周军" /><meta name="description" content="表 顺序存储（数组） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.57.2 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://junzhoublog.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="数据结构与算法练习" />
+<meta property="og:description" content="表 顺序存储（数组） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://junzhoublog.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/" />
+<meta property="article:published_time" content="2019-10-22T16:39:39+08:00" />
+<meta property="article:modified_time" content="2019-10-22T16:39:39+08:00" />
+<meta itemprop="name" content="数据结构与算法练习">
+<meta itemprop="description" content="表 顺序存储（数组） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61">
+
+
+<meta itemprop="datePublished" content="2019-10-22T16:39:39&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-22T16:39:39&#43;08:00" />
+<meta itemprop="wordCount" content="3553">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数据结构与算法练习"/>
+<meta name="twitter:description" content="表 顺序存储（数组） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Computer</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Computer</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">数据结构与算法练习</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-10-22 </span>
+        
+          <span class="more-meta"> 约 3553 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#表-顺序存储-数组">表 顺序存储（数组）</a></li>
+<li><a href="#表-链式存储">表 链式存储</a></li>
+<li><a href="#栈-动态栈">栈 动态栈</a></li>
+<li><a href="#队列-静态队列">队列  静态队列</a></li>
+<li><a href="#二叉树-动态存储">二叉树 动态存储</a></li>
+<li><a href="#深度优先搜索">深度优先搜索</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="表-顺序存储-数组">表 顺序存储（数组）</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+class Arr
+{
+public:
+	int * pbase;
+	int len;
+	int cnt;
+};
+void init(Arr*, int);
+bool append(Arr*, int);
+void show_arr(Arr*);
+bool insert(Arr*, int, int);
+bool delete_arrr(Arr*, int, int*);
+void inversion_arr(Arr*);
+void sort(Arr*);
+int main()
+{
+	Arr arr;
+	int val;
+	init(&amp;arr, 7);
+	append(&amp;arr, 18);
+	append(&amp;arr, 3);
+	append(&amp;arr, 7);
+	append(&amp;arr, 3);
+	append(&amp;arr, 1);
+	append(&amp;arr, 2);
+	show_arr(&amp;arr);
+	insert(&amp;arr, 2, 5);
+	cout &lt;&lt; endl;
+	show_arr(&amp;arr);
+	delete_arrr(&amp;arr, 2, &amp;val);
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;你删除的元素为：&#34; &lt;&lt; val &lt;&lt; endl;
+	show_arr(&amp;arr);
+	inversion_arr(&amp;arr);
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;数值倒置后为：&#34;;
+	show_arr(&amp;arr);
+	sort(&amp;arr);
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;排序后为：&#34;;
+	show_arr(&amp;arr);
+	return 0;
+}
+
+void init(Arr* parr, int length)
+{
+	parr-&gt;pbase = new int[length];
+	parr-&gt;len = length;
+	parr-&gt;cnt = 0;
+	return;
+}
+
+bool is_full(Arr *parr)
+{
+	if (parr-&gt;cnt == parr-&gt;len)
+		return true;
+	else
+		return false;
+}
+bool append(Arr* parr, int val)
+{
+	if (is_full(parr))
+	{
+		return false;
+	}
+	else
+	{
+		parr-&gt;pbase[parr-&gt;cnt] = val;
+		++(parr-&gt;cnt);
+		return true;
+	}
+}
+
+bool isempty(Arr*parr)
+{
+	if (0 == parr-&gt;cnt)
+		return true;
+	else
+		return false;
+}
+void show_arr(Arr* parr)
+{
+	if (isempty(parr))
+	{
+		cout &lt;&lt; &#34;数组为空&#34; &lt;&lt; endl;
+	}
+	else
+	{
+		for (int i = 0; i &lt; parr-&gt;cnt; ++i)
+		{
+			cout &lt;&lt; parr-&gt;pbase[i] &lt;&lt; &#34; &#34;;
+		}
+	}
+
+}
+bool insert(Arr*parr, int pos, int val)
+{
+	if (is_full(parr))
+	{
+		return false;
+	}
+	if (pos&lt;1 || pos&gt;parr-&gt;cnt + 1)
+	{
+		return false;
+	}
+
+	for (int i = parr-&gt;cnt - 1; i &gt;= pos - 1; --i)
+	{
+		parr-&gt;pbase[i + 1] = parr-&gt;pbase[i];
+	}
+	parr-&gt;pbase[pos - 1] = val;
+	++(parr-&gt;cnt);
+	return true;
+
+}
+bool delete_arrr(Arr* parr, int pos, int* pval)
+{
+	if (isempty(parr))
+		return false;
+	if (pos&lt;1 || pos&gt;parr-&gt;cnt)
+		return false;
+	*pval = parr-&gt;pbase[pos - 1];
+
+	for (int i = pos; i &lt; parr-&gt;cnt; ++i)
+	{
+		parr-&gt;pbase[i - 1] = parr-&gt;pbase[i];
+	}
+	--(parr-&gt;cnt);
+	return true;
+}
+void inversion_arr(Arr* parr)
+{
+	int i = 0, j = parr-&gt;cnt - 1;
+	int t;
+	while (i &lt; j)
+	{
+		t = parr-&gt;pbase[i];
+		parr-&gt;pbase[i] = parr-&gt;pbase[j];
+		parr-&gt;pbase[j] = t;
+		++i;
+		--j;
+	}
+	return;
+}
+void sort(Arr*parr)
+{
+	int i, j, t;
+	for (i = 0; i &lt; parr-&gt;cnt; ++i)
+	{
+		for (j = i + 1; j &lt; parr-&gt;cnt; ++j)
+		{
+			if (parr-&gt;pbase[i] &lt; parr-&gt;pbase[j])
+			{
+				t = parr-&gt;pbase[i];
+				parr-&gt;pbase[i] = parr-&gt;pbase[j];
+				parr-&gt;pbase[j] = t;
+			}
+
+		}
+	}
+	return;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="表-链式存储">表 链式存储</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include&lt;iostream&gt;
+using namespace std;
+class node
+{
+public:
+	int data;
+	node* pnext;
+};
+node* create_list(void);
+void traverse_list(node*phead);
+bool empty_list(node*phead);
+int length_list(node*phead);
+bool insert_list(node*phead, int pos, int val);
+bool delte_list(node*phead, int pos, int*);
+bool replace(node*phead, int pos, int val);
+int main()
+{
+	node* phead;
+	int val;
+	phead = create_list();
+	traverse_list(phead);
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;链表长度为：&#34; &lt;&lt; length_list(phead);
+	/*delte_list(phead, 2, &amp;val);
+	insert_list(phead, 2, 888);*/
+	replace(phead, 2, 888);
+	delte_list(phead, 4, &amp;val);
+	insert_list(phead, 4, 999);
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;某个位置插入新值后的链表遍历：&#34;;
+	traverse_list(phead);
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;插入元素后链表长度为：&#34; &lt;&lt; length_list(phead);
+	delte_list(phead, 2, &amp;val);
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;删除的元素是:&#34; &lt;&lt; val;
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;删除元素后链表长度为：&#34; &lt;&lt; length_list(phead);
+	cout &lt;&lt; endl;
+	cout &lt;&lt; &#34;删除值后的链表遍历：&#34;;
+	traverse_list(phead);
+
+	return 0;
+}
+node* create_list(void)
+{
+	int len;
+	int val;
+	cout &lt;&lt; &#34;请输入要存放结点的个数:len=&#34;;
+	cin &gt;&gt; len;
+	node* phead = new node;
+	node* ptail = phead;
+	ptail-&gt;pnext = NULL;
+	for (int i = 0; i &lt; len; ++i)
+	{
+		cout &lt;&lt; &#34;请输入第&#34; &lt;&lt; i + 1 &lt;&lt; &#34;个结点的值：&#34;;
+		cin &gt;&gt; val;
+		node* pnew = new node;
+		pnew-&gt;data = val;
+		ptail-&gt;pnext = pnew;
+		pnew-&gt;pnext = NULL;
+		ptail = pnew;
+	}
+	return phead;
+}
+void traverse_list(node*phead)
+{
+	node*p = phead-&gt;pnext;
+	while (p != NULL)
+	{
+		cout &lt;&lt; p-&gt;data &lt;&lt; &#34; &#34;;
+		p = p-&gt;pnext;
+	}
+	return;
+}
+bool empty_list(node*phead)
+{
+	if (phead-&gt;pnext == NULL)
+		return true;
+	else
+		return false;
+}
+int length_list(node*phead)
+{
+	int len = 0;
+	while (phead-&gt;pnext != NULL)
+	{
+		phead = phead-&gt;pnext;
+		++len;
+	}
+	return len;
+}
+bool insert_list(node*phead, int pos, int val)
+{
+	int i = 0;
+	node*p = phead;
+	while (p != NULL&amp;&amp;i &lt; pos - 1)
+	{
+		p = p-&gt;pnext;
+		++i;
+	}
+	if (p == NULL || i &gt; pos - 1)
+	{
+		return false;
+	}
+	node* pnew = new node;
+	pnew-&gt;data = val;
+	pnew-&gt;pnext = p-&gt;pnext;
+	p-&gt;pnext = pnew;
+	return true;
+}
+bool delte_list(node*phead, int pos, int *pval)
+{
+	int i = 0;
+	node*p = phead;
+	while (p != NULL&amp;&amp;i &lt; pos - 1)
+	{
+		p = p-&gt;pnext;
+		++i;
+	}
+	if (p == NULL || i &gt; pos - 1)
+	{
+		return false;
+	}
+	node* q = p-&gt;pnext;
+	*pval = q-&gt;data;
+	p-&gt;pnext = q-&gt;pnext;
+	delete q;
+
+	return true;
+}
+bool replace(node*phead, int pos, int val)
+{
+	int poss = pos;
+	int vall = val;
+	delte_list(phead, poss, &amp;val);
+	insert_list(phead, poss, vall);
+	return true;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="栈-动态栈">栈 动态栈</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+	int data;
+	Node * pnext;
+protected:
+private:
+};
+class Stack
+{
+public:
+	Node * ptop;
+	Node * pbottom;
+protected:
+private:
+};
+void init(Stack* ps);
+void push(Stack*, int);
+void traverse(Stack*);
+bool pop(Stack*, int *);
+void clear(Stack *);
+int main(void)
+{
+	Stack s;
+	int val;
+	init(&amp;s);
+	push(&amp;s, 1);
+	push(&amp;s, 5);
+	push(&amp;s, 6);
+	push(&amp;s, 8);
+	/*clear(&amp;s);*/
+	traverse(&amp;s);
+	if (pop(&amp;s, &amp;val))
+	{
+		cout &lt;&lt; &#34;出栈成功&#34; &lt;&lt; &#34;出栈的元素为：&#34; &lt;&lt; val;
+	}
+	else
+	{
+		cout &lt;&lt; &#34;出栈失败&#34;;
+	}
+
+	return 0;
+
+}
+void init(Stack* ps)
+{
+	ps-&gt;ptop = new Node;
+	ps-&gt;pbottom = ps-&gt;ptop;
+	ps-&gt;ptop-&gt;pnext = NULL;
+}
+void push(Stack*ps, int val)
+{
+	Node* pnew = new Node;
+	pnew-&gt;data = val;
+	pnew-&gt;pnext = ps-&gt;ptop;//先让新的结点的指针域向下指向栈顶中哪个结点
+	ps-&gt;ptop = pnew;//再将栈顶指针指向新的结点
+	return;
+}
+void traverse(Stack*ps)
+{
+	Node* p = ps-&gt;ptop;
+	while (p != ps-&gt;pbottom)
+	{
+		cout &lt;&lt; p-&gt;data &lt;&lt; endl;
+		p = p-&gt;pnext;
+	}
+	return;
+}
+bool empty(Stack*ps)
+{
+	if (ps-&gt;ptop == ps-&gt;pbottom)
+		return true;
+	else
+		return false;
+}
+bool pop(Stack*ps, int *pval)
+{
+	if (empty(ps))
+	{
+		return false;
+	}
+	else
+	{
+		Node* r = ps-&gt;ptop;
+		*pval = r-&gt;data;
+		ps-&gt;ptop = r-&gt;pnext;
+		free(r);
+		r = NULL;
+		return true;
+	}
+}
+void clear(Stack* ps)
+{
+	if (empty(ps))
+	{
+		return;
+	}
+	else
+	{
+		Node* p = ps-&gt;ptop;
+		Node* q = NULL;
+		while (p != ps-&gt;pbottom)
+		{
+			q = p-&gt;pnext;
+			free(p);
+			p = q;
+		}
+		ps-&gt;ptop = ps-&gt;pbottom;
+	}
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="队列-静态队列">队列  静态队列</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;iostream&gt;
+using namespace std;
+
+class Queue
+{
+public:
+	int * pBase;
+	int front;
+	int rear;
+};
+
+void init(Queue *);
+bool en_queue(Queue *, int val);  //入队
+void traverse_queue(Queue *);
+bool full_queue(Queue *);
+bool out_queue(Queue *, int *);
+bool emput_queue(Queue *);
+
+int main(void)
+{
+	Queue Q;
+	int val;
+	init(&amp;Q);
+	en_queue(&amp;Q, 1);
+	en_queue(&amp;Q, 2);
+	en_queue(&amp;Q, 3);
+	en_queue(&amp;Q, 4);
+	en_queue(&amp;Q, 5);
+	en_queue(&amp;Q, 6);
+	en_queue(&amp;Q, 7);
+	en_queue(&amp;Q, 8);
+
+	traverse_queue(&amp;Q);
+
+	if (out_queue(&amp;Q, &amp;val))
+	{
+		printf(&#34;出队成功，队列出队的元素是: %d\n&#34;, val);
+	}
+	else
+	{
+		printf(&#34;出队失败!\n&#34;);
+	}
+	traverse_queue(&amp;Q);
+
+	return 0;
+}
+
+void init(Queue *pQ)
+{
+	pQ-&gt;pBase = new int[6];
+	pQ-&gt;front = 0;
+	pQ-&gt;rear = 0;
+}
+
+bool full_queue(Queue * pQ)
+{
+	if ((pQ-&gt;rear + 1) % 6 == pQ-&gt;front)
+		return true;
+	else
+		return false;
+}
+
+bool en_queue(Queue * pQ, int val)
+{
+	if (full_queue(pQ))
+	{
+		return false;
+	}
+	else
+	{
+		pQ-&gt;pBase[pQ-&gt;rear] = val;
+		pQ-&gt;rear = (pQ-&gt;rear + 1) % 6;
+		return true;
+	}
+}
+
+void traverse_queue(Queue * pQ)
+{
+	int i = pQ-&gt;front;
+
+	while (i != pQ-&gt;rear)
+	{
+		cout &lt;&lt; pQ-&gt;pBase[i];
+		i = (i + 1) % 6;
+	}
+	cout &lt;&lt; endl;
+
+	return;
+}
+
+bool emput_queue(Queue * pQ)
+{
+	if (pQ-&gt;front == pQ-&gt;rear)
+		return true;
+	else
+		return false;
+}
+
+bool out_queue(Queue * pQ, int * pVal)
+{
+	if (emput_queue(pQ))
+	{
+		return false;
+	}
+	else
+	{
+		*pVal = pQ-&gt;pBase[pQ-&gt;front];
+		pQ-&gt;front = (pQ-&gt;front + 1) % 6;
+
+		return true;
+	}
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="二叉树-动态存储">二叉树 动态存储</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define NULL 0
+typedef char TElemType;
+//动态二叉链表
+typedef struct BiTNode {
+	TElemType data;
+	struct BiTNode *lchild, *rchild;
+}BiTNode, *BiTree;
+
+#define MAXSIZE 100
+typedef BiTNode* SElemType;
+typedef struct SqStack {
+	SElemType data[MAXSIZE];
+	int top;//指向栈顶元素
+}SqStack;
+
+//初始化空栈
+void initStack(SqStack &amp;s) {
+	s.top = 0;
+}
+
+//判栈空
+bool isEmpty(SqStack s) {
+	if (s.top == 0) {
+		//printf(&#34;是空栈\n&#34;);//
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+//判栈满
+bool isFull(SqStack s) {
+	if (s.top == MAXSIZE) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+//取栈顶元素
+void getTopElem(SqStack s, SElemType &amp;e) {
+	if (!isEmpty(s))
+		e = s.data[s.top - 1];
+	else
+		printf(&#34;此栈为空栈，取栈顶元素失败\n&#34;);
+}
+
+//入栈
+void push(SqStack &amp;s, SElemType e) {
+	if (!isFull(s)) {
+		s.data[s.top] = e;
+		s.top++;
+	}
+	else
+		printf(&#34;此栈已满，入栈操作失败\n&#34;);
+}
+
+//出栈
+void pop(SqStack &amp;s, SElemType &amp;e) {
+	if (!isEmpty(s)) {
+		e = s.data[s.top - 1];
+		s.top--;
+	}
+	else
+		printf(&#34;此栈为空栈，出栈操作失败\n&#34;);
+}
+//利用先序序列建立一颗二叉树，先序序列读入：&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;.&#39;, &#39;.&#39;, &#39;d&#39;, &#39;e&#39;, &#39;.&#39;, &#39;g&#39;, &#39;.&#39;, &#39;.&#39;, &#39;f&#39;, &#39;.&#39;, &#39;.&#39;, &#39;.&#39; 
+//,&#39;.&#39;代表空树
+//测试用例：abc..de.g..f...#
+void createBiTreeByPreOrder(BiTree &amp;T) {
+	//按先序次序输入二叉树中节点的值（一个字符），点号字符表示空树，构造二叉链表表示的二叉树
+	//注意：若输入的字符数（不含#号）为n个，则相应的空树即点号就应该有n+1个
+	char ch;
+	scanf_s(&#34;%c&#34;, &amp;ch);
+	//printf(&#34;test:%c\n&#34;, ch);
+	if (ch != &#39;#&#39;) {
+		if (ch == &#39;.&#39;) {
+			T = NULL;
+		}
+		else {
+			T = (BiTNode *)malloc(sizeof(BiTNode));
+			T-&gt;data = ch;
+			createBiTreeByPreOrder(T-&gt;lchild);
+			createBiTreeByPreOrder(T-&gt;rchild);
+		}
+	}
+}
+//后序遍历打印二叉树的非递归算法（左、右、根）
+void postOrderPrint2(BiTree T) {
+	SqStack s;
+	initStack(s);
+	BiTNode *p = T;
+	while (p || !isEmpty(s)) {
+		if (p) {
+			push(s, p);
+			p = p-&gt;lchild;
+		}
+		else {
+			BiTNode *top;
+			getTopElem(s, top);//取得栈顶元素
+			if (top-&gt;data &gt; 0) {//栈顶元素的右子树还没有被访问过
+				p = top-&gt;rchild;
+				top-&gt;data = -top-&gt;data;//赋右子树已遍历标志
+
+			}
+			else {//栈顶元素的右子树已经访问过了
+				printf(&#34;%c &#34;, -top-&gt;data);
+				pop(s, top);
+				//p = NULL;				
+			}
+		}
+	}
+}
+void main() {
+	BiTree T;
+	printf(&#34;请按先序次序输入二叉树各节点的值，以点号表示空树，以#号结束:\n&#34;);
+	createBiTreeByPreOrder(T);
+
+	printf(&#34;后序遍历打印二叉树（非递归算法）:\n&#34;);
+	postOrderPrint2(T);
+	printf(&#34;\n&#34;);
+
+
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="深度优先搜索">深度优先搜索</h1>
+
+<p>主要思想：首先以一个未被访问过的顶点作为起始顶点，沿当前顶点的边走到未被访问过的顶点；当没有未被访问过的顶点时则回到上一个顶点，继续试探访问别的顶点，直到所有的顶点都被访问过。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;stdio.h&gt;
+int book[101], sum, n, e[101][101];
+void dfs(int cur) //当前所在的顶点编号
+{
+	int i;
+	printf(&#34;%d&#34;, cur);
+	sum++;//每访问一个顶点，sum就加1
+	if (sum == n)
+		return;//所有的顶点都已经访问过则直接退出
+	for (i = 1; i &lt;= n; i++)//从1号顶点到n号顶点依次尝试，看哪些顶点与当前顶点cur有边相连
+	{
+		//判断当前顶点cur到顶点i是否有边，并判断顶点i是否已访问过
+		if (e[cur][i] == 1 &amp;&amp; book[i] == 0)
+		{
+			book[i] = 1;//标记顶点i已经访问过
+			dfs(i);//从顶点i再出发继续遍历
+		}
+	}
+	return;
+}
+int main()
+{
+	int i, j, m, a, b;
+	scanf_s(&#34;%d %d&#34;, &amp;n, &amp;m);
+	//初始化二维矩阵
+	for (i = 1; i &lt;= n; i++)
+		for (j = 1; j &lt;= n; j++)
+			if (i == j)
+				e[i][j] = 0;
+			else
+				e[i][j] = 99999999;//假设9999999位正无穷
+								   //读入顶点之间的边
+	for (i = 1; i &lt;= m; i++)
+	{
+		scanf_s(&#34;%d %d&#34;, &amp;a, &amp;b);
+		e[a][b] = 1;
+		e[b][a] = 1;//这里是无向图，所以需要将e[b][a]也赋值为1
+	}
+	//从1号顶点出发
+	book[1] = 1;//标记1号顶点已访问
+	dfs(1);//从1号顶点开始遍历
+	getchar();
+	getchar();
+	return 0;
+
+}</pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">周军</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-10-22
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">计算机网络面试常见问题</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/c&#43;&#43;%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+            <span class="next-text nav-default">C&#43;&#43;内存管理</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="email:1158290245@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/junzhoublog" class="iconfont icon-github" title="github"></a>
+      <a href="https://zhuanlan.zhihu.com/p/23014683" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://www.douban.com" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://www.bilibili.com" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://junzhoublog.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">周军</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
