@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T16:49:13&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T16:49:13&#43;08:00" />
-<meta itemprop="wordCount" content="830">
+<meta itemprop="wordCount" content="1554">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 830 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1554 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -138,69 +138,168 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#linux简介">linux简介</a>
+<ul>
+<li><a href="#shell-linux常用命令">shell（linux常用命令）</a></li>
+<li><a href="#vim">vim</a></li>
+<li><a href="#gcc">gcc</a></li>
+<li><a href="#gdb">gdb</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
-      <p>linux简介
-GNU
-由Emacs编辑系统、 BASH shell程序、 gcc、 gdb、等开发工具组成，Linux与gnu结合完全自由的操作系统”gnu/linux”简称Linux。
-POSIX
-posix标准定义了操作系统与应用程序的接口标准。
-内核版
-稳定版与开发版 <a href="https://www.kernel.org">https://www.kernel.org</a>
-发行版本
-ubuntu 、centos、Red Hat 等等。</p>
+      
 
-<p>linux常用命令</p>
+<h1 id="linux简介">linux简介</h1>
 
-<p>ls
-查看当前目录下所包含的文件信息
-linux-1
-ls -a 查看所有文件包含隐藏文件
-ls -l 以列表形式查看文件，不包含隐藏文件
-ls -lh 以列表形式查看文件，不包含隐藏文件 ，按照1024倍数显示{KB MB GB}
-ls -all以列表形式查看文件，包含隐藏文件 快捷方式【ll】
-【<em>】 匹配任意多个字符【0-256】 a</em> 一个以上字符 256一下
-【?】 匹配任意一个字符 a？ 两个字符
-【[a-z]】 区间法 匹配a到z的所有字符 只能确定一个字符
-【[abcde]】 穷举法 权值法 匹配abcde的所有字符 只能确定一个字符
-cd
-切换工作目录，cd./文件名 进入目录下的某个文件， cd ../文件名 返回上级目录并且进入上级目录里面的某个文件。 (这是相对位置，绝对位置全部写出俩/文件名/文件名/文件名)
-cd 切换到用户主目录
-cd ~ 切换到当前用户的主目录
-cd .. 切换到上级目录
-cd . 切换到当前目录
-cd - 切换到上一次目录
-pwd
-查看当前所处路径
-file
-Windows以后缀.exe.txt.doc区分,linux以颜色进行区分 ,file 文件名获取文件类型等信息
-help man
-mkdir –help, mkdi man（但是可以用tab键用来补全命令，按两下tab 显示列表）, man mkdir. ll|moer
-通过管道多页显示命令 mkdir rmdir
-mkdir 目录名 -p 递归创建
-rmdir 目录名 目录一定是空的
-rm 文件 -i询问 -r 递归传出
-ln ln-s
-ln 源文件 链接文件 硬链接
-ln -s 源文件 链接文件 软连接
-硬链接文件占磁盘空间 但是删除源文件不会影响硬链接文件
-软链接文件不占磁盘空间 但是删除源文件会影响软链接文件</p>
+<ul>
+<li>GNU<br />
+由Emacs编辑系统、 BASH shell程序、 gcc、 gdb、等开发工具组成，Linux与gnu结合完全自由的操作系统”gnu/linux”简称Linux。</li>
+<li>POSIX<br />
+posix标准定义了操作系统与应用程序的接口标准。</li>
+<li>内核版</li>
+<li>稳定版与开发版 <a href="https://www.kernel.org">https://www.kernel.org</a></li>
+<li>发行版本ubuntu 、centos、Red Hat 等等。</li>
+</ul>
 
-<p>在Linux中文件分为
-普通文件
-目录文件
-设备文件（字符设备文件 块设备文件）
-管道文件
-链接文件
-文件权限
-d rwx rwx rwx 分为三组
-d 目录 成为文件类型
-第一组：文件的所属用户
-第二组：文件的所属组
-第三组：其他用户
- test test  test</p>
+<h2 id="shell-linux常用命令">shell（linux常用命令）</h2>
+
+<ul>
+<li>ls<br />
+查看当前目录下所包含的文件信息<br />
+ls -a 查看所有文件包含隐藏文件<br />
+ls -l 以列表形式查看文件，不包含隐藏文件<br />
+ls -lh 以列表形式查看文件，不包含隐藏文件 ，按照1024倍数显示{KB MB GB}<br />
+ls -all以列表形式查看文件，包含隐藏文件 快捷方式【ll】<br />
+【<em>】 匹配任意多个字符【0-256】 a</em> 一个以上字符 256一下<br />
+【?】 匹配任意一个字符 a？ 两个字符<br />
+【[a-z]】 区间法 匹配a到z的所有字符 只能确定一个字符<br />
+【[abcde]】 穷举法 权值法 匹配abcde的所有字符 只能确定一个字符<br /></li>
+<li>cd<br />
+切换工作目录，cd./文件名 进入目录下的某个文件， cd ../文件名 返回上级目录并且进入 上级目录里面的某个文件。 (这是相对位置，绝对位置全部写出俩/文件名/文件名/文件名)<br />
+cd 切换到用户主目录<br />
+cd ~ 切换到当前用户的主目录<br />
+cd .. 切换到上级目录<br />
+cd . 切换到当前目录<br />
+cd - 切换到上一次目录<br /></li>
+<li>pwd<br />
+查看当前所处路径<br /></li>
+<li>file<br />
+Windows以后缀.exe.txt.doc区分,linux以颜色进行区分 ,file 文件名获取文件类型等信息</li>
+<li>help man<br />
+mkdir –help, mkdi man（但是可以用tab键用来补全命令，按两下tab 显示列表）, man mkdir.</li>
+<li>ll|moer<br />
+通过管道多页显示命令 mkdir rmdir<br />
+mkdir 目录名 -p 递归创建<br />
+rmdir 目录名 目录一定是空的<br />
+rm 文件 -i询问 -r 递归传出<br /></li>
+
+<li><p>ln ln-s<br />
+ln 源文件 链接文件 硬链接<br />
+ln -s 源文件 链接文件 软连接<br />
+硬链接文件占磁盘空间 但是删除源文件不会影响硬链接文件<br />
+硬链接和拷贝（复制）区别 无论你修改了哪一个链接之后的文件 两个文件都会改变 保持一致  但是拷贝不会<br />
+软链接文件不占磁盘空间 但是删除源文件会影响软链接文件</p></li>
+
+<li><p>在Linux中文件分为<br />
+普通文件<br />
+目录文件<br />
+设备文件（字符设备文件 块设备文件）<br />
+管道文件<br />
+链接文件</p></li>
+
+<li><p>文件权限<br />
+d rwx rwx rwx 分为三组<br />
+d 目录 成为文件类型<br />
+第一组：文件的所属用户<br />
+第二组：文件的所属组<br />
+第三组：其他用户</p></li>
+
+<li><p>文本搜索：<br />
+grep  &lsquo;搜索内容&rsquo; 文件名<br />
+-n 显示行号<br />
+-v 反选<br />
+-i 忽略大小写</p></li>
+
+<li><p>通配符：<br />
+【^a】以a为起始的字符搜索文件<br />
+【a$】以a为结尾的字符搜索文件<br />
+【.】 配匹任意一个非换行的字符<br />
+【*】匹配任意字符（大于0的整数）</p></li>
+
+<li><p>文件搜索：<br />
+find 目录 参数 文件名（可以使用通配符）<br />
+-name 文件名<br />
+-size 大小<br />
+-perm rwx</p></li>
+
+<li><p>归档：<br />
+tar -cvf 归档文件名.tar 文件1 文件2  目录1 目录2<br />
+解归档：<br />
+tar -xvf 归档文件名.tar  -C 路径</p></li>
+
+<li><p>压缩：<br />
+gzip 归档文件名.tar  生成了一个文件 归档文件名.tar.gz 文件大小小于归档文件大小 归档文件名.tar不存在了<br />
+解压缩：<br />
+gzip -d 归档文件名.tar.gz 生成了一个文件 归档文件名.tar</p></li>
+
+<li><p>一步归档压缩：<br />
+tar -czvf 文件名.tar.gz 文件1 文件2 目录1 目录2</p></li>
+
+<li><p>一步解归档压缩：<br />
+tar -xzvf 文件名.tar.gz -C 路径</p></li>
+
+<li><p>bzip2压缩：<br />
+tar -cjvf 文件名.tar.bz2 文件1 文件2 目录1 目录2</p></li>
+
+<li><p>bzip2解压缩：<br />
+tar -xjvf 文件名.tar.bz2 -C 路径</p></li>
+
+<li><p>zip压缩：<br />
+zip 文件名 文件1 文件2 目录1 目录2  生成一个文件为：文件名.zip</p></li>
+
+<li><p>unzip解压缩：<br />
+unzip 文件名.zip -C 路径</p></li>
+</ul>
+
+<h2 id="vim">vim</h2>
+
+<p>vim是vi的增强版 可以装一些插件。
+* vimtutor 查看教程
+*  移动光标 hjkl左 上 下 右<br />
+  0 ：行首<br />
+  $:行尾<br />
+  gg:文件开头<br />
+  G：文件末尾<br />
+  nG：到n行<br />
+*  删除内容：<br />
+  x 删除光标所在字母<br />
+  X 删除光标前的字母<br />
+  dw 删除单词（从光标开始删）<br />
+  d0 删除光标到行首<br />
+  d$ 删除到行尾<br />
+  dd 删除光标所在行
+  ndd 删除光标所在行开始n行
+* 复制粘贴 ：<br />
+  yy 复制一行内容<br />
+  dd 剪切一行内容<br />
+ nyy 复制n行内容<br />
+ P/p 粘贴<br />
+ r 替换输入 r之后再输入一个字母<br />
+ * 可视模式：<br />
+  v 进入可视模式<br />
+  移动光标选内容<br />
+  按y复制内容<br />
+  移动光标到目的地<br />
+  按p/P 将内容粘贴</p>
+
+<h2 id="gcc">gcc</h2>
+
+<h2 id="gdb">gdb</h2>
 
     </div>
 
