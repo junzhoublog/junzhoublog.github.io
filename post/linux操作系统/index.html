@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T16:49:13&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T16:49:13&#43;08:00" />
-<meta itemprop="wordCount" content="1543">
+<meta itemprop="wordCount" content="1853">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 1543 字 </span>
+          <span class="more-meta"> 约 1853 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -143,7 +143,12 @@
 <li><a href="#linux简介">linux简介</a>
 <ul>
 <li><a href="#shell-linux常用命令">shell（linux常用命令）</a></li>
-<li><a href="#vim">vim</a></li>
+<li><a href="#vim">vim</a>
+<ul>
+<li><a href="#命令模式">命令模式</a></li>
+<li><a href="#编辑模式">编辑模式</a></li>
+<li><a href="#末行模式">末行模式</a></li>
+</ul></li>
 <li><a href="#gcc">gcc</a></li>
 <li><a href="#gdb">gdb</a></li>
 </ul></li>
@@ -270,6 +275,8 @@ unzip 文件名.zip -C 路径</p></li>
 
 <p>vim是vi的增强版 可以装一些插件。</p>
 
+<h3 id="命令模式">命令模式</h3>
+
 <ul>
 <li><p>vimtutor 查看教程</p></li>
 
@@ -295,21 +302,64 @@ yy 复制一行内容<br />
 dd 剪切一行内容<br />
 nyy 复制n行内容<br />
 P/p 粘贴<br />
-r 替换输入 r之后再输入一个字母</p>
+r 替换输入 r之后再输入一个字母</p></li>
 
-<ul>
-<li>可视模式：<br />
+<li><p>可视模式：<br />
 v 进入可视模式<br />
 移动光标选内容<br />
 按y复制内容<br />
 移动光标到目的地<br />
-按p/P 将内容粘贴<br /></li>
-</ul></li>
+按p/P 将内容粘贴</p></li>
 
-<li></li>
+<li><p>内容查找：<br />
+/ 加要查找的内容<br />
+n/N 向后向向前遍历<br />
+？ 加要查找的内容
+n/N 遍历的方向与上面相反</p></li>
+
+<li><p>格式化操作
+gg=G 文件整体调整格式<br />
+“&gt;&gt; ” 向后移动<br />
+&ldquo;&lt;&lt;&rdquo; 向前移动<br />
+“n&gt;&gt; ” 当前行开始n行向后移动<br />
+&ldquo;n&lt;&lt;&rdquo; 当前行开始n行向前移动<br />
+n+shift+k  查看这个函数的man文档 n对应的页码</p>
+
+<h3 id="编辑模式">编辑模式</h3>
+
+<p>i 光标前的插入<br />
+  a 光标后的插入<br />
+  o 下一行插入<br />
+  I 在行首插入<br />
+  A 在行尾插入<br />
+  O 上一行插入</p>
+
+<h3 id="末行模式">末行模式</h3></li>
+
+<li><p>:进入 esc 退出该模式</p></li>
+
+<li><p>替换操作<br />
+:s/a/b  只替换当前行第一个匹配的a为b<br />
+:s/a/b/g 只会替换当前所有匹配的a为b<br />
+:%s/a/b 只替换所有行的第一个a为b<br />
+:%s/a/b/g 替换文件内所有的a为b</p></li>
+
+<li><p>保存退出<br />
+wq保存退出<br />
+x保存退出<br />
+zz 保存退出<br />
+q!强制退出</p></li>
+
+<li><p>分屏<br />
+sp +文件名 横分屏<br />
+vsp +文件名 竖分屏
+qall  全部退出</p></li>
+
+<li><p>vim设置<br />
+/etc/vim/vimrc  系统vim配置文件</p>
+
+<h2 id="gcc">gcc</h2></li>
 </ul>
-
-<h2 id="gcc">gcc</h2>
 
 <h2 id="gdb">gdb</h2>
 
