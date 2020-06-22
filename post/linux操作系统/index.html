@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T16:49:13&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T16:49:13&#43;08:00" />
-<meta itemprop="wordCount" content="2133">
+<meta itemprop="wordCount" content="2275">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 2133 字 </span>
+          <span class="more-meta"> 约 2275 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -167,10 +167,18 @@
 <h1 id="linux简介">linux简介</h1>
 
 <ul>
-<li>GNU<br />
-由Emacs编辑系统、 BASH shell程序、 gcc、 gdb、等开发工具组成，Linux与gnu结合完全自由的操作系统”gnu/linux”简称Linux。</li>
-<li>POSIX<br />
-posix标准定义了操作系统与应用程序的接口标准。</li>
+<li>GNU<br /></li>
+</ul>
+
+<p>由Emacs编辑系统、 BASH shell程序、 gcc、 gdb、等开发工具组成，Linux与gnu结合完全自由的操作系统”gnu/linux”简称Linux。</p>
+
+<ul>
+<li>POSIX<br /></li>
+</ul>
+
+<p>posix标准定义了操作系统与应用程序的接口标准。</p>
+
+<ul>
 <li>内核版</li>
 <li>稳定版与开发版 <a href="https://www.kernel.org">https://www.kernel.org</a></li>
 <li>发行版本ubuntu 、centos、Red Hat 等等。</li>
@@ -179,8 +187,10 @@ posix标准定义了操作系统与应用程序的接口标准。</li>
 <h2 id="shell-linux常用命令">shell（linux常用命令）</h2>
 
 <ul>
-<li>ls<br />
-查看当前目录下所包含的文件信息<br />
+<li>ls<br /></li>
+</ul>
+
+<p>查看当前目录下所包含的文件信息<br />
 ls -a 查看所有文件包含隐藏文件<br />
 ls -l 以列表形式查看文件，不包含隐藏文件<br />
 ls -lh 以列表形式查看文件，不包含隐藏文件 ，按照1024倍数显示{KB MB GB}<br />
@@ -188,93 +198,154 @@ ls -all以列表形式查看文件，包含隐藏文件 快捷方式【ll】<br 
 【<em>】 匹配任意多个字符【0-256】 a</em> 一个以上字符 256一下<br />
 【?】 匹配任意一个字符 a？ 两个字符<br />
 【[a-z]】 区间法 匹配a到z的所有字符 只能确定一个字符<br />
-【[abcde]】 穷举法 权值法 匹配abcde的所有字符 只能确定一个字符<br /></li>
-<li>cd<br />
-切换工作目录，cd./文件名 进入目录下的某个文件， cd ../文件名 返回上级目录并且进入 上级目录里面的某个文件。 (这是相对位置，绝对位置全部写出俩/文件名/文件名/文件名)<br />
+【[abcde]】 穷举法 权值法 匹配abcde的所有字符 只能确定一个字符</p>
+
+<ul>
+<li>cd<br /></li>
+</ul>
+
+<p>切换工作目录，cd./文件名 进入目录下的某个文件， cd ../文件名 返回上级目录并且进入 上级目录里面的某个文件。 (这是相对位置，绝对位置全部写出俩/文件名/文件名/文件名)<br />
 cd 切换到用户主目录<br />
 cd ~ 切换到当前用户的主目录<br />
 cd .. 切换到上级目录<br />
 cd . 切换到当前目录<br />
-cd - 切换到上一次目录<br /></li>
-<li>pwd<br />
-查看当前所处路径<br /></li>
-<li>file<br />
-Windows以后缀.exe.txt.doc区分,linux以颜色进行区分 ,file 文件名获取文件类型等信息</li>
-<li>help man<br />
-mkdir –help, mkdi man（但是可以用tab键用来补全命令，按两下tab 显示列表）, man mkdir.</li>
-<li>ll|moer<br />
-通过管道多页显示命令 mkdir rmdir<br />
+cd - 切换到上一次目录</p>
+
+<ul>
+<li>pwd<br /></li>
+</ul>
+
+<p>查看当前所处路径</p>
+
+<ul>
+<li>file<br /></li>
+</ul>
+
+<p>Windows以后缀.exe.txt.doc区分, linux以颜色进行区分 , file 文件名获取文件类型等信息</p>
+
+<ul>
+<li>help man<br /></li>
+</ul>
+
+<p>mkdir –help, mkdi man（但是可以用tab键用来补全命令，按两下tab 显示列表）, man mkdir.</p>
+
+<ul>
+<li>ll|moer<br /></li>
+</ul>
+
+<p>通过管道多页显示命令 mkdir rmdir<br />
 mkdir 目录名 -p 递归创建<br />
 rmdir 目录名 目录一定是空的<br />
-rm 文件 -i询问 -r 递归传出<br /></li>
+rm 文件 -i询问 -r 递归传出</p>
 
-<li><p>ln ln-s<br />
-ln 源文件 链接文件 硬链接<br />
+<ul>
+<li>ln ln-s<br /></li>
+</ul>
+
+<p>ln 源文件 链接文件 硬链接<br />
 ln -s 源文件 链接文件 软连接<br />
 硬链接文件占磁盘空间 但是删除源文件不会影响硬链接文件<br />
 硬链接和拷贝（复制）区别 无论你修改了哪一个链接之后的文件 两个文件都会改变 保持一致  但是拷贝不会<br />
-软链接文件不占磁盘空间 但是删除源文件会影响软链接文件</p></li>
+软链接文件不占磁盘空间 但是删除源文件会影响软链接文件</p>
 
-<li><p>在Linux中文件分为<br />
-普通文件<br />
+<ul>
+<li>在Linux中文件分为<br /></li>
+</ul>
+
+<p>普通文件<br />
 目录文件<br />
 设备文件（字符设备文件 块设备文件）<br />
 管道文件<br />
-链接文件</p></li>
+链接文件</p>
 
-<li><p>文件权限<br />
-d rwx rwx rwx 分为三组<br />
+<ul>
+<li>文件权限<br /></li>
+</ul>
+
+<p>d rwx rwx rwx 分为三组<br />
 d 目录 成为文件类型<br />
 第一组：文件的所属用户<br />
 第二组：文件的所属组<br />
-第三组：其他用户</p></li>
+第三组：其他用户</p>
 
-<li><p>文本搜索：<br />
-grep  &lsquo;搜索内容&rsquo; 文件名<br />
+<ul>
+<li>文本搜索：<br /></li>
+</ul>
+
+<p>grep  &lsquo;搜索内容&rsquo; 文件名<br />
 -n 显示行号<br />
 -v 反选<br />
--i 忽略大小写</p></li>
+-i 忽略大小写</p>
 
-<li><p>通配符：<br />
-【^a】以a为起始的字符搜索文件<br />
+<ul>
+<li>通配符：<br /></li>
+</ul>
+
+<p>【^a】以a为起始的字符搜索文件<br />
 【a$】以a为结尾的字符搜索文件<br />
 【.】 配匹任意一个非换行的字符<br />
-【*】匹配任意字符（大于0的整数）</p></li>
+【*】匹配任意字符（大于0的整数）</p>
 
-<li><p>文件搜索：<br />
-find 目录 参数 文件名（可以使用通配符）<br />
+<ul>
+<li>文件搜索：<br /></li>
+</ul>
+
+<p>find 目录 参数 文件名（可以使用通配符）<br />
 -name 文件名<br />
 -size 大小<br />
--perm rwx</p></li>
+-perm rwx</p>
 
-<li><p>归档：<br />
-tar -cvf 归档文件名.tar 文件1 文件2  目录1 目录2<br />
-解归档：<br />
-tar -xvf 归档文件名.tar  -C 路径</p></li>
-
-<li><p>压缩：<br />
-gzip 归档文件名.tar  生成了一个文件 归档文件名.tar.gz 文件大小小于归档文件大小 归档文件名.tar不存在了<br />
-解压缩：<br />
-gzip -d 归档文件名.tar.gz 生成了一个文件 归档文件名.tar</p></li>
-
-<li><p>一步归档压缩：<br />
-tar -czvf 文件名.tar.gz 文件1 文件2 目录1 目录2</p></li>
-
-<li><p>一步解归档压缩：<br />
-tar -xzvf 文件名.tar.gz -C 路径</p></li>
-
-<li><p>bzip2压缩：<br />
-tar -cjvf 文件名.tar.bz2 文件1 文件2 目录1 目录2</p></li>
-
-<li><p>bzip2解压缩：<br />
-tar -xjvf 文件名.tar.bz2 -C 路径</p></li>
-
-<li><p>zip压缩：<br />
-zip 文件名 文件1 文件2 目录1 目录2  生成一个文件为：文件名.zip</p></li>
-
-<li><p>unzip解压缩：<br />
-unzip 文件名.zip -C 路径</p></li>
+<ul>
+<li>归档：<br /></li>
 </ul>
+
+<p>tar -cvf 归档文件名.tar 文件1 文件2  目录1 目录2<br />
+解归档：<br />
+tar -xvf 归档文件名.tar  -C 路径</p>
+
+<ul>
+<li>压缩：<br /></li>
+</ul>
+
+<p>gzip 归档文件名.tar  生成了一个文件 归档文件名.tar.gz 文件大小小于归档文件大小 归档文件名.tar不存在了<br />
+解压缩：<br />
+gzip -d 归档文件名.tar.gz 生成了一个文件 归档文件名.tar</p>
+
+<ul>
+<li>一步归档压缩：<br /></li>
+</ul>
+
+<p>tar -czvf 文件名.tar.gz 文件1 文件2 目录1 目录2</p>
+
+<ul>
+<li>一步解归档压缩：<br /></li>
+</ul>
+
+<p>tar -xzvf 文件名.tar.gz -C 路径</p>
+
+<ul>
+<li>bzip2压缩：<br /></li>
+</ul>
+
+<p>tar -cjvf 文件名.tar.bz2 文件1 文件2 目录1 目录2</p>
+
+<ul>
+<li>bzip2解压缩：<br /></li>
+</ul>
+
+<p>tar -xjvf 文件名.tar.bz2 -C 路径</p>
+
+<ul>
+<li>zip压缩：<br /></li>
+</ul>
+
+<p>zip 文件名 文件1 文件2 目录1 目录2  生成一个文件为：文件名.zip</p>
+
+<ul>
+<li>unzip解压缩：<br /></li>
+</ul>
+
+<p>unzip 文件名.zip -C 路径</p>
 
 <h2 id="vim">vim</h2>
 
@@ -285,89 +356,129 @@ unzip 文件名.zip -C 路径</p></li>
 <ul>
 <li><p>vimtutor 查看教程</p></li>
 
-<li><p>移动光标 ：<br />
-hjkl左 上 下 右<br />
+<li><p>移动光标 ：</p></li>
+</ul>
+
+<p>hjkl左 上 下 右<br />
 0 行首<br />
 $ 行尾<br />
 gg 文件开头<br />
 G 文件末尾<br />
-nG 到n行</p></li>
+nG 到n行</p>
 
-<li><p>删除内容：<br />
-x 删除光标所在字母<br />
+<ul>
+<li>删除内容：<br /></li>
+</ul>
+
+<p>x 删除光标所在字母<br />
 X 删除光标前的字母<br />
 dw 删除单词（从光标开始删）<br />
 d0 删除光标到行首<br />
 d$ 删除到行尾<br />
 dd 删除光标所在行<br />
-ndd 删除光标所在行开始n行</p></li>
+ndd 删除光标所在行开始n行</p>
 
-<li><p>复制粘贴 ：<br />
-yy 复制一行内容<br />
+<ul>
+<li>复制粘贴 ：<br /></li>
+</ul>
+
+<p>yy 复制一行内容<br />
 dd 剪切一行内容<br />
 nyy 复制n行内容<br />
 P/p 粘贴<br />
-r 替换输入 r之后再输入一个字母</p></li>
+r 替换输入 r之后再输入一个字母</p>
 
-<li><p>可视模式：<br />
-v 进入可视模式<br />
+<ul>
+<li>可视模式：<br /></li>
+</ul>
+
+<p>v 进入可视模式<br />
 移动光标选内容<br />
 按y复制内容<br />
 移动光标到目的地<br />
-按p/P 将内容粘贴</p></li>
+按p/P 将内容粘贴</p>
 
-<li><p>内容查找：<br />
-/ 加要查找的内容<br />
+<ul>
+<li>内容查找：<br /></li>
+</ul>
+
+<p>/ 加要查找的内容<br />
 n/N 向后向向前遍历<br />
 ？ 加要查找的内容
-n/N 遍历的方向与上面相反</p></li>
+n/N 遍历的方向与上面相反</p>
 
-<li><p>格式化操作
-gg=G 文件整体调整格式<br />
+<ul>
+<li>格式化操作</li>
+</ul>
+
+<p>gg=G 文件整体调整格式<br />
 “&gt;&gt; ” 向后移动<br />
 &ldquo;&lt;&lt;&rdquo; 向前移动<br />
-“n&gt;&gt; ” 当前行开始n行向后移动<br />
+  “n&gt;&gt; ” 当前行开始n行向后移动<br />
 &ldquo;n&lt;&lt;&rdquo; 当前行开始n行向前移动<br />
 n+shift+k  查看这个函数的man文档 n对应的页码</p>
 
 <h3 id="编辑模式">编辑模式</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">i 光标前的插入  
+a 光标后的插入  
+o 下一行插入     
+I 在行首插入     
+A 在行尾插入   
+O 上一行插入 </pre></td></tr></table>
+</div>
+</div>
+<h3 id="末行模式">末行模式</h3>
 
-<p>i 光标前的插入<br />
-  a 光标后的插入<br />
-  o 下一行插入<br />
-  I 在行首插入<br />
-  A 在行尾插入<br />
-  O 上一行插入</p>
+<ul>
+<li>: 进入 esc 退出该模式<br /></li>
+<li>替换操作<br /></li>
+</ul>
 
-<h3 id="末行模式">末行模式</h3></li>
-
-<li><p>:进入 esc 退出该模式</p></li>
-
-<li><p>替换操作<br />
-:s/a/b  只替换当前行第一个匹配的a为b<br />
+<p>:s/a/b  只替换当前行第一个匹配的a为b<br />
 :s/a/b/g 只会替换当前所有匹配的a为b<br />
 :%s/a/b 只替换所有行的第一个a为b<br />
-:%s/a/b/g 替换文件内所有的a为b</p></li>
+:%s/a/b/g 替换文件内所有的a为b</p>
 
-<li><p>保存退出<br />
-wq保存退出<br />
+<ul>
+<li>保存退出<br /></li>
+</ul>
+
+<p>wq保存退出<br />
 x保存退出<br />
 zz 保存退出<br />
-q!强制退出</p></li>
+q! 强制退出</p>
 
-<li><p>分屏<br />
-sp +文件名 横分屏<br />
+<ul>
+<li>分屏<br /></li>
+</ul>
+
+<p>sp +文件名 横分屏<br />
 vsp +文件名 竖分屏
-qall  全部退出</p></li>
+qall  全部退出</p>
 
-<li><p>vim设置<br />
-/etc/vim/vimrc  系统vim配置文件</p>
+<ul>
+<li>vim设置<br /></li>
+</ul>
+
+<p>/etc/vim/vimrc  系统vim配置文件</p>
 
 <h2 id="gcc">gcc</h2>
 
-<p>hello.c 先预处理   汇编 二进文件 可执行文件 。<br />
-<img src="/img/linux/gcc编译流程.png" alt="gcc编译流程" /><br />
-gcc hello.c -I./include/ -o app -I包含头文件相对路径-O指定可执行文件名字。<br />
+<p>hello.c 先预处理   汇编 二进文件 可执行文件 。</p>
+
+<p><img src="/img/linux/gcc编译流程.png" alt="gcc编译流程" /></p>
+
+<p>gcc hello.c -I./include/ -o app -I包含头文件相对路径-O指定可执行文件名字。<br />
 ./a.out  执行可执行文件<br />
 -D 指定宏编译<br />
 -L 包含库路径-I指定库名<br />
@@ -383,21 +494,21 @@ O 大偶是优化选项 1-3</p>
 <p>libxxxx.a 对应windows 下的.lib文件。<br />
 cat hello.c 查看文件
 静态库制作步骤：<br />
-1编译为.o文件<br />
+1编译为.o文件 gcc<br />
 2 ar rcs libmycalc.a file1.o file2.0 (*.o)  打包<br />
 3 nm libycalc.a 查看打包好的<br />
 4发布 mv libhello.so ../lib/<br />
-5 使用 gcc main.c  -o newapp -I include/ -L lib/ -l hello</p>
+5 使用 gcc main.c  -o newapp -I include/ -L lib/ -l hello<br />
+优点：执行快 发布应用时不需要发布库 在text中</p>
 
 <h3 id="动态库">动态库</h3>
 
-<p>1编译与位置无关的代码 .o 关键参数-fplc<br />
-2将.o文件打包 关键参数-shared  libhello.so   *.o<br />
-3nm libycalc.a 查看打包好的<br />
-4发布 mv libhello.so ../lib/<br />
-5使用 gcc main.c  -o newapp -I include/ -L lib/ -l hello<br />
-6</p></li>
-</ul>
+<p>1编译与位置无关的代码 .o 关键参数gcc -fplc<br />
+2将.o文件打包 关键参数gcc -shared  libhello.so   *.o<br />
+3发布 mv libhello.so ../lib/<br />
+4使用 gcc main.c  -o newapp -I include/ -L lib/ -l hello<br />
+5（1）拷贝到/lib 下 不推荐（2）将库路径增加到环境变量LD_LIBRARY_PATH中不是特别推荐 （3）配置这个文件sudo vi /etc/ld.so.conf增加路径../lib 执行sudo ldconfig-v
+优点：执行体积小 库变更时一般不需要重新编译应用 在共享库中</p>
 
 <h2 id="gdb">gdb</h2>
 
