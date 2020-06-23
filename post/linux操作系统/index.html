@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2019-08-31T16:49:13&#43;08:00" />
 <meta itemprop="dateModified" content="2019-08-31T16:49:13&#43;08:00" />
-<meta itemprop="wordCount" content="2275">
+<meta itemprop="wordCount" content="2846">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2019-08-31 </span>
         
-          <span class="more-meta"> 约 2275 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2846 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -155,6 +155,7 @@
 <li><a href="#静态库">静态库</a></li>
 <li><a href="#动态库">动态库</a></li>
 </ul></li>
+<li><a href="#makefile">makefile</a></li>
 <li><a href="#gdb">gdb</a></li>
 </ul></li>
 </ul>
@@ -509,6 +510,17 @@ cat hello.c 查看文件
 4使用 gcc main.c  -o newapp -I include/ -L lib/ -l hello<br />
 5（1）拷贝到/lib 下 不推荐（2）将库路径增加到环境变量LD_LIBRARY_PATH中不是特别推荐 （3）配置这个文件sudo vi /etc/ld.so.conf增加路径../lib 执行sudo ldconfig-v
 优点：执行体积小 库变更时一般不需要重新编译应用 在共享库中</p>
+
+<h2 id="makefile">makefile</h2>
+
+<p>makefile中的变量<br />
+makefile中的函数<br />
+makefile的三要素:（1）目标（2依赖（3）规则命令<br />
+make与makefile：<br />
+在linux系统中make是一个非常重要的编译命令，不管是自己进行项目开发还是安装应用软件，我们都经常要用到make或makeinstall。利用make工具，我们可以将大型的开发项目分解成为多个更易于管理的模块，一个工程中的源文件不计数，其按类型、功能、模块分别放在若干个目录中，makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。makefile 带来的好处就是“自动化编译”，一旦写好，只需要一个make命令，整个工程完全自动编译，极大的提高了软件开发的效率。</p>
+
+<p>Make的工作原理：<br />
+当make 命令被执行时，它会扫描当前目录下Makefile或makefile文件找到目标以及其依赖。如果这些依赖自身也是目标，继续为这些依赖扫描Makefile 建立其依赖关系，然后编译它们。一旦主依赖编译之后，然后就编译主目标,假设你对某个源文件进行了修改，你再次执行make 命令，它将只编译与该源文件相关的目标文件，因此，编译完最终的可执行文件节省了大量的时间。</p>
 
 <h2 id="gdb">gdb</h2>
 
