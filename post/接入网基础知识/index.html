@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:30&#43;08:00" />
-<meta itemprop="wordCount" content="1487">
+<meta itemprop="wordCount" content="2408">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 1487 字 </span>
-          <span class="more-meta"> 预计阅读 3 分钟 </span>
+          <span class="more-meta"> 约 2408 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -143,6 +143,18 @@
 <li><a href="#epon简介">epon简介</a></li>
 <li><a href="#gpon简介">gpon简介</a></li>
 <li><a href="#gpon-olt-基本操作">gpon olt 基本操作</a></li>
+<li><a href="#gpon-终端基本操作">gpon 终端基本操作</a></li>
+<li><a href="#gpon-宽带业务开通与配置">gpon 宽带业务开通与配置</a>
+<ul>
+<li>
+<ul>
+<li><a href="#valan-三种类型">valan 三种类型</a></li>
+<li><a href="#valan-三种属性">valan 三种属性</a></li>
+<li><a href="#gpon上行复用结构">gpon上行复用结构</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#gpon-语音业务开通与配置">gpon 语音业务开通与配置</a></li>
+<li><a href="#odn-链路检测">odn 链路检测</a></li>
 </ul>
 </nav>
   </div>
@@ -245,6 +257,7 @@
 </span><span class="lnt">62
 </span><span class="lnt">63
 </span><span class="lnt">64
+</span><span class="lnt">65
 </span></pre></td>
 <td class="lntd">
 <pre class="chroma">telnet 192.168.48.148//管理ip远程登录olt
@@ -256,6 +269,7 @@ display history-command
 history-command
 max-size//修改缓存命令行的大小
 50
+
 switch langunge-mode//中英文命令模式切换
 
 terminal user-profile（个人资料）  add //增加一个用户模板
@@ -314,8 +328,153 @@ telnet
 </div>
 </div></li>
 
-<li><p>用户通过绑定相应的用户模板来执行对账号的登录时间控制</p></li>
+<li><p>用户通过绑定相应的用户模板来执行对账号的登录时间控制</p>
+
+<h1 id="gpon-终端基本操作">gpon 终端基本操作</h1></li>
+
+<li><p>dba模板:定义上行流量参数，完成上行流量控制即带宽。不同t-cont绑定不同dba模板。</p></li>
+
+<li><p>线路模板：定义了ont底层线路参数,决定使用哪个t-cont</p></li>
+
+<li><p>业务模板：定义了ont端口类型和数量，端口编号和vlan映射关系</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">display dba-profile all //查询已存在的dba资料
+dba-profile  add profile-id //增加一个新的dba模板
+
+ont-lineprofile gpon profile-id //增加ont线路模板
+tcont//在线路模板下tcont绑定dba模板
+gem//增加gem port 并映射到对应的tcont 
+
+mapping-mode //配置映射模式 
+vlan //选择vlan
+gem mapping //配置gem port 和vlna 映射关系
+
+qos-mode //配置qos模式
+priority-queue //选择优先级队列关键字
+commit  //提交生效
+quit
+
+// 增加A类ont业务模板
+ont-srvprofile//创建业务模板并进入
+ont-port //配置ont端口能力
+port //ont端口vlan 设置
+
+multicast-forward//配置组播(多播)报文vlan 转发模式
+utang//选择
+imgp-forward//配置igmp报文转发模式
+commit 
+quit
+
+snmp-profile
+
+//ont 添加流程
+#interface gpon 0/8
+#port 
+:0
+:ont-auto-find//自动发现功能打开
+:enable
+#display ont  autofind 0 /0 pon 口//查询发现ont
+#ont confirm //确认已经发现的ont 且绑定线路模板与业务模板
+#display ont info 0 all //查看已经添加的ont状态
+
+//两个ont添加例子：
+
+//ont维护与查询:
+#display ont info  0 1</pre></td></tr></table>
+</div>
+</div></li>
 </ul>
+
+<h1 id="gpon-宽带业务开通与配置">gpon 宽带业务开通与配置</h1>
+
+<h3 id="valan-三种类型">valan 三种类型</h3>
+
+<ul>
+<li>standard valan只能包含以太网口不能包含gpon业务虚端口。</li>
+<li>smart valan 可以包含多个上行端口及业务虚端口。一对多</li>
+
+<li><p>mux valan 可以包含多个上行端口但只能包含一个业务虚端口。一对一</p>
+
+<h3 id="valan-三种属性">valan 三种属性</h3></li>
+
+<li><p>common 只带有一个vlan标签</p></li>
+
+<li><p>QinQ  私网的内层vlan +huawei分配的外层valan 实现vpn</p></li>
+
+<li><p>stacking huawei分配的内外两层valan标签</p>
+
+<h3 id="gpon上行复用结构">gpon上行复用结构</h3></li>
+
+<li><p>一个pon口可连接多个onu ,一个onu可包含多个t-cont ,一个t-cont包含多个gem port,每个gem port承载一种业务流，上行带宽基于t-cont来划分。gem帧在olt 与onu之间传送。gem port与业务流映射 valan id 或者 优先级</p></li>
+
+<li><p>A类onu的配置 宽带业务配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"></pre></td>
+<td class="lntd">
+<pre class="chroma"></pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>B/C类onu配置 宽带业务配置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"></pre></td>
+<td class="lntd">
+<pre class="chroma"></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h1 id="gpon-语音业务开通与配置">gpon 语音业务开通与配置</h1>
+
+<h1 id="odn-链路检测">odn 链路检测</h1>
 
     </div>
 
