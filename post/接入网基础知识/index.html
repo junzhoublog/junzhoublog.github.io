@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="周军" /><meta name="description" content="epon pon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl. 分光比：两分光器一个接另一个的话做乘法算出分光比。 DBA" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="周军" /><meta name="description" content="epon简介 gpon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl. 分光比：两分光器一个接另一个的话做乘法算出分" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="接入网基础知识" />
-<meta property="og:description" content="epon pon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl. 分光比：两分光器一个接另一个的话做乘法算出分光比。 DBA" />
+<meta property="og:description" content="epon简介 gpon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl. 分光比：两分光器一个接另一个的话做乘法算出分" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://junzhoublog.github.io/post/%E6%8E%A5%E5%85%A5%E7%BD%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" />
 <meta property="article:published_time" content="2020-06-25T07:32:30+08:00" />
 <meta property="article:modified_time" content="2020-06-25T07:32:30+08:00" />
 <meta itemprop="name" content="接入网基础知识">
-<meta itemprop="description" content="epon pon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl. 分光比：两分光器一个接另一个的话做乘法算出分光比。 DBA">
+<meta itemprop="description" content="epon简介 gpon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl. 分光比：两分光器一个接另一个的话做乘法算出分">
 
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:30&#43;08:00" />
-<meta itemprop="wordCount" content="119">
+<meta itemprop="wordCount" content="1487">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="接入网基础知识"/>
-<meta name="twitter:description" content="epon pon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl. 分光比：两分光器一个接另一个的话做乘法算出分光比。 DBA"/>
+<meta name="twitter:description" content="epon简介 gpon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl. 分光比：两分光器一个接另一个的话做乘法算出分"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 119 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 1487 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -140,7 +140,9 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#epon">epon</a></li>
+<li><a href="#epon简介">epon简介</a></li>
+<li><a href="#gpon简介">gpon简介</a></li>
+<li><a href="#gpon-olt-基本操作">gpon olt 基本操作</a></li>
 </ul>
 </nav>
   </div>
@@ -148,13 +150,171 @@
     <div class="post-content">
       
 
-<h1 id="epon">epon</h1>
+<h1 id="epon简介">epon简介</h1>
 
 <ul>
-<li>pon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl.</li>
+<li>gpon:更高的带宽上行1.25g下行2.5g与传输距离（20km）相对于xdsl.</li>
 <li>分光比：两分光器一个接另一个的话做乘法算出分光比。</li>
-<li>DBA:动态带宽分配olt的dba 算出相应的时隙分配个onu.对onu设置在olt中通过oam进行管理。</li>
-<li></li>
+
+<li><p>DBA:动态带宽分配olt的dba 算出相应的时隙分配个onu.对onu设置在olt中通过oam通道会话进行管理。</p>
+
+<h1 id="gpon简介">gpon简介</h1></li>
+
+<li><p>mdu:路边光交</p></li>
+
+<li><p>最大物理传输距离40kmolt 与onu 之间</p></li>
+
+<li><p>olt 下行采用广播方式给onu olt要用到加密技术广播中 onu解密 ,onu上行通过olt时隙划分tdm(olt测距 确定时延 划分时隙 保证不分发送冲突 dba 动态带宽分配 优先级 提高带宽利用率)</p></li>
+
+<li><p>gpon sn认证与sn+password认证 合法的onu才能进入pon系统 运营商方便管理 网管通过snmp简单网络管理协议</p></li>
+
+<li><p>组网保护 typeB/C</p>
+
+<p>组播:在发送者和每一接收者之间实现点对多点网络连接。如果一台发送者同时给多个接收者传输相同的数据，也只需复制一份相同的数据包。它提高了数据传送效率，减少了骨干网络出现拥塞的可能性。</p>
+
+<h1 id="gpon-olt-基本操作">gpon olt 基本操作</h1></li>
+
+<li><p>图形界面:u2000/esight.命令行:cli系统超级终端或者第三方secure CRT ,远程登录或consolel.</p></li>
+
+<li><p>串口 网口 （1.通过olt主控板的etH带外管理ip 2.带内管理ip通过olt上行板业务上行口登录olt 配vlan三层接口的ip地址）</p></li>
+
+<li><p>命令行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">telnet 192.168.48.148//管理ip远程登录olt
+enable//从用户进入特权模式 disable退出到用户
+config//从特权进入全局配置模式
+interface//进入接口配置 quit退出到全局配置 return退出到特权
+//? tab键 查询命令 补全命令
+display history-command
+history-command
+max-size//修改缓存命令行的大小
+50
+switch langunge-mode//中英文命令模式切换
+
+terminal user-profile（个人资料）  add //增加一个用户模板
+terminal user name//增加一个用户
+display terminal user all 
+display client //查询当前在线用户
+client kickoff //踢出用户
+1//用户id
+undo terminal user name//删除用户
+
+sysname olt_bazhong
+frame set//机架设置
+display frame info 0//查询机框信息
+display board 0/0/8 //查询指定槽位单板信息 框 槽 端口
+board add //增加单板
+0/4 
+board confirm 0//确认所有单板 
+board delete  删除单板
+board reset   复位单板
+board prohibt 禁用单板
+undo  board prohibt 解除禁用单板
+
+//带外管理操作步骤如下：
+interface  meth 0//进入维护网口模式
+ip address 10.10.20.1 255.255.255.0//设置维护网口ip地址
+quit 
+ip route-static  10.10.21.0  24  10.10.20.254  //目的 掩码 下一跳
+//带内管理操作步骤 
+valan 4000 smart //创建管理vlan smart vlan是所有业务板共用一个vlan
+port vlan 4000 0/19 0//添加上行端口
+interface vlanif 4000//当交换机需要与网络层的设备通信时，可以在交换机上创建基于VLAN的逻辑接口，即VLANIF接口。VLANIF接口属于逻辑接口，逻辑接口是指物理上不存在且需要通过配置建立的接口。
+ip address 10.10.30.1 255.255.255.0//设置管理vlann 接口ip地址
+quit
+ip route-static 0.0.0.0 0.0.0.0  10.10.30.254 
+
+display ip interface  brief //查询设备所有ip地址 
+display ip interface  meth 0 //查询设备某个ip地址
+display interface  meth 0//查询硬件地址mac
+
+//配置安全策略
+firewall enable //打开防火墙系统
+acl 3000 
+rule 5 permit ip source 10.10.21.0 0.0.0.255 destination 10.10.20.1 0//允许远程管理终端10.10.21.0 /24  这个网段的可以访问设备
+rule 10 deny ip source 10.10.21.1 0//禁止了一个网段内的ip最后一个0代表严格匹配
+//应用安全策略
+interface vlanif 4000
+firewall packet-filter(包过滤器) 3000   inbound （入站）
+interface meth 0
+firewall packet-filter(包过滤器) 3000   inbound （入站）
+
+telnet 安全策略
+sysman ip-access
+telnet
+10.10.21.1//起始
+10.10.21.5//终止</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>用户通过绑定相应的用户模板来执行对账号的登录时间控制</p></li>
 </ul>
 
     </div>
