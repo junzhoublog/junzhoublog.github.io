@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:30&#43;08:00" />
-<meta itemprop="wordCount" content="2408">
+<meta itemprop="wordCount" content="2619">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 2408 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2619 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -382,6 +382,9 @@ telnet
 </span><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
 </span></pre></td>
 <td class="lntd">
 <pre class="chroma">display dba-profile all //查询已存在的dba资料
@@ -389,7 +392,10 @@ dba-profile  add profile-id //增加一个新的dba模板
 
 ont-lineprofile gpon profile-id //增加ont线路模板
 tcont//在线路模板下tcont绑定dba模板
-gem//增加gem port 并映射到对应的tcont 
+2
+dba-profile-id
+22
+gem//增加gem port 绑定到对应的tcont 
 
 mapping-mode //配置映射模式 
 vlan //选择vlan
@@ -436,18 +442,18 @@ snmp-profile
 <h3 id="valan-三种类型">valan 三种类型</h3>
 
 <ul>
-<li>standard valan只能包含以太网口不能包含gpon业务虚端口。</li>
-<li>smart valan 可以包含多个上行端口及业务虚端口。一对多</li>
+<li>standard valan只能包含以太网口不能包含gpon业务虚端口。主要用于级联，上行与下行都是以太网口</li>
+<li>smart valan 可以包含多个上行端口及多个业务虚端口。一个vlan对多业务虚端口。主要用于减少对系统vlan数量的占用</li>
 
-<li><p>mux valan 可以包含多个上行端口但只能包含一个业务虚端口。一对一</p>
+<li><p>mux valan 可以包含多个上行端口但只能包含一个业务虚端口。一个vlan对一个业务虚端口</p>
 
 <h3 id="valan-三种属性">valan 三种属性</h3></li>
 
-<li><p>common 只带有一个vlan标签</p></li>
+<li><p>common 只带有一个vlan标签 默认属性</p></li>
 
-<li><p>QinQ  私网的内层vlan +huawei分配的外层valan 实现vpn</p></li>
+<li><p>QinQ  私网的内层vlan在公网穿透 +huawei分配的外层valan 通常用来开展专线业务，或对用户进行精确绑定。可以通过外层vlan在用户私网间形成二层vpn隧道，实现私网间业务透明传输。也可以通过vlan精确绑定用户或区分业务类型。宽带</p></li>
 
-<li><p>stacking huawei分配的内外两层valan标签</p>
+<li><p>stacking huawei分配的内外两层valan标签 应用于vlan数目的扩展，在上层网络二层工作模式中可以直接通过外层vlan 进行报文转发，提供批发业务能力。iptv</p>
 
 <h3 id="gpon上行复用结构">gpon上行复用结构</h3></li>
 
