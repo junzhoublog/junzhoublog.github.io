@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:30&#43;08:00" />
-<meta itemprop="wordCount" content="2619">
+<meta itemprop="wordCount" content="2677">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 2619 字 </span>
+          <span class="more-meta"> 约 2677 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -148,8 +148,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#valan-三种类型">valan 三种类型</a></li>
-<li><a href="#valan-三种属性">valan 三种属性</a></li>
+<li><a href="#vlan-三种类型">vlan 三种类型</a></li>
+<li><a href="#vlan-三种属性">vlan 三种属性</a></li>
 <li><a href="#gpon上行复用结构">gpon上行复用结构</a></li>
 </ul></li>
 </ul></li>
@@ -439,7 +439,7 @@ snmp-profile
 
 <h1 id="gpon-宽带业务开通与配置">gpon 宽带业务开通与配置</h1>
 
-<h3 id="valan-三种类型">valan 三种类型</h3>
+<h3 id="vlan-三种类型">vlan 三种类型</h3>
 
 <ul>
 <li>standard valan只能包含以太网口不能包含gpon业务虚端口。主要用于级联，上行与下行都是以太网口</li>
@@ -447,11 +447,11 @@ snmp-profile
 
 <li><p>mux valan 可以包含多个上行端口但只能包含一个业务虚端口。一个vlan对一个业务虚端口</p>
 
-<h3 id="valan-三种属性">valan 三种属性</h3></li>
+<h3 id="vlan-三种属性">vlan 三种属性</h3></li>
 
 <li><p>common 只带有一个vlan标签 默认属性</p></li>
 
-<li><p>QinQ  私网的内层vlan在公网穿透 +huawei分配的外层valan 通常用来开展专线业务，或对用户进行精确绑定。可以通过外层vlan在用户私网间形成二层vpn隧道，实现私网间业务透明传输。也可以通过vlan精确绑定用户或区分业务类型。宽带</p></li>
+<li><p>QinQ  私网的内层vlan在公网穿透 +huawei分配的外层valan 通常用来开展专线业务，或对用户进行精确绑定。可以通过外层vlan在用户私网间形成二层vpn隧道，实现私网间业务透明传输。也可以通过vlan精确绑定用户或区分业务类型。宽带 onu为为报文加上私网的vlantag,并上行发送到olt,olt为报文加上公网vlantag，并继续送到上行网络。</p></li>
 
 <li><p>stacking huawei分配的内外两层valan标签 应用于vlan数目的扩展，在上层网络二层工作模式中可以直接通过外层vlan 进行报文转发，提供批发业务能力。iptv</p>
 

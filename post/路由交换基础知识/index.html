@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:08&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:08&#43;08:00" />
-<meta itemprop="wordCount" content="1521">
+<meta itemprop="wordCount" content="1639">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 1521 字 </span>
+          <span class="more-meta"> 约 1639 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
@@ -172,6 +172,8 @@ Hybrid端口和Trunk端口属于多个VLAN，所以需要设置缺省VLAN ID。�
 <li>GRE通用路由封装协议，一种协议的报文封装在另一种协议的报文中，解决异种网络传输问题。</li>
 <li>napt:实现多个私有地址通过不同端口号映射到同一个公网地址。</li>
 <li>ip 划分有dhcp动态  vlan 划分有grvp动态<br /></li>
+<li>二层vpn业务没有路由转发，各点用户ip地址在同一网段。电信侧只能看mac地址，排查故障困难。</li>
+<li>三层vpn加入了bras各点用户ip地址分别在不同的网段。电信侧能看到mac地址和arp信息，可对用户设备进行ping测，能对路由表进行控制。</li>
 </ul>
 
     </div>
