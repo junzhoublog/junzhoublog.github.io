@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:30&#43;08:00" />
-<meta itemprop="wordCount" content="2677">
+<meta itemprop="wordCount" content="2919">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 2677 字 </span>
+          <span class="more-meta"> 约 2919 字 </span>
           <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
@@ -453,11 +453,16 @@ snmp-profile
 
 <li><p>QinQ  私网的内层vlan在公网穿透 +huawei分配的外层valan 通常用来开展专线业务，或对用户进行精确绑定。可以通过外层vlan在用户私网间形成二层vpn隧道，实现私网间业务透明传输。也可以通过vlan精确绑定用户或区分业务类型。宽带 onu为为报文加上私网的vlantag,并上行发送到olt,olt为报文加上公网vlantag，并继续送到上行网络。</p></li>
 
-<li><p>stacking huawei分配的内外两层valan标签 应用于vlan数目的扩展，在上层网络二层工作模式中可以直接通过外层vlan 进行报文转发，提供批发业务能力。iptv</p>
+<li><p>stacking huawei分配的内外两层valan标签 应用于vlan数目的扩展，在上层网络二层工作模式中可以直接通过外层vlan 进行报文转发，提供批发业务能力。iptv</p></li>
 
-<h3 id="gpon上行复用结构">gpon上行复用结构</h3></li>
+<li><p>传统QinQ业务简单的说就是在原有的802.1Q的报文基础上，再增加一层802.1Q标签头，从而实现私网VLAN透传公网达到二层VPN的应用效果。另一方面它还具有不同私网用户之间相同VLAN不透传，与公网有效分离，最大限度节省VLAN等特点，VLAN Stacking具有QinQ这些优点外更克服了传统QinQ无选择（这里指传统QinQ不会理会报文属于哪个vlan，对所有进入QinQ的端口的带vlan tag标记的报文统一加上第二层tag标签）封装外层标签的缺点。
+在运营商的某些应用场合</p></li>
+</ul>
 
-<li><p>一个pon口可连接多个onu ,一个onu可包含多个t-cont ,一个t-cont包含多个gem port,每个gem port承载一种业务流，上行带宽基于t-cont来划分。gem帧在olt 与onu之间传送。gem port与业务流映射 valan id 或者 优先级</p></li>
+<h3 id="gpon上行复用结构">gpon上行复用结构</h3>
+
+<ul>
+<li>一个pon口可连接多个onu ,一个onu可包含多个t-cont ,一个t-cont包含多个gem port,每个gem port承载一种业务流，上行带宽基于t-cont来划分。gem帧在olt 与onu之间传送。gem port与业务流映射 valan id 或者 优先级</li>
 
 <li><p>A类onu的配置 宽带业务配置</p>
 <div class="highlight"><div class="chroma">
