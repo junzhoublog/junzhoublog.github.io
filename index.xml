@@ -26,7 +26,7 @@
       <pubDate>Tue, 07 Jul 2020 08:01:18 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-      <description></description>
+      <description>天翼云实操 云计算的核心是资源池化 snat:原地址转换，将内部地址转换成公有ip,内部地址访问公网上的服务。dnat:目标地址转换，内部对外提</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Thu, 25 Jun 2020 07:34:42 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A/</guid>
-      <description>云计算基础概念 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络 计算 存储 软件资源服务卖个企业。 基础设施服务IAAS（云操作</description>
+      <description>云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络 计算 存储 资源通过软件定义把服务卖个用户。 基础设施服务IAAS（</description>
     </item>
     
     <item>
