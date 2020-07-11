@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="周军" /><meta name="description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络 计算 存储 资源通过软件定义把服务卖个用户。 基础设施服务IAAS（" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="周军" /><meta name="description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="云数据中心技术应知应会" />
-<meta property="og:description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络 计算 存储 资源通过软件定义把服务卖个用户。 基础设施服务IAAS（" />
+<meta property="og:description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A/" />
 <meta property="article:published_time" content="2020-06-25T07:34:42+08:00" />
 <meta property="article:modified_time" content="2020-06-25T07:34:42+08:00" />
 <meta itemprop="name" content="云数据中心技术应知应会">
-<meta itemprop="description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络 计算 存储 资源通过软件定义把服务卖个用户。 基础设施服务IAAS（">
+<meta itemprop="description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础">
 
 
 <meta itemprop="datePublished" content="2020-06-25T07:34:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:34:42&#43;08:00" />
-<meta itemprop="wordCount" content="589">
+<meta itemprop="wordCount" content="1051">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="云数据中心技术应知应会"/>
-<meta name="twitter:description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络 计算 存储 资源通过软件定义把服务卖个用户。 基础设施服务IAAS（"/>
+<meta name="twitter:description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 589 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1051 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -141,6 +141,11 @@
     <nav id="TableOfContents">
 <ul>
 <li><a href="#云计算基础">云计算基础</a></li>
+<li><a href="#vmware">vmware</a></li>
+<li><a href="#openstack">openstack</a></li>
+<li><a href="#docker">docker</a></li>
+<li><a href="#存储">存储</a></li>
+<li><a href="#自动化运维">自动化运维</a></li>
 </ul>
 </nav>
   </div>
@@ -151,21 +156,58 @@
 <h1 id="云计算基础">云计算基础</h1>
 
 <ul>
-<li>软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络 计算 存储 资源通过软件定义把服务卖个用户。 基础设施服务IAAS（云操作系统） 平台服务PAAS（开发工具云部署） 应用软件服务SAAS。</li>
+<li>软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础设施服务IAAS（云操作系统） 平台服务PAAS（开发工具云部署） 应用软件服务SAAS。</li>
 <li>公有云 私有云 混合云</li>
 <li>x86复杂指令级服务器。</li>
 <li><img src="/img/云计算/云计算.png" alt="云计算" /></li>
 <li>云数据中心基本结构：由1.存储器2.服务器3.网络4.控制节点5.出口路由。</li>
-<li>云操作系统：openstack由NASA，Rackspace研发的开源,vmware由戴尔收费的,飞天（Apsara）由阿里云自主研发.</li>
-<li># vmware</li>
-<li>vmware组件包括ESXI,Vcenterserver.</li>
-<li>部署虚拟机可以用模板快速配置，可动态增加虚拟磁盘大小，快照保存之前系统状态信息快速恢复到之前是一种临时处理方法不，不能代替备份。</li>
-<li>vmware vmotion可以实现虚拟机的动态迁移，而服务不中断。Storage vMotion存储迁移。</li>
-<li>vmware容灾备份技术：vspher HA ,FT,DRS.</li>
-<li># openstack</li>
-<li>swift（对象存储服务）+nova(计算服务)=openstack glance(镜像服务) neutron(网络服务)keystone(身份认证服务)celimeter(计量服务)</li>
-<li>nova:常用术语kvm内核虚拟化,Qemu kvm的替补角色,flavor虚拟机模板，keypair ssh连接访问的实例秘钥对。架构</li>
-<li>swift:zone可用区region地域node节点culster群集。</li>
+
+<li><p>云操作系统：openstack由NASA，Rackspace研发的开源,vmware由戴尔收费的,飞天（Apsara）由阿里云自主研发.</p>
+
+<h1 id="vmware">vmware</h1></li>
+
+<li><p>vmware组件包括ESXI,Vcenterserver.</p></li>
+
+<li><p>部署虚拟机可以用模板快速配置，可动态增加虚拟磁盘大小，快照保存之前系统状态信息快速恢复到之前是一种临时处理方法不，不能代替备份。</p></li>
+
+<li><p>vmware vmotion可以实现虚拟机的动态迁移，而服务不中断。Storage vMotion存储迁移。</p></li>
+
+<li><p>vmware容灾备份技术：vspher HA ,FT,DRS.</p>
+
+<h1 id="openstack">openstack</h1></li>
+
+<li><p>swift（对象存储服务）+nova(计算服务)=openstack glance(镜像服务) neutron(网络服务)keystone(身份认证服务)celimeter(计量服务)</p></li>
+
+<li><p>nova:常用术语kvm内核虚拟化,Qemu kvm的替补角色,flavor虚拟机模板，keypair ssh连接访问的实例秘钥对。架构</p></li>
+
+<li><p>swift:zone可用区region地域node节点culster群集。</p></li>
+
+<li><p>mpls:ip+atm=mpls标签转发，效率更高。pe到pe之间使用mpls.</p>
+
+<h1 id="docker">docker</h1></li>
+
+<li><p>虚拟化：使得多个操作系统在单个系统上运行。docker(容器):在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。</p>
+
+<h1 id="存储">存储</h1></li>
+
+<li><p>磁盘阵列：RAID，磁盘阵列是由很多块独立的磁盘，组合成一个容量巨大的磁盘组，利用个别磁盘提供数据所产生加成效果提升整个磁盘系统效能。</p></li>
+
+<li><p>存储阵列：控制框加硬盘框组成。</p></li>
+
+<li><p>存储结构：<br />
+1.DAS: 直接连接存储。<br />
+2.NAS：网络连接存储，有自己的文件系统。<br />
+3.SAN：存储区域存储，搭建存储系统，文件系统在主机一侧。</p></li>
+
+<li><p>大数据：指在无法可承受的时间范围内，用常规软件工具进行捕捉、管理和处理数据的集合。<em>要用对象存储技术。</em></p></li>
+
+<li><p>备份容灾技术：1.D2D备份，   用SAN(FC/IP/SAS)的存储结构，主盘和备份盘都是磁盘阵列。2.D2T备份，磁盘阵列到磁带库备份。3.D2V备份，磁盘阵列到虚拟磁带库。4.D2D2T备份，磁盘到虚拟磁带库到物理磁带库。</p></li>
+
+<li><p>云计算标准定义：通过internet以服务方式提供动态可伸缩的虚拟化资源。</p>
+
+<h1 id="自动化运维">自动化运维</h1></li>
+
+<li></li>
 </ul>
 
     </div>
