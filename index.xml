@@ -6,7 +6,7 @@
     <description>Recent content on Zhou Jun&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 Jul 2020 08:01:18 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 21:10:45 +0800</lastBuildDate>
     
 	<atom:link href="https://junzhoublog.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,12 +21,21 @@
     </item>
     
     <item>
+      <title>每日问题记录</title>
+      <link>https://junzhoublog.github.io/post/%E6%AF%8F%E6%97%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 13 Jul 2020 21:10:45 +0800</pubDate>
+      
+      <guid>https://junzhoublog.github.io/post/%E6%AF%8F%E6%97%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</guid>
+      <description>1.ip mpls vlan vxlan? 2.</description>
+    </item>
+    
+    <item>
       <title>2020年云网融合学习笔记</title>
       <link>https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Tue, 07 Jul 2020 08:01:18 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-      <description>天翼云实操 云计算的核心是资源池化 snat:原地址转换，将内部地址转换成公有ip,内部地址访问公网上的服务。dnat:目标地址转换，内部对外提</description>
+      <description>天翼云实操 云计算的核心是资源池化 snat: 原地址转换，将内部地址转换成公有ip, 内部地址访问公网上的服务。dnat: 目标地址转换，内部对外提供服务，</description>
     </item>
     
     <item>
