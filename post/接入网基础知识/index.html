@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:30&#43;08:00" />
-<meta itemprop="wordCount" content="2923">
+<meta itemprop="wordCount" content="3258">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 2923 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3258 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -155,6 +155,7 @@
 </ul></li>
 <li><a href="#gpon-语音业务开通与配置">gpon 语音业务开通与配置</a></li>
 <li><a href="#odn-链路检测">odn 链路检测</a></li>
+<li><a href="#新增板卡规划数据-操作流程">新增板卡规划数据__操作流程</a></li>
 </ul>
 </nav>
   </div>
@@ -486,6 +487,89 @@ snmp-profile
 
 <h1 id="odn-链路检测">odn 链路检测</h1>
 
+<h1 id="新增板卡规划数据-操作流程">新增板卡规划数据__操作流程</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">一、确定链路
+1.display lldp neighbor brief /
+display current-configuration section port/
+display current-configuration section port-config
+2.display current-configuration section bbs/display current-configuration section vlan
+
+3.show running-config-interface gei-0/2/0/3
+4.show lldp neighbor/show interface description | include uT
+
+5.1 display current-configuration section vlan (olt去)  
+5.2display current-configuration interface GigabitEthernet 1/0/2
+6. display vlan 2154
+7. display current-configuration interface Eth-Trunk 9
+
+8.display current-configuration interface GigabitEthernet 14/0/1
+display current-configuration interface Eth-Trunk 29
+display interface Eth-Trunk 29
+二、	规划vlan
+1. 1display vlan summary     //进bas下联第一个设备dsw
+1.2display vlan 2450 display mac-addres vlan 2450 
+2. vlan batch 2150 2450 2550 2750 3250
+3. 上行口：
+interface Eth-Trunk 9  
+display this
+port trunk allow-pass vlan 2150 2450 2550 2750 3250
+下行口：
+interface XGigabitEthernet 4/0/0
+display this
+port hybrid tagged vlan2150 2450 2550 2750 3250
+4. display current-configuration interface Eth-Trunk 29.45  //进bas  .45 .43 .46依次看
+user-vlan 45 qinq 2450
+5. display current-configuration | begin interface Eth-Trunk29.//不能有空格
+6．再进入交换机依次如上3步骤
+三、	Olt脚本导入config下
+1.	替换vlan id
+2.	替换链路主端口槽位号0/17
+3.	替换新增板卡槽位号epon 0/3
+4.	替换TEST03</pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
