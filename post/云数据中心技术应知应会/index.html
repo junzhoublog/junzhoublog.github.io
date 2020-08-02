@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:34:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:34:42&#43;08:00" />
-<meta itemprop="wordCount" content="1349">
+<meta itemprop="wordCount" content="1311">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 1349 字 </span>
+          <span class="more-meta"> 约 1311 字 </span>
           <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
@@ -159,64 +159,69 @@
 <li>软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础设施服务IAAS（云操作系统openstack） 平台服务PAAS（开发工具云部署docker） 应用软件服务SAAS。</li>
 <li>公有云 私有云 混合云</li>
 <li>x86复杂指令级服务器。</li>
-<li><img src="/img/云计算/云计算.png" alt="云计算" /></li>
-<li>云数据中心基本结构：由1.存储器2.服务器3.网络4.控制节点5.出口路由。</li>
+<li></li>
+</ul>
 
-<li><p>云操作系统：openstack由NASA，Rackspace研发的开源,vmware由戴尔收费的,飞天（Apsara）由阿里云自主研发.</p>
+<p><img src="/img/云计算/云计算.png" alt="云计算" /></p>
 
-<h1 id="vmware">vmware</h1></li>
+<ul>
+<li>云数据中心基本结构：由1. 存储器2. 服务器3. 网络4. 控制节点5. 出口路由。</li>
+<li>云操作系统：openstack由NASA，Rackspace研发的开源, vmware由戴尔收费的, 飞天（Apsara）由阿里云自主研发.</li>
+</ul>
 
-<li><p>vmware组件包括ESXI,Vcenterserver.</p></li>
+<h1 id="vmware">vmware</h1>
 
-<li><p>部署虚拟机可以用模板快速配置，可动态增加虚拟磁盘大小，快照保存之前系统状态信息快速恢复到之前是一种临时处理方法不，不能代替备份。</p></li>
+<ul>
+<li>vmware组件包括ESXI, Vcenterserver.</li>
+<li>部署虚拟机可以用模板快速配置，可动态增加虚拟磁盘大小，快照保存之前系统状态信息快速恢复到之前是一种临时处理方法不，不能代替备份。</li>
+<li>vmware vmotion可以实现虚拟机的动态迁移，而服务不中断。Storage vMotion存储迁移。</li>
+<li>vmware容灾备份技术：vspher HA , FT, DRS.</li>
+</ul>
 
-<li><p>vmware vmotion可以实现虚拟机的动态迁移，而服务不中断。Storage vMotion存储迁移。</p></li>
+<h1 id="openstack">openstack</h1>
 
-<li><p>vmware容灾备份技术：vspher HA ,FT,DRS.</p>
+<ul>
+<li>swift（对象存储服务）+nova(计算服务)=openstack glance(镜像服务) neutron(网络服务overlay网络)keystone(身份认证服务)celimeter(计量服务)</li>
+<li>nova: 常用术语kvm内核虚拟化, Qemu kvm的替补角色, flavor虚拟机模板，keypair ssh连接访问的实例秘钥对。架构</li>
+<li>swift:zone可用区region地域node节点culster群集。</li>
+<li>mpls:ip+atm=mpls标签转发，效率更高。pe到pe之间使用mpls.</li>
+</ul>
 
-<h1 id="openstack">openstack</h1></li>
+<h1 id="docker">docker</h1>
 
-<li><p>swift（对象存储服务）+nova(计算服务)=openstack glance(镜像服务) neutron(网络服务overlay网络)keystone(身份认证服务)celimeter(计量服务)</p></li>
+<ul>
+<li>虚拟化：使得多个操作系统在单个系统上运行。docker(容器): 在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。</li>
+</ul>
 
-<li><p>nova:常用术语kvm内核虚拟化,Qemu kvm的替补角色,flavor虚拟机模板，keypair ssh连接访问的实例秘钥对。架构</p></li>
+<h1 id="存储">存储</h1>
 
-<li><p>swift:zone可用区region地域node节点culster群集。</p></li>
+<ul>
+<li>磁盘阵列：RAID，磁盘阵列是由很多块独立的磁盘，组合成一个容量巨大的磁盘组，利用个别磁盘提供数据所产生加成效果提升整个磁盘系统效能。</li>
+<li>存储阵列：控制框加硬盘框组成。<br /></li>
+<li>存储结构：<br /></li>
+<li>DAS: 直接连接存储。<br /></li>
+<li>NAS：网络连接存储，有自己的文件系统。<br /></li>
+<li>SAN：存储区域存储，搭建存储系统，文件系统在主机一侧。<br /></li>
+<li>大数据：指在无法可承受的时间范围内，用常规软件工具进行捕捉、管理和处理数据的集合。<em>要用对象存储技术。</em></li>
+<li>备份容灾技术：1. D2D备份，   用SAN(FC/IP/SAS)的存储结构，主盘和备份盘都是磁盘阵列。2. D2T备份，磁盘阵列到磁带库备份。3. D2V备份，磁盘阵列到虚拟磁带库。4. D2D2T备份，磁盘到虚拟磁带库到物理磁带库。</li>
+<li>云计算标准定义：通过internet以服务方式提供动态可伸缩的虚拟化资源。</li>
+</ul>
 
-<li><p>mpls:ip+atm=mpls标签转发，效率更高。pe到pe之间使用mpls.</p>
+<h1 id="自动化运维">自动化运维</h1>
 
-<h1 id="docker">docker</h1></li>
+<ul>
+<li>系统部署：kickstart, cobbler, spacewalk. 自动化安装系统。</li>
+<li>运维管理者工具：Puppet、Chef、Ansible和SaltStack四大运维管理工具<br /></li>
+</ul>
 
-<li><p>虚拟化：使得多个操作系统在单个系统上运行。docker(容器):在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。</p>
-
-<h1 id="存储">存储</h1></li>
-
-<li><p>磁盘阵列：RAID，磁盘阵列是由很多块独立的磁盘，组合成一个容量巨大的磁盘组，利用个别磁盘提供数据所产生加成效果提升整个磁盘系统效能。</p></li>
-
-<li><p>存储阵列：控制框加硬盘框组成。</p></li>
-
-<li><p>存储结构：<br />
-1.DAS: 直接连接存储。<br />
-2.NAS：网络连接存储，有自己的文件系统。<br />
-3.SAN：存储区域存储，搭建存储系统，文件系统在主机一侧。</p></li>
-
-<li><p>大数据：指在无法可承受的时间范围内，用常规软件工具进行捕捉、管理和处理数据的集合。<em>要用对象存储技术。</em></p></li>
-
-<li><p>备份容灾技术：1.D2D备份，   用SAN(FC/IP/SAS)的存储结构，主盘和备份盘都是磁盘阵列。2.D2T备份，磁盘阵列到磁带库备份。3.D2V备份，磁盘阵列到虚拟磁带库。4.D2D2T备份，磁盘到虚拟磁带库到物理磁带库。</p></li>
-
-<li><p>云计算标准定义：通过internet以服务方式提供动态可伸缩的虚拟化资源。</p>
-
-<h1 id="自动化运维">自动化运维</h1></li>
-
-<li><p>系统部署：kickstart,cobbler,spacewalk.自动化安装系统。</p></li>
-
-<li><p>运维管理者工具：Puppet、Chef、Ansible和SaltStack四大运维管理工具<br />
-Ansible适合100台以下到200这样服务器规模应用<br />
+<p>Ansible适合100台以下到200这样服务器规模应用<br />
 SaltStack，适合几百台的规模！<br />
 puppet适合上千台和几万台的规模<br />
 chef国外用的多<br />
-chef和puppet是ruby系的，而salt和ansible是python系的</p></li>
+chef和puppet是ruby系的，而salt和ansible是python系的</p>
 
-<li><p>运维监控工具： 三大开源运维监控工具zabbix（企业用的多 Zabbix/ELK日志分析系统+Grafana）、nagios和open-falcon</p></li>
+<ul>
+<li>运维监控工具： 三大开源运维监控工具zabbix（企业用的多 Zabbix/ELK日志分析系统+Grafana）、nagios和open-falcon<br /></li>
 </ul>
 
     </div>
