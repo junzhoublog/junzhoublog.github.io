@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="周军" /><meta name="description" content="15.openstack验证组件 1. 2." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="周军" /><meta name="description" content="15.openstack验证组件(keystone) 1.两个主要功能：用户管理，（验证用户身份信息合法性）服务目录管理。（Service Ca" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="云技术专题" />
-<meta property="og:description" content="15.openstack验证组件 1. 2." />
+<meta property="og:description" content="15.openstack验证组件(keystone) 1.两个主要功能：用户管理，（验证用户身份信息合法性）服务目录管理。（Service Ca" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://junzhoublog.github.io/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/" />
 <meta property="article:published_time" content="2020-07-19T10:35:08+08:00" />
 <meta property="article:modified_time" content="2020-07-19T10:35:08+08:00" />
 <meta itemprop="name" content="云技术专题">
-<meta itemprop="description" content="15.openstack验证组件 1. 2.">
+<meta itemprop="description" content="15.openstack验证组件(keystone) 1.两个主要功能：用户管理，（验证用户身份信息合法性）服务目录管理。（Service Ca">
 
 
 <meta itemprop="datePublished" content="2020-07-19T10:35:08&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-19T10:35:08&#43;08:00" />
-<meta itemprop="wordCount" content="18">
+<meta itemprop="wordCount" content="221">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="云技术专题"/>
-<meta name="twitter:description" content="15.openstack验证组件 1. 2."/>
+<meta name="twitter:description" content="15.openstack验证组件(keystone) 1.两个主要功能：用户管理，（验证用户身份信息合法性）服务目录管理。（Service Ca"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-07-19 </span>
         
-          <span class="more-meta"> 约 18 字 </span>
+          <span class="more-meta"> 约 221 字 </span>
           <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
@@ -140,7 +140,8 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#15-openstack验证组件">15.openstack验证组件</a></li>
+<li><a href="#15-openstack验证组件-keystone">15.openstack验证组件(keystone)</a></li>
+<li><a href="#16-openstack计算组件-服务名-computer代码名-nova">16.OpenStack计算组件（服务名：computer代码名：Nova）</a></li>
 </ul>
 </nav>
   </div>
@@ -150,11 +151,15 @@
 
 <p><img src="/img/云计算/云计算思维导图.png" alt="云计算" /></p>
 
-<h1 id="15-openstack验证组件">15.openstack验证组件</h1>
+<h1 id="15-openstack验证组件-keystone">15.openstack验证组件(keystone)</h1>
 
 <ul>
-<li>1.</li>
-<li>2.</li>
+<li>1.两个主要功能：用户管理，（验证用户身份信息合法性）服务目录管理。（Service Catalog:包括service和endpoint）</li>
+<li>2.keystone基本概念：user、credentials、token(访问有效时间)、Role（acl集合）、Endpoint（一个url）。</li>
+
+<li><p>3.keystone验证流程</p>
+
+<h1 id="16-openstack计算组件-服务名-computer代码名-nova">16.OpenStack计算组件（服务名：computer代码名：Nova）</h1></li>
 </ul>
 
     </div>

@@ -26,7 +26,7 @@
       <pubDate>Sun, 19 Jul 2020 10:35:08 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/</guid>
-      <description>15.openstack验证组件 1. 2.</description>
+      <description>15.openstack验证组件(keystone) 1.两个主要功能：用户管理，（验证用户身份信息合法性）服务目录管理。（Service Ca</description>
     </item>
     
     <item>
