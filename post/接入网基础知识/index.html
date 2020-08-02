@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:30&#43;08:00" />
-<meta itemprop="wordCount" content="3253">
+<meta itemprop="wordCount" content="3251">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 3253 字 </span>
+          <span class="more-meta"> 约 3251 字 </span>
           <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
@@ -532,6 +532,8 @@ snmp-profile
 </span><span class="lnt">43
 </span><span class="lnt">44
 </span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
 </span></pre></td>
 <td class="lntd">
 <pre class="chroma">一、确定链路
@@ -569,16 +571,18 @@ display this
 port hybrid tagged vlan2150 2450 2550 2750 3250
 
 4. display current-configuration interface Eth-Trunk 29.45  //进bas  .45 .43 .46依次看
+
 user-vlan 45 qinq 2450
 
 5. display current-configuration | begin interface Eth-Trunk29.//不能有空格
 
 6．再进入交换机依次如上3步骤
 三、Olt脚本导入config下
-1.替换vlan id
-2.替换链路主端口槽位号0/17
-3.替换新增板卡槽位号epon 0/3
-4.替换TEST03</pre></td></tr></table>
+
+1. 替换vlan id
+2. 替换链路主端口槽位号0/17
+3. 替换新增板卡槽位号epon 0/3
+4. 替换TEST03</pre></td></tr></table>
 </div>
 </div>
     </div>
