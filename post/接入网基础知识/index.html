@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:30&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:30&#43;08:00" />
-<meta itemprop="wordCount" content="3251">
+<meta itemprop="wordCount" content="3512">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 3251 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 3512 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
     </header>
@@ -534,34 +534,68 @@ snmp-profile
 </span><span class="lnt">45
 </span><span class="lnt">46
 </span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">一、确定链路
+<pre class="chroma">一、	确定链路
 1.display lldp neighbor brief /
 display current-configuration section port/
 display current-configuration section port-config
+show running-config interface xgei_1/19/1
+show vlan-smart-qinq
+show vlan 2191
+show running-config interface xgei_1/20/1   
+//olt 多条链路确定走哪
+
 2.display current-configuration section bbs/display current-configuration section vlan
+show running-config section | include vlan  
+// olt确定主端口
 
-3.show running-config-interface gei-0/2/0/3
-4.show lldp neighbor/show interface description | include uT
+3.show interface description | include uT
+ // 查看bas的上联设备走
 
-5.1 display current-configuration section vlan (olt去)  
-5.2display current-configuration interface GigabitEthernet 1/0/2
+4.1 display current-configuration section vlan (olt去) 
+   show running-config section | include vlan 
+4.2display current-configuration interface GigabitEthernet 1/0/2
+show running-config-interface gei-0/2/0/3 
+4.3 display vlan 2154
+show vlan id 2191 
+show lldp neighbor|show/display interface description | include uT  
+//dsw确定走哪个上联设备olt去找一个vlan id 或者直接再bas上进端口查看配置信息看vlan id
 
-6. display vlan 2154
-7. display current-configuration interface Eth-Trunk 9
+5. display current-configuration interface Eth-Trunk 9
 
-8.display current-configuration interface GigabitEthernet 14/0/1
-display current-configuration interface Eth-Trunk 29
+display current-configuration interface GigabitEthernet 14/0/1
 display interface Eth-Trunk 29
-二、规划vlan
-1.1display vlan summary     //进bas下联第一个设备dsw
-1.2display vlan 2450 display mac-addres vlan 2450 
+二、	规划vlan
 
-2. vlan batch 2150 2450 2550 2750 3250
+1. 1display vlan summary     //进bas下联第一个设备dsw 看vlan使用情况
 
-3. 
-上行口：
+1.2display vlan 2450 /display mac-addres vlan 2450 //查看该vlan创建了是否使用
+  display current-configuration interface Eth-Trunk 0 
+
+2. vlan batch 2150 2450 2550 2750 3250  //创建vlan
+3. 上行口：//dsw上vlan规划
+
 interface Eth-Trunk 9  
 display this
 port trunk allow-pass vlan 2150 2450 2550 2750 3250
@@ -569,20 +603,26 @@ port trunk allow-pass vlan 2150 2450 2550 2750 3250
 interface XGigabitEthernet 4/0/0
 display this
 port hybrid tagged vlan2150 2450 2550 2750 3250
-
-4. display current-configuration interface Eth-Trunk 29.45  //进bas  .45 .43 .46依次看
-
+4.1 display current-configuration interface Eth-Trunk 29.45 //进bas配置  .45 .43 .46依次看
 user-vlan 45 qinq 2450
+//存在某个业务.45走其他链路的情况
+4.2 display current-configuration | begin interface Eth-Trunk29.//不能有空格
 
-5. display current-configuration | begin interface Eth-Trunk29.//不能有空格
+5.show running-config interface xgei_2/25 //再进入交换机依次如上2步骤（要记得先创建vlan）
+switchport hybrid vlan 2133 tag
+三、	Olt脚本导入config下
+1.	替换vlan id
+2.	替换链路主端口槽位号0/17
+3.	替换新增板卡槽位号epon 0/3
+4.	替换TEST03
+四、	检查：
+show vlan-smart-qinq ingress-port epon-olt_1/15/3
+show vlan 2113
+display current-configuration section vl
+display vlan 2113
+五、	回复：
 
-6．再进入交换机依次如上3步骤
-三、Olt脚本导入config下
-
-1. 替换vlan id
-2. 替换链路主端口槽位号0/17
-3. 替换新增板卡槽位号epon 0/3
-4. 替换TEST03</pre></td></tr></table>
+       数据已规划，请尽快录入资源。 </pre></td></tr></table>
 </div>
 </div>
     </div>
