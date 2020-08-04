@@ -30,6 +30,24 @@
     </item>
     
     <item>
+      <title>2020年云网融合学习笔记</title>
+      <link>https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 18 Jul 2020 08:01:18 +0800</pubDate>
+      
+      <guid>https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>天翼云实操 云计算的核心是资源池化 snat: 原地址转换，将内部地址转换成公有ip, 内部地址访问公网上的服务。dnat: 目标地址转换，内部对外提供服务，</description>
+    </item>
+    
+    <item>
+      <title>云数据中心技术应知应会</title>
+      <link>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A/</link>
+      <pubDate>Fri, 17 Jul 2020 07:34:42 +0800</pubDate>
+      
+      <guid>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A/</guid>
+      <description>云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础</description>
+    </item>
+    
+    <item>
       <title>每日问题记录</title>
       <link>https://junzhoublog.github.io/post/%E6%AF%8F%E6%97%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Mon, 13 Jul 2020 21:10:45 +0800</pubDate>
@@ -39,30 +57,12 @@
     </item>
     
     <item>
-      <title>2020年云网融合学习笔记</title>
-      <link>https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Tue, 07 Jul 2020 08:01:18 +0800</pubDate>
-      
-      <guid>https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-      <description>天翼云实操 云计算的核心是资源池化 snat: 原地址转换，将内部地址转换成公有ip, 内部地址访问公网上的服务。dnat: 目标地址转换，内部对外提供服务，</description>
-    </item>
-    
-    <item>
       <title>传输网基础知识</title>
       <link>https://junzhoublog.github.io/post/%E4%BC%A0%E8%BE%93%E7%BD%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 26 Jun 2020 20:08:06 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/%E4%BC%A0%E8%BE%93%E7%BD%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>pdh———&amp;gt;sdh(同步数字传输系统)——&amp;gt;ptn=分组技术+sdh ——&amp;gt;wdm（波分复用系统根据波长区分同时传）———</description>
-    </item>
-    
-    <item>
-      <title>云数据中心技术应知应会</title>
-      <link>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A/</link>
-      <pubDate>Thu, 25 Jun 2020 07:34:42 +0800</pubDate>
-      
-      <guid>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A/</guid>
-      <description>云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础</description>
     </item>
     
     <item>
