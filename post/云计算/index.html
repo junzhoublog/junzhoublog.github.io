@@ -167,7 +167,6 @@ IO虚拟化：完全虚拟化，焦点被哪个主机捕获就被哪个主机使
 <li>Kvm是一个linux内核的模块， 二型的：
 三种运行模式：1.guest mode此模式主要是指虚拟机置于一种受限的cpu模式下运行。2.user mode用户空间，此模式下运行的主要是QEMU, 模拟执行IO类操作请求。3.kernel mode内核空间，在此模式下可以真正的操作硬件。
 kvm组成：管理工具+内核模块+QEMU. 内核模块&lt;初始化cpu硬件，打开虚拟化模式, 运行在内核空间&gt; QEMU&lt;模拟io设备运行在用户空间, 升级版是Virtio，节省qemu模拟时所需的硬件资源，减少io请求的路径&gt;  管理工具&lt;<em>libvirt</em>&gt;</li>
-<li></li>
 </ol>
 
     </div>
