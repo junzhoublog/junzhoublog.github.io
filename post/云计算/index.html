@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="周军" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="周军" /><meta name="description" content="运营模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机监视器）也" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="云计算" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="运营模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机监视器）也" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://junzhoublog.github.io/post/%E4%BA%91%E8%AE%A1%E7%AE%97/" />
 <meta property="article:published_time" content="2020-08-04T13:35:28+08:00" />
 <meta property="article:modified_time" content="2020-08-04T13:35:28+08:00" />
 <meta itemprop="name" content="云计算">
-<meta itemprop="description" content="">
+<meta itemprop="description" content="运营模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机监视器）也">
 
 
 <meta itemprop="datePublished" content="2020-08-04T13:35:28&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-04T13:35:28&#43;08:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="766">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="云计算"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="运营模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机监视器）也"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-08-04 </span>
         
-          <span class="more-meta"> 约 0 字 </span>
-          <span class="more-meta"> 预计阅读 0 分钟 </span>
+          <span class="more-meta"> 约 766 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
         
       </div>
     </header>
@@ -138,11 +138,38 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#计算虚拟化-只是云计算的入门技术">计算虚拟化（只是云计算的入门技术）</a></li>
+</ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
       
+
+<ul>
+<li>运营模式：公有云 私有云 混合云</li>
+<li>服务模式：iaas paas  saas</li>
+</ul>
+
+<h1 id="计算虚拟化-只是云计算的入门技术">计算虚拟化（只是云计算的入门技术）</h1>
+
+<ol>
+<li>分类：
+一型虚拟化直接在硬件上安装vmm（虚拟机监视器）也被称为Hypervisor，vmware Esx server 、fusioncompute（华为的） xen(开源的，半虚拟化)
+二型虚拟化即宿主虚拟化在host os上安装vmm, vmware workstation、kvm(开源的，全虚拟化)
+无论一型还是二型都有的特点：分区、隔离、封装、独立。</li>
+<li>计算虚拟化三个维度：
+cpu虚拟化：半虚拟化效率高于全虚拟化。Cpu分级保护域，ring0 ring1 ring2 ring3 , 特权指令与普通指令，特权指令在ring0级别才能执行的指令，半虚拟化敏感指令只执行一次，闭源操作系统不支持半虚拟化。硬件虚拟化完美解决方法：分为root与非root两种，非root对应guestos  root对应hostos。
+内存虚拟化：内存地址从0开始且只有一个0开始的地址，且是连续的，解决办法地址映射，真实的物理内存映射给虚拟机，
+IO虚拟化：完全虚拟化，焦点被哪个主机捕获就被哪个主机使用。半虚拟化，对硬件驱动直接由前端直接转到后端调用。IO透传：直接分配给虚拟机物理设备。</li>
+<li>Kvm是一个linux内核的模块， 二型的：
+三种运行模式：1.guest mode此模式主要是指虚拟机置于一种受限的cpu模式下运行。2.user mode用户空间，此模式下运行的主要是QEMU, 模拟执行IO类操作请求。3.kernel mode内核空间，在此模式下可以真正的操作硬件。
+kvm组成：管理工具+内核模块+QEMU. 内核模块&lt;初始化cpu硬件，打开虚拟化模式, 运行在内核空间&gt; QEMU&lt;模拟io设备运行在用户空间, 升级版是Virtio，节省qemu模拟时所需的硬件资源，减少io请求的路径&gt;  管理工具&lt;<em>libvirt</em>&gt;</li>
+<li></li>
+</ol>
+
     </div>
 
     <div class="post-copyright">
