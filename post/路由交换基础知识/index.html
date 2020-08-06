@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:08&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:08&#43;08:00" />
-<meta itemprop="wordCount" content="2573">
+<meta itemprop="wordCount" content="3129">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 2573 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 3129 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -192,8 +192,13 @@ Hybrid端口和Trunk端口属于多个VLAN，所以需要设置缺省VLAN ID。�
 <li>静态路由：在广播型的接口配置静态路由必须使用下一条地址，不能使用出接口。</li>
 <li>cdn基础：内容分发网，就近取得所需内容。iptv: 采用单播组播方式不用广播方式了。</li>
 <li>DPI：深度报文检测，基于应用层的流量检测和控制技术，dpi系统通过深入读取ip包载荷的内容来对协议中应用层信息进行分析读取，进而识别各类型的应用。</li>
-<li>BFD是一种双向转发检测机制，可以提供毫秒级的检测，可以实现链路的快速检测，BFD通过与上层路由协议联动，可以实现路由的快速收敛，确保业务的永续性。
-
+<li>BFD是一种双向转发检测机制，可以提供毫秒级的检测，可以实现链路的快速检测，BFD通过与上层路由协议联动，可以实现路由的快速收敛，确保业务的永续性。</li>
+<li>segment routing(分段路由)，ip&ndash;&gt;mpls&ndash;&gt; SR.</li>
+<li>tunnel GRE隧道:GRE扩展了受调数限制的路由协议工作范围，tunnel异地两端建立虚拟隧道接口，数据流以明文方式传输。</li>
+<li>IPsec vpn 隧道：没有虚拟隧道接口，只传输单播数据流，vpn的封装是加密的。一般采用：tunnel被封装进ipsec vpn中。</li>
+<li>MPLS ：mpls数据平面标签转发简单高效，控制平面协议复杂、扩展性差、部署运维困难。转发面ldp依赖于igp导致交互复杂，转发面rsvp-TE信令非常复杂，每个节点都需要维护一个庞大的链路信息数据库。</li>
+<li>mpls vpn:MPLS　VPN的网络采用标签交换，一个标签对应一个用户数据流，非常易于用户间数据的隔离，利用区分服务体系可以轻易地解决困扰传统IP网络的QoS/CoS问题，MPLS自身提供流量工程的能力，可以最大限度地优化配置网络资源，自动快速修复网络故障，提供高可用性和高可靠性。MPLS提供了电信、计算机、有线电视网络三网融合的基础，除了ATM，是唯一可以提供高质量的数据、语音和视频相融合的多业务传送、包交换的网络平台。</li>
+<li>SR:称为下一代MPLS，去掉rsvp用一种集中控制平台交互信息，去掉Ldp直接由igp分发标签  中间机场不需要知道行李从哪来，最终去往哪里，而只需要根据标签转发。{MEX;MAD;TXL}
 <br /></li>
 </ul>
 
