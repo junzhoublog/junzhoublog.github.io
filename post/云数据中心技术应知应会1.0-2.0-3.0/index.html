@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>2020年云网融合学习笔记 - Zhou Jun&#39;s blog</title>
+  <title>云数据中心技术应知应会 - Zhou Jun&#39;s blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="周军" /><meta name="description" content="天翼云实操 云计算的核心是资源池化 snat: 原地址转换，将内部地址转换成公有ip, 内部地址访问公网上的服务。dnat: 目标地址转换，内部对外提供服务，" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="周军" /><meta name="description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.57.2 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
+<link rel="canonical" href="https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A1.0-2.0-3.0/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,26 +38,26 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="2020年云网融合学习笔记" />
-<meta property="og:description" content="天翼云实操 云计算的核心是资源池化 snat: 原地址转换，将内部地址转换成公有ip, 内部地址访问公网上的服务。dnat: 目标地址转换，内部对外提供服务，" />
+<meta property="og:title" content="云数据中心技术应知应会" />
+<meta property="og:description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://junzhoublog.github.io/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" />
-<meta property="article:published_time" content="2020-07-18T08:01:18+08:00" />
-<meta property="article:modified_time" content="2020-07-18T08:01:18+08:00" />
-<meta itemprop="name" content="2020年云网融合学习笔记">
-<meta itemprop="description" content="天翼云实操 云计算的核心是资源池化 snat: 原地址转换，将内部地址转换成公有ip, 内部地址访问公网上的服务。dnat: 目标地址转换，内部对外提供服务，">
+<meta property="og:url" content="https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A1.0-2.0-3.0/" />
+<meta property="article:published_time" content="2020-07-17T07:34:42+08:00" />
+<meta property="article:modified_time" content="2020-07-17T07:34:42+08:00" />
+<meta itemprop="name" content="云数据中心技术应知应会">
+<meta itemprop="description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础">
 
 
-<meta itemprop="datePublished" content="2020-07-18T08:01:18&#43;08:00" />
-<meta itemprop="dateModified" content="2020-07-18T08:01:18&#43;08:00" />
-<meta itemprop="wordCount" content="940">
+<meta itemprop="datePublished" content="2020-07-17T07:34:42&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-17T07:34:42&#43;08:00" />
+<meta itemprop="wordCount" content="1398">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="2020年云网融合学习笔记"/>
-<meta name="twitter:description" content="天翼云实操 云计算的核心是资源池化 snat: 原地址转换，将内部地址转换成公有ip, 内部地址访问公网上的服务。dnat: 目标地址转换，内部对外提供服务，"/>
+<meta name="twitter:title" content="云数据中心技术应知应会"/>
+<meta name="twitter:description" content="云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -124,13 +124,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">2020年云网融合学习笔记</h1>
+      <h1 class="post-title">云数据中心技术应知应会</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-07-18 </span>
+        <span class="post-time"> 2020-07-17 </span>
         
-          <span class="more-meta"> 约 940 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 1398 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
         
       </div>
     </header>
@@ -140,9 +140,12 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#天翼云实操">天翼云实操</a></li>
-<li><a href="#云专线">云专线</a></li>
-<li><a href="#数据中心网络基础">数据中心网络基础</a></li>
+<li><a href="#云计算基础">云计算基础</a></li>
+<li><a href="#vmware">vmware</a></li>
+<li><a href="#openstack">openstack</a></li>
+<li><a href="#docker">docker</a></li>
+<li><a href="#存储">存储</a></li>
+<li><a href="#自动化运维">自动化运维</a></li>
 </ul>
 </nav>
   </div>
@@ -150,74 +153,78 @@
     <div class="post-content">
       
 
-<h1 id="天翼云实操">天翼云实操</h1>
+<h1 id="云计算基础">云计算基础</h1>
 
 <ul>
-<li>云计算的核心是资源池化</li>
-<li>snat: 原地址转换，将内部地址转换成公有ip, 内部地址访问公网上的服务。dnat: 目标地址转换，内部对外提供服务，私有ip转公有ip代替内部服务来接收外部连接。</li>
+<li>软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础设施服务IAAS（云操作系统openstack） 平台服务PAAS（开发工具云部署docker） 应用软件服务SAAS。</li>
+<li>公有云 私有云 混合云</li>
+<li>x86复杂指令级服务器。
+
+<br /></li>
 </ul>
 
-<h1 id="云专线">云专线</h1>
+<p><img src="/img/云计算/云计算.png" alt="云计算" /></p>
 
 <ul>
-<li>STN业务是指以IP/MPLS协议及关键技术为基础，主要面向政企客户提供二层、三层通道类业务承载，由城域的A、B、ER等设备组成的端到端的业务承载网络，STN网络由接入层、汇聚层、城域核心层、省核心层组成，实现政来企业务点到点通道的业务承载。为保证网络以及承载业务的安全性，STN网络不能直接承载互联网业务。</li>
-<li>MSTP能够开展电信级的以太网业务，提供端到端的QoS保证，并具备网络的弹性；非常适合于提供政企客户业务。MSTP主要解决数据分组的高效传输问题，是对数据网进行优化和补充，可以根据业务需要取代接入层的部分数据路由设备。</li>
-<li>手机：VPDN云专线。无线：ipRAN云专线。  物联网：NB-LOT。</li>
-<li>跨省云专线：cn2云专线，chinaNet云网关。</li>
-<li>省内云专线：城域网pon云专线。</li>
-<li>天翼云内部资源池之间：DCI云灾备混合云。</li>
-<li>cn2: 传输骨干，采取mpls（多协议标签交换）实现vpn。</li>
-<li>三层vpn:ipsec vpn、gre vpn在接入层用，mpls vpn 、BGP VPN在主干转发层用。两用户之间不同网段。</li>
-<li>二层vpn:vpws大企业通过WAN广域网互连。vpls小企业通过城域网互连。两用户之间同一网段。</li>
-<li></li>
+<li>云数据中心基本结构：由1. 存储器2. 服务器3. 网络4. 控制节点5. 出口路由。</li>
+<li>云操作系统：openstack由NASA，Rackspace研发的开源, vmware由戴尔收费的, 飞天（Apsara）由阿里云自主研发.</li>
 </ul>
 
-<p><img src="/img/云计算/IPRAN云网融合开通流程.png" alt="云计算" /></p>
-
-<h1 id="数据中心网络基础">数据中心网络基础</h1>
+<h1 id="vmware">vmware</h1>
 
 <ul>
-<li>大数据中心：集中存放计算、存储、网络等设备的场所。</li>
-<li>数据中心分两种：一是企业数据中心(EDC)，二是互联网数据中心。（IDC）</li>
-<li>计算虚拟化：共用，独享，弹性主机。</li>
-<li>网络虚拟化：虚拟交换机+二层交换机(vlan)到虚拟交换机+三层交换机（vxlan）</li>
-<li>sdn: 软件定义网络，因安全配防火墙启发，转发与控制分离。openflow流表是核心。</li>
-<li>NFV: 网络功能虚拟化。</li>
-
-<li><p>sdn与nfv区别：NFV负责各种网元的虚拟化，而SDN负责网络本身的虚拟化。SDN解耦的是控制平面与数据平面; NFV主要是软硬件解耦。SDN和NFV的设计思想其实都是通过解耦来提高系统的灵活性，让系统变得更加智能。</p></li>
-
-<li></li>
+<li>vmware组件包括ESXI, Vcenterserver.</li>
+<li>部署虚拟机可以用模板快速配置，可动态增加虚拟磁盘大小，快照保存之前系统状态信息快速恢复到之前是一种临时处理方法不，不能代替备份。</li>
+<li>vmware vmotion可以实现虚拟机的动态迁移，而服务不中断。Storage vMotion存储迁移。</li>
+<li>vmware容灾备份技术：vspher HA , FT, DRS.</li>
 </ul>
 
-<p><img src="/img/云计算/天翼云网络架构.png" alt="云计算" /></p>
+<h1 id="openstack">openstack</h1>
 
 <ul>
-<li>VPC：虚拟私有云，天翼云（overlaysdn）架构SDN解决方案的呈现形式。</li>
-
-<li><p>sdn软件定义网络只是云计算的一部分内容网络部分的。</p></li>
-
-<li></li>
+<li>swift（对象存储服务）+nova(计算服务)=openstack glance(镜像服务) neutron(网络服务overlay网络)keystone(身份认证服务)celimeter(计量服务)</li>
+<li>nova: 常用术语kvm内核虚拟化, Qemu kvm的替补角色, flavor虚拟机模板，keypair ssh连接访问的实例秘钥对。架构</li>
+<li>swift:zone可用区region地域node节点culster群集。</li>
+<li>mpls:ip+atm=mpls标签转发，效率更高。pe到pe之间使用mpls.</li>
 </ul>
 
-<p><img src="/img/云计算/天翼云数据中心网络原理图.png" alt="云计算" /></p>
+<h1 id="docker">docker</h1>
 
 <ul>
-<li></li>
+<li>虚拟化：使得多个操作系统在单个系统上运行。</li>
+<li>docker(容器): 在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。解决了从开发环境到测试环境到运维环境直接拷贝就能用，针对同一套应用，用同样的各种库版本，用同样的环境变量，用同样的文件夹路径，配置文件就能保持一致。不需要安装全新的操作系统。</li>
 </ul>
 
-<p><img src="/img/云计算/云网融合全视图.png" alt="云计算" /></p>
+<h1 id="存储">存储</h1>
 
 <ul>
-<li></li>
+<li>磁盘阵列：RAID，磁盘阵列是由很多块独立的磁盘，组合成一个容量巨大的磁盘组，利用个别磁盘提供数据所产生加成效果提升整个磁盘系统效能。</li>
+<li>存储阵列：控制框加硬盘框组成。<br /></li>
+<li>存储结构：<br /></li>
+<li>DAS: 直接连接存储。<br /></li>
+<li>NAS：网络连接存储，有自己的文件系统。<br /></li>
+<li>SAN：存储区域存储，搭建存储系统，文件系统在主机一侧。<br /></li>
+<li>大数据：指在无法可承受的时间范围内，用常规软件工具进行捕捉、管理和处理数据的集合。<em>要用对象存储技术。</em></li>
+<li>备份容灾技术：1. D2D备份，   用SAN(FC/IP/SAS)的存储结构，主盘和备份盘都是磁盘阵列。2. D2T备份，磁盘阵列到磁带库备份。3. D2V备份，磁盘阵列到虚拟磁带库。4. D2D2T备份，磁盘到虚拟磁带库到物理磁带库。</li>
+<li>云计算标准定义：通过internet以服务方式提供动态可伸缩的虚拟化资源。</li>
 </ul>
 
-<p><img src="/img/云计算/云网融合全视图2.png" alt="云计算" /></p>
+<h1 id="自动化运维">自动化运维</h1>
 
 <ul>
-<li></li>
+<li>系统部署：kickstart, cobbler, spacewalk. 自动化安装系统。</li>
+<li>运维管理者工具：Puppet、Chef、Ansible和SaltStack四大运维管理工具<br /></li>
 </ul>
 
-<p><img src="/img/云计算/云网融合全视图3.png" alt="云计算" /></p>
+<p>Ansible适合100台以下到200这样服务器规模应用<br />
+SaltStack，适合几百台的规模！<br />
+puppet适合上千台和几万台的规模<br />
+chef国外用的多<br />
+chef和puppet是ruby系的，而salt和ansible是python系的</p>
+
+<ul>
+<li>运维监控工具： 三大开源运维监控工具zabbix（企业用的多 Zabbix/ELK日志分析系统+Grafana）、nagios和open-falcon<br /></li>
+</ul>
 
     </div>
 
@@ -229,7 +236,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-07-18
+        2020-07-17
         
     </span>
   </p>
@@ -239,13 +246,13 @@
 <footer class="post-footer">
       
       <nav class="post-nav">
-        <a class="prev" href="/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%981.0-2.0/">
+        <a class="prev" href="/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">云技术专题</span>
+            <span class="prev-text nav-default">2020年云网融合学习笔记</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
-        <a class="next" href="/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A1.0-2.0-3.0/">
-            <span class="next-text nav-default">云数据中心技术应知应会</span>
+        <a class="next" href="/post/%E6%AF%8F%E6%97%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+            <span class="next-text nav-default">每日问题记录</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
