@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-07-19T10:35:08&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-19T10:35:08&#43;08:00" />
-<meta itemprop="wordCount" content="1816">
+<meta itemprop="wordCount" content="3129">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-07-19 </span>
         
-          <span class="more-meta"> 约 1816 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 3129 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
         
       </div>
     </header>
@@ -147,8 +147,12 @@
 <li><a href="#12-云数据中心运维-ansible自动化运维">12. 云数据中心运维 ansible自动化运维：</a></li>
 <li><a href="#13-openstack基础">13.openstack基础</a></li>
 <li><a href="#14-云数据中心无人值守">14. 云数据中心无人值守：</a></li>
-<li><a href="#15-openstack验证组件-keystone">15.openstack验证组件(keystone)</a></li>
-<li><a href="#16-openstack计算组件-服务名-computer代码名-nova">16. OpenStack计算组件（服务名：computer代码名：Nova）</a></li>
+<li><a href="#15-openstack验证服务-keystone">15.openstack验证服务(keystone)</a></li>
+<li><a href="#16-openstack计算服务-服务名-computer代码名-nova">16. OpenStack计算服务（服务名：computer代码名：Nova）</a></li>
+<li><a href="#17-openstack块存储服务">17.OpenStack块存储服务</a></li>
+<li><a href="#17-openstack网络服务">17.OpenStack网络服务</a></li>
+<li><a href="#vmware-vsphere">Vmware vSphere</a></li>
+<li><a href="#华为fusionsphere">华为FusionSphere</a></li>
 </ul>
 </nav>
   </div>
@@ -235,24 +239,76 @@ vim /etc/hosts</p>
 
 <p><img src="/img/云计算/kickstart工作流程.png" alt="云计算" /></p>
 
-<h1 id="15-openstack验证组件-keystone">15.openstack验证组件(keystone)</h1>
+<h1 id="15-openstack验证服务-keystone">15.openstack验证服务(keystone)</h1>
+
+<p>0tials、token(访问有效时间)、Role（acl集合）、Endpoint（一个url）。
+* 3.keystone验证流程
+* 1.    其他组件的使用都依赖于验证组件, 类似一个服务总线，或者说是整个openstack框架的注册表。
+* 2.    两个功能：用户管理，服务目录管理。
+* 3.    User 用户 credentials凭证  token一串数字字符，引入令牌机制保护用户对资源的访问，token有时效性。</p>
+
+<h1 id="16-openstack计算服务-服务名-computer代码名-nova">16. OpenStack计算服务（服务名：computer代码名：Nova）</h1>
 
 <ul>
-<li>1. 两个主要功能：用户管理，（验证用户身份信息合法性）服务目录管理。（Service Catalog: 包括service和endpoint）</li>
-<li>2.keystone基本概念：user、credentials、token(访问有效时间)、Role（acl集合）、Endpoint（一个url）。</li>
-<li>3.keystone验证流程</li>
-<li>1.    其他组件的使用都依赖于验证组件, 类似一个服务总线，或者说是整个openstack框架的注册表。</li>
-<li>2.    两个功能：用户管理，服务目录管理。</li>
-<li>3.    User 用户 credentials凭证  token一串数字字符，引入令牌机制保护用户对资源的访问，token有时效性。</li>
-</ul>
+<li><p>Compute的代码名 nova iaas重要组成部分，负责维护和管理openstack计算资源，虚拟机的生命周期管理也通过nova来实现。与其他组件通信需要消息队列。不同服务通过同一端口进行通信。Nova服务会部署在计算节点和控制节点上。
+NOva包含很多组件，1.API 2.Computecore(nova-scheduler、nova-compute、nova-conductor) 3.Console Interface（nova-novnproxy、nova-xvpnvncproxy、nova-consoleauth）</p>
 
-<h1 id="16-openstack计算组件-服务名-computer代码名-nova">16. OpenStack计算组件（服务名：computer代码名：Nova）</h1>
+<h1 id="17-openstack块存储服务">17.OpenStack块存储服务</h1></li>
 
-<ul>
-<li>Compute的代码名 nova iaas重要组成部分，负责维护和管理openstack计算资源，虚拟机的生命周期管理也通过nova来实现。与其他组件通信需要消息队列。不同服务通过同一端口进行通信</li>
-<li>文件存储：树状结构路径访问方式方便人类理解。<br /></li>
-<li>块存储：服务器上的逻辑块被一台客户端挂载后，其他客户端无法访问上面的数据。<br /></li>
-<li>对象存储：介于以上两者之间。<br /></li>
+<li><p>文件存储：树状结构路径访问方式方便人类理解。</p></li>
+
+<li><p>块存储：服务器上的逻辑块被一台客户端挂载后，其他客户端无法访问上面的数据。</p></li>
+
+<li><p>对象存储：介于以上两者之间。通过 API 接口以文件为单位进行存取 。</p></li>
+
+<li><p>NAS 存储：通过 NFS、CIFS 等协议，挂载远程的文件系统。</p></li>
+
+<li><p>cinder组件：1.cinder-api 2.cinder-scheduler3.cinder-volume4.volume provider</p>
+
+<h1 id="17-openstack网络服务">17.OpenStack网络服务</h1></li>
+
+<li><p>1.云环境下可能随时都要创建、修改、删除网络，传统的网络管理方式不能胜任网络的改动，Neutron 的设计目标网络即服务基于 SDN 实现网络虚拟化的原则。</p></li>
+
+<li><p>2.Neutron概念：network(隔离的二层广播域)、local(local网络主要用于单机测试，同一节点同一网络通信)、flat(无vlan标签的，同一网络跨节点通信。)vlan(二层的广播域)vxlan(基于隧道技术的overlay网络，vxlan中的数据报通过VNI封装成udp包进行传输，二层的包封装在三层传输)GRE（gre与vxlan类似的一种overlay网络，区别在于使用ip包非udp进行封装。Overlay是在传统网络上虚拟出一个虚拟网络来，underlay是传统单层网络，是当前数据中心网络基础转发架构的网络，而overlay是一层逻辑网络，指通过控制协议对边缘的网络设备进行网络构建和扩展。overlay举例：vxlan,gre等）</p></li>
+
+<li><p>3.Neutron功能：二层交换，三层路由，负载均衡，防火墙。</p></li>
+
+<li><p>4.Neutron架构：neutron server,coreAPI,Extension API,Commnon service,neutron core,core plugin api,Extension Plugin API,plugin,agent,(Neutron server&ndash;&gt;plugin&ndash;&gt;agentCore ,Plugin/Agent 负责管理核心实体,ServicePlugin/Agent 管理更高级
+的网络服务)</p></li>
+
+<li><p>5.Neutron部署：控制节点，部署 neutron server 服务。网络节点，部署 service plugin 的agent。 计算节点，部署 core plugin 的 agent。</p>
+
+<h1 id="vmware-vsphere">Vmware vSphere</h1></li>
+
+<li><p>1.vSphere 的两个核心组件是 ESXi 和 vCenter Server.ESXi 是用于创建并运行虚拟机和虚拟设备,vCenter Server 是一项服务，用于管理网络中连接的多个主机，并将主机资源池化。</p></li>
+
+<li><p>2.组件：vSphere Vmotion:实现虚拟机动态迁移，而服务不中断。vSphere HA：当有硬件发生故障之时，可以保障业务系统的连续运行，而不需要中断应用系统。VMware Distributed Resource Scheduler：动态地实现服务器资源负载平衡，以根据业务优先级向正确的应用程序提供正确的资源，从而让应用程序可以根据需要压缩或增长。vSphere DataRecovery：为小型环境中的虚拟机提供简单、经济高效、无代理的备份和恢复。</p></li>
+
+<li><p>3.vmware特性：vSphere 扩展性，vSphere ESXi 聚合，vSphere 自动部署，vSphere 存储 DRS，vsphere 配置文件驱动的存储，VMware 存储/网络 I/O 控制，ESXi 防火墙。</p>
+
+<h1 id="华为fusionsphere">华为FusionSphere</h1></li>
+
+<li><p>1.FusionSphere 虚拟化套件的特点和用途</p></li>
+
+<li><p>2.FusionSphere 虚拟化套件逻辑架构</p></li>
+
+<li><p>3.FusionCompute 产品定位</p></li>
+
+<li><p>4.云机房</p></li>
+
+<li><p>5.硬件基础设施层</p></li>
+
+<li><p>6.FusionStorage Block 是一种存储与计算高度融合的分布式存储软件</p></li>
+
+<li><p>7.FusionSphere 虚拟化套件</p></li>
+
+<li><p>8.FusionCompute 是云操作系统软件，主要负责硬件资源的虚拟化，以及对虚拟资源、业务资源、用户资源的集中管理。</p></li>
+
+<li><p>9.eBackup是虚拟化备份软件</p></li>
+
+<li><p>10.UltraVR是容灾业务管理软件</p></li>
+
+<li><p>FusionCompute 技术指标:管理容量,主机规格,虚拟机容量,快照容量,网络容量,虚拟机规格.</p></li>
 </ul>
 
     </div>
