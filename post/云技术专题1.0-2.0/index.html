@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-07-19T10:35:08&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-19T10:35:08&#43;08:00" />
-<meta itemprop="wordCount" content="3129">
+<meta itemprop="wordCount" content="4097">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-07-19 </span>
         
-          <span class="more-meta"> 约 3129 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 4097 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
         
       </div>
     </header>
@@ -149,10 +149,12 @@
 <li><a href="#14-云数据中心无人值守">14. 云数据中心无人值守：</a></li>
 <li><a href="#15-openstack验证服务-keystone">15.openstack验证服务(keystone)</a></li>
 <li><a href="#16-openstack计算服务-服务名-computer代码名-nova">16. OpenStack计算服务（服务名：computer代码名：Nova）</a></li>
-<li><a href="#17-openstack块存储服务">17.OpenStack块存储服务</a></li>
-<li><a href="#17-openstack网络服务">17.OpenStack网络服务</a></li>
+<li><a href="#17-openstack块存储服务">17. OpenStack块存储服务</a></li>
+<li><a href="#17-openstack网络服务">17. OpenStack网络服务</a></li>
 <li><a href="#vmware-vsphere">Vmware vSphere</a></li>
 <li><a href="#华为fusionsphere">华为FusionSphere</a></li>
+<li><a href="#云存储">云存储</a></li>
+<li><a href="#云网络">云网络</a></li>
 </ul>
 </nav>
   </div>
@@ -241,75 +243,98 @@ vim /etc/hosts</p>
 
 <h1 id="15-openstack验证服务-keystone">15.openstack验证服务(keystone)</h1>
 
-<p>0tials、token(访问有效时间)、Role（acl集合）、Endpoint（一个url）。
-* 3.keystone验证流程
-* 1.    其他组件的使用都依赖于验证组件, 类似一个服务总线，或者说是整个openstack框架的注册表。
-* 2.    两个功能：用户管理，服务目录管理。
-* 3.    User 用户 credentials凭证  token一串数字字符，引入令牌机制保护用户对资源的访问，token有时效性。</p>
+<p>0tials、token(访问有效时间)、Role（acl集合）、Endpoint（一个url）。</p>
+
+<ul>
+<li>3.keystone验证流程</li>
+<li>1.    其他组件的使用都依赖于验证组件, 类似一个服务总线，或者说是整个openstack框架的注册表。</li>
+<li>2.    两个功能：用户管理，服务目录管理。</li>
+<li>3.    User 用户 credentials凭证  token一串数字字符，引入令牌机制保护用户对资源的访问，token有时效性。</li>
+</ul>
 
 <h1 id="16-openstack计算服务-服务名-computer代码名-nova">16. OpenStack计算服务（服务名：computer代码名：Nova）</h1>
 
 <ul>
-<li><p>Compute的代码名 nova iaas重要组成部分，负责维护和管理openstack计算资源，虚拟机的生命周期管理也通过nova来实现。与其他组件通信需要消息队列。不同服务通过同一端口进行通信。Nova服务会部署在计算节点和控制节点上。
-NOva包含很多组件，1.API 2.Computecore(nova-scheduler、nova-compute、nova-conductor) 3.Console Interface（nova-novnproxy、nova-xvpnvncproxy、nova-consoleauth）</p>
-
-<h1 id="17-openstack块存储服务">17.OpenStack块存储服务</h1></li>
-
-<li><p>文件存储：树状结构路径访问方式方便人类理解。</p></li>
-
-<li><p>块存储：服务器上的逻辑块被一台客户端挂载后，其他客户端无法访问上面的数据。</p></li>
-
-<li><p>对象存储：介于以上两者之间。通过 API 接口以文件为单位进行存取 。</p></li>
-
-<li><p>NAS 存储：通过 NFS、CIFS 等协议，挂载远程的文件系统。</p></li>
-
-<li><p>cinder组件：1.cinder-api 2.cinder-scheduler3.cinder-volume4.volume provider</p>
-
-<h1 id="17-openstack网络服务">17.OpenStack网络服务</h1></li>
-
-<li><p>1.云环境下可能随时都要创建、修改、删除网络，传统的网络管理方式不能胜任网络的改动，Neutron 的设计目标网络即服务基于 SDN 实现网络虚拟化的原则。</p></li>
-
-<li><p>2.Neutron概念：network(隔离的二层广播域)、local(local网络主要用于单机测试，同一节点同一网络通信)、flat(无vlan标签的，同一网络跨节点通信。)vlan(二层的广播域)vxlan(基于隧道技术的overlay网络，vxlan中的数据报通过VNI封装成udp包进行传输，二层的包封装在三层传输)GRE（gre与vxlan类似的一种overlay网络，区别在于使用ip包非udp进行封装。Overlay是在传统网络上虚拟出一个虚拟网络来，underlay是传统单层网络，是当前数据中心网络基础转发架构的网络，而overlay是一层逻辑网络，指通过控制协议对边缘的网络设备进行网络构建和扩展。overlay举例：vxlan,gre等）</p></li>
-
-<li><p>3.Neutron功能：二层交换，三层路由，负载均衡，防火墙。</p></li>
-
-<li><p>4.Neutron架构：neutron server,coreAPI,Extension API,Commnon service,neutron core,core plugin api,Extension Plugin API,plugin,agent,(Neutron server&ndash;&gt;plugin&ndash;&gt;agentCore ,Plugin/Agent 负责管理核心实体,ServicePlugin/Agent 管理更高级
-的网络服务)</p></li>
-
-<li><p>5.Neutron部署：控制节点，部署 neutron server 服务。网络节点，部署 service plugin 的agent。 计算节点，部署 core plugin 的 agent。</p>
-
-<h1 id="vmware-vsphere">Vmware vSphere</h1></li>
-
-<li><p>1.vSphere 的两个核心组件是 ESXi 和 vCenter Server.ESXi 是用于创建并运行虚拟机和虚拟设备,vCenter Server 是一项服务，用于管理网络中连接的多个主机，并将主机资源池化。</p></li>
-
-<li><p>2.组件：vSphere Vmotion:实现虚拟机动态迁移，而服务不中断。vSphere HA：当有硬件发生故障之时，可以保障业务系统的连续运行，而不需要中断应用系统。VMware Distributed Resource Scheduler：动态地实现服务器资源负载平衡，以根据业务优先级向正确的应用程序提供正确的资源，从而让应用程序可以根据需要压缩或增长。vSphere DataRecovery：为小型环境中的虚拟机提供简单、经济高效、无代理的备份和恢复。</p></li>
-
-<li><p>3.vmware特性：vSphere 扩展性，vSphere ESXi 聚合，vSphere 自动部署，vSphere 存储 DRS，vsphere 配置文件驱动的存储，VMware 存储/网络 I/O 控制，ESXi 防火墙。</p>
-
-<h1 id="华为fusionsphere">华为FusionSphere</h1></li>
-
-<li><p>1.FusionSphere 虚拟化套件的特点和用途</p></li>
-
-<li><p>2.FusionSphere 虚拟化套件逻辑架构</p></li>
-
-<li><p>3.FusionCompute 产品定位</p></li>
-
-<li><p>4.云机房</p></li>
-
-<li><p>5.硬件基础设施层</p></li>
-
-<li><p>6.FusionStorage Block 是一种存储与计算高度融合的分布式存储软件</p></li>
-
-<li><p>7.FusionSphere 虚拟化套件</p></li>
-
-<li><p>8.FusionCompute 是云操作系统软件，主要负责硬件资源的虚拟化，以及对虚拟资源、业务资源、用户资源的集中管理。</p></li>
-
-<li><p>9.eBackup是虚拟化备份软件</p></li>
-
-<li><p>10.UltraVR是容灾业务管理软件</p></li>
-
-<li><p>FusionCompute 技术指标:管理容量,主机规格,虚拟机容量,快照容量,网络容量,虚拟机规格.</p></li>
+<li>Compute的代码名 nova iaas重要组成部分，负责维护和管理openstack计算资源，虚拟机的生命周期管理也通过nova来实现。与其他组件通信需要消息队列。不同服务通过同一端口进行通信。Nova服务会部署在计算节点和控制节点上。</li>
 </ul>
+
+<p>NOva包含很多组件，1. API 2. Computecore(nova-scheduler、nova-compute、nova-conductor) 3. Console Interface（nova-novnproxy、nova-xvpnvncproxy、nova-consoleauth）</p>
+
+<h1 id="17-openstack块存储服务">17. OpenStack块存储服务</h1>
+
+<ul>
+<li>文件存储：树状结构路径访问方式方便人类理解。<br /></li>
+<li>块存储：服务器上的逻辑块被一台客户端挂载后，其他客户端无法访问上面的数据。<br /></li>
+<li>对象存储：介于以上两者之间。通过 API 接口以文件为单位进行存取 。</li>
+<li>NAS 存储：通过 NFS、CIFS 等协议，挂载远程的文件系统。</li>
+<li>cinder组件：1.cinder-api 2.cinder-scheduler3.cinder-volume4.volume provider</li>
+</ul>
+
+<h1 id="17-openstack网络服务">17. OpenStack网络服务</h1>
+
+<ul>
+<li>1. 云环境下可能随时都要创建、修改、删除网络，传统的网络管理方式不能胜任网络的改动，Neutron 的设计目标网络即服务基于 SDN 实现网络虚拟化的原则。</li>
+<li>2. Neutron概念：network(隔离的二层广播域)、local(local网络主要用于单机测试，同一节点同一网络通信)、flat(无vlan标签的，同一网络跨节点通信。)vlan(二层的广播域)vxlan(基于隧道技术的overlay网络，vxlan中的数据报通过VNI封装成udp包进行传输，二层的包封装在三层传输)GRE（gre与vxlan类似的一种overlay网络，区别在于使用ip包非udp进行封装。Overlay是在传统网络上虚拟出一个虚拟网络来，underlay是传统单层网络，是当前数据中心网络基础转发架构的网络，而overlay是一层逻辑网络，指通过控制协议对边缘的网络设备进行网络构建和扩展。overlay举例：vxlan, gre等）</li>
+<li>3. Neutron功能：二层交换，三层路由，负载均衡，防火墙。</li>
+<li>4. Neutron架构：neutron server, coreAPI, Extension API, Commnon service, neutron core, core plugin api, Extension Plugin API, plugin, agent, (Neutron server&ndash;&gt;plugin&ndash;&gt;agentCore , Plugin/Agent 负责管理核心实体, ServicePlugin/Agent 管理更高级</li>
+</ul>
+
+<p>的网络服务)</p>
+
+<ul>
+<li>5. Neutron部署：控制节点，部署 neutron server 服务。网络节点，部署 service plugin 的agent。 计算节点，部署 core plugin 的 agent。</li>
+</ul>
+
+<h1 id="vmware-vsphere">Vmware vSphere</h1>
+
+<ul>
+<li>1.vSphere 的两个核心组件是 ESXi 和 vCenter Server. ESXi 是用于创建并运行虚拟机和虚拟设备, vCenter Server 是一项服务，用于管理网络中连接的多个主机，并将主机资源池化。</li>
+<li>2. 组件：vSphere Vmotion: 实现虚拟机动态迁移，而服务不中断。vSphere HA：当有硬件发生故障之时，可以保障业务系统的连续运行，而不需要中断应用系统。VMware Distributed Resource Scheduler：动态地实现服务器资源负载平衡，以根据业务优先级向正确的应用程序提供正确的资源，从而让应用程序可以根据需要压缩或增长。vSphere DataRecovery：为小型环境中的虚拟机提供简单、经济高效、无代理的备份和恢复。</li>
+<li>3.vmware特性：vSphere 扩展性，vSphere ESXi 聚合，vSphere 自动部署，vSphere 存储 DRS，vsphere 配置文件驱动的存储，VMware 存储/网络 I/O 控制，ESXi 防火墙。</li>
+</ul>
+
+<h1 id="华为fusionsphere">华为FusionSphere</h1>
+
+<ul>
+<li>1. FusionSphere 虚拟化套件的特点和用途
+按照应用需求分配虚拟机资源，按照应用重要程度分配物理资源，统一虚拟化数据中心管理可以异构管理业界主流的第三方虚拟化平台，广泛兼容各种软硬件，根据预先设定策略进行工作负载的自动迁移，完善的权限管理，应用智能管理，完善的计量能力，丰富的运维管理，云安全。</li>
+<li>2. FusionSphere 虚拟化套件逻辑架构 eBackup&amp;UltraVR FusionCompute vmware vsphere.</li>
+<li>3. FusionCompute 产品定位 在虚拟化套件中 由cna与vrm组成 vrm相当于kvm的管理工具，cna相当于kvm中的qemu+kvm模块，主要提供虚拟化功能，vrm管理某个虚拟机，将命令下发给cna节点，can执行返回给vrm.</li>
+<li>4. 云机房</li>
+<li>5. 硬件基础设施层</li>
+<li>6. FusionStorage Block 是一种存储与计算高度融合的分布式存储软件</li>
+<li>7. FusionSphere 虚拟化套件 将硬件资源虚拟化，使一台服务器可以承担多台服务器的工作。</li>
+<li>8. FusionCompute 是云操作系统软件，主要负责硬件资源的虚拟化，以及对虚拟资源、业务资源、用户资源的集中管理。</li>
+<li>9.eBackup是虚拟化备份软件UltraVR是容灾业务管理软件
+关键特性如下：</li>
+<li>10.1虚拟机跨主机热迁移，在服务器升级时，将该服务器上的虚拟机迁移至其他服务器。</li>
+<li>10.2内存复用技术，内存气泡（主动回收虚拟机暂时不用的物理内存，分配给需要复用内存虚拟机），内存交换（将外部存储虚拟成内存给虚拟机使用，将虚拟机上暂时不用的数据存放到外部存储）内存共享（多台虚拟机共享数据内容相同的内存页）</li>
+<li>10.3虚拟机高可用性，当虚拟机在该计算节点出现故障时，系统自动在正常的计算节点重新创建。</li>
+<li>10.4虚拟机存储热迁移。</li>
+<li>10.5自动精简配置，虚拟出比实际物理存储更大的存储空间。</li>
+<li>10.6虚拟化防病毒，仅需在一台特殊的安全虚拟机中部署防病毒引擎，其他用户虚拟机在本地安装轻量级驱动，通过安全服务虚拟机提供</li>
+<li>的服务即可完成杀毒。</li>
+<li>10.7容灾与备份，容灾是指在相隔比较远的异地，建立两套或者多套相同的it系统，互相可以健康状态的监视和功能的切换。城域双活容灾（两个站点同时为生产站点，）、阵列复制容灾（两个站点，一个生产站点一个灾备站点）和两地三中心容灾等容灾方案。</li>
+<li>10.8动态资源调度（DRS）, 在不同的主机间迁移虚拟机，从而实现同一集群内不同主机间的负载均衡.</li>
+<li>10.9虚拟机资源qos, cpuqos(不同的 CPU QoS 代表了虚拟机不同的计算能力cpu资源份额 资源预留，资源限额), 内存（内存资源份额预留限额）qos, 网络qos（带宽的控制）.</li>
+<li>10.10用户态交换模式，提升虚拟机网络性能。</li>
+<li>10.11分布式虚拟交换机</li>
+<li>10.12sr-iov实现了将 PCI 功能分配到多个虚拟接口以在虚拟化环境中共享一个 PCI 设备</li>
+<li>10.13gpu直通 gpu虚拟化。</li>
+<li>FusionCompute 技术指标: 管理容量, 主机规格, 虚拟机容量, 快照容量, 网络容量, 虚拟机规格.</li>
+</ul>
+
+<h1 id="云存储">云存储</h1>
+
+<ol>
+<li>存储主流体系结构：DAS, NAS, SAS。</li>
+<li>硬盘接口：SATA/nl-sas,   SAS, FC, SSD.</li>
+<li>存储结构：块，文件，对象。</li>
+</ol>
+
+<h1 id="云网络">云网络</h1>
+
+<p>1.sdn新技术：underlay—SR, overlay&ndash;vxlan</p>
 
     </div>
 
