@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>云技术专题 - Zhou Jun&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="周军" /><meta name="description" content="openstack是云管理平台，其本身并不提供虚拟化功能，真正的虚拟化能力是由底层的hypervisor（如KVM、Qemu、Xen等）提供" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.57.2 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://junzhoublog.github.io/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98-1.0-2.0-/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="云技术专题" />
+<meta property="og:description" content="openstack是云管理平台，其本身并不提供虚拟化功能，真正的虚拟化能力是由底层的hypervisor（如KVM、Qemu、Xen等）提供" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://junzhoublog.github.io/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98-1.0-2.0-/" />
+<meta property="article:published_time" content="2020-07-19T10:35:08+08:00" />
+<meta property="article:modified_time" content="2020-07-19T10:35:08+08:00" />
+<meta itemprop="name" content="云技术专题">
+<meta itemprop="description" content="openstack是云管理平台，其本身并不提供虚拟化功能，真正的虚拟化能力是由底层的hypervisor（如KVM、Qemu、Xen等）提供">
+
+
+<meta itemprop="datePublished" content="2020-07-19T10:35:08&#43;08:00" />
+<meta itemprop="dateModified" content="2020-07-19T10:35:08&#43;08:00" />
+<meta itemprop="wordCount" content="4097">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="云技术专题"/>
+<meta name="twitter:description" content="openstack是云管理平台，其本身并不提供虚拟化功能，真正的虚拟化能力是由底层的hypervisor（如KVM、Qemu、Xen等）提供"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Computer</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Computer</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">云技术专题</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-07-19 </span>
+        
+          <span class="more-meta"> 约 4097 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#8-虚拟化技术核心">8. 虚拟化技术核心</a></li>
+<li><a href="#9-虚拟化技术实现">9. 虚拟化技术实现：</a></li>
+<li><a href="#10-虚拟化技术管理">10. 虚拟化技术管理：</a></li>
+<li><a href="#11-虚拟化软件比较">11. 虚拟化软件比较</a></li>
+<li><a href="#12-云数据中心运维-ansible自动化运维">12. 云数据中心运维 ansible自动化运维：</a></li>
+<li><a href="#13-openstack基础">13.openstack基础</a></li>
+<li><a href="#14-云数据中心无人值守">14. 云数据中心无人值守：</a></li>
+<li><a href="#15-openstack验证服务-keystone">15.openstack验证服务(keystone)</a></li>
+<li><a href="#16-openstack计算服务-服务名-computer代码名-nova">16. OpenStack计算服务（服务名：computer代码名：Nova）</a></li>
+<li><a href="#17-openstack块存储服务">17. OpenStack块存储服务</a></li>
+<li><a href="#17-openstack网络服务">17. OpenStack网络服务</a></li>
+<li><a href="#vmware-vsphere">Vmware vSphere</a></li>
+<li><a href="#华为fusionsphere">华为FusionSphere</a></li>
+<li><a href="#云存储">云存储</a></li>
+<li><a href="#云网络">云网络</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<p><img src="/img/云计算/云计算思维导图.png" alt="云计算" /></p>
+
+<ul>
+<li>openstack是云管理平台，其本身并不提供虚拟化功能，真正的虚拟化能力是由底层的hypervisor（如KVM、Qemu、Xen等）提供。所谓管理平台，就是为了方便使用而已。如果没有openstack，一样可以通过virsh、virt-manager来实现创建虚拟机的操作，只不过敲命令行的方式需要一定的学习成本，对于普通用户不是很友好。</li>
+<li>OpenStack几乎支持所有的虚拟化管理程序，不论是开源的（Xen与KVM）还是厂商的（Hyper-V与VMware）。但在以前，OpenStack是基于KVM开发的，KVM常常成为默认的虚拟机管理程序。两者都使用相同的开放源理念与开发方法。</li>
+<li>Openstack ||| VMware vSphere是基于VMware虚拟化技术的虚拟化管理软件</li>
+</ul>
+
+<h1 id="8-虚拟化技术核心">8. 虚拟化技术核心</h1>
+
+<ul>
+<li>1.    虚拟化将硬件、操作系统和应用程序一同封装一个可迁移的虚拟机档案文件中。</li>
+<li>2.    Hypervisor(虚拟机管理程序)安装方式：一、直接安装在硬件上如 vmware esxi、微软、思杰kvm等。二、安装在宿主操作系统上或宿主操作系统的内核上如 virtualbox、vmware workstation.</li>
+<li>3.    全虚拟化，GuestOS并不知道自己是一台虚拟机，它会认为自己就是运行在计算机物理硬件设备上的HostOS。半虚拟化，需要对GuestOS的内核代码做一定的修改，才能够将GuestOS运行在半虚拟化的VMM中。</li>
+<li>4.    KVM（Kernel-based Virtual Machine）是一个开源的系统虚拟化模块，它需要硬件支持，如Intel VT技术或者AMD V技术，是基于硬件的完全虚拟化，完全内置于Linux。Libvirt相当于一api管理不同的虚拟机管理程序kvm, vmware, xen。</li>
+</ul>
+
+<h1 id="9-虚拟化技术实现">9. 虚拟化技术实现：</h1>
+
+<ul>
+<li>1.    虚拟化安装方式：一、开始装的时候就把虚拟化部分装上，二、先装linux服务器再装虚拟化的管理程序。</li>
+<li>2.    安装之前检查: 记得进bios打开cpu虚拟化。在linux中看 cat/proc/cpuinfo或者grep “vmx” /proc/cpuinfo &amp;&amp; echo “yes”英特尔的cpu, vmx| grep “svm” /proc/cpuinfo &amp;&amp; echo “yes”。AMD的cpu, svm。</li>
+<li>3.    Linux-》虚拟化软件安装-》虚拟化服务启动-》虚拟机的安装</li>
+</ul>
+
+<h1 id="10-虚拟化技术管理">10. 虚拟化技术管理：</h1>
+
+<ol>
+<li>虚拟机管理：
+（1） 单机虚拟化管理virt-manager管理，虚拟化平台管理开源的Ovirt平台。
+（2） 每个虚拟机都有一个配置文件，.xml类型的文件。可图形化管理。</li>
+
+<li><p>虚拟机网络：
+（1）default.xml文件 private.xml文件，</p></li>
+
+<li><p>虚拟机镜像：
+（1）</p></li>
+</ol>
+
+<h1 id="11-虚拟化软件比较">11. 虚拟化软件比较</h1>
+
+<p>虚拟化软件比较：
+1.  收费：
+2.  开源：</p>
+
+<h1 id="12-云数据中心运维-ansible自动化运维">12. 云数据中心运维 ansible自动化运维：</h1>
+
+<ul>
+<li>1.    ansiblej基于模块工作。</li>
+<li>2.    安装：yum install ansible –y</li>
+</ul>
+
+<p>cd /etc/ansible/
+ls
+vim hosts
+vim /etc/hosts</p>
+
+<h1 id="13-openstack基础">13.openstack基础</h1>
+
+<ul>
+<li>1.    openstack架构, HPC是高性能计算S(High Performance Computing)机群的简称</li>
+<li>2.    节点：控制节点，网络节点，计算节点。</li>
+<li>3.    每个组件有两个名字代码名和服务名。</li>
+<li>4.    Openstack不直接安装在 裸设备上，而是安装在linux发行版，关键节点用有服务的操作系统，centos没有后期技术服务，ubuntu有服务。</li>
+<li>5.</li>
+</ul>
+
+<p><img src="/img/云计算/OpenStack模块.png" alt="云计算" /></p>
+
+<h1 id="14-云数据中心无人值守">14. 云数据中心无人值守：</h1>
+
+<ol>
+<li>服务器自动化装操作系统kickstart自动化安装。</li>
+<li>安装流程：
+3.</li>
+</ol>
+
+<p><img src="/img/云计算/kickstart工作流程.png" alt="云计算" /></p>
+
+<h1 id="15-openstack验证服务-keystone">15.openstack验证服务(keystone)</h1>
+
+<p>0tials、token(访问有效时间)、Role（acl集合）、Endpoint（一个url）。</p>
+
+<ul>
+<li>3.keystone验证流程</li>
+<li>1.    其他组件的使用都依赖于验证组件, 类似一个服务总线，或者说是整个openstack框架的注册表。</li>
+<li>2.    两个功能：用户管理，服务目录管理。</li>
+<li>3.    User 用户 credentials凭证  token一串数字字符，引入令牌机制保护用户对资源的访问，token有时效性。</li>
+</ul>
+
+<h1 id="16-openstack计算服务-服务名-computer代码名-nova">16. OpenStack计算服务（服务名：computer代码名：Nova）</h1>
+
+<ul>
+<li>Compute的代码名 nova iaas重要组成部分，负责维护和管理openstack计算资源，虚拟机的生命周期管理也通过nova来实现。与其他组件通信需要消息队列。不同服务通过同一端口进行通信。Nova服务会部署在计算节点和控制节点上。</li>
+</ul>
+
+<p>NOva包含很多组件，1. API 2. Computecore(nova-scheduler、nova-compute、nova-conductor) 3. Console Interface（nova-novnproxy、nova-xvpnvncproxy、nova-consoleauth）</p>
+
+<h1 id="17-openstack块存储服务">17. OpenStack块存储服务</h1>
+
+<ul>
+<li>文件存储：树状结构路径访问方式方便人类理解。<br /></li>
+<li>块存储：服务器上的逻辑块被一台客户端挂载后，其他客户端无法访问上面的数据。<br /></li>
+<li>对象存储：介于以上两者之间。通过 API 接口以文件为单位进行存取 。</li>
+<li>NAS 存储：通过 NFS、CIFS 等协议，挂载远程的文件系统。</li>
+<li>cinder组件：1.cinder-api 2.cinder-scheduler3.cinder-volume4.volume provider</li>
+</ul>
+
+<h1 id="17-openstack网络服务">17. OpenStack网络服务</h1>
+
+<ul>
+<li>1. 云环境下可能随时都要创建、修改、删除网络，传统的网络管理方式不能胜任网络的改动，Neutron 的设计目标网络即服务基于 SDN 实现网络虚拟化的原则。</li>
+<li>2. Neutron概念：network(隔离的二层广播域)、local(local网络主要用于单机测试，同一节点同一网络通信)、flat(无vlan标签的，同一网络跨节点通信。)vlan(二层的广播域)vxlan(基于隧道技术的overlay网络，vxlan中的数据报通过VNI封装成udp包进行传输，二层的包封装在三层传输)GRE（gre与vxlan类似的一种overlay网络，区别在于使用ip包非udp进行封装。Overlay是在传统网络上虚拟出一个虚拟网络来，underlay是传统单层网络，是当前数据中心网络基础转发架构的网络，而overlay是一层逻辑网络，指通过控制协议对边缘的网络设备进行网络构建和扩展。overlay举例：vxlan, gre等）</li>
+<li>3. Neutron功能：二层交换，三层路由，负载均衡，防火墙。</li>
+<li>4. Neutron架构：neutron server, coreAPI, Extension API, Commnon service, neutron core, core plugin api, Extension Plugin API, plugin, agent, (Neutron server&ndash;&gt;plugin&ndash;&gt;agentCore , Plugin/Agent 负责管理核心实体, ServicePlugin/Agent 管理更高级</li>
+</ul>
+
+<p>的网络服务)</p>
+
+<ul>
+<li>5. Neutron部署：控制节点，部署 neutron server 服务。网络节点，部署 service plugin 的agent。 计算节点，部署 core plugin 的 agent。</li>
+</ul>
+
+<h1 id="vmware-vsphere">Vmware vSphere</h1>
+
+<ul>
+<li>1.vSphere 的两个核心组件是 ESXi 和 vCenter Server. ESXi 是用于创建并运行虚拟机和虚拟设备, vCenter Server 是一项服务，用于管理网络中连接的多个主机，并将主机资源池化。</li>
+<li>2. 组件：vSphere Vmotion: 实现虚拟机动态迁移，而服务不中断。vSphere HA：当有硬件发生故障之时，可以保障业务系统的连续运行，而不需要中断应用系统。VMware Distributed Resource Scheduler：动态地实现服务器资源负载平衡，以根据业务优先级向正确的应用程序提供正确的资源，从而让应用程序可以根据需要压缩或增长。vSphere DataRecovery：为小型环境中的虚拟机提供简单、经济高效、无代理的备份和恢复。</li>
+<li>3.vmware特性：vSphere 扩展性，vSphere ESXi 聚合，vSphere 自动部署，vSphere 存储 DRS，vsphere 配置文件驱动的存储，VMware 存储/网络 I/O 控制，ESXi 防火墙。</li>
+</ul>
+
+<h1 id="华为fusionsphere">华为FusionSphere</h1>
+
+<ul>
+<li>1. FusionSphere 虚拟化套件的特点和用途
+按照应用需求分配虚拟机资源，按照应用重要程度分配物理资源，统一虚拟化数据中心管理可以异构管理业界主流的第三方虚拟化平台，广泛兼容各种软硬件，根据预先设定策略进行工作负载的自动迁移，完善的权限管理，应用智能管理，完善的计量能力，丰富的运维管理，云安全。</li>
+<li>2. FusionSphere 虚拟化套件逻辑架构 eBackup&amp;UltraVR FusionCompute vmware vsphere.</li>
+<li>3. FusionCompute 产品定位 在虚拟化套件中 由cna与vrm组成 vrm相当于kvm的管理工具，cna相当于kvm中的qemu+kvm模块，主要提供虚拟化功能，vrm管理某个虚拟机，将命令下发给cna节点，can执行返回给vrm.</li>
+<li>4. 云机房</li>
+<li>5. 硬件基础设施层</li>
+<li>6. FusionStorage Block 是一种存储与计算高度融合的分布式存储软件</li>
+<li>7. FusionSphere 虚拟化套件 将硬件资源虚拟化，使一台服务器可以承担多台服务器的工作。</li>
+<li>8. FusionCompute 是云操作系统软件，主要负责硬件资源的虚拟化，以及对虚拟资源、业务资源、用户资源的集中管理。</li>
+<li>9.eBackup是虚拟化备份软件UltraVR是容灾业务管理软件
+关键特性如下：</li>
+<li>10.1虚拟机跨主机热迁移，在服务器升级时，将该服务器上的虚拟机迁移至其他服务器。</li>
+<li>10.2内存复用技术，内存气泡（主动回收虚拟机暂时不用的物理内存，分配给需要复用内存虚拟机），内存交换（将外部存储虚拟成内存给虚拟机使用，将虚拟机上暂时不用的数据存放到外部存储）内存共享（多台虚拟机共享数据内容相同的内存页）</li>
+<li>10.3虚拟机高可用性，当虚拟机在该计算节点出现故障时，系统自动在正常的计算节点重新创建。</li>
+<li>10.4虚拟机存储热迁移。</li>
+<li>10.5自动精简配置，虚拟出比实际物理存储更大的存储空间。</li>
+<li>10.6虚拟化防病毒，仅需在一台特殊的安全虚拟机中部署防病毒引擎，其他用户虚拟机在本地安装轻量级驱动，通过安全服务虚拟机提供</li>
+<li>的服务即可完成杀毒。</li>
+<li>10.7容灾与备份，容灾是指在相隔比较远的异地，建立两套或者多套相同的it系统，互相可以健康状态的监视和功能的切换。城域双活容灾（两个站点同时为生产站点，）、阵列复制容灾（两个站点，一个生产站点一个灾备站点）和两地三中心容灾等容灾方案。</li>
+<li>10.8动态资源调度（DRS）, 在不同的主机间迁移虚拟机，从而实现同一集群内不同主机间的负载均衡.</li>
+<li>10.9虚拟机资源qos, cpuqos(不同的 CPU QoS 代表了虚拟机不同的计算能力cpu资源份额 资源预留，资源限额), 内存（内存资源份额预留限额）qos, 网络qos（带宽的控制）.</li>
+<li>10.10用户态交换模式，提升虚拟机网络性能。</li>
+<li>10.11分布式虚拟交换机</li>
+<li>10.12sr-iov实现了将 PCI 功能分配到多个虚拟接口以在虚拟化环境中共享一个 PCI 设备</li>
+<li>10.13gpu直通 gpu虚拟化。</li>
+<li>FusionCompute 技术指标: 管理容量, 主机规格, 虚拟机容量, 快照容量, 网络容量, 虚拟机规格.</li>
+</ul>
+
+<h1 id="云存储">云存储</h1>
+
+<ol>
+<li>存储主流体系结构：DAS, NAS, SAS。</li>
+<li>硬盘接口：SATA/nl-sas,   SAS, FC, SSD.</li>
+<li>存储结构：块，文件，对象。</li>
+</ol>
+
+<h1 id="云网络">云网络</h1>
+
+<p>1.sdn新技术：underlay—SR, overlay&ndash;vxlan</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">周军</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-07-19
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971.0-/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">云计算</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2020%E5%B9%B4%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">2020年云网融合学习笔记</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="email:1158290245@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/junzhoublog" class="iconfont icon-github" title="github"></a>
+      <a href="https://zhuanlan.zhihu.com/p/23014683" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://www.douban.com" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://www.bilibili.com" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://junzhoublog.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">周军</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
