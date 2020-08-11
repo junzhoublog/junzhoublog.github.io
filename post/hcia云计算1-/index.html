@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>云计算 - Zhou Jun&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="周军" /><meta name="description" content="运营(部署)模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 1. 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.57.2 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://junzhoublog.github.io/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971-/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="云计算" />
+<meta property="og:description" content="运营(部署)模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 1. 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://junzhoublog.github.io/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971-/" />
+<meta property="article:published_time" content="2020-08-04T13:35:28+08:00" />
+<meta property="article:modified_time" content="2020-08-04T13:35:28+08:00" />
+<meta itemprop="name" content="云计算">
+<meta itemprop="description" content="运营(部署)模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 1. 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机">
+
+
+<meta itemprop="datePublished" content="2020-08-04T13:35:28&#43;08:00" />
+<meta itemprop="dateModified" content="2020-08-04T13:35:28&#43;08:00" />
+<meta itemprop="wordCount" content="2900">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="云计算"/>
+<meta name="twitter:description" content="运营(部署)模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 1. 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Computer</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Computer</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">云计算</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-08-04 </span>
+        
+          <span class="more-meta"> 约 2900 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#计算虚拟化-只是云计算的入门技术">计算虚拟化（只是云计算的入门技术）</a></li>
+<li><a href="#云计算中网络基础知识">云计算中网络基础知识</a></li>
+<li><a href="#云计算中存储基础知识">云计算中存储基础知识</a></li>
+<li><a href="#虚拟化特性介绍">虚拟化特性介绍</a></li>
+<li><a href="#云计算发展趋势">云计算发展趋势</a></li>
+<li><a href="#实验部分">实验部分</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<ul>
+<li>运营(部署)模式：公有云 私有云 混合云</li>
+<li>服务模式：iaas paas  saas</li>
+</ul>
+
+<h1 id="计算虚拟化-只是云计算的入门技术">计算虚拟化（只是云计算的入门技术）</h1>
+
+<ul>
+<li>1. 分类：</li>
+</ul>
+
+<p>一型虚拟化直接在硬件上安装vmm（虚拟机监视器）也被称为Hypervisor，vmware Esx server 、fusioncompute（华为的） xen(开源的，半虚拟化)<br />
+二型虚拟化即宿主虚拟化在host os上安装vmm, vmware workstation，需要操作系统支持、kvm(开源的，全虚拟化)<br />
+无论一型还是二型都有的特点：分区、隔离、封装、独立。</p>
+
+<p>workstation： 单机级，用在个人桌面系统中，需要操作系统支持<br />
+servier：工作组级，用于服务器，需要操作系统支持<br />
+esxi：企业级，用于服务器，不需要操作系统支持<br />
+vmware esxi 是vmware Esx的免费版本,基本功能都差不多。现在的esxi叫VMware vSphere Hypervisor（新名字而已）。<br />
+vmware esxi————&gt;vmware Esx————&gt;VMware vSphere.</p>
+
+<p>VMware vSphere是VMware的推出的一款基于云计算的新一代数据中心虚拟化套件<br />
+Vmware vSphere 的两个核心组件分别是VMware ESXi 和 VMware vCenter Server</p>
+
+<ul>
+<li>2. 计算虚拟化三个维度：</li>
+</ul>
+
+<p>cpu虚拟化：半虚拟化效率高于全虚拟化。半虚拟化敏感指令只执行一次，闭源操作系统不支持半虚拟化。硬件虚拟化完美解决方法：分为root与非root两种，非root对应guestos  root对应hostos。特权指令 普通指令 大型机powerPc架构下的情况 敏感指令指的是宿主机系统与guestos都要执行的需要在ring0模式执行的特权指令。解决办法 guestos解除特权。x86架构的情况 敏感指令中除了特权指令还有普通指令，光用解除特权方式不行了，解决办法，全虚拟化，guestos发出的所有操作系统请求到vmm, vmm对其进行*二进制代码翻译*，如果发现特权指令和敏感指令就陷入到vmm模拟执行，半虚拟化，通过修改客户操作系统代码，将原来在物理机上执行的一些敏感指令，修改成可以和VMM直接交互也称*超级调用*的方式，这样，就不会有捕获异常、翻译和模拟的过程，性能损耗比较少。<br />
+内存虚拟化：内存地址从0开始且只有一个0开始的地址，且是连续的，解决办法地址映射，真实的物理内存映射给虚拟机，<br />
+IO虚拟化：完全虚拟化，焦点被哪个主机捕获就被哪个主机使用。半虚拟化，对硬件驱动直接由前端直接转到后端调用。IO透传，直接分配给虚拟机物理设备。</p>
+
+<ul>
+<li>3. Kvm是一个linux内核的模块， 二型的：<br /></li>
+</ul>
+
+<p>三种运行模式：1.guest mode此模式主要是指虚拟机置于一种受限的cpu模式下运行。2.user mode用户空间，此模式下运行的主要是QEMU, 模拟执行IO类操作请求。3.kernel mode内核空间，在此模式下可以真正的操作硬件。<br />
+kvm扩大后的组成：管理工具+内核模块+QEMU（本身也是与kvm一个等级的虚拟化解决方案）. 内核模块&lt;初始化cpu硬件，打开虚拟化模式, 运行在内核空间&gt; QEMU&lt;模拟io设备运行在用户空间, 升级版是Virtio，节省qemu模拟时所需的硬件资源，减少io请求的路径&gt;  管理工具&lt;<em>libvirt</em>&gt;</p>
+
+<h1 id="云计算中网络基础知识">云计算中网络基础知识</h1>
+
+<ul>
+<li>1. 二层架构: 由于东西流量的增加，以前采用的三层网络结构 核心层 汇聚层 接入层无法满足云计算的部署，所以发展成大二层架构。<br /></li>
+<li>2. 架构：桥接 NAT  虚拟交换机。桥接和nat都直接把虚拟机的虚拟网卡与物理机网卡相连接，但nat经过桥把地址变换了，虚拟交换机是桥接的高级形式，一个虚拟机的可以有多个虚拟网卡，一个虚拟机就可以与多个虚拟交换机相连。</li>
+<li>3. 默认网关：路由转发的最后选择。</li>
+<li>4. 三层交换机与路由器比较: 三层交换机在对第一个数据流路由后，就会产生一个mac地址与ip地址的映射表，当同样的数据流再次通过时直接从二层通过，消除了路由器进行路由选择带来的网络延迟问题。</li>
+<li>1. 虚拟化中的物理网络：服务器接入到网络中分为业务流量，管理流量，存储流量，如果业务流量与管理流量分开使用不同的物理线路与接口就称为带外管理反之带内管理。</li>
+<li>2. 虚拟化中的虚拟网络：随着云计算与虚拟化的普及，将二层交换机下沉到服务器内部，虚拟交换机与虚拟机进行连接。一个物理服务器内多台虚拟机共享一根网线，如何管理这些流量了，桥接时网桥相当于一个交换机，NAT时网桥相当于一个路由器。使用网桥无法监控经过虚拟网卡的流量，由此产生虚拟交换机 网桥的升级版，ovs open vswitch支持实例配置和迁移网络状态, 虚拟交换机分两种，普通虚拟交换机和分布式虚拟交换机。</li>
+</ul>
+
+<h1 id="云计算中存储基础知识">云计算中存储基础知识</h1>
+
+<ul>
+<li>1. 集中式存储和分布式存储对应的技术：RAID（磁盘阵列，多个硬盘组成大的物理卷，然后创建划分逻辑卷（LUN1、LUN2… ），和副本机制（将数据复制成一模一样多份分别保存在不同服务器上）。</li>
+<li>2. 虚拟化存储和非虚拟化存储：虚拟化存储，逻辑划分形成逻辑卷然后组成文件系统到共享目录。非虚拟化存储，只逻辑划分形成逻辑卷。常见文件系统：虚拟化集群文件系统，nas存储文件系统，操作系统文件系统，</li>
+<li>3. 虚拟机磁盘：虚拟机由两部分组成——配置文件和磁盘文件</li>
+<li>4. DAS直接连接存储：直接把存储连接到服务器。块级 传输类型，scsi、Fc</li>
+</ul>
+
+<p>SAN存储区域存储：通过专用光纤交换机访问数据。文件管理系统在每一个应用服务器上面。 块级 传输类型 FCsan、ipsan
+NAS网络接入存储：通过tcp/ip协议访问数据。有自己的文件管理系统。文件级 传输类型，IP</p>
+
+<ul>
+<li>5.sata与sas均采用串行连接方式，且sata硬盘容量闭sas大。</li>
+</ul>
+
+<h1 id="虚拟化特性介绍">虚拟化特性介绍</h1>
+
+<ul>
+<li>1. 集群特性：HA，负载均衡，资源池化，内存复用（内存共享，内存气泡，内存置换）。</li>
+<li>2. 虚拟机特性：本质把物理服务器逻辑化一个文件或者文件夹，在复制文件或文件夹时产生新的虚拟机时要保证主机名与ip相关信息不同。解决办法。<br /></li>
+</ul>
+
+<p>模板部署（其中一个永远不开机只用于复制）特性一，<br />
+虚机机复制  特性二<br />
+资源热添加 特性三。<br />
+Console控制  特性四<br />
+快照  特性五。<br />
+NUMA 特性六。</p>
+
+<ul>
+<li>3. 华为虚拟化产品特性：Tools虚拟机硬件信息——内核态的硬件驱动（快照、热迁移、在线调整虚拟机规格、网卡qos）虚拟机状态信息——用户态的vm-agent进程（获取虚机ip地址、状态、软关机、重启）<br /></li>
+</ul>
+
+<p>集群特性：<br />
+（1）HA: 当一台计算节点出现故障时，在集群中另一台节点能快速自动启动起来。<br />
+电源管理：<br />
+负载均衡：DPM规则，电源管理自动化，下电前将虚拟机迁移至其他主机。DRS规则，聚集虚拟机，互斥虚拟机，虚拟机到主机，下电时提供迁移参考。<br />
+（2）IMC:<br />
+使不同cpu类型的主机之间进行迁移，目前IMC仅支持intel不同型号cpu
+热迁移。<br />
+虚拟机特性：<br />
+资源管理，cpu qos, 内存qos, 磁盘扩容，网卡增删，（份额 预留 限制）</p>
+
+<h1 id="云计算发展趋势">云计算发展趋势</h1>
+
+<ul>
+<li>1. 容器轻量级虚拟化技术。Linux自带lxc项目容器。<br /></li>
+
+<li><ol>
+<li>云计算1.0时代——虚拟化技术<br />
+云计算2.0时代——openstack<br />
+云计算3.0时代——docker<br /></li>
+</ol></li>
+
+<li><ol>
+<li>雾计算：数据的处理和应用程序集中在网络边缘的设备，一种面向物联网的分布式计算的基础设施。<br /></li>
+</ol></li>
+
+<li><ol>
+<li>边缘计算：去中心化的分布式计算，原始数据不传回云端，而是在本地完成分析。<br /></li>
+</ol></li>
+</ul>
+
+<h1 id="实验部分">实验部分</h1>
+
+<ul>
+<li>1.</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">周军</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-08-04
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98-1-2-/">
+            <span class="next-text nav-default">云技术专题</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="email:1158290245@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/junzhoublog" class="iconfont icon-github" title="github"></a>
+      <a href="https://zhuanlan.zhihu.com/p/23014683" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://www.douban.com" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://www.bilibili.com" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://junzhoublog.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">周军</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
