@@ -12,20 +12,20 @@
     
     
     <item>
-      <title>云计算</title>
-      <link>https://junzhoublog.github.io/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971-/</link>
+      <title>HCIA云计算1.0</title>
+      <link>https://junzhoublog.github.io/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971.0-/</link>
       <pubDate>Tue, 04 Aug 2020 13:35:28 +0800</pubDate>
       
-      <guid>https://junzhoublog.github.io/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971-/</guid>
+      <guid>https://junzhoublog.github.io/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971.0-/</guid>
       <description>运营(部署)模式：公有云 私有云 混合云 服务模式：iaas paas saas 计算虚拟化（只是云计算的入门技术） 1. 分类： 一型虚拟化直接在硬件上安装vmm（虚拟机</description>
     </item>
     
     <item>
-      <title>云技术专题</title>
-      <link>https://junzhoublog.github.io/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98-1-2-/</link>
+      <title>云技术专题1.0 2.0</title>
+      <link>https://junzhoublog.github.io/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98-1.0-2.0-/</link>
       <pubDate>Sun, 19 Jul 2020 10:35:08 +0800</pubDate>
       
-      <guid>https://junzhoublog.github.io/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98-1-2-/</guid>
+      <guid>https://junzhoublog.github.io/post/%E4%BA%91%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98-1.0-2.0-/</guid>
       <description>openstack是云管理平台，其本身并不提供虚拟化功能，真正的虚拟化能力是由底层的hypervisor（如KVM、Qemu、Xen等）提供</description>
     </item>
     
@@ -39,11 +39,11 @@
     </item>
     
     <item>
-      <title>云数据中心技术应知应会</title>
-      <link>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A-1-2-3.0-/</link>
+      <title>云数据中心技术应知应会1.0 2.0 3.0</title>
+      <link>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A-1.0-2.0-3.0-/</link>
       <pubDate>Fri, 17 Jul 2020 07:34:42 +0800</pubDate>
       
-      <guid>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A-1-2-3.0-/</guid>
+      <guid>https://junzhoublog.github.io/post/%E4%BA%91%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83%E6%8A%80%E6%9C%AF%E5%BA%94%E7%9F%A5%E5%BA%94%E4%BC%9A-1.0-2.0-3.0-/</guid>
       <description>云计算基础 软件硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户。 基础</description>
     </item>
     
