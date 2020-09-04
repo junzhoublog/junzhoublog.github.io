@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-07-19T10:35:08&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-19T10:35:08&#43;08:00" />
-<meta itemprop="wordCount" content="4772">
+<meta itemprop="wordCount" content="5092">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-07-19 </span>
         
-          <span class="more-meta"> 约 4772 字 </span>
-          <span class="more-meta"> 预计阅读 10 分钟 </span>
+          <span class="more-meta"> 约 5092 字 </span>
+          <span class="more-meta"> 预计阅读 11 分钟 </span>
         
       </div>
     </header>
@@ -152,6 +152,7 @@
 <li><a href="#17-openstack块存储服务">17. OpenStack块存储服务</a></li>
 <li><a href="#17-openstack网络服务">17. OpenStack网络服务</a></li>
 <li><a href="#22-云迁移">22. 云迁移</a></li>
+<li><a href="#linux">linux</a></li>
 <li><a href="#vmware-vsphere">Vmware vSphere</a></li>
 <li><a href="#华为fusionsphere">华为FusionSphere</a></li>
 <li><a href="#云存储">云存储</a></li>
@@ -293,8 +294,47 @@ vim /etc/hosts</p>
 <h1 id="22-云迁移">22. 云迁移</h1>
 
 <ul>
-<li>云迁移策略：1.Re-host（重新托管直接迁移）:p2v,v2v。2.re-platform(更换平台修补后迁移）：对环境进行云化处理。3.重新购置（放弃后购买）：是指放弃使用原先的产品，改为采用新的替代产品。4.重构/重新构建：进行云原生应用服务的实现。5.保留：部分本地部署。</li>
-<li>云迁移方法论：1.</li>
+<li>云迁移策略：1. Re-host（重新托管直接迁移）:p2v, v2v。2.re-platform(更换平台修补后迁移）：对环境进行云化处理。3. 重新购置（放弃后购买）：是指放弃使用原先的产品，改为采用新的替代产品。4. 重构/重新构建：进行云原生应用服务的实现。5. 保留：部分本地部署。</li>
+<li>云迁移方法论</li>
+<li>云迁移方案:ptv vtc</li>
+<li>云迁移之数据库迁移</li>
+</ul>
+
+<h1 id="linux">linux</h1>
+
+<ul>
+<li>1.    进程启动：一，手工启动(前台启动，后台启动加“&amp;”) fg, 后台启动改为前台启动，ctrl+z bg，前台启动改为后台启动 二，交换进程在用户注销时自动关闭。三，调度启动。ps –ef | grep vino-server.</li>
+<li>2.    进程查看工具：ps –aux | more  进程状态：r s I z  , top 进程动态的显示。</li>
+<li>3. free  -m 以M的方式显示内存使用状况</li>
+<li>4.计划任务 cron  若非机器全天运行 用anncron</li>
+
+<li><p>5.linux 运维 &ndash;软件管理。 rpm(不能解决依赖关系) , yum （解决依赖关系，批量安装）, apt-get,</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">rpm –qa 
+查询系统中所有的软件包
+rpm –ql
+列出软件包安装的路径为止
+rpm –qf
+查询某文件归属于哪个RPM包
+rpm –qc
+查找软件包中的配置文件
+rpm –e 
+删除软件包，不结局依赖关系</pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 
 <h1 id="vmware-vsphere">Vmware vSphere</h1>
