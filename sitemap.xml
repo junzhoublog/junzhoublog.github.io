@@ -9,21 +9,35 @@
   </url>
   
   <url>
-    <loc>https://junzhoublog.github.io/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971.0-/</loc>
-    <lastmod>2020-08-04T13:35:28+08:00</lastmod>
+    <loc>https://junzhoublog.github.io/post/hcip%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B9%8Bdocker/</loc>
+    <lastmod>2020-09-05T21:59:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://junzhoublog.github.io/post/</loc>
-    <lastmod>2020-08-04T13:35:28+08:00</lastmod>
+    <lastmod>2020-09-05T21:59:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://junzhoublog.github.io/</loc>
+    <lastmod>2020-09-05T21:59:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://junzhoublog.github.io/post/hcip%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B9%8Bopenstack/</loc>
+    <lastmod>2020-09-05T21:56:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://junzhoublog.github.io/post/hcia%E4%BA%91%E8%AE%A1%E7%AE%971.0-/</loc>
     <lastmod>2020-08-04T13:35:28+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-06-25T07:32:08&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-25T07:32:08&#43;08:00" />
-<meta itemprop="wordCount" content="3445">
+<meta itemprop="wordCount" content="3904">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-06-25 </span>
         
-          <span class="more-meta"> 约 3445 字 </span>
-          <span class="more-meta"> 预计阅读 7 分钟 </span>
+          <span class="more-meta"> 约 3904 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
         
       </div>
     </header>
@@ -257,6 +257,25 @@ Hybrid端口和Trunk端口属于多个VLAN，所以需要设置缺省VLAN ID。�
 <ol>
 <li>设置是tag时，原标签转发。设置是UNtag时，剥离标签转发。</li>
 </ol>
+
+<ul>
+<li>总结 ：</li>
+</ul>
+
+<p>所有Vlan的mac地址都相通，这样才导致了交换机转发数据时无法通过mac地址查找功能，所以才能实现vlan之间的隔离 。</p>
+
+<p>不同vlan之间要通信，只能通过三层路由功能曲线救国 。</p>
+
+<p>同一个vlan下，之所以能通信是因为具体接口的mac地址又区别，交换机能够构造mac地址转发表 。</p>
+
+<p>不同vlan同一网段：
+多台交换机之间 ：可以通过利用 vlan  只有in方向access接口才打标签、out方向接口才去标签、以及trunk接口保留标签的特性，妙用来让交换机误认为是在同一vlan同一网段来解决 。主要是通过硬件原理来实现
+单台交换机 ：则需要利用PVLAN或者vlan中继来做一个不同vlan之间可以过渡的机制，进而进行通信 。主要是通过软件编程功能来实现</p>
+
+<p>相通vlan不同网段：
+多台交换机之间 ：也可以通过利用 vlan  只有in方向access接口才打标签、out方向接口才去标签、以及trunk接口保留标签的特性，妙用来让交换机误认为两个网段处于不同的vlan了，然后通过vlan之间的三层路由来实现通信 。</p>
+
+<p>单台交换机 ：也可以直接通过第二地址的妙用来实现</p>
 
     </div>
 
