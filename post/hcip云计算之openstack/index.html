@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="周军" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="周军" /><meta name="description" content="OpenStack概览 1.1 用户能够通过web界面、命令行或API接口配置。 1.2 虚拟化是OpenStack的底层技术实现手段之一。 1.3keystone 提供身份验证，" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="HCIP云计算之openstack" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="OpenStack概览 1.1 用户能够通过web界面、命令行或API接口配置。 1.2 虚拟化是OpenStack的底层技术实现手段之一。 1.3keystone 提供身份验证，" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://junzhoublog.github.io/post/hcip%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B9%8Bopenstack/" />
 <meta property="article:published_time" content="2020-09-05T21:56:41+08:00" />
 <meta property="article:modified_time" content="2020-09-05T21:56:41+08:00" />
 <meta itemprop="name" content="HCIP云计算之openstack">
-<meta itemprop="description" content="">
+<meta itemprop="description" content="OpenStack概览 1.1 用户能够通过web界面、命令行或API接口配置。 1.2 虚拟化是OpenStack的底层技术实现手段之一。 1.3keystone 提供身份验证，">
 
 
 <meta itemprop="datePublished" content="2020-09-05T21:56:41&#43;08:00" />
 <meta itemprop="dateModified" content="2020-09-05T21:56:41&#43;08:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="1735">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="HCIP云计算之openstack"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:description" content="OpenStack概览 1.1 用户能够通过web界面、命令行或API接口配置。 1.2 虚拟化是OpenStack的底层技术实现手段之一。 1.3keystone 提供身份验证，"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-09-05 </span>
         
-          <span class="more-meta"> 约 0 字 </span>
-          <span class="more-meta"> 预计阅读 0 分钟 </span>
+          <span class="more-meta"> 约 1735 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -138,11 +138,110 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
-    
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#openstack概览">OpenStack概览</a></li>
+<li><a href="#openstack操作界面管理">OpenStack操作界面管理</a></li>
+<li><a href="#openstack认证管理">OpenStack认证管理</a></li>
+<li><a href="#openstack镜像管理">OpenStack镜像管理</a></li>
+<li><a href="#openstack计算管理">OpenStack计算管理</a></li>
+<li><a href="#openstack存储管理">OpenStack存储管理</a></li>
+<li><a href="#openstack网络管理">OpenStack网络管理</a></li>
+<li><a href="#openstack编排管理">OpenStack编排管理</a></li>
+<li><a href="#openstack故障处理">OpenStack故障处理</a></li>
+<li><a href="#华为openstack增强商用解决方案">华为openstack增强商用解决方案</a></li>
+</ul>
+</nav>
   </div>
 </div>
     <div class="post-content">
       
+
+<h1 id="openstack概览">OpenStack概览</h1>
+
+<ul>
+<li>1.1 用户能够通过web界面、命令行或API接口配置。</li>
+<li>1.2 虚拟化是OpenStack的底层技术实现手段之一。</li>
+<li>1.3keystone 提供身份验证，认证与其他组件交互最多。horizon提供基于web的控制界面。glance镜像服务提供发现、注册和检索虚拟机镜像的功能。Nova，计算服务，调用其他服务。cinder块存储服务。swift对象存储服务，存储大量数据高效，安全。neutron 网络服务，二层交换，三层路由，负载均衡。heat编排服务为云应用程序编排OpenStack基础架构资源。</li>
+</ul>
+
+<p><strong>快速搭建OpenStack实验环境流程</strong></p>
+
+<p>一、pc/服务器——&gt;virtualBox/kvm——&gt;openstack computer node
+二、labs-master</p>
+
+<ol>
+<li>打开修改lab-master\labs\osbash\wbatch\create_ubuntu_cluster_node（262行调整内存为2048，266行计算节点cpu调整为4，311行第二块磁盘容量调整为12800）</li>
+
+<li><p>打开修改lab-smaster\labs\osbash\scripts\ubuntu\ apt_init (40行修改镜像下载地址为sudo sed  -i &rsquo;s/us.archive.ubuntu.com/mirrors.huaweicloud.com/g&rsquo; /etc/apt/sources.list，)打开apt_pre-download.sh (为了防止下载超时导致下载失败，在第15行加一个循环语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">function apt_download {
+
+n=0
+until [ $n -ge 5 ]
+do
+    echo &#34;apt_download: $*&#34; &amp;&amp;sudo apt install -y --download-only &#34;$@&#34; &amp;&amp; break
+    n=$[$n+1]
+    sleep 15
+done
+
+}
+)</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>执行create_hostnet.bat 创建计算机节点与控制节点通信的hostonly网络，去virtualbox 主机网络管理器界面中验证。</p></li>
+
+<li><p>打开修改create_base.bat （88行ubuntu对应版本，为了下载时间节省提前去下载执行第2. 修改的文件好ubuntu的iso放在img文件下）执行create_base.bat，在img文件夹下生成bas开头的Ubuntu iso 后期计算节点控制节点基于此iso。</p></li>
+
+<li><p>执行第1. 步修改的create_ubuntu_cluster_node 文件，在img文件下伸出计算机节点computer1与控制节点control</p></li>
+</ol>
+
+<h1 id="openstack操作界面管理">OpenStack操作界面管理</h1>
+
+<ul>
+<li>2.1Horizon, 提供web界面，管理员admin账号登录与myuser功能区别。CLI时要先source。</li>
+<li>2.2使用OpenStack Dashboard方式发放虚拟机实例cirros, 1. 镜像image2.admin下flavor规格3.project下networks4.project 下instance中选1.2.3.</li>
+</ul>
+
+<h1 id="openstack认证管理">OpenStack认证管理</h1>
+
+<ul>
+<li>3.2keystone对象模型，是公开的一组内部服务，内部服务以组合方式使用。Keystone对象模型中的-resource为domain(域)和其中project提供数据。-Assignment 提供角色和角色分配的数据。-Token提供服务的凭证，相当于身份证，-catalog服务提供用于查询端点的端点注册表，以便外部访问openstack服务。</li>
+<li>3.3keystone 认证工作原理和流程，基于令牌（认证请求发送时添加一个X-auth-Token的http头，keystone检查http头中的token值, 并与数据库的令牌进行对比验证），基于外部认证，基于本地。基于令牌的UUID , PKI, PkIZ, fernet, 其中只有pki和pkiz支持本地认证和keystone负载小和存储与数据库和非对称加密。Uuid: 无需维护秘钥，负载较低/region较少。pki需要妥善保管私钥。Fernet: 周期性维护秘钥，负载较高，region较多。目前新版openstack都采用fernet令牌。RBAC: 基于角色的访问控制。1. 申请token, 用户user_a2. 创建项目，head中携带token, url中携带操作。3. 从token中解析出用户的权限信息，根据policy.json策略配置文件，判断权限是否满足操作要求。</li>
+</ul>
+
+<p><em>发放token, 验证token, 通过policy.json实现权限控制</em></p>
+
+<h1 id="openstack镜像管理">OpenStack镜像管理</h1>
+
+<h1 id="openstack计算管理">OpenStack计算管理</h1>
+
+<h1 id="openstack存储管理">OpenStack存储管理</h1>
+
+<h1 id="openstack网络管理">OpenStack网络管理</h1>
+
+<h1 id="openstack编排管理">OpenStack编排管理</h1>
+
+<h1 id="openstack故障处理">OpenStack故障处理</h1>
+
+<h1 id="华为openstack增强商用解决方案">华为openstack增强商用解决方案</h1>
+
     </div>
 
     <div class="post-copyright">
