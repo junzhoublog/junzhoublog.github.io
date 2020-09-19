@@ -6,7 +6,7 @@
     <description>Recent content on Zhou Jun&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 05 Sep 2020 21:59:18 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 19 Sep 2020 18:00:42 +0800</lastBuildDate>
     
 	<atom:link href="https://junzhoublog.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,6 +18,15 @@
       
       <guid>https://junzhoublog.github.io/about/</guid>
       <description>本博客主要用于 - 学习笔记 - 生活总结 计算机参考书目： 《c语言——从研发到脱发》 《C++——从入门到入土》 《Java——从跨平台到跨行业》 《Io</description>
+    </item>
+    
+    <item>
+      <title>云网融合 眉山</title>
+      <link>https://junzhoublog.github.io/post/%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88-%E7%9C%89%E5%B1%B1/</link>
+      <pubDate>Sat, 19 Sep 2020 18:00:42 +0800</pubDate>
+      
+      <guid>https://junzhoublog.github.io/post/%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88-%E7%9C%89%E5%B1%B1/</guid>
+      <description>云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储</description>
     </item>
     
     <item>
