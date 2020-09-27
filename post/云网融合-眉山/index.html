@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="周军" /><meta name="description" content="云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="周军" /><meta name="description" content="云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储 linux 实操 linux 数据盘 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="云网融合 眉山" />
-<meta property="og:description" content="云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储" />
+<meta property="og:description" content="云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储 linux 实操 linux 数据盘 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://junzhoublog.github.io/post/%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88-%E7%9C%89%E5%B1%B1/" />
 <meta property="article:published_time" content="2020-09-19T18:00:42+08:00" />
 <meta property="article:modified_time" content="2020-09-19T18:00:42+08:00" />
 <meta itemprop="name" content="云网融合 眉山">
-<meta itemprop="description" content="云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储">
+<meta itemprop="description" content="云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储 linux 实操 linux 数据盘 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32">
 
 
 <meta itemprop="datePublished" content="2020-09-19T18:00:42&#43;08:00" />
 <meta itemprop="dateModified" content="2020-09-19T18:00:42&#43;08:00" />
-<meta itemprop="wordCount" content="31">
+<meta itemprop="wordCount" content="1766">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="云网融合 眉山"/>
-<meta name="twitter:description" content="云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储"/>
+<meta name="twitter:description" content="云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储 linux 实操 linux 数据盘 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-09-19 </span>
         
-          <span class="more-meta"> 约 31 字 </span>
-          <span class="more-meta"> 预计阅读 1 分钟 </span>
+          <span class="more-meta"> 约 1766 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
         
       </div>
     </header>
@@ -148,6 +148,14 @@
 </ul></li>
 <li><a href="#云迁移">云迁移</a></li>
 <li><a href="#对象存储">对象存储</a></li>
+<li><a href="#linux">linux</a></li>
+<li><a href="#实操">实操</a>
+<ul>
+<li><a href="#linux-数据盘">linux  数据盘</a></li>
+<li><a href="#速腾工具迁移">速腾工具迁移</a></li>
+<li><a href="#手工云迁移">手工云迁移</a></li>
+<li><a href="#oos-linux-loader">oos-linux-loader</a></li>
+</ul></li>
 </ul>
 </nav>
   </div>
@@ -167,6 +175,402 @@
 
 <h1 id="对象存储">对象存储</h1>
 
+<h1 id="linux">linux</h1>
+
+<h1 id="实操">实操</h1>
+
+<h2 id="linux-数据盘">linux  数据盘</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">1.云业务
+2.云专线
+3.Linux
+4.云迁移
+5.对象存储
+
+！@zxcv1234      主机三
+
+mssyjd05_zqzc@163.com
+Tk$89#Tb
+：：：：：切换操作系统先做：：：：：：：
+天翼云 成都3 成都4  
+cat   /proc/version
+cat   /etc/redhat-release
+web 应用网页
+web  动态网页 
+
+云桌面  基础策略管理  文件与剪切板 快照 还原
+
+分区--》格式化--》挂载 （不方便扩容）
+1.fdisk -l  //查看
+
+2. fdisk /dev/vdb // 删除分区
+
+d
+w
+3.fdisk  /dev/vdb // 创建分区
+m
+p
+n
+w
+4.mkfs.xfs /dev/vdb1 //格式化
+
+5. mount -t xfs /dev/vdb1 /mnt 挂载
+6. vi /etc/fstab  
+
+i
+添加如下内容： /dev/vdb1   /root/disk  xfs  defaults 02 
+wq!
+删除分区--》PV--&gt;vg--&gt;lv--&gt;格式化--》 挂载---》扩容（物理边界扩容，逻辑边界扩容）
+1.fdisk /dev/vdb // 删除分区
+d
+w
+
+2.  pvcreate /dev/vdb 
+
+pvs 
+pvscan
+pvremove   
+3.vgcreate vgtest1  /dev/vdb
+vgs 
+vgscan
+vgremove  vgtest1 
+4.lvcreate -l 50g -n  test1  vgtest1
+lvs
+lvscan
+lvremove test1
+5.mkfs.ext4 /dev/vgtest1/test1 
+6.mount -t ext4 /dev/vgtest1/test1  /mnt/test1
+df
+7.lvextend -L +3g /dev/vgtest/lv_test1
+resize2fs /dev/vgtest/lv_test1
+df -hT</pre></td></tr></table>
+</div>
+</div>
+<h2 id="速腾工具迁移">速腾工具迁移</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">：：：：：切换操作系统先做：：：：：：：
+源端：
+1、验证源端主机应用是否正常。
+http://133.38.84.134/energy-web/production/index.html
+2、登录源端web主机ssh 133.38.84.134  root  SCcd^581安装agent。
+(wget )   http://133.38.29.84:9980/login.jsp 
+ls
+wget http://133.38.29.84:9980/admin/toUserAction%21downClient?type=16 -O Clone_Client_Redhat7x86_64.zip     rm -f Clone_Client_Redhat7x86_64.zip
+unzip Clone_Client_Redhat7x86_64.zip解压。   rm -rf Clone_Client_Redhat7x86_64
+进入目录./install.sh      ./uninstall.sh
+3、在迁移平台确认源端是否上线。http://133.38.29.84:9980/login.jsp
+目的端（主机一）：
+4、在天翼云目的端切换操作系统，共享镜像move-linux
+5、安全组端口放通
+	22、ICMP、4301-4302  8090 入方向
+	出方向全部放通
+                8090 nat映射 80
+6、切换PE系统后启动目的主机填写迁移平台信息 (第三个)
+	192.168.4.103
+	your name
+	填写天翼云的私有地址（目的云主机的）
+
+7、迁移平台配置迁移任务，（之前做过还原配置）配置任务-启动-结束--重启目的端。
+
+8、修改httpd端口 、vi  /etc/httpd/conf/httpd.conf  （添加 Listen 8090）
+  	systemctl restart httpd 
+     安全组中要添加入方向规则 tcp 8090
+9、修改迁移后的目的端主机（第一个root  SCcd^581）的ip地址
+vi   /etc/sysconfig/network-scripts/ifcfg-eth0 （把源私有ip 改成目的云主机的私有IP，网关也要改）
+	dhcp
+	systemctl restart network
+118.121.58.234
+10、验证  
+本地云主机静态web：localhost:8381/energy-web/production/index.html 
+公网打开静态web: http://118.121.58.234:8381/energy-web/production/index.html</pre></td></tr></table>
+</div>
+</div>
+<h2 id="手工云迁移">手工云迁移</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">：：：：：切换操作系统先做：：：：：：：
+http://133.38.84.134/energy-web/production/index.html
+http://133.38.84.134/nangao-lite/dede1111/login.php
+主机三（web）
+安装php:
+yum -y install  php.x86_64
+yum -y install php-gd.x86_64
+yum -y install php-mysql.x86_64 
+
+vi    /etc/php.ini
+/request_order
+//
+request_order=&#34;GP&#34;
+改为 request_order=&#34;CGP&#34;
+
+目标主机去拷贝源端的：
+scp -r 192.168.4.127:/var/www/html/*  /var/www/html/    ：：：注意-  小横杠重新输入
+yes
+root
+SCcd^581
+ls -l /var/www/html
+
+vi /etc/httpd/conf/httpd.conf
+listen 8888
+systemctl restart httpd 
+ss -ant 
+验证：http://118.122.78.82:8110/energy-web/production/index.html
+
+vi   /var/www/html/nangao-lite/data/common.inc.php
+dhhost 改成db内网地址 192.168.4.139
+
+主机二（db）：
+yum -y install mariadb mariadb-server //安装mysql 服务器软件 
+systemctl enable mariadb 
+systemctl restart mariadb 
+ss -ant 3306（数据库是否起来）
+ 
+mysqldump  -h 192.168.4.157 -u root -p  -A &gt;/home/mysql120200924.sql //数据库文件搬到天翼云  15328899919
+mysql -u root -p &lt;/home/mysql120200924.sql  //搬过来导入  密码为空
+systemctl restart mariadb 
+mysql -u root -p  //源端DB数据库账号：root/15328899919
+验证：http://118.122.78.82:8110/nangao-lite/dede1111/login.php</pre></td></tr></table>
+</div>
+</div>
+<h2 id="oos-linux-loader">oos-linux-loader</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">LINUX环境挂载对象存储：
+
+1）安装fuse组件：
+yum install -y fuse
+
+2）下载s3fs：
+yum install -y automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel
+
+git clone https://github.com/s3fs-fuse/s3fs-fuse.git
+
+3）至此，s3fs环境搭建完毕，下面需要对其做相关配置：首先进入到刚才下载的目录中进行文件查看
+cd s3fs-fuse
+
+./autogen.sh 
+./configure 
+make 
+make install
+
+4）创建s3fs挂载bucket的AK和SK文件
+
+vi /etc/passwd-s3fs
+cd3d26549ccb63d137:53e1a55c764936c2b9xxxxxx编辑完成后需要对秘钥文件进行授权
+0694e8eedd4bf0e09065:706abf30643e0a7da579bf1f0883babd980d2463
+
+5)编辑完成后需要对秘钥文件进行授权
+chmod 600 /etc/passwd-s3fs
+
+2、S3FS工具挂载OOS
+cd /
+在 / 下创建一个 目录用于挂载 OOS
+mkdir /mnt/obs0924
+
+3、挂载OOS的bucket （本例中bucket 的名字为 halley ）
+s3fs  msdx2020-zhoujun  /mnt/obs0924  -o url=https://oos-cn.ctyunapi.cn -o allow_other
+1.aksk  没有整对
+
+2. http https
+
+3.时区  date -s &#34;2020-9-23&#34;
+https://oos-cn.ctyunapi.cn/
+
+（AKSK: 以真实的为准,如不知道可登录web官网查找或重建，linux挂载需要先登录官网查找到准确bucket）</pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">

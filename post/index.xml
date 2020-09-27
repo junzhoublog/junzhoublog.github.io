@@ -17,7 +17,7 @@
       <pubDate>Sat, 19 Sep 2020 18:00:42 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/%E4%BA%91%E7%BD%91%E8%9E%8D%E5%90%88-%E7%9C%89%E5%B1%B1/</guid>
-      <description>云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储</description>
+      <description>云业务 云专线 pon接入云专线 Ipran接入云专线 云迁移 对象存储 linux 实操 linux 数据盘 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32</description>
     </item>
     
     <item>
@@ -170,7 +170,7 @@
       <pubDate>Fri, 27 Sep 2019 23:09:10 +0800</pubDate>
       
       <guid>https://junzhoublog.github.io/post/c&#43;&#43;/</guid>
-      <description>面向对象：c中函数（工具）与要操作的数据是分开的，c++中把数据与函数放在一起&amp;mdash;类。 头文件：任何一个要有防卫式声明，解决头文件重</description>
+      <description>c核心（指针）：1. 指针做函数参数 2. 函数指针做函数参数（回调函数实现了和多态一样的效果）函数c的基本单位 c++核心： 1. 封装 2. 继承 3. 多态 类c+</description>
     </item>
     
     <item>
