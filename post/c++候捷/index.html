@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>C&#43;&#43;候捷 - Zhou Jun&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="周军" /><meta name="description" content="面向对象：c中函数（工具）与要操作的数据是分开的，c&#43;&#43;中把数据与函数放在一起&amp;mdash;类。面向对向（c&#43;&#43;)主要的特征：继承和多态 头文" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.57.2 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://junzhoublog.github.io/post/c&#43;&#43;%E5%80%99%E6%8D%B7/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="C&#43;&#43;候捷" />
+<meta property="og:description" content="面向对象：c中函数（工具）与要操作的数据是分开的，c&#43;&#43;中把数据与函数放在一起&mdash;类。面向对向（c&#43;&#43;)主要的特征：继承和多态 头文" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://junzhoublog.github.io/post/c&#43;&#43;%E5%80%99%E6%8D%B7/" />
+<meta property="article:published_time" content="2019-09-27T23:09:10+08:00" />
+<meta property="article:modified_time" content="2019-09-27T23:09:10+08:00" />
+<meta itemprop="name" content="C&#43;&#43;候捷">
+<meta itemprop="description" content="面向对象：c中函数（工具）与要操作的数据是分开的，c&#43;&#43;中把数据与函数放在一起&mdash;类。面向对向（c&#43;&#43;)主要的特征：继承和多态 头文">
+
+
+<meta itemprop="datePublished" content="2019-09-27T23:09:10&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-27T23:09:10&#43;08:00" />
+<meta itemprop="wordCount" content="5711">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C&#43;&#43;候捷"/>
+<meta name="twitter:description" content="面向对象：c中函数（工具）与要操作的数据是分开的，c&#43;&#43;中把数据与函数放在一起&mdash;类。面向对向（c&#43;&#43;)主要的特征：继承和多态 头文"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Computer</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Computer</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">C&#43;&#43;候捷</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-09-27 </span>
+        
+          <span class="more-meta"> 约 5711 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#第一章-预先定义">第一章 预先定义</a>
+<ul>
+<li><a href="#内置的数据类型-语言预定义的运算符-operator-stl中的vector和string-条件语句与循环语句-输入输出用的iostream库">内置的数据类型、语言预定义的运算符（operator)、stl中的vector和string、条件语句与循环语句、输入输出用的iostream库</a></li>
+</ul></li>
+<li><a href="#第二章-函数的设计与使用">第二章 函数的设计与使用</a>
+<ul>
+<li><a href="#inline函数-重载-overloaded-函数-函数template-函数指针">inline函数、重载（overloaded)函数、函数template、函数指针</a></li>
+</ul></li>
+<li><a href="#第三章-stl">第三章 STL</a>
+<ul>
+<li><a href="#一组容器类-vector-list-set-map-一组泛型算法-操作容器的-sort-copy-merge">一组容器类（vector、list、set、map)、一组泛型算法(操作容器的）（sort()、copy()、merge()）</a></li>
+</ul></li>
+<li><a href="#第四章-class机制的设计与使用过程">第四章 class机制的设计与使用过程</a></li>
+<li><a href="#第五章-class形成层次体系-继承">第五章 class形成层次体系（继承）</a></li>
+<li><a href="#第六章-binary-tree-class-template">第六章 (binary tree)class template</a></li>
+<li><a href="#第七章-c-的异常处理机制">第七章 c++的异常处理机制</a></li>
+<li><a href="#基于对象">基于对象</a>
+<ul>
+<li><a href="#class不带指针的-complex-复数类">class不带指针的 complex(复数类)</a></li>
+<li><a href="#class带指针的-string-字符类">class带指针的  string（字符类）</a></li>
+</ul></li>
+<li><a href="#面向对象">面向对象</a></li>
+<li><a href="#泛型编程与模板编程兼谈对象">泛型编程与模板编程兼谈对象</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<ul>
+<li>面向对象：c中函数（工具）与要操作的数据是分开的，c++中把数据与函数放在一起&mdash;类。面向对向（c++)主要的特征：继承和多态</li>
+
+<li><p>头文件：任何一个要有防卫式声明，解决头文件重复包含问题。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#ifndef  _标头_H
+#define  _标头_H
+
+
+
+#endif</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>类 分两种 一种带指针的 一种不带指针的类。一般不带指针不用写析构函数。<br />
+引用问题（传4个字节）：返回类型 参数类型<br />
+const问题：返回类型 函数体里的东西  参数类型<br />
+c++标准库：I/O和STL
+可视化事件驱动编程的类库：MFC OWL VCL等</p></li>
+</ul>
+
+<h1 id="第一章-预先定义">第一章 预先定义</h1>
+
+<h2 id="内置的数据类型-语言预定义的运算符-operator-stl中的vector和string-条件语句与循环语句-输入输出用的iostream库">内置的数据类型、语言预定义的运算符（operator)、stl中的vector和string、条件语句与循环语句、输入输出用的iostream库</h2>
+
+<ul>
+<li>字符常量分两类：一可打印字符（英文字母、数字、 标点符号） 二不可打印字符（&rsquo;\n&rdquo;\t&rsquo;）</li>
+<li>构造函数初始化:解决一个对象多个值同时初始化问题。默认构造函数解决对象忘记初始化问题。</li>
+<li>构造函数初始化列表：1.由于构造函数不能继承，初始化列表可以可以调用基类特定的构造函数。2.引用成员和非静态const数据成员不存在赋值语义，只能初始列表。3.初始列表效率更高比函数体重初始化。</li>
+<li>Array和Vector:vector<int>*seq_addrs[seq_cnt]={&amp;a,&amp;b,&amp;c} <strong>seq_cnt.size()</strong></li>
+<li>string:string user_name; cin&gt;&gt;user_name;</li>
+<li>const char*:字符串常量“abcdef”</li>
+<li>enl:它会插入一个换行符，并清除输出缓冲去区的内容。</li>
+<li>using namespace std;：解决类名 函数名 全局变量名 名字冲突问题。</li>
+<li>cerr:不带缓冲的输出，不带缓冲的话，就会每写一个字母，就输出一个字母，然后刷屏。有了缓冲，你将看到若干句子“同时”就出现在了屏幕上（由内存翻新到显存，然后刷新屏幕）</li>
+</ul>
+
+<h1 id="第二章-函数的设计与使用">第二章 函数的设计与使用</h1>
+
+<h2 id="inline函数-重载-overloaded-函数-函数template-函数指针">inline函数、重载（overloaded)函数、函数template、函数指针</h2>
+
+<ul>
+<li>引用&amp;：int m;int&amp;n=m;n相当于m的别名，n就是m自己，创建同时必须初始化且是绑定关系。</li>
+<li>extern：多个源文件中使用。外部声明,若头文件中声明了就不用extern就用#include&lt;&gt;</li>
+<li>全局变量：不用初始化系统自动初始化为0。局部变量：系统不会自动初始化，由程序员指定其初始值。</li>
+<li>默认值：放在函数声明处，函数声明一般放在头文件，默认值放在头文件中。函数参数类型为指针类型方便指定其默认值，而引用则不行。</li>
+<li>inline:必须与函数定义放在一起才起作用。</li>
+
+<li><p>函数指针：指明函数的返回类型及参数列表。本质是一个指针变量，指向函数的指针。int (*fp)(int,int);函数指针还允许将函数作为参数传递给其他函数，也就是回调函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+int  add(int, int);
+int sub(int, int);
+int(*fp)(int, int);
+int main()
+{
+	fp = add;//等价于 fp=&amp;add;且在类中普通成员函数和虚拟成员函数必须这样的形式绑定到具体的对象。
+	/*fp = sub;*/
+	cout &lt;&lt; (*fp)(1, 2) &lt;&lt; endl;//等价于 cout &lt;&lt; fp(1, 2) &lt;&lt; endl;
+	fp = sub;
+	cout &lt;&lt; (*fp)(3, 4) &lt;&lt; endl;
+	return 0;
+}
+int add(int x, int y)
+{
+	return x + y;
+}
+int sub(int x, int y)
+{
+	return x - y;
+}</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>函数指针数组:int (*fp[])(int,int);</p></li>
+
+<li><p>数组指针：int (*fp)[];</p></li>
+
+<li><p>指针函数：本质是一个函数，函数的返回类型是指针类型返回的是指针（地址）。int* fp(int,int)</p></li>
+
+<li><p>指针数组：int* fp[];</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//2.2.cpp
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+using namespace std;
+//bool calc_elements(vector&lt;int&gt;&amp;vec, int pos);
+void display_elems(vector&lt;int&gt;&amp;vec, const string&amp;title, ostream&amp;os = cout);
+extern void really_calc_elems(vector&lt;int&gt; &amp;, int);
+inline bool calc_elems(vector&lt;int&gt; &amp;, int);
+int main()
+{
+	vector&lt;int&gt; pent;
+	const string title(&#34;pdfd&#34;);
+	if (calc_elems(pent, 0))
+		display_elems(pent, title);
+
+	if (calc_elems(pent, 8))
+		display_elems(pent, title);
+
+	if (calc_elems(pent, 14))
+		display_elems(pent, title);
+
+	if (calc_elems(pent, 139))
+		display_elems(pent, title);
+
+}
+//bool calc_elements(vector&lt;int&gt;&amp;vec, int pos)
+//{
+//	if (pos &lt;= 0 || pos &gt; 64)
+//	{
+//		cerr &lt;&lt; &#34;Sorry,invalid position:&#34;
+//			&lt;&lt; pos &lt;&lt; endl;
+//		return false;
+//	}
+//	for (int ix = vec.size() + 1; ix &lt;= pos; ++ix)
+//	{
+//		vec.push_back(ix*(3 * ix - 1) / 2);
+//
+//	}
+//	return true;
+//}
+
+void display_elems(vector&lt;int&gt;&amp;vec, const string &amp; title, ostream &amp;os)
+{
+	os &lt;&lt; &#39;\n&#39; &lt;&lt; title &lt;&lt; &#34;\n\t&#34;;
+	for (int ix = 0; ix &lt; vec.size(); ++ix)
+		os &lt;&lt; vec[ix] &lt;&lt; &#39; &#39;;
+	os &lt;&lt; endl;
+
+}
+inline bool calc_elems(vector&lt;int&gt; &amp;vec, int pos)
+{
+	if (pos &lt;= 0 || pos &gt; 64)
+	{
+		cerr &lt;&lt; &#34;sorry&#34; &lt;&lt; pos &lt;&lt; endl;
+		return false;
+	}
+	if (vec.size() &lt; pos)
+
+		really_calc_elems(vec, pos);
+
+	return true;
+}
+
+//2.3.cpp
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+using namespace std;
+void really_calc_elems(vector&lt;int&gt;&amp;vec, int pos)
+{
+	for (int ix = vec.size() + 1; ix &lt;= pos; ++ix)
+	{
+		vec.push_back(ix*(3 * ix - 1) / 2);
+	}
+}</pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h1 id="第三章-stl">第三章 STL</h1>
+
+<h2 id="一组容器类-vector-list-set-map-一组泛型算法-操作容器的-sort-copy-merge">一组容器类（vector、list、set、map)、一组泛型算法(操作容器的）（sort()、copy()、merge()）</h2>
+
+<ul>
+<li>容器分类:顺序性容器（vector、list)关联性容器（set、map，可以快速查找容器中的元素)</li>
+<li>vector到array到list</li>
+<li>(list指针相互连接 )泛型指针（Iterator迭代器):</li>
+<li>（赋予运算符不同意义）函数指针：</li>
+
+<li><p>（赋予运算符不同意义）函数对象（function object也称仿函数）:即它们是行为类似函数的对象，本质是个对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+
+class CAverage//类
+{
+public:
+	double operator()(int a1, int a2, int a3)
+	{  //重载()运算符
+		return (double)(a1 + a2 + a3) / 3;
+	}
+};
+
+int main()
+{
+	CAverage average;  //能够求三个整数平均数的函数对象
+	cout &lt;&lt; average(3, 2, 3);  //等价于 cout &lt;&lt; average.operator(3, 2, 3);
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>运算符重载技术：</p></li>
+</ul>
+
+<h1 id="第四章-class机制的设计与使用过程">第四章 class机制的设计与使用过程</h1>
+
+<ul>
+<li>函数的重载、内联 、const、virtual四种机制：其中const和virtual 仅仅用于类的成员函数。</li>
+<li>重载：一用于类的构造函数，因为构造函数函数名必须与类同名，二用于运算符重载。全局函数与成员函数同名不算重载，因为一个是文件作用域一个是类作用域，若要使用全局函数需要加 一元作用域解析运算符（：：）。注意隐式类型转换可能导致重载二义性。</li>
+
+<li><p>覆盖：是指派生类重新实现基类成员函数 函数名 参数相同 定义不同。且必须有virtual，才能被使用才有意义。</p></li>
+
+<li><p>隐藏:一是指派生类重新实现基类成员函数 函数名 参数不相同 定义不同，基类函数在派生类中被隐藏。二是指派生类重新实现基类成员函数 函数名 参数相同 定义不同 且必须无virtual，基类函数在派生类中被隐藏。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+class base
+{
+public:
+	void test(int x)
+	{
+		cout &lt;&lt; &#34;基类&#34; &lt;&lt; x &lt;&lt; &#39;\n&#39;;
+	}
+
+
+private:
+protected:
+
+};
+class child :public base
+{
+public:
+	/*using base::test;*///使从基类继承下的test()函数不隐藏 using声明
+	void test(char * y)
+	{
+		cout &lt;&lt; &#34;派生类&#34; &lt;&lt; y &lt;&lt; &#39;\n&#39;;
+	}
+	//void test(int x)
+	//{
+	//	cout &lt;&lt; &#34;基类2&#34; &lt;&lt; x &lt;&lt; &#39;\n&#39;;
+	//}
+	void test(int x) //使从基类继承下的test()函数不隐藏 调用传递
+	{
+		base::test(x);
+	}
+
+private:
+protected:
+
+};
+
+int main()
+{
+
+
+	child *r = new child();
+	r-&gt;test(5);
+
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>参数的默认值：必须放在函数的声明中。且只能从后向前依次默认。.</p></li>
+
+<li><p>运算符重载：一重载为类的成员函数，二元运算符只有一个右侧参数，因为有this指针隐含有的。二重载为全局函数，二元运算符有两个参数。</p></li>
+
+<li><p>inline函数内联：省去了函数调用的开销，但函数体内出现循环不用内联 因为会造成代码膨胀还不如函数调用的开销小。</p></li>
+
+<li><p>this指针的使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+class object
+{
+public:
+	int a;
+	int b;
+	void xianshi()//省略了object* this参数。
+	{
+		cout &lt;&lt; &#34;a与b的值分别为：&#34;&lt;&lt;a &lt;&lt;&#34;、&#34;&lt;&lt;b &lt;&lt; endl;//省略了this-&gt;(this-&gt;a,this-&gt;b)
+	}
+	void add()
+	{
+		cout &lt;&lt; &#34;a与b之和为：&#34;&lt;&lt;a+b&lt;&lt; endl;//省略了this-&gt;(this-&gt;a+this-&gt;b)
+		cout &lt;&lt; endl;
+	}
+	
+protected:
+private:
+};
+int  main()
+{
+	object obj1;
+	obj1.a = 1;
+	obj1.b = 2;
+	cout &lt;&lt; &#34;obj1:&#34; &lt;&lt; endl;
+	obj1.xianshi();
+	obj1.add();
+
+	object obj2;
+	obj2.a = 3;
+	obj2.b = 4;
+	cout &lt;&lt; &#34;obj2:&#34; &lt;&lt; endl;
+	obj2.xianshi();
+	obj2.add();
+
+	object obj3;
+	obj3.a = 8;
+	obj3.b = 5;
+	cout &lt;&lt; &#34;obj3:&#34; &lt;&lt; endl;
+	obj3.xianshi();
+	obj3.add();
+
+	cout &lt;&lt; obj1.a&lt;&lt;endl;//这种方式不好 ，最好用函数（工具）去显示。
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>类型转换函数：本质是创建新的目标对象，并以源对象的值来初始化，初始化过程中调用了operator=（）完成拷贝赋值。可以把带有一个参数的构造函数看作一个类型转换函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include&lt;iostream&gt;
+using namespace std;
+class fenshu
+{
+public:
+	fenshu()
+	{
+
+	}
+	fenshu(double fenzi, double fenmu) :z(fenzi), m(fenmu)
+	{
+
+	}
+	fenshu operator +(const fenshu&amp;other)//重载加号+操作让分数类的对象可以像普通类型的变量一样加操作
+	{
+		fenshu result;
+		result.z = z*other.m + m*other.z;
+		result.m = m*other.m;
+		return result;
+	}
+	operator double()const//让分数类型的（默认）this对象转为double类型的对象进行直接输出操作
+	{
+
+		return z / m;
+
+	}
+	//void shuchu()
+	//{
+	//	cout &lt;&lt; z &lt;&lt;&#39;/&#39;&lt;&lt; m &lt;&lt; endl;
+	//}
+	//
+private:
+	double z;
+	double m;
+
+};
+int main()
+{
+	fenshu no1(3, 2);
+	fenshu no2(3, 5);
+	fenshu no3 = no1 + no2;
+	cout &lt;&lt; no3 &lt;&lt; endl;
+	//no1.shuchu();
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div></li>
+
+<li><p>拷贝构造：等号左边对象不存在 需要创建的同时并用另一个已经存在的对象来初始化。</p></li>
+
+<li><p>拷贝赋值：等号左边对象已经存在  并用另一个已经存在的对象赋值给左边已经存在的对象。</p></li>
+
+<li><p>浅拷贝与深拷贝：浅：只是对地址（指针）的复制 深：复制具体的内存中存的值（复制内存）当有指针成员时要进行深拷贝。深拷贝解决方式：1.自定义拷贝构造函数2.自定义拷贝赋值函数
+<a href="https://blog.csdn.net/zqw_yaomin/article/details/82356482">C++之浅拷贝和深拷贝</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+class object
+{
+public:
+	object()
+	{
+		cout &lt;&lt; &#34;用户自己写的默认构造函数&#34; &lt;&lt; endl;
+	}
+	object(int v) :value(v)
+	{
+		cout &lt;&lt; &#34;构造对象&#34; &lt;&lt; endl;
+	}
+	object(const object&amp; other)
+	{
+		this-&gt;value = other.value;
+		cout &lt;&lt; &#34;拷贝构造对象&#34; &lt;&lt; endl;
+	}
+	object&amp; operator=(const object&amp; other)
+	{
+
+		this-&gt;value = other.value;
+		cout &lt;&lt; &#34;拷贝赋值&#34; &lt;&lt; endl;
+		return *this;
+
+	}
+	void Test()
+	{
+		cout &lt;&lt; &#34;类的成员函数&#34; &lt;&lt; endl;
+	}
+	object test()
+	{
+		object d;
+		cout &lt;&lt; &#34;有返回类型的函数&#34; &lt;&lt; endl;
+		return d;
+
+	}
+	void test(object x)
+	{
+		cout &lt;&lt; &#34;有参函数&#34; &lt;&lt; endl;
+	}
+	void Test3(object &amp;test)
+	{}
+
+	object &amp;Test4()
+	{
+		object *pA = new object;
+		return *pA;
+	}
+protected:
+private:
+	int value;
+};
+void Test(object obj)
+{
+	cout &lt;&lt; &#34;全局函数&#34; &lt;&lt; endl;
+}
+
+int main()
+{
+	object a(123);//调用自己写的含参构造函数
+
+	object b(a);//等价于object b=a;创建对象且用另一个已经存在对象初始化时
+	object *p = new object(a);//new 动态创建对象时
+	Test(a);//函数传参时 调用拷贝构造函数和全局函数
+	b = a;//调用拷贝赋值
+
+	object c;//调用用户自己写的默认构造函数
+	c.Test();//调用类的成员函数
+	cout &lt;&lt; endl;
+	object e;//调用用户自己写的默认构造函数
+	e = c.test();/* 函数返回值时，调用复制构造函数；将返回值赋值给obj2时，调用重载赋值操作符
+				 * 函数返回值时，也会构造一个临时对象；调用复制构造函数将返回值复制到临时对象上
+				 */
+	cout &lt;&lt; endl;
+	c.test(a);/* 传参的过程中，要调用一次复制构造函数
+			  * obj1入栈时会调用复制构造函数创建一个临时对象，与函数内的局部变量具有相同的作用域
+			  */
+	cout &lt;&lt; endl;
+	c.Test3(e); // 参数是引用，没有调用复制构造函数
+
+	object obj3;
+	c.Test4(); // 返回值是引用，没有调用复制构造函数
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h1 id="第五章-class形成层次体系-继承">第五章 class形成层次体系（继承）</h1>
+
+<ul>
+<li>继承：protectedz只能被子类继承。classB:public A{} public从父类继承来的public和protected成员属性不变， protect从父类继承来的public和protected成员属性降低为protected,private从父类继承来的public和protected成员属性降低为private. 继承不能继承构造函数、析构函数、赋值函数。<br /></li>
+
+<li><p>多态（虚函数）：在子类中成员函数重写，父类指针指向子类对象 该对象访问函数时访问的是父类的函数不是子类中重写的函数 这时引入虚函数便解决了问题。此时基类是多态类析构函数也要定义为虚函数，以免造成内存泄漏。基类（干脆不定义反正派生类要重新对函数定义）直接虚函数等于零形成纯虚函数，亦形成纯虚类也叫抽象基类也叫接口类。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+class base
+{
+public:
+	virtual void test()//此处加virtual 后输出结果为new右边的类型 派生类 基类 派生类 不加时输出为基类 基类 派生类
+	{
+		cout &lt;&lt; &#34;基类&#34; &lt;&lt; &#39;\n&#39;;
+	}
+
+private:
+protected:
+
+};
+class child :public base
+{
+public:
+	void test()
+	{
+		cout &lt;&lt; &#34;派生类&#34; &lt;&lt; &#39;\n&#39;;
+	}
+private:
+protected:
+
+};
+
+int main()
+{
+	base *p = new child();
+	p-&gt;test();
+
+	base *q = new base();
+	q-&gt;test();
+
+	child *r = new child();
+	r-&gt;test();
+
+	//child *s = new base();  //初始化无法从base转换为child
+	//s-&gt;test();
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<h1 id="第六章-binary-tree-class-template">第六章 (binary tree)class template</h1>
+
+<p>函数模板：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+using namespace std;
+template&lt;typename T&gt;
+T findmax(T arr[],int len)
+{
+	T value = arr[0];
+	for (int i=0;i&lt;len;++i)
+	{
+		if (arr[i] &gt; value)
+		{
+			value = arr[i];
+		}
+	}
+	return value;
+}
+int main()
+{
+	int a[5] = {5,4,6,1,4};
+	int result = findmax&lt;int&gt;(a, 5);
+	cout &lt;&lt; result &lt;&lt; endl;
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<p>类模板：函数声明与实现（定义）写在一个地方。</p>
+
+<h1 id="第七章-c-的异常处理机制">第七章 c++的异常处理机制</h1>
+
+<p>异常处理：抛出异常、提炼异常、捕获异常、异常对象本身。throw 、try{}、catch{}
+throw是一条语句，只能抛出一个异常。try{}包含可能会出现异常的代码段。catch{}用户定义的异常处理器，只能处理一个异常。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+class CException
+{
+public:
+	string msg;
+	CException(string s) : msg(s) {}
+};
+double Devide(double x, double y)
+{
+	if (y == 0)
+		throw CException(&#34;devided by zero&#34;);
+	cout &lt;&lt; &#34;in Devide&#34; &lt;&lt; endl;
+	return x / y;
+}
+int CountTax(int salary)
+{
+	try {
+		if (salary &lt; 0)
+			throw - 1;
+		cout &lt;&lt; &#34;counting tax&#34; &lt;&lt; endl;
+	}
+	catch (int) {
+		cout &lt;&lt; &#34;salary &lt; 0&#34; &lt;&lt; endl;
+	}
+	cout &lt;&lt; &#34;tax counted&#34; &lt;&lt; endl;
+	return salary * 0.15;
+}
+int main()
+{
+	double f = 1.2;
+	try {
+		CountTax(-1);
+		f = Devide(3, 0);
+		cout &lt;&lt; &#34;end of try block&#34; &lt;&lt; endl;
+	}
+	catch (CException e) {
+		cout &lt;&lt; e.msg &lt;&lt; endl;
+	}
+	cout &lt;&lt; &#34;f = &#34; &lt;&lt; f &lt;&lt; endl;
+	cout &lt;&lt; &#34;finished&#34; &lt;&lt; endl;
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<p>待解决问题：<br />
+1.实现一次深度拷贝。
+2.不用递归用循环的方式实现一次 汉诺塔。
+3.纯手工 不看资料手写一些基础的数据结构与算法。
+4.判断是素数且是回文数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+bool is_primer(int val)
+{
+	if (val == 1)
+		return false;
+	for (int i = 2; i &lt;= sqrt(val); ++i)
+	{
+
+		if (val % i == 0)
+			return false;
+	}
+	return true;
+}
+
+bool is_textloop(int val)
+{
+	int m;
+	int sum = 0;
+	m = val;
+	while (m)
+	{
+		sum = sum * 10 + m % 10;
+		m /= 10;
+	}
+
+	if (sum == val)
+		return true;
+	else
+		return false;
+}
+
+int main()
+{
+	int lowbound, upbound;
+	int count = 0;
+	cin &gt;&gt; lowbound &gt;&gt; upbound;
+	for (int i = lowbound; i &lt;= upbound; ++i)
+		if (is_primer(i))
+			if (is_textloop(i))
+			{
+
+				++count;
+			}
+	cout &lt;&lt; count &lt;&lt; endl;
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="基于对象">基于对象</h1>
+
+<h2 id="class不带指针的-complex-复数类">class不带指针的 complex(复数类)</h2>
+
+<h2 id="class带指针的-string-字符类">class带指针的  string（字符类）</h2>
+
+<h1 id="面向对象">面向对象</h1>
+
+<ul>
+<li>组合：一个类拥有一个别的不带指针的类 利用别的类来完成自己的事 拥有了一个东西</li>
+<li>委托：一个类拥有一个别的带指针的类 利用别的类来完成自己的事 只是指向了另一东西</li>
+<li>继承：纯虚函数必须在子类中重新写，空函数子类中不重新写也不会出错。
+<br /></li>
+</ul>
+
+<h1 id="泛型编程与模板编程兼谈对象">泛型编程与模板编程兼谈对象</h1>
+
+<ul>
+<li>explicit用在构造函数前面。可以阻止不应该允许的经过转换构造函数进行的隐式转换的发生。</li>
+<li>智能指针 泛型指针 迭代器</li>
+<li>函数对象</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">周军</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-09-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%BB%83%E4%B9%A0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">数据结构与算法练习</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/c-%E9%83%9D%E6%96%8C/">
+            <span class="next-text nav-default">C 郝斌</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="email:1158290245@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/junzhoublog" class="iconfont icon-github" title="github"></a>
+      <a href="https://zhuanlan.zhihu.com/p/23014683" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://www.douban.com" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://www.bilibili.com" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://junzhoublog.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">周军</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

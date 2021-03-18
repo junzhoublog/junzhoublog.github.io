@@ -1,0 +1,2413 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>C 郝斌 - Zhou Jun&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="周军" /><meta name="description" content="看懂程序 ： 流程 功能 试数 求一元二次方程组（第一个小程序） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 # include &amp;lt;stdio.h&amp;gt; # include &amp;lt;math.h&amp;gt;" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.57.2 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://junzhoublog.github.io/post/c-%E9%83%9D%E6%96%8C/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="C 郝斌" />
+<meta property="og:description" content="看懂程序 ： 流程 功能 试数 求一元二次方程组（第一个小程序） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 # include &lt;stdio.h&gt; # include &lt;math.h&gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://junzhoublog.github.io/post/c-%E9%83%9D%E6%96%8C/" />
+<meta property="article:published_time" content="2019-09-21T16:01:29+08:00" />
+<meta property="article:modified_time" content="2019-09-21T16:01:29+08:00" />
+<meta itemprop="name" content="C 郝斌">
+<meta itemprop="description" content="看懂程序 ： 流程 功能 试数 求一元二次方程组（第一个小程序） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 # include &lt;stdio.h&gt; # include &lt;math.h&gt;">
+
+
+<meta itemprop="datePublished" content="2019-09-21T16:01:29&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-21T16:01:29&#43;08:00" />
+<meta itemprop="wordCount" content="7547">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C 郝斌"/>
+<meta name="twitter:description" content="看懂程序 ： 流程 功能 试数 求一元二次方程组（第一个小程序） 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 # include &lt;stdio.h&gt; # include &lt;math.h&gt;"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Computer</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Computer</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">C 郝斌</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-09-21 </span>
+        
+          <span class="more-meta"> 约 7547 字 </span>
+          <span class="more-meta"> 预计阅读 16 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#求一元二次方程组-第一个小程序">求一元二次方程组（第一个小程序）</a></li>
+<li><a href="#常量在c语言中如何表示">常量在c语言中如何表示</a></li>
+<li><a href="#流程控制">流程控制</a>
+<ul>
+<li><a href="#求1到任意一个整数之间的数的奇偶数之和sum1sum2-奇偶数之个数cnt1cnt2-奇偶数之平均值avg1avg2">求1到任意一个整数之间的数的奇偶数之和sum1sum2、奇偶数之个数cnt1cnt2、奇偶数之平均值avg1avg2</a></li>
+<li><a href="#浮点数存储所带来的问题">浮点数存储所带来的问题</a></li>
+<li><a href="#多个for循环的嵌套使用">多个for循环的嵌套使用</a></li>
+<li><a href="#自增自减比较">自增自减比较</a></li>
+<li><a href="#三目运算符">三目运算符</a></li>
+<li><a href="#逗号表达式">逗号表达式</a></li>
+<li><a href="#for与while相互转换">for与while相互转换</a></li>
+<li><a href="#判断一个数是否为回文数">判断一个数是否为回文数</a></li>
+<li><a href="#求斐波那契数列">求斐波那契数列</a></li>
+<li><a href="#switch-val-case-1-语句1-case-2-语句2-case-程序的入口一旦找到就依次向下执行-不在判断其他case-除非break">switch(val) {case 1: 语句1；case 2:语句2} case 程序的入口一旦找到就依次向下执行 不在判断其他case  除非break。</a></li>
+<li><a href="#break-和continue">break 和continue</a></li>
+</ul></li>
+<li><a href="#数组">数组</a></li>
+<li><a href="#函数">函数</a>
+<ul>
+<li><a href="#判断是否为素数">判断是否为素数</a></li>
+</ul></li>
+<li><a href="#变量的作用域和存储方式">变量的作用域和存储方式</a>
+<ul>
+<li><a href="#动态变量在子程序中-每次调用都会从它的初始值开始调用-而不管他在函数中经历了什么变化-静态变量会从变化后的值继续改变-存储在内存出栈数据区">动态变量在子程序中，每次调用都会从它的初始值开始调用，而不管他在函数中经历了什么变化；静态变量会从变化后的值继续改变。 &mdash;&ndash;存储在内存出栈数据区</a></li>
+</ul></li>
+<li><a href="#指针">指针</a>
+<ul>
+<li><a href="#经典指针程序">经典指针程序</a></li>
+<li><a href="#指针和数组-数组的升级是容器">指针和数组（数组的升级是容器）</a>
+<ul>
+<li><a href="#指针和一维数组">指针和一维数组</a></li>
+<li><a href="#指针和二维数组">指针和二维数组</a></li>
+</ul></li>
+<li><a href="#指针变量的运算">指针变量的运算</a></li>
+<li><a href="#实参与形参是否是同一个变量-与-没有指针只能返回一个值">实参与形参是否是同一个变量 与 没有指针只能返回一个值</a></li>
+<li><a href="#多级指针">多级指针</a></li>
+</ul></li>
+<li><a href="#动态分配内存-动态数组">动态分配内存（动态数组）</a>
+<ul>
+<li><a href="#malloc用法">malloc用法</a></li>
+<li><a href="#动态一维数组">动态一维数组</a></li>
+</ul></li>
+<li><a href="#结构体">结构体</a></li>
+<li><a href="#枚举">枚举</a></li>
+<li><a href="#位运算">位运算</a></li>
+<li><a href="#null的含义">null的含义</a></li>
+<li><a href="#零散笔记">零散笔记</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<blockquote>
+<p>看懂程序 ： 流程  功能  试数</p>
+</blockquote>
+
+<h1 id="求一元二次方程组-第一个小程序">求一元二次方程组（第一个小程序）</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+# include &lt;math.h&gt;
+
+int main(void)
+{
+	//把三个系数保存到计算机中
+
+	int a = 0;  //=不表示相等，表示赋值
+	int b = 0;
+	int c = 0;
+	printf(&#34;输入一元二次方程（如:3x^2+4x+5）：&#34;);
+	scanf_s(&#34;%dx^2+%dx+%c&#34;, &amp;a, &amp;b, &amp;c);
+	double delta; //delt存放的是 b*b - 4*a*c
+	double x1; //存放一元二次方程的其中一个解
+	double x2; //存放一元二次方程的其中一个解
+
+	delta = b*b - 4 * a*c;
+
+	if (delta &gt; 0)
+	{
+		x1 = (-b + sqrt(delta)) / (2 * a);
+		x2 = (-b - sqrt(delta)) / (2 * a);
+		printf(&#34;该一元二次方程有两个解, x1 = %f, x2 = %f\n&#34;, x1, x2);
+	}
+	else if (delta == 0)
+	{
+		x1 = (-b) / (2 * a);
+		x2 = x1;  //右边赋给左边
+		printf(&#34;该一元二次方程有一个唯一解, x1 = x2 = %f\n&#34;, x1);
+	}
+	else
+	{
+		printf(&#34;无解\n&#34;);
+	}
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="常量在c语言中如何表示">常量在c语言中如何表示</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i = 23; //十进制
+	int j = 027; //八进制
+	int k = 0x17; //十六进制
+	printf(&#34;i = %d\n&#34;, i);//十进制
+	printf(&#34;i = %o\n&#34;, i);//八进制
+	printf(&#34;i = %x\n&#34;, i);//十六进制
+
+	printf(&#34;j = %d\n&#34;, j);
+	printf(&#34;j = %o\n&#34;, j);
+	printf(&#34;j = %x\n&#34;, j);
+
+	printf(&#34;k = %d\n&#34;, k);
+	printf(&#34;k = %o\n&#34;, k);
+	printf(&#34;k = %x\n&#34;, k);
+
+	float y = 3.2e3;// 3.2*10^3=3200.000 000
+	printf(&#34;%f\n&#34;, y);
+	
+	char ch = &#39;s&#39;;//字符  单引号 &#39;s&#39;   //字符串 双引号  &#34;sa&#34;  //&#34;s&#34;  代表  &#39;s&#39;与&#39;/0&#39; 的组合
+	printf(&#34;%c\n&#34;, ch);
+
+	int x = 47;  //100是十进制
+	printf(&#34;%x\n&#34;, x);  //输出结果是:  2f
+	printf(&#34;%X\n&#34;, x);	//输出结果是:  2F
+	printf(&#34;%#X\n&#34;, x);	//输出结果是:  0X2F  %#X推荐使用
+	printf(&#34;%#x\n&#34;, x);	//输出结果是:  0x2f
+	//printf  int %d  char %c  flaot %f double %lf  long int %ld
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="流程控制">流程控制</h1>
+
+<p>分类：顺序 选择（if 与switch）  循环 （for while ）<br />
+if 空语句问题 if(); 非空语句if() A；</p>
+
+<h2 id="求1到任意一个整数之间的数的奇偶数之和sum1sum2-奇偶数之个数cnt1cnt2-奇偶数之平均值avg1avg2">求1到任意一个整数之间的数的奇偶数之和sum1sum2、奇偶数之个数cnt1cnt2、奇偶数之平均值avg1avg2</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//求1到任意一个整数之间的数的奇偶数之和sum1sum2、奇偶数之个数cnt1cnt2、奇偶数之平均值avg1avg2
+#include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+	int sum1 = 0;
+	int sum2 = 0;
+	int cnt1 = 0;
+	int cnt2 = 0;
+	float avg1;
+	double avg2;
+	int len = 0;
+	printf(&#34;请输入任意整数：&#34;);
+	scanf_s(&#34;%d&#34;, &amp;len);
+	for (i = 1; i &lt;= len; ++i)
+	{
+		if (i % 2 == 1)
+		{
+			sum1 += i;//sum = sum + i;
+			++cnt1;
+		}
+		else
+		{
+			sum2 += i;
+			++cnt2;
+		}
+
+	}
+	avg1 = (float)sum1 / cnt1;
+	avg2 = sum2 / cnt2;
+
+	printf(&#34;%d\n&#34;, sum1);
+	printf(&#34;%d\n&#34;, sum2);
+	printf(&#34;%d\n&#34;, cnt1);
+	printf(&#34;%d\n&#34;, cnt2);
+	printf(&#34;%f\n&#34;, avg1);
+	printf(&#34;%lf\n&#34;, avg2);
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="浮点数存储所带来的问题">浮点数存储所带来的问题</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">/**
+* C语言中判断浮点数是否等于0
+*/
+# include &lt;stdio.h&gt;
+# include &lt;math.h&gt;
+# define FLOAT_EPS 1e-6
+# define DOUBLE_EPS 1e-15
+
+
+int main(void)
+{
+	float f1 = 0.000001;
+	float f2 = 0.001;
+	double d1 = 0.00001;
+	double d2 = 0.00001;
+
+	//判断浮点数是否等于0
+	//1、单精度浮点数
+	if (fabs(f1) &lt;= FLOAT_EPS)
+	{
+		printf(&#34;%f为0\n&#34;, f1);
+	}
+	else
+	{
+		printf(&#34;%f不为0\n&#34;, f1);
+	}
+	//2、双精度浮点数
+	if (fabs(d1) &lt;= DOUBLE_EPS)
+	{
+		printf(&#34;%lf为0\n&#34;, d1);
+	}
+	else
+	{
+		printf(&#34;%lf不为0\n&#34;, d1);
+	}
+	//判断两个浮点数是否相等
+	//1、单精度浮点数
+	if (fabs(f1 - f2) &lt;= FLOAT_EPS)
+	{
+		printf(&#34;%f 和 %f 相等\n&#34;, f1, f2);
+	}
+	else
+	{
+		printf(&#34;%f 和 %f 不相等\n&#34;, f1, f2);
+	}
+	//2、双精度浮点数
+	if (fabs(d1 - d2) &lt;= DOUBLE_EPS)
+	{
+		printf(&#34;%lf 和 %lf 相等\n&#34;, d1, d2);
+	}
+	else
+	{
+		printf(&#34;%lf 和 %lf 不相等\n&#34;, d1, d2);
+	}
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="多个for循环的嵌套使用">多个for循环的嵌套使用</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i, j, k;
+
+	for (i = 0; i &lt; 2; ++i)
+		for (j = 0; j &lt; 3; ++j)
+		{
+			printf(&#34;aaa!\n&#34;);
+			printf(&#34;bbb!\n&#34;);
+			for (k = 0; k &lt; 4; ++k)
+			{
+				printf(&#34;ccc!\n&#34;);
+			}
+		}
+
+
+	return 0;
+}
+//for (1; 2; 3)
+// for (4; 5; 6) 
+//   A;
+//   B;
+//总共两个语句一个内部一个外部：1.// for (4; 5; 6) //   A;  2.  B;
+//执行顺序：[1--&gt;2 (--&gt;4--&gt;5--&gt;A--&gt;6) --&gt;5成立--&gt;A--&gt;6--&gt;5不成立   --&gt;3]
+//[--&gt;2成立(--&gt;4--&gt;5--&gt;A--&gt;6--&gt;5不成立--&gt;3]  --&gt;2不成立--&gt;B
+
+//for (1; 2; 3)
+//for (4; 5; 6)
+//{
+//	A;
+//	B;
+//}
+//总共一个语句 for只控制了一个语句：//for (4; 5; 6){A;B;}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="自增自减比较">自增自减比较</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+	int j;
+	int k;
+	int m;
+
+	i = j = 3; //等价于 i = 3;  j = 3;
+	k = i++;//k=i ;i=i+1
+	m = ++j;//j=j+1;m=j
+
+	printf(&#34;i = %d, j = %d, k = %d, m = %d\n&#34;, i, j, k, m);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="三目运算符">三目运算符</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+
+	i = (6&gt; 2 ? 5 : 1); //if (6&gt;2)5;else 1
+	printf(&#34;%d\n&#34;, i);//5
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="逗号表达式">逗号表达式</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+	int j = 2;
+
+	i = (j++, ++j, j + 2, j - 3);// 3  4 4-3=1
+	printf(&#34;%d\n&#34;, i);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="for与while相互转换">for与while相互转换</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int sum = 0;
+	int i;
+
+	//for (i = 1; i &lt; 101; ++i)
+	//{
+	//	sum = sum + i;
+	//}
+	//等价于
+	i = 1;
+	while (i&lt;101)
+	{
+		sum = sum + i;
+		++i;//15行与16行位置不能换
+	}
+	printf(&#34;sum = %d\n&#34;, sum);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="判断一个数是否为回文数">判断一个数是否为回文数</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int val; //存放待判断的数字
+	int m;
+	int sum = 0;
+
+	printf(&#34;请输入您需要判断的数字:  &#34;);
+	scanf(&#34;%d&#34;, &amp;val);
+	
+	m = val;
+	while (m)
+	{
+		sum = sum * 10 + m%10;
+		m /= 10; 
+	}
+
+	if (sum == val)
+		printf(&#34;Yes!\n&#34;);
+	else
+		printf(&#34;No!\n&#34;);
+
+	return 0;
+}
+//123试数
+//》1 sum = 0* 10 +123 % 10=3        m=123/10=12
+//》2 sum = 3 * 10 + 12 % 10 =32     m = 12 / 10 = 1
+//》3 sum = 32 * 10 + 1 % 10 = 321   m = 1 / 10 =0
+//》4 m=0 退出循环</pre></td></tr></table>
+</div>
+</div>
+<h2 id="求斐波那契数列">求斐波那契数列</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//循环法求斐波那契数列
+#include &lt;stdio.h&gt;
+int main(void)
+{
+	long long  n = 0;
+	long long  f3 = 0, f2 = 1, f1 = 0;
+	long long  total = 0;
+	printf(&#34;请输入斐波那契数列列项数n：&#34;);
+	scanf_s(&#34;%d&#34;, &amp;n);
+	printf(&#34;斐波那契数列为:&#34;);
+	while (n &gt; 0)
+	{
+		n = n - 1;
+		f1 = f2;
+		f2 = f3;
+		f3 = f1 + f2;
+		total = total + f3;
+		printf(&#34;%-2d&#34;, f3);//指定显示宽度 
+
+	}
+	printf(&#34;\n&#34;);
+	printf(&#34;第n项为:%d\n&#34;, f3);
+	printf(&#34;前n项和为:%d\n&#34;, total);//只能算到n=44 
+	return 0;
+
+}
+
+//递归法求斐波那契数列
+//#include &lt;stdio.h&gt;
+//int fib(long long);
+//int main(void)
+//{
+//	long long n = 0;
+//	long long total = 0;
+//	long long i;
+//	printf(&#34;请输入斐波那契数列列项数n：&#34;);
+//	scanf_s(&#34;%d&#34;, &amp;n);
+//	printf(&#34;斐波那契数列为：&#34;);
+//	for (i = 1; i &lt;= n; ++i)
+//	{
+//		printf(&#34;%2d.&#34;, fib(i));
+//		total = total + fib(i);
+//	}
+//	printf(&#34;\n&#34;);
+//	printf(&#34;第n项为%d\n&#34;, fib(i));
+//	printf(&#34;前n项和为:%d\n&#34;, total);
+//	return 0;
+//}
+//int fib(long long n)
+//{
+//	if (n == 1 || n == 2)
+//	{
+//		return 1;
+//	}
+//	else
+//		return fib(n - 1) + fib(n - 2);
+//}
+//总结：普通递归耗时非常长，远不如循环。</pre></td></tr></table>
+</div>
+</div>
+<h2 id="switch-val-case-1-语句1-case-2-语句2-case-程序的入口一旦找到就依次向下执行-不在判断其他case-除非break">switch(val) {case 1: 语句1；case 2:语句2} case 程序的入口一旦找到就依次向下执行 不在判断其他case  除非break。</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int val;
+
+	printf(&#34;请输入您要进入的楼层: &#34;);
+	scanf_s(&#34;%d&#34;, &amp;val);
+
+	switch (val)
+	{
+	case 1:
+		printf(&#34;1层开!\n&#34;);
+		break;
+	case 2:
+		printf(&#34;2层开!\n&#34;);
+		//break;
+	case 3:
+		printf(&#34;3层开!\n&#34;);
+		break;
+	default:
+		printf(&#34;没有盖到这一层!\n&#34;);
+		break;
+	}
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="break-和continue">break 和continue</h2>
+
+<p>break 用于for与switch都是终止离break最近的for与switch .break不用于if<br />
+continue 用于跳过本次循环余下的语句 直接再去判断while 或者 for中的判断</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i;
+	char ch;
+
+	scanf_s(&#34;%d&#34;, &amp;i);
+	printf(&#34;i = %d\n&#34;, i);
+
+
+	while ((ch = getchar()) != &#39;\n&#39;)
+		continue;
+	int j;
+	scanf_s(&#34;%d&#34;, &amp;j);
+	printf(&#34;j = %d\n&#34;, j);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="数组">数组</h1>
+
+<blockquote>
+<p>为了解决大量同类型数据存储问题</p>
+</blockquote>
+
+<h1 id="函数">函数</h1>
+
+<blockquote>
+<p>函数体现了是面向过程还是面向对象<br />
+c语言是面向过程 学此 能更好的去理解c++中 函数 面向对象<br />
+函数是c语言基本单位，类是c++基本单位。</p>
+</blockquote>
+
+<ul>
+<li>为什么要函数：避免了重复性操作 有利于程序模块化<br />
+函数相当于一个工具</li>
+<li>什么是函数:<br />
+逻辑上:能够完成特定功能的独立代码块<br />
+物理上：能接受数据处理数据返回结果<br /></li>
+<li>#include &lt;&gt;&ldquo;&rdquo; 区别 ：#include&lt; &gt;编译程序会先到标准函数库中调用文件。
+#include“ ”编译程序会先从当前目录中调用文件。</li>
+<li>return与break的区别;return终止函数 break终止循环。</li>
+<li>函数的分类：库函数与用户自定义函数  传值函数与传地址函数</li>
+<li>函数的声明与定义：声明不开辟内存且可以不写形参名 定义开辟内存且必须有形参名</li>
+<li>如何合理设计函数,函数功能单一化模块化 方便使用。
+<br /></li>
+</ul>
+
+<h2 id="判断是否为素数">判断是否为素数</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;stdio.h&gt;
+bool f_prime(int);
+int main(void)
+{
+	int n;
+	printf(&#34;输入一个数判断是否为素数：&#34;);
+	scanf_s(&#34;%d&#34;, &amp;n);
+	if (f_prime(n))
+	{
+		printf(&#34;yes&#34;);
+	}
+	else
+	{
+		printf(&#34;no&#34;);
+	}
+	return 0;
+}
+bool f_prime(int val)
+{
+	int i;
+	for (i = 2; i &lt; val; ++i)
+	{
+		if (val%i == 0)
+			break;
+	}
+	if (val == i)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="变量的作用域和存储方式">变量的作用域和存储方式</h1>
+
+<ul>
+<li><p>局部变量：局部变量也只有局部作用域，它是自动对象（auto），它在程序运行期间不是一直存在，而是只在函数执行期间存在，函数的<strong>一次调用执行结束后，变量被撤销</strong>，其所占用的内存也被收回。&mdash;&ndash;（放在）栈区</p></li>
+
+<li><p>全局变量：全局变量具有全局作用域。全局变量只需在一个源文件中定义，就可以 <strong>作用于所有的源文件</strong>。当然，其他不包含全局变量定义的源文件需要用extern关键字再次声明这个全局变量。&mdash;&ndash;（放在）静态区也称全局数据区</p></li>
+
+<li><p>静态变量：1.静态局部变量2.静态全局变量 &mdash;&ndash;（放在）静态区也称全局数据区</p></li>
+</ul>
+
+<p>静态局部变量：静态局部变量具有局部作用域，它只被初始化一次，自从<strong>第一次被初始化直到程序运行结束都一直存在</strong>，它和全局变量的区别在于全局变量对所有的函数都是可见的，而静态局部变量只对定义自己的函数体始终可见。</p>
+
+<p>静态全局变量：静态全局变量也具有全局作用域，它与全局变量的区别在于如果程序包含多个文件的话，它<strong>作用于定义它的文件里</strong>，不能作用到其它文件里，即被static关键字修饰过的变量具有文件作用域。这样即使两个不同的源文件都定义了相同名字的静态全局变量，它们也是不同的变量。<br />
+* 总结：把局部变量改变为静态局部变量后是改变了它的存储方式即改变了它的生存期。把全局变量改变为静态全局变量后是改变了它的作用域， 限制了它的使用范围。<br />
+ * 栈区 堆区 全局数据区（静态区） 常量区   代码区</p>
+
+<h2 id="动态变量在子程序中-每次调用都会从它的初始值开始调用-而不管他在函数中经历了什么变化-静态变量会从变化后的值继续改变-存储在内存出栈数据区">动态变量在子程序中，每次调用都会从它的初始值开始调用，而不管他在函数中经历了什么变化；静态变量会从变化后的值继续改变。 &mdash;&ndash;存储在内存出栈数据区</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"> #include &lt;stdio.h&gt;
+
+void fun()
+{
+	int j = 0;
+	j++;
+	printf(&#34;%d&#34;, j);
+}
+
+void fun1()
+{
+	static int j = 0;
+	j++;
+	printf(&#34;%d&#34;, j);
+}
+
+void main()
+{
+	int i;
+	for (i = 0; i &lt; 5; i++)
+		fun();//输出结果为11111
+
+	printf(&#34;\n&#34;);
+
+	for (i = 0; i &lt; 5; i++)
+		fun1();//输出结果为12345
+	printf(&#34;\n&#34;);
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="指针">指针</h1>
+
+<h2 id="经典指针程序">经典指针程序</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &#34;stdio.h&#34;
+
+void huhuan(int*, int*);
+int b = 5;//全局变量
+
+int main()
+{
+	int a = 3;
+	huhuan(&amp;a, &amp;b);
+	printf(&#34;%d,%d&#34;, a, b); /*3,3*/
+	return 0;
+}
+
+void huhuan(int* x, int* y)
+{
+	printf(&#34;%d&#34;, *y);/* 5*/
+	int *t=&amp;b;// t指向b  y 也指向b
+	printf(&#34;%d&#34;, *y); /*5*/
+
+	*t = *x;// *t改变 那么此时*y 也改变了 
+	printf(&#34;%d&#34;, *y); /*3*/
+	*x = *y;
+	printf(&#34;%d\n&#34;, *y);/* 3*/
+	*y = *t;
+
+	return;
+
+}
+
+# include &lt;stdio.h&gt;
+
+void f(int * q) //q是p的一份拷贝 p与q 指向同一个地方 都指向了a的地址  *q=a=*p
+{
+	*q = 200;
+}
+
+int main(void)
+{
+	int a = 5;
+	int * p = &amp;a;
+	printf(&#34;%d\n&#34;, *p);
+	*p = 15;
+	printf(&#34;%d\n&#34;, *p);
+	f(p);  //p是int *类型
+	printf(&#34;%d\n&#34;, *p);
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &#34;stdio.h&#34;
+
+void huhuan(int*x, int*y);
+
+int main()
+{
+	int a = 3;
+	int b = 5;
+	huhuan(&amp;a, &amp;b);
+	printf(&#34;%d,%d\n&#34;, a, b);//这里并没有改变 还是3 5
+	return 0;
+}
+
+void huhuan(int* x, int* y)
+{
+	printf(&#34;%d,%d\n&#34;, *x, *y) //3 5
+	int *t; 
+	t = x;
+	x = y;
+	y = t;
+	printf(&#34;%d,%d\n&#34;, *x, *y);//5 3 只是把放在指针变量x与y中的 a与b变量的地址交换了位置 a与b变量本身所存放的值没有改变
+	return;
+}</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &#34;stdio.h&#34;
+
+void huhuan(int*x, int*y);
+
+int main()
+{
+	int a = 3;
+	int b = 5;
+	huhuan(&amp;a, &amp;b);
+	printf(&#34;%d,%d\n&#34;, a, b); //该变了
+	return 0;
+}
+
+void huhuan(int* x, int* y)
+{
+	int t;
+	t = *x;
+	*x = *y;
+	*y = t;  
+	printf(&#34;%d,%d\n&#34;, *x, *y); // *x==a  *y==b a与b变量本身所存放的值发生改变
+	return;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="指针和数组-数组的升级是容器">指针和数组（数组的升级是容器）</h2>
+
+<h3 id="指针和一维数组">指针和一维数组</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">#include &lt;stdio.h&gt;
+int main(void)
+{
+	int a[3] = {5,2,7};
+	int b[4][5];
+	int i;
+
+	printf(&#34;%#x\n&#34;, b[0][0]);
+	printf(&#34;%#x\n&#34;, b);//二维数组不是
+	printf(&#34;%#x\n&#34;,&amp;a[0]);// &amp;a[0]==a
+	printf(&#34;%#x\n&#34;, a); //9行与10行输出结果一样 一维数组名a是一个指针常量 存放的是数组第一个元素的地址
+
+	printf(&#34;%d\n&#34;, *a);//*a==a[0]
+	printf(&#34;%d\n&#34;, *(a+2)); //*(a+1)==a[0+1]==a[1]
+	printf(&#34;%d\n&#34;, *a + 1);// *a + 1==a[0]+1
+
+	for (i = 0; i &lt; 3; ++i)
+	{
+		printf(&#34;%d&#34;, a[i]);
+		
+	}
+	printf(&#34;\n&#34; );
+	for (i = 0; i &lt; 3; ++i)
+	{
+		printf(&#34;%d&#34;, *(a + i));//a[i]==*(a + i)
+
+	}
+	
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">//指针与数组
+#include&lt;stdio.h&gt;
+int main()
+{
+	int x[5] = { 3, 5, 79, 4, 9 };
+	int *a = x;
+	//printf(&#34;%-2d&#34;, *x);//a[0] 3
+	//printf(&#34;%2d&#34;, *a);
+	//printf(&#34;%2d&#34;, x[0]);
+	//printf(&#34;%2d&#34;, a[0]);
+	//printf(&#34;\n&#34;);
+
+	//printf(&#34;%-2d&#34;, *x+1);//a[0]+1=4
+	//printf(&#34;%2d&#34;, (*x)+1);//a[0]+1=4
+	//printf(&#34;%2d&#34;, *(x+ 1));//a[1]  5
+	//printf(&#34;%2d&#34;, *(x + 2));//a[2] 79
+	//printf(&#34;\n&#34;);
+
+	printf(&#34;%d&#34;, *a + 1);//a[0]+1=4
+	printf(&#34;%2d&#34;, (*a) + 1);//a[0]+1=4
+	printf(&#34;%2d&#34;, *(a + 1));//a[1]  5
+	printf(&#34;%2d&#34;, *(a + 2));//a[2] 79//为什么会挨在一起了输出后
+	printf(&#34;\n&#34;);
+
+	//printf(&#34;%-2d&#34;, *a++);//*a=3 *(a=a+1)=5
+	//printf(&#34;%2d&#34;, *a); //5
+	//printf(&#34;%2d&#34;, (*a)++);//*a=5  *a+1=5+1=6
+	//printf(&#34;%2d&#34;, *a);//6
+	//printf(&#34;\n&#34;);
+
+	//printf(&#34;%2d&#34;, *(a++));//3
+	//printf(&#34;%2d&#34;, *a);//5
+	//printf(&#34;\n&#34;);
+
+	//printf(&#34;%-2d&#34;, ++*a);//4
+	//printf(&#34;%2d&#34;, ++(*a));//4  5
+	//printf(&#34;\n&#34;);
+
+	//printf(&#34;%-2d&#34;, *++a);//5
+	//printf(&#34;%2d&#34;, *(++a));//5  79
+	//printf(&#34;\n&#34;);
+	//
+
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h3 id="指针和二维数组">指针和二维数组</h3>
+
+<h2 id="指针变量的运算">指针变量的运算</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">指针变量只能相减  且两个指针变量指向同一块连续存储空间不同存储单元
+# include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i = 5;
+	int j = 10;
+	int * p = &amp;i;
+	int * q = &amp;j;
+	/*int a[5];
+	p = &amp;a[1];
+	q = &amp;a[4];*/
+	printf(&#34;p和q所指向的单元相隔%d个单元\n&#34;, q-p);
+
+	//p - q 没有实际意义
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="实参与形参是否是同一个变量-与-没有指针只能返回一个值">实参与形参是否是同一个变量 与 没有指针只能返回一个值</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int  f(int i)
+{
+	i = 99;
+	return i;
+}
+
+int main(void)
+{
+	int i = 6;
+	printf(&#34;i = %d\n&#34;, i);
+	f(i);
+	printf(&#34;i = %d\n&#34;, i);
+	i=f(i);
+	printf(&#34;i = %d\n&#34;, i);
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="多级指针">多级指针</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+int main(void)
+{
+	int i = 10;
+	int * p = &amp;i;  //p只能存放int类型变量的地址
+	int ** q = &amp;p;  //q是int **类型， 所谓int **类型就是指q只能存放int *类型变量的地址， 	
+	int *** r = &amp;q;  //r是int ***类型, 所谓int ***类型就是指r只能存放int ** 类型变量的地址, 
+
+	//printf(&#34;i = %d\n&#34;, ***r); //i 10
+	//printf(&#34;i = %d\n&#34;, **q);
+	//printf(&#34;i = %d\n&#34;, *p);
+
+	//printf(&#34; %#x\n&#34;, **r);// p
+	//printf(&#34; %#x\n&#34;, *r);//q
+	//printf(&#34; %#x\n&#34;, r);//r
+
+	printf(&#34;%#x\n&#34;, i);//以十六进方式制输出i的值
+
+	printf(&#34;%#x\n&#34;, &amp;i);//输出变量i的地址
+	printf(&#34;%#x\n&#34;, &amp;*p);//指针变量p所指向变量i的地址 *p==i
+	printf(&#34;%#x\n&#34;, p);//指针变量p所保存的地址 既是变量i的地址
+	printf(&#34;%#x\n&#34;, **r);// **r==p
+
+	printf(&#34;%#x\n&#34;, &amp;p);//指针变量p本身的地址
+	printf(&#34;%#x\n&#34;, &amp;**r);// **r==p
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="动态分配内存-动态数组">动态分配内存（动态数组）</h1>
+
+<h2 id="malloc用法">malloc用法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">由于malloc()返回的是第一个字节的地址，所以malloc前面的强制转换（int*）代表了返回的就是4个字节的地址
+# include &lt;stdio.h&gt;
+# include &lt;malloc.h&gt;
+
+void f(int * q)
+{
+	//*p = 200; //error
+	//q = 200;
+	//**q = 200;  //error
+	*q = 200;
+	free(q);  //把q所指向的内存释放掉  本语句必须的注释掉，否则会导致第20行的代码出错
+}
+
+int main(void)
+{
+	int * p = (int *)malloc(sizeof(int)); //sizeof(int)返回值是int所占的字节数
+	*p = 10;
+
+	printf(&#34;%d\n&#34;, *p);  //10
+	f(p);  //p是int *类型
+	printf(&#34;%d\n&#34;, *p);  //200    第20行
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h2 id="动态一维数组">动态一维数组</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"> #include &lt;stdio.h&gt;
+ #include &lt;malloc.h&gt;
+
+int main(void)
+{
+	/*	int a[5];*/ //如果int占4个字节的话，则本数组总共包含有20个字节，每四个字节被当做了一个int变量来使用
+	int len;
+	int * pArr;
+	int i;
+
+	//动态的构造一维数组
+	printf(&#34;请输入你要存放的元素的个数: &#34;);
+	scanf_s(&#34;%d&#34;, &amp;len);
+	pArr = (int *)malloc(4 * len);  //第12行  本行动态的构造了一个一维数组, 该一维数组的产度是len, 该数组的数组名是pArr, 该数组的每个元素是int类型  类似于 int pArr[len];
+
+	//对一维数组进行操作，  如：对动态一维数组进行赋值
+	printf(&#34;输入数组元素元素以空格分开：&#34;);
+	for (i = 0; i &lt; len; ++i)
+		scanf_s(&#34;%d&#34;, &amp;pArr[i]);
+
+	//对位一维数组进行输出
+	printf(&#34;一维数组的内容是:\n&#34;);
+	for (i = 0; i &lt; len; ++i)
+		printf(&#34;%d\n&#34;, pArr[i]);
+
+	free(pArr); //释放掉动态分配的数组
+
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>动态内存与静态内存的区别：<br />
+* 静态内存(数组)函数的调用 &mdash;&ndash;栈  先进后出<br />
+* 动态内存(malloc) &mdash;&ndash; 堆 顺序随意 堆总是一棵完全二叉树。<br />
+* 堆栈就是栈 栈不是堆 堆不是栈<br />
+* (堆，栈，队列的区别)[<a href="https://www.cnblogs.com/guoxiaoyan/p/8664150.html">https://www.cnblogs.com/guoxiaoyan/p/8664150.html</a>]<br />
+* (深入理解堆与栈
+)[<a href="https://blog.csdn.net/u014608280/article/details/82218079">https://blog.csdn.net/u014608280/article/details/82218079</a>]</p>
+</blockquote>
+
+<h1 id="结构体">结构体</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+# include &lt;malloc.h&gt;
+
+struct Student
+{
+	int age;
+	float score;
+	char name[100];
+};
+
+int main(void)
+{
+	int len;
+	struct Student * pArr;
+	int i, j;
+	struct Student t;
+
+
+	//动态的构造一维数组
+	printf(&#34;请输入学生的个数:\n&#34;);
+	printf(&#34;len = &#34;);
+	scanf(&#34;%d&#34;, &amp;len);
+	pArr = (struct Student *)malloc(len * sizeof(struct Student));
+
+	//输入
+	for (i = 0; i &lt; len; ++i)
+	{
+		printf(&#34;请输入第%d个学生的信息:\n&#34;, i + 1);
+		printf(&#34;age = &#34;);
+		scanf(&#34;%d&#34;, &amp;pArr[i].age);
+
+		printf(&#34;name = &#34;);
+		scanf(&#34;%s&#34;, pArr[i].name);  //name是数组名，本身就已经是数组首元素的地址, 所以pArr[i].name 不能改成 &amp;pArr[i].name
+
+		printf(&#34;score = &#34;);
+		scanf(&#34;%f&#34;, &amp;pArr[i].score);
+	}
+
+	//按学生成绩升序排序 冒泡算法
+	for (i = 0; i &lt; len - 1; ++i)
+	{
+		for (j = 0; j&lt;len - 1 - i; ++j)
+		{
+			if (pArr[j].score &gt; pArr[j + 1].score) //&gt;升序 &lt;降序
+			{
+				t = pArr[j];
+				pArr[j] = pArr[j + 1];
+				pArr[j + 1] = t;
+			}
+		}
+	}
+
+	printf(&#34;\n\n学生的信息是:\n&#34;);
+	//输出
+	for (i = 0; i &lt; len; ++i)
+	{
+		printf(&#34;第%d个学生的信息是:\n&#34;, i + 1);
+		printf(&#34;age = %d\n&#34;, pArr[i].age);
+		printf(&#34;name = %s\n&#34;, pArr[i].name);  //name是数组名，本身就已经是数组首元素的地址, 所以pArr[i].name 不能改成 &amp;pArr[i].name
+		printf(&#34;score = %f\n&#34;, pArr[i].score);
+
+		printf(&#34;\n&#34;);
+	}
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="枚举">枚举</h1>
+
+<p>定义：把一个事物所有可能的取值一一列举出来
+特点：安全限制了取值范围  但麻烦</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+
+//只定义了一个数据类型，并没有定义变量， 该数据类型的名字是 enum WeekDay
+enum WeekDay
+{
+	MonDay=1, TuesDay, WednesDay, ThursDay, FriDay, SaturDay, SunDay
+};
+
+int main(void)
+{
+	//int day; //day定义成int类型不合适
+	enum WeekDay day = SunDay;
+	printf(&#34;%d\n&#34;, day);
+
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+<h1 id="位运算">位运算</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&amp; 按位与
+| 按位或
+~ 取反
+^ 按位异或
+&lt;&lt; 按位左移
+&gt;&gt;按位右移</pre></td></tr></table>
+</div>
+</div>
+<h1 id="null的含义">null的含义</h1>
+
+<p>字符串结束标记符&rsquo;\0&rsquo;<br />
+空指针null :null是内存单元编号零 是个地址 计算机规定以零位编号的存储单元不可读不可写 一般用于计算机中断系统使用</p>
+
+<h1 id="零散笔记">零散笔记</h1>
+
+<p>指针与数组  指针与结构体  指针与指针（链表）<br />
+结构体&ndash;类  malloc&ndash;new<br />
+结构体面向对象面向过程连接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"># include &lt;stdio.h&gt;
+# include &lt;malloc.h&gt;
+
+struct Student
+{
+	int age;
+	float score;
+	
+};
+int len;
+struct Student * pArr,t;
+int i,j;
+struct Student *creat(void);
+int show(void);
+int sort();
+int main(void)
+{
+	struct Student * ps;
+	ps = creat();
+	show();
+	sort();
+
+	return 0;
+}
+struct Student *creat(void)
+{
+
+
+
+	//动态的构造一维数组
+	printf(&#34;请输入学生的个数:\n&#34;);
+	printf(&#34;len = &#34;);
+	scanf_s(&#34;%d&#34;, &amp;len);
+	pArr = (struct Student *)malloc(len * sizeof(struct Student));
+
+	//输入
+	for (i = 0; i &lt; len; ++i)
+	{
+		printf(&#34;请输入第%d个学生的信息:&#34;, i + 1);
+		printf(&#34;age = &#34;);
+		scanf_s(&#34;%d&#34;, &amp;pArr[i].age);
+
+		printf(&#34;score = &#34;);
+		scanf_s(&#34;%f&#34;, &amp;pArr[i].score);
+	}
+	return pArr;
+}
+
+int show()
+{
+	printf(&#34;\n\n学生的信息是:\n&#34;);
+	//输出
+	for ( i = 0; i &lt; len; ++i)
+	{
+		printf(&#34;第%d个学生的信息是:\n&#34;, i + 1);
+		printf(&#34;age = %d\n&#34;, pArr[i].age);
+		printf(&#34;score = %f\n&#34;, pArr[i].score);
+
+		printf(&#34;\n&#34;);
+	}
+	return 0;
+}
+int  sort()
+{
+	for (i = 0; i &lt; len - 1; ++i)
+	{
+		for (j = 0; j&lt;len - 1 - i; ++j)
+		{
+			if (pArr[j].score &gt; pArr[j + 1].score) //&gt;升序 &lt;降序
+			{
+				t = pArr[j];
+				pArr[j] = pArr[j + 1];
+				pArr[j + 1] = t;
+			}
+		}
+	}
+	show();
+	return 0;
+}</pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">周军</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-09-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/c&#43;&#43;%E5%80%99%E6%8D%B7/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">C&#43;&#43;候捷</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">数据库原理笔记</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="email:1158290245@qq.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/junzhoublog" class="iconfont icon-github" title="github"></a>
+      <a href="https://zhuanlan.zhihu.com/p/23014683" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://www.douban.com" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://www.bilibili.com" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://junzhoublog.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2021
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">周军</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
