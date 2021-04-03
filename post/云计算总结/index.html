@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2021-04-03T17:09:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-03T17:09:21&#43;08:00" />
-<meta itemprop="wordCount" content="9222">
+<meta itemprop="wordCount" content="15314">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2021-04-03 </span>
         
-          <span class="more-meta"> 约 9222 字 </span>
-          <span class="more-meta"> 预计阅读 19 分钟 </span>
+          <span class="more-meta"> 约 15314 字 </span>
+          <span class="more-meta"> 预计阅读 31 分钟 </span>
         
       </div>
     </header>
@@ -143,7 +143,13 @@
 <li><a href="#云计算基础">云计算基础</a>
 <ul>
 <li><a href="#vmware-vsphere">Vmware vSphere</a></li>
-<li><a href="#openstack">openstack</a></li>
+<li><a href="#openstack">openstack</a>
+<ul>
+<li><a href="#openstack验证服务-keystone">openstack验证服务(keystone)</a></li>
+<li><a href="#openstack计算服务-服务名-computer代码名-nova">OpenStack计算服务（服务名：computer代码名：Nova）</a></li>
+<li><a href="#openstack块存储服务">OpenStack块存储服务</a></li>
+<li><a href="#openstack网络服务">OpenStack网络服务</a></li>
+</ul></li>
 <li><a href="#华为fusionsphere">华为FusionSphere</a>
 <ul>
 <li><a href="#实操命令部分">实操命令部分</a></li>
@@ -152,15 +158,24 @@
 <li><a href="#虚拟化技术-iaas">虚拟化技术(iaas)</a>
 <ul>
 <li><a href="#计算虚拟化">计算虚拟化</a></li>
-<li><a href="#存储虚拟化">存储虚拟化</a></li>
+<li><a href="#存储虚拟化">存储虚拟化</a>
+<ul>
+<li><a href="#云容灾">云容灾</a></li>
+</ul></li>
 <li><a href="#网络虚拟化">网络虚拟化</a></li>
 <li><a href="#虚拟化特性介绍">虚拟化特性介绍</a></li>
-<li><a href="#疑难问题">疑难问题：</a></li>
+<li><a href="#疑难问题">疑难问题</a></li>
 </ul></li>
 <li><a href="#容器技术-paas">容器技术（paas）</a></li>
 <li><a href="#云迁移">云迁移</a>
 <ul>
-<li><a href="#实操命令部分-1">实操命令部分</a></li>
+<li><a href="#实操命令部分-1">实操命令部分</a>
+<ul>
+<li><a href="#linux-数据盘">linux  数据盘</a></li>
+<li><a href="#速腾工具迁移">速腾工具迁移</a></li>
+<li><a href="#手工云迁移">手工云迁移</a></li>
+<li><a href="#oos-linux-loader">oos-linux-loader</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#pon云专线">pon云专线</a></li>
 <li><a href="#stn入云">stn入云</a></li>
@@ -185,6 +200,7 @@
 <h1 id="云计算基础">云计算基础</h1>
 
 <ul>
+<li>云计算标准定义：通过internet以服务方式提供动态可伸缩的虚拟化资源。</li>
 <li>把软件和硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户<br /></li>
 <li>云操作系统：openstack由NASA，Rackspace研发的开源, vmware由戴尔收费的, 亚马逊的EC2  ,飞天（Apsara）阿里云自主研发.    FusionCompute由华为基于openstack开发。<br /></li>
 <li>云数据中心基本结构：由1. 存储器 2. 服务器 3. 网络 4. 控制节点 5. 出口路由。<br /></li>
@@ -208,36 +224,89 @@ vmware esxi————&gt;vmware Esx————&gt;VMware vSphere.（逐渐升
 
 <h2 id="openstack">openstack</h2>
 
-<h2 id="华为fusionsphere">华为FusionSphere</h2>
+<ul>
+<li>1. openstack是云管理平台，其本身并不提供虚拟化功能，真正的虚拟化能力是由底层的hypervisor（如KVM、Qemu、Xen等）提供。所谓管理平台，就是为了方便使用而已。如果没有openstack，一样可以通过virsh、virt-manager来实现创建虚拟机的操作，只不过敲命令行的方式需要一定的学习成本，对于普通用户不是很友好。</li>
+<li>2. OpenStack几乎支持所有的虚拟化管理程序，不论是开源的（Xen与KVM）还是厂商的（Hyper-V与VMware）。但在以前，OpenStack是基于KVM开发的，KVM常常成为默认的虚拟机管理程序。两者都使用相同的开放源理念与开发方法。<br /></li>
+<li>3.    openstack架构, HPC是高性能计算S(High Performance Computing)机群的简称</li>
+<li>4.    节点：控制节点，网络节点，计算节点。</li>
+<li>5.    每个组件有两个名字代码名和服务名。</li>
+<li>6.    Openstack不直接安装在 裸设备上，而是安装在linux发行版，关键节点用有服务的操作系统，centos没有后期技术服务，ubuntu有服务。
+
+
+
+<br /></li>
+</ul>
+
+<h3 id="openstack验证服务-keystone">openstack验证服务(keystone)</h3>
 
 <ul>
-<li>1. FusionSphere 虚拟化套件的特点和用途
-按照应用需求分配虚拟机资源，按照应用重要程度分配物理资源，统一虚拟化数据中心管理可以异构管理业界主流的第三方虚拟化平台，广泛兼容各种软硬件，根据预先设定策略进行工作负载的自动迁移，完善的权限管理，应用智能管理，完善的计量能力，丰富的运维管理，云安全。</li>
-<li>2. FusionSphere 虚拟化套件逻辑架构 eBackup&amp;UltraVR FusionCompute vmware vsphere.</li>
-<li>3. FusionCompute 产品定位 在虚拟化套件中 由cna与vrm组成 vrm相当于kvm的管理工具，cna相当于kvm中的qemu+kvm模块，主要提供虚拟化功能，vrm管理某个虚拟机，将命令下发给cna节点，can执行返回给vrm.cna没有图形化管理界面。</li>
-<li>4. 云机房</li>
-<li>5. 硬件基础设施层</li>
-<li>6. FusionStorage Block 是一种存储与计算高度融合的分布式存储软件</li>
-<li>7. FusionSphere 虚拟化套件 将硬件资源虚拟化，使一台服务器可以承担多台服务器的工作。</li>
-<li>8. FusionCompute 是云操作系统软件，主要负责硬件资源的虚拟化，以及对虚拟资源、业务资源、用户资源的集中管理。</li>
-<li>9.eBackup是虚拟化备份软件UltraVR是容灾业务管理软件
-关键特性如下：</li>
-<li>10.1虚拟机跨主机热迁移，在服务器升级时，将该服务器上的虚拟机迁移至其他服务器。</li>
-<li>10.2内存复用技术，内存气泡（主动回收虚拟机暂时不用的物理内存，分配给需要复用内存虚拟机），内存交换（将外部存储虚拟成内存给虚拟机使用，将虚拟机上暂时不用的数据存放到外部存储）内存共享（多台虚拟机共享数据内容相同的内存页）</li>
-<li>10.3虚拟机高可用性，当虚拟机在该计算节点出现故障时，系统自动在正常的计算节点重新创建。</li>
-<li>10.4虚拟机存储热迁移。</li>
-<li>10.5自动精简配置，虚拟出比实际物理存储更大的存储空间。</li>
-<li>10.6虚拟化防病毒，仅需在一台特殊的安全虚拟机中部署防病毒引擎，其他用户虚拟机在本地安装轻量级驱动，通过安全服务虚拟机提供</li>
-<li>的服务即可完成杀毒。</li>
-<li>10.7容灾与备份，容灾是指在相隔比较远的异地，建立两套或者多套相同的it系统，互相可以健康状态的监视和功能的切换。城域双活容灾（两个站点同时为生产站点，）、阵列复制容灾（两个站点，一个生产站点一个灾备站点）和两地三中心容灾等容灾方案。</li>
-<li>10.8动态资源调度（DRS）, 在不同的主机间迁移虚拟机，从而实现同一集群内不同主机间的负载均衡.</li>
-<li>10.9虚拟机资源qos, cpuqos(不同的 CPU QoS 代表了虚拟机不同的计算能力cpu资源份额 资源预留，资源限额), 内存（内存资源份额预留限额）qos, 网络qos（带宽的控制）.</li>
-<li>10.10用户态交换模式，提升虚拟机网络性能。</li>
-<li>10.11分布式虚拟交换机</li>
-<li>10.12sr-iov实现了将 PCI 功能分配到多个虚拟接口以在虚拟化环境中共享一个 PCI 设备</li>
-<li>10.13gpu直通 gpu虚拟化。</li>
-<li>FusionCompute 技术指标: 管理容量, 主机规格, 虚拟机容量, 快照容量, 网络容量, 虚拟机规格.</li>
+<li>0tials、token(访问有效时间)、Role（acl集合）、Endpoint（一个url）。<br />
+keystone验证流程：</li>
+<li>1.    其他组件的使用都依赖于验证组件, 类似一个服务总线，或者说是整个openstack框架的注册表。</li>
+<li>2.    两个功能：用户管理，服务目录管理。</li>
+<li>3.    User 用户 credentials凭证  token一串数字字符，引入令牌机制保护用户对资源的访问，token有时效性。</li>
 </ul>
+
+<h3 id="openstack计算服务-服务名-computer代码名-nova">OpenStack计算服务（服务名：computer代码名：Nova）</h3>
+
+<ul>
+<li>Compute的代码名 nova iaas重要组成部分，负责维护和管理openstack计算资源，虚拟机的生命周期管理也通过nova来实现。与其他组件通信需要消息队列。不同服务通过同一端口进行通信。Nova服务会部署在计算节点和控制节点上。<br /></li>
+<li>NOva包含很多组件，1. API 2. Computecore(nova-scheduler、nova-compute、nova-conductor) 3. Console Interface（nova-novnproxy、nova-xvpnvncproxy、nova-consoleauth）</li>
+<li>nova: 常用术语kvm内核虚拟化, Qemu kvm的替补角色, flavor虚拟机模板，keypair ssh连接访问的实例秘钥对。架构
+<br /></li>
+</ul>
+
+<h3 id="openstack块存储服务">OpenStack块存储服务</h3>
+
+<ul>
+<li>文件存储：树状结构路径访问方式方便人类理解。<br /></li>
+<li>块存储：服务器上的逻辑块被一台客户端挂载后，其他客户端无法访问上面的数据。<br /></li>
+<li>对象存储：介于以上两者之间。通过 API 接口以文件为单位进行存取 。</li>
+<li>NAS 存储：通过 NFS、CIFS 等协议，挂载远程的文件系统。</li>
+<li>cinder组件：1.cinder-api 2.cinder-scheduler3.cinder-volume4.volume provider</li>
+<li>swift:zone可用区region地域node节点culster群集。</li>
+</ul>
+
+<h3 id="openstack网络服务">OpenStack网络服务</h3>
+
+<ul>
+<li>1. 云环境下可能随时都要创建、修改、删除网络，传统的网络管理方式不能胜任网络的改动，Neutron 的设计目标网络即服务基于 SDN 实现网络虚拟化的原则。</li>
+<li>2. Neutron概念：network(隔离的二层广播域)、local(local网络主要用于单机测试，同一节点同一网络通信)、flat(无vlan标签的，同一网络跨节点通信。)vlan(二层的广播域)vxlan(基于隧道技术的overlay网络，vxlan中的数据报通过VNI封装成udp包进行传输，二层的包封装在三层传输)GRE（gre与vxlan类似的一种overlay网络，区别在于使用ip包非udp进行封装。Overlay是在传统网络上虚拟出一个虚拟网络来，underlay是传统单层网络，是当前数据中心网络基础转发架构的网络，而overlay是一层逻辑网络，指通过控制协议对边缘的网络设备进行网络构建和扩展。overlay举例：vxlan, gre等）</li>
+<li>3. Neutron功能：二层交换，三层路由，负载均衡，防火墙。</li>
+<li>4. Neutron架构：neutron server, coreAPI, Extension API, Commnon service, neutron core, core plugin api, Extension Plugin API, plugin, agent, (Neutron server&ndash;&gt;plugin&ndash;&gt;agentCore , Plugin/Agent 负责管理核心实体, ServicePlugin/Agent 管理更高级的网络服务)</li>
+<li>5. Neutron部署：控制节点，部署 neutron server 服务。网络节点，部署 service plugin 的agent。 计算节点，部署 core plugin 的 agent。</li>
+</ul>
+
+<h2 id="华为fusionsphere">华为FusionSphere</h2>
+
+<p>FusionSphere是业界领先的服务器虚拟化解决方案，FusionSphere解决方案通过在服务器上部署虚拟化软件，使一台物理服务器可以承担多台服务器的工作。通过整合现有的工作负载并利用剩余的服务器以部署新的应用程序和解决方案，实现较高的整合率。<br />
+FusionCompute是云操作系统软件，主要负责硬件资源的虚拟化，以及对虚拟资源、业务资源、用户资源的集中管理。<br />
+*   1. FusionSphere 虚拟化套件的特点和用途
+按照应用需求分配虚拟机资源，按照应用重要程度分配物理资源，统一虚拟化数据中心管理可以异构管理业界主流的第三方虚拟化平台，广泛兼容各种软硬件，根据预先设定策略进行工作负载的自动迁移，完善的权限管理，应用智能管理，完善的计量能力，丰富的运维管理，云安全。
+*   2. FusionSphere 虚拟化套件逻辑架构 eBackup&amp;UltraVR FusionCompute vmware vsphere.
+*   3. FusionCompute 产品定位 在虚拟化套件中 由cna与vrm组成 vrm相当于kvm的管理工具，cna相当于kvm中的qemu+kvm模块，主要提供虚拟化功能，vrm管理某个虚拟机，将命令下发给cna节点，can执行返回给vrm.cna没有图形化管理界面。
+*   4. 云机房
+*   5. 硬件基础设施层
+*   6. FusionStorage Block 是一种存储与计算高度融合的分布式存储软件
+*   7. FusionSphere 虚拟化套件 将硬件资源虚拟化，使一台服务器可以承担多台服务器的工作。
+*   8. FusionCompute 是云操作系统软件，主要负责硬件资源的虚拟化，以及对虚拟资源、业务资源、用户资源的集中管理。
+*   9.eBackup是虚拟化备份软件UltraVR是容灾业务管理软件
+关键特性如下：
+*   10.1虚拟机跨主机热迁移，在服务器升级时，将该服务器上的虚拟机迁移至其他服务器。
+*   10.2内存复用技术，内存气泡（主动回收虚拟机暂时不用的物理内存，分配给需要复用内存虚拟机），内存交换（将外部存储虚拟成内存给虚拟机使用，将虚拟机上暂时不用的数据存放到外部存储）内存共享（多台虚拟机共享数据内容相同的内存页）
+*   10.3虚拟机高可用性，当虚拟机在该计算节点出现故障时，系统自动在正常的计算节点重新创建。
+*   10.4虚拟机存储热迁移。
+*   10.5自动精简配置，虚拟出比实际物理存储更大的存储空间。
+*   10.6虚拟化防病毒，仅需在一台特殊的安全虚拟机中部署防病毒引擎，其他用户虚拟机在本地安装轻量级驱动，通过安全服务虚拟机提供
+*   的服务即可完成杀毒。
+*   10.7容灾与备份，容灾是指在相隔比较远的异地，建立两套或者多套相同的it系统，互相可以健康状态的监视和功能的切换。城域双活容灾（两个站点同时为生产站点，）、阵列复制容灾（两个站点，一个生产站点一个灾备站点）和两地三中心容灾等容灾方案。
+*   10.8动态资源调度（DRS）, 在不同的主机间迁移虚拟机，从而实现同一集群内不同主机间的负载均衡.
+*   10.9虚拟机资源qos, cpuqos(不同的 CPU QoS 代表了虚拟机不同的计算能力cpu资源份额 资源预留，资源限额), 内存（内存资源份额预留限额）qos, 网络qos（带宽的控制）.
+*   10.10用户态交换模式，提升虚拟机网络性能。
+*   10.11分布式虚拟交换机
+*   10.12sr-iov实现了将 PCI 功能分配到多个虚拟接口以在虚拟化环境中共享一个 PCI 设备
+*   10.13gpu直通 gpu虚拟化。
+*   FusionCompute 技术指标: 管理容量, 主机规格, 虚拟机容量, 快照容量, 网络容量, 虚拟机规格.</p>
 
 <h3 id="实操命令部分">实操命令部分</h3>
 
@@ -277,6 +346,23 @@ NAS网络接入存储：通过tcp/ip协议访问数据。有自己的文件管�
 <li>7. 存储结构：块，文件，对象。<br />
 对象存储：每个对象都被分配一个唯一的标识符，允许一个服务器或者最终用户来检索对象，而不必知道数据的物理地址<br />
 块存储、文件存储、对象存储这三者的本质差别：是使用数据的“用户”不同：块存储的用户是可以读写块设备的软件系统，例如传统的文件系统、数据库；文件存储的用户是自然人；对象存储的用户则是其它计算机软件。这三个概念都是分布式存储中的概念。<br /></li>
+<li>8. 大数据：指在无法可承受的时间范围内，用常规软件工具进行捕捉、管理和处理数据的集合。<em>要用对象存储技术。</em></li>
+<li>9. 备份容灾技术：1. D2D备份，   用SAN(FC/IP/SAS)的存储结构，主盘和备份盘都是磁盘阵列。2. D2T备份，磁盘阵列到磁带库备份。3. D2V备份，磁盘阵列到虚拟磁带库。4. D2D2T备份，磁盘到虚拟磁带库到物理磁带库。
+<br /></li>
+</ul>
+
+<h3 id="云容灾">云容灾</h3>
+
+<ol>
+<li>灾备概念：容灾与备份。</li>
+<li>灾备等级：数据级灾备、应用级灾备、业务级灾备</li>
+<li>容灾分类：本地容灾，异地容灾，云容灾。两地三中心（本地，异地，异地数据中心，本地数据中心，同城双活数据中心）</li>
+<li>云容灾核心技术：（1）数据复制技术 （2）归档和快照技术 （3）网络切换技术</li>
+<li>端到端双活技术方案：最核心的技术当属存储双活技术。</li>
+</ol>
+
+<ul>
+<li>微服务是一种用于构建应用的架构方案。微服务架构有别于更为传统的单体式方案，可将应用拆分成多个核心功能。每个功能都被称为一项服务，可以单独构建和部署，这意味着各项服务在工作（和出现故障）时不会相互影响。</li>
 </ul>
 
 <h2 id="网络虚拟化">网络虚拟化</h2>
@@ -310,12 +396,11 @@ NUMA 特性六。<br /></li>
 <p>集群特性：<br />
 （1）HA: 当一台计算节点出现故障时，在集群中另一台节点能快速自动启动起来。<br />
 （2）电源管理: DPM规则，电源管理自动化，下电前将虚拟机迁移至其他主机。DRS（动态资源调度）规则，聚集虚拟机，互斥虚拟机，虚拟机到主机，下电时提供迁移参考。在不同的主机间迁移虚拟机，从而实现同一集群内不同主机间的负载均衡.<br />
-（3）IMC: 使不同cpu类型的主机之间进行迁移，目前IMC仅支持intel不同型号cpu热迁移。</p>
-
-<p>虚拟机特性：<br />
+（3）IMC: 使不同cpu类型的主机之间进行迁移，目前IMC仅支持intel不同型号cpu热迁移。<br />
+虚拟机特性：<br />
 资源管理，cpu qos, 内存qos, 磁盘扩容，网卡增删，（份额 预留 限制）</p>
 
-<h2 id="疑难问题">疑难问题：</h2>
+<h2 id="疑难问题">疑难问题</h2>
 
 <ul>
 <li>1. 大数据4v特点：大量 高速  多样 低价值密度 volume velocity variety value</li>
@@ -381,15 +466,463 @@ NUMA 特性六。<br /></li>
 
 <h1 id="容器技术-paas">容器技术（paas）</h1>
 
-<p>容器轻量级虚拟化技术。Linux自带lxc项目容器。</p>
+<ul>
+<li>容器轻量级虚拟化技术。Linux自带lxc项目容器。</li>
+<li>虚拟化：使得多个操作系统在单个系统上运行。</li>
+<li>docker(容器): 在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。解决了从开发环境到测试环境到运维环境直接拷贝就能用，针对同一套应用，用同样的各种库版本，用同样的环境变量，用同样的文件夹路径，配置文件就能保持一致。不需要安装全新的操作系统。</li>
+<li>k8s（docker)/puppet+Zabbix/ELK+Grafana+OpenStack+gitlab(nginx)<br />
+软件系统：nginx开源软件,网页服务器软件,GitLab 是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，并在此基础上搭建起来的web服务。gitlab 安装自带 nginx<br />
+k8s（docker）与puppet 有交集<br />
+监控与管理（加可视化）：<br />
+k8s（docker）+Zabbix+Grafana<br />
+Puppet+Zabbix+Grafana<br /></li>
+</ul>
+
+<p>openstack&mdash;-把物理机联合起来做虚拟化。在OpenStack上可以创建新的虚拟机。这样就可以增加物理机的使用率，还可以从某种角度上降低风险。pass</p>
+
+<p>docker&ndash;在一台机器上，无论是物理机还是虚拟机，部署docker。docker上可以部署多个应用，这些应用已经完成了编译。可以在docker的环境中运行。build once，run anywhere。所以这是一种典型的Saas。sass的延伸pass.</p>
+
+<p>K8s（Kubernetes）叫K8s是因为中间有八个字母，还贼难背。因为docker很容易部署，docker上的应用也很多，所以大家都可以很轻松的布置多个docker应用。但应用多了之后就很难管理了。于是就有了K8s。顺便说一下，Kubernetes的意思是领航员</p>
+
+<p>利用K8S助力OpenStack<br />
+k8s上轻松部署GITLAB<br />
+利用puppet快速部署openstack<br />
+k8s（docker）+Zabbix+Grafana+OpenStack+gitlab<br />
+Puppet+Zabbix+Grafana+openstack<br />
+centos7.2<br />
+devops 开发运维的桥梁
+* IT基础<br />
+1. Redis是一个开源的、基于内存的数据结构存储器，可以用作数据库、缓存和消息中间件。
+2. Tomcat属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。<br />
+3. 微服务是一种用于构建应用的架构方案。微服务架构有别于更为传统的单体式方案，可将应用拆分成多个核心功能。每个功能都被称为一项服务，可以单独构建和部署，这意味着各项服务在工作（和出现故障）时不会相互影响。
+* 自动化运维
+1. 系统部署工具：kickstart, cobbler, spacewalk. 自动化安装系统。<br />
+2. 运维管理者工具：Puppet、Chef、Ansible和SaltStack四大运维管理工具<br />
+Ansible适合100台以下到200这样服务器规模应用<br />
+SaltStack，适合几百台的规模！<br />
+puppet适合上千台和几万台的规模<br />
+chef国外用的多<br />
+chef和puppet是ruby系的，而salt和ansible是python系的<br />
+3. 运维监控工具： 三大开源运维监控工具zabbix（企业用的多 Zabbix/ELK日志分析系统+Grafana）、nagios和open-falcon</p>
 
 <h1 id="云迁移">云迁移</h1>
 
+<ul>
+<li>云迁移策略：1. Re-host（重新托管直接迁移）:p2v, v2v。2.re-platform(更换平台修补后迁移）：对环境进行云化处理。3. 重新购置（放弃后购买）：是指放弃使用原先的产品，改为采用新的替代产品。4. 重构/重新构建：进行云原生应用服务的实现。5. 保留：部分本地部署。</li>
+<li>云迁移方法论</li>
+<li>云迁移方案:ptv vtc</li>
+<li>云迁移之数据库迁移</li>
+</ul>
+
 <h2 id="实操命令部分-1">实操命令部分</h2>
 
+<h3 id="linux-数据盘">linux  数据盘</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">1.云业务
+2.云专线
+3.Linux
+4.云迁移
+5.对象存储
+
+！@zxcv1234      主机三
+
+mssyjd05_zqzc@163.com
+Tk$89#Tb
+：：：：：切换操作系统先做：：：：：：：
+天翼云 成都3 成都4  
+cat   /proc/version
+cat   /etc/redhat-release
+web 应用网页
+web  动态网页 
+
+云桌面  基础策略管理  文件与剪切板 快照 还原
+
+分区--》格式化--》挂载 （不方便扩容）
+1.fdisk -l  //查看
+
+2. fdisk /dev/vdb // 删除分区
+
+d
+w
+3.fdisk  /dev/vdb // 创建分区
+m
+p
+n
+w
+4.mkfs.xfs /dev/vdb1 //格式化
+
+5. mount -t xfs /dev/vdb1 /mnt 挂载
+6. vi /etc/fstab  
+
+i
+添加如下内容： /dev/vdb1   /root/disk  xfs  defaults 02 
+wq!
+删除分区--》PV--&gt;vg--&gt;lv--&gt;格式化--》 挂载---》扩容（物理边界扩容，逻辑边界扩容）
+1.fdisk /dev/vdb // 删除分区
+d
+w
+
+2.  pvcreate /dev/vdb 
+
+pvs 
+pvscan
+pvremove   
+3.vgcreate vgtest1  /dev/vdb
+vgs 
+vgscan
+vgremove  vgtest1 
+4.lvcreate -l 50g -n  test1  vgtest1
+lvs
+lvscan
+lvremove test1
+5.mkfs.ext4 /dev/vgtest1/test1 
+6.mount -t ext4 /dev/vgtest1/test1  /mnt/test1
+df
+7.lvextend -L +3g /dev/vgtest/lv_test1
+resize2fs /dev/vgtest/lv_test1
+df -hT</pre></td></tr></table>
+</div>
+</div>
+<h3 id="速腾工具迁移">速腾工具迁移</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">：：：：：切换操作系统先做：：：：：：：
+源端：
+1、验证源端主机应用是否正常。
+http://133.38.84.134/energy-web/production/index.html
+2、登录源端web主机ssh 133.38.84.134  root  SCcd^581安装agent。
+(wget )   http://133.38.29.84:9980/login.jsp 
+ls
+wget http://133.38.29.84:9980/admin/toUserAction%21downClient?type=16 -O Clone_Client_Redhat7x86_64.zip     rm -f Clone_Client_Redhat7x86_64.zip
+unzip Clone_Client_Redhat7x86_64.zip解压。   rm -rf Clone_Client_Redhat7x86_64
+进入目录./install.sh      ./uninstall.sh
+3、在迁移平台确认源端是否上线。http://133.38.29.84:9980/login.jsp
+目的端（主机一）：
+4、在天翼云目的端切换操作系统，共享镜像move-linux
+5、安全组端口放通
+	22、ICMP、4301-4302  8090 入方向
+	出方向全部放通
+                8090 nat映射 80
+6、切换PE系统后启动目的主机填写迁移平台信息 (第三个)
+	192.168.4.103
+	your name
+	填写天翼云的私有地址（目的云主机的）
+
+7、迁移平台配置迁移任务，（之前做过还原配置）配置任务-启动-结束--重启目的端。
+
+8、修改httpd端口 、vi  /etc/httpd/conf/httpd.conf  （添加 Listen 8090）
+  	systemctl restart httpd 
+     安全组中要添加入方向规则 tcp 8090
+9、修改迁移后的目的端主机（第一个root  SCcd^581）的ip地址
+vi   /etc/sysconfig/network-scripts/ifcfg-eth0 （把源私有ip 改成目的云主机的私有IP，网关也要改）
+	dhcp
+	systemctl restart network
+118.121.58.234
+10、验证  
+本地云主机静态web：localhost:8381/energy-web/production/index.html 
+公网打开静态web: http://118.121.58.234:8381/energy-web/production/index.html</pre></td></tr></table>
+</div>
+</div>
+<h3 id="手工云迁移">手工云迁移</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">：：：：：切换操作系统先做：：：：：：：
+http://133.38.84.134/energy-web/production/index.html
+http://133.38.84.134/nangao-lite/dede1111/login.php
+主机三（web）
+安装php:
+yum -y install  php.x86_64
+yum -y install php-gd.x86_64
+yum -y install php-mysql.x86_64 
+
+vi    /etc/php.ini
+/request_order
+//
+request_order=&#34;GP&#34;
+改为 request_order=&#34;CGP&#34;
+
+目标主机去拷贝源端的：
+scp -r 192.168.4.127:/var/www/html/*  /var/www/html/    ：：：注意-  小横杠重新输入
+yes
+root
+SCcd^581
+ls -l /var/www/html
+
+vi /etc/httpd/conf/httpd.conf
+listen 8888
+systemctl restart httpd 
+ss -ant 
+验证：http://118.122.78.82:8110/energy-web/production/index.html
+
+vi   /var/www/html/nangao-lite/data/common.inc.php
+dhhost 改成db内网地址 192.168.4.139
+
+主机二（db）：
+yum -y install mariadb mariadb-server //安装mysql 服务器软件 
+systemctl enable mariadb 
+systemctl restart mariadb 
+ss -ant 3306（数据库是否起来）
+ 
+mysqldump  -h 192.168.4.157 -u root -p  -A &gt;/home/mysql120200924.sql //数据库文件搬到天翼云  15328899919
+mysql -u root -p &lt;/home/mysql120200924.sql  //搬过来导入  密码为空
+systemctl restart mariadb 
+mysql -u root -p  //源端DB数据库账号：root/15328899919
+验证：http://118.122.78.82:8110/nangao-lite/dede1111/login.php</pre></td></tr></table>
+</div>
+</div>
+<h3 id="oos-linux-loader">oos-linux-loader</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">LINUX环境挂载对象存储：
+
+1）安装fuse组件：
+yum install -y fuse
+
+2）下载s3fs：
+yum install -y automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel
+
+git clone https://github.com/s3fs-fuse/s3fs-fuse.git
+
+3）至此，s3fs环境搭建完毕，下面需要对其做相关配置：首先进入到刚才下载的目录中进行文件查看
+cd s3fs-fuse
+
+./autogen.sh 
+./configure 
+make 
+make install
+
+4）创建s3fs挂载bucket的AK和SK文件
+
+vi /etc/passwd-s3fs
+cd3d26549ccb63d137:53e1a55c764936c2b9xxxxxx编辑完成后需要对秘钥文件进行授权
+0694e8eedd4bf0e09065:706abf30643e0a7da579bf1f0883babd980d2463
+
+5)编辑完成后需要对秘钥文件进行授权
+chmod 600 /etc/passwd-s3fs
+
+2、S3FS工具挂载OOS
+cd /
+在 / 下创建一个 目录用于挂载 OOS
+mkdir /mnt/obs0924
+
+3、挂载OOS的bucket （本例中bucket 的名字为 halley ）
+s3fs  msdx2020-zhoujun  /mnt/obs0924  -o url=https://oos-cn.ctyunapi.cn -o allow_other
+1.aksk  没有整对
+
+2. http https
+
+3.时区  date -s &#34;2020-9-23&#34;
+https://oos-cn.ctyunapi.cn/
+
+（AKSK: 以真实的为准,如不知道可登录web官网查找或重建，linux挂载需要先登录官网查找到准确bucket）</pre></td></tr></table>
+</div>
+</div>
 <h1 id="pon云专线">pon云专线</h1>
 
 <h1 id="stn入云">stn入云</h1>
+
+<ul>
+<li>STN(智能传送网)业务是指以IP/MPLS协议及关键技术为基础，主要面向政企客户提供二层、三层通道类业务承载，由城域的A、B、ER等设备组成的端到端的业务承载网络，STN网络由接入层、汇聚层、城域核心层、省核心层组成，实现政来企业务点到点通道的业务承载。为保证网络以及承载业务的安全性，STN网络不能直接承载互联网业务。</li>
+<li>MSTP能够开展电信级的以太网业务，提供端到端的QoS保证，并具备网络的弹性；非常适合于提供政企客户业务。MSTP主要解决数据分组的高效传输问题，是对数据网进行优化和补充，可以根据业务需要取代接入层的部分数据路由设备。</li>
+<li>手机：VPDN云专线。无线：ipRAN云专线。  物联网：NB-LOT。</li>
+<li>跨省云专线：cn2云专线，chinaNet云网关。</li>
+<li>省内云专线：城域网pon云专线。</li>
+<li>天翼云内部资源池之间：DCI云灾备混合云。</li>
+<li>cn2: 传输骨干，采取mpls（多协议标签交换）实现vpn。</li>
+<li>三层vpn:ipsec vpn、gre vpn在接入层用，mpls vpn 、BGP VPN在主干转发层用。两用户之间不同网段。</li>
+<li>二层vpn:vpws大企业通过WAN广域网互连。vpls小企业通过城域网互连。两用户之间同一网段。</li>
+</ul>
 
     </div>
 
