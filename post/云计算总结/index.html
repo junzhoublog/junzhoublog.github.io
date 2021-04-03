@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="周军" /><meta name="description" content="&amp;gt;运营(部署)模式：公有云 私有云 混合云 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="周军" /><meta name="description" content="&amp;gt; 运营(部署)模式：公有云 私有云 混合云 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架构，私" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,25 +39,25 @@
 
 
 <meta property="og:title" content="云计算总结" />
-<meta property="og:description" content="&gt;运营(部署)模式：公有云 私有云 混合云 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架" />
+<meta property="og:description" content="&gt; 运营(部署)模式：公有云 私有云 混合云 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架构，私" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://junzhoublog.github.io/post/%E4%BA%91%E8%AE%A1%E7%AE%97%E6%80%BB%E7%BB%93/" />
 <meta property="article:published_time" content="2021-04-03T17:09:21+08:00" />
 <meta property="article:modified_time" content="2021-04-03T17:09:21+08:00" />
 <meta itemprop="name" content="云计算总结">
-<meta itemprop="description" content="&gt;运营(部署)模式：公有云 私有云 混合云 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架">
+<meta itemprop="description" content="&gt; 运营(部署)模式：公有云 私有云 混合云 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架构，私">
 
 
 <meta itemprop="datePublished" content="2021-04-03T17:09:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-03T17:09:21&#43;08:00" />
-<meta itemprop="wordCount" content="8122">
+<meta itemprop="wordCount" content="8120">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="云计算总结"/>
-<meta name="twitter:description" content="&gt;运营(部署)模式：公有云 私有云 混合云 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架"/>
+<meta name="twitter:description" content="&gt; 运营(部署)模式：公有云 私有云 混合云 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架构，私"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2021-04-03 </span>
         
-          <span class="more-meta"> 约 8122 字 </span>
+          <span class="more-meta"> 约 8120 字 </span>
           <span class="more-meta"> 预计阅读 17 分钟 </span>
         
       </div>
@@ -155,8 +155,8 @@
 <li><a href="#存储虚拟化">存储虚拟化</a></li>
 <li><a href="#网络虚拟化">网络虚拟化</a></li>
 <li><a href="#虚拟化特性介绍">虚拟化特性介绍</a></li>
-</ul></li>
 <li><a href="#疑难问题">疑难问题：</a></li>
+</ul></li>
 <li><a href="#容器技术-paas">容器技术（paas）</a></li>
 <li><a href="#云迁移">云迁移</a>
 <ul>
@@ -172,7 +172,7 @@
       
 
 <p><img src="/img/云计算/云计算思维导图.png" alt="云计算" />
-&gt;运营(部署)模式：公有云 私有云 混合云<br />
+&gt; 运营(部署)模式：公有云 私有云 混合云<br />
 (公有云服务的企业必须将数据托管于云服务商的数据中心，企业对数据的掌握力度自然减弱。公有云自研架构，私有云一般采用openstack开源架构。)<br />
 服务模式：iaas paas  saas<br />
 （基础设施服务IAAS（云操作系统openstack） 平台服务PAAS（开发工具,中间件，docker）   应用软件服务SAAS。）<br />
@@ -181,33 +181,37 @@
 <h1 id="云计算基础">云计算基础</h1>
 
 <ul>
-<li>把软件和硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户</li>
-<li>云操作系统：openstack由NASA，Rackspace研发的开源, vmware由戴尔收费的, 亚马逊的EC2  ,飞天（Apsara）阿里云自主研发.FusionCompute由华为基于openstack开发。<br /></li>
-<li>云数据中心基本结构：由1. 存储器 2. 服务器 3. 网络 4. 控制节点 5. 出口路由。、</li>
+<li>把软件和硬件资源利用虚拟化等技术重新整合提高了资源利用率， 通过云网把网络、 计算、存储 、平台、软件、资源通过软件定义把服务卖个用户<br /></li>
+<li>云操作系统：openstack由NASA，Rackspace研发的开源, vmware由戴尔收费的, 亚马逊的EC2  ,飞天（Apsara）阿里云自主研发.    FusionCompute由华为基于openstack开发。<br /></li>
+<li>云数据中心基本结构：由1. 存储器 2. 服务器 3. 网络 4. 控制节点 5. 出口路由。<br /></li>
 <li>雾计算：数据的处理和应用程序集中在网络边缘的设备，一种面向物联网的分布式计算的基础设施。<br /></li>
 
 <li><p>边缘计算：去中心化的分布式计算，原始数据不传回云端，而是在本地完成分析。</p>
 
 <h2 id="vmware-vsphere">Vmware vSphere</h2></li>
 
-<li><p>1.VMware vSphere是VMware的推出的一款基于云计算的新一代数据中心虚拟化套件，vSphere 的两个核心组件是 ESXi（VMware vSphere Hypervisor新名字） 和 vCenter Server. ESXi 是用于创建并运行虚拟机和虚拟设备, vCenter Server 是一项服务，用于管理网络中连接的多个主机，并将主机资源池化。</p></li>
+<li><ol>
+<li>VMware vSphere是VMware的推出的一款基于云计算的新一代数据中心虚拟化套件，vSphere 的两个核心组件是 ESXi（VMware vSphere Hypervisor新名字） 和 vCenter Server. ESXi 是用于创建并运行虚拟机和虚拟设备, vCenter Server 是一项服务，用于管理网络中连接的多个主机，并将主机资源池化。<br /></li>
+</ol></li>
 
 <li><ol>
 <li>组件：vSphere Vmotion: 实现虚拟机动态迁移，而服务不中断。vSphere HA：当有硬件发生故障之时，可以保障业务系统的连续运行，而不需要中断应用系统。VMware Distributed Resource Scheduler：动态地实现服务器资源负载平衡，以根据业务优先级向正确的应用程序提供正确的资源，从而让应用程序可以根据需要压缩或增长。vSphere DataRecovery：为小型环境中的虚拟机提供简单、经济高效、无代理的备份和恢复。</li>
 </ol></li>
 
-<li><p>3.vmware特性：vSphere 扩展性，vSphere ESXi 聚合，vSphere 自动部署，vSphere 存储 DRS，vsphere 配置文件驱动的存储，VMware 存储/网络 I/O 控制，ESXi 防火墙。</p></li>
+<li><ol>
+<li>vmware特性：vSphere 扩展性，vSphere ESXi 聚合，vSphere 自动部署，vSphere 存储 DRS，vsphere 配置文件驱动的存储，VMware 存储/网络 I/O 控制，ESXi 防火墙。<br /></li>
+</ol></li>
 
 <li><ol>
-<li>不同版本：
+<li><p>不同版本：<br />
 workstation： 单机级，用在个人桌面系统中，需要操作系统支持<br />
 servier：工作组级，用于服务器，需要操作系统支持<br />
 esxi：企业级，用于服务器，不需要操作系统支持<br />
-vmware esxi————&gt;vmware Esx————&gt;VMware vSphere.（逐渐升级扩展）</li>
+vmware esxi————&gt;vmware Esx————&gt;VMware vSphere.（逐渐升级扩展）</p>
+
+<h2 id="openstack">openstack</h2></li>
 </ol></li>
 </ul>
-
-<h2 id="openstack">openstack</h2>
 
 <h2 id="华为fusionsphere">华为FusionSphere</h2>
 
@@ -218,21 +222,17 @@ vmware esxi————&gt;vmware Esx————&gt;VMware vSphere.（逐渐升
 <h2 id="计算虚拟化">计算虚拟化</h2>
 
 <ul>
-<li><ol>
-<li>分类：<br />
+<li><p>1.分类：<br />
 一型虚拟化直接在硬件上安装vmm（虚拟机监视器）也被称为Hypervisor，vmware Esx server 、vmware esxi、微软、思杰kvm、fusioncompute（华为的） xen(开源的，半虚拟化)<br />
 二型虚拟化即宿主虚拟化在host os上安装vmm, vmware workstation，virtualbox、kvm(开源的，全虚拟化) 需要操作系统支持<br />
-无论一型还是二型都有的特点：分区、隔离、封装、独立。</li>
-</ol></li>
+无论一型还是二型都有的特点：分区、隔离、封装、独立。</p></li>
 
-<li><ol>
-<li>计算虚拟化三个维度：
+<li><p>2.计算虚拟化三个维度：<br />
 虚拟化将硬件、操作系统和应用程序一同封装一个可迁移的虚拟机档案文件中<br />
-cpu虚拟化：半虚拟化效率高于全虚拟化。半虚拟化敏感指令只执行一次，半虚拟化xen提高资源利用率，闭源操作系统不支持半虚拟化，开源才能修改。硬件虚拟化完美解决方法：分为root与非root两种，非root对应guestos  root对应hostos。特权指令 普通指令 大型机powerPc架构下的情况risc精简指令集， 敏感指令指的是guestos都要执行的需要在ring0模式执行的特权指令剥夺特权后交给vmm执行的指令，vmm陷入模拟。x86架构的情况cisc复杂指令集中, 敏感指令中除了特权指令还有普通指令，光用解除特权方式不行了，解决办法：全虚拟化，guestos发出的所有操作系统请求到vmm, vmm对其进行*二进制代码翻译*，如果发现特权指令和敏感指令就陷入到vmm模拟执行，不修改虚拟机操作系统，可移植性增强。半虚拟化，通过修改客户操作系统代码，将原来在物理机上执行的一些敏感指令，修改成可以和VMM直接交互也称*超级调用*的方式，这样，就不会有捕获异常、翻译和模拟的过程，性能损耗比较少。
+cpu虚拟化：半虚拟化效率高于全虚拟化。半虚拟化敏感指令只执行一次，半虚拟化xen提高资源利用率，闭源操作系统不支持半虚拟化，开源才能修改。硬件虚拟化完美解决方法：分为root与非root两种，非root对应guestos  root对应hostos。特权指令 普通指令 大型机powerPc架构下的情况risc精简指令集， 敏感指令指的是guestos都要执行的需要在ring0模式执行的特权指令剥夺特权后交给vmm执行的指令，vmm陷入模拟。x86架构的情况cisc复杂指令集中, 敏感指令中除了特权指令还有普通指令，光用解除特权方式不行了，解决办法：全虚拟化，guestos发出的所有操作系统请求到vmm, vmm对其进行*二进制代码翻译*，如果发现特权指令和敏感指令就陷入到vmm模拟执行，不修改虚拟机操作系统，可移植性增强。半虚拟化，通过修改客户操作系统代码，将原来在物理机上执行的一些敏感指令，修改成可以和VMM直接交互也称*超级调用*的方式，这样，就不会有捕获异常、翻译和模拟的过程，性能损耗比较少。<br />
 内存虚拟化：内存地址从0开始且只有一个0开始的地址，且是连续的，解决办法地址映射，真实的物理内存映射给虚拟机，<br />
 IO虚拟化：完全虚拟化，焦点被哪个主机捕获就被哪个主机使用。半虚拟化，对硬件驱动直接由前端直接转到后端调用。IO透传，直接分配给虚拟机物理设备。<br />
-。</li>
-</ol></li>
+。</p></li>
 
 <li><ol>
 <li><p>Kvm是一个linux内核的模块， 二型的：<br />
@@ -319,7 +319,7 @@ IMC: 使不同cpu类型的主机之间进行迁移，目前IMC仅支持intel不�
 
 <p>虚拟机特性：资源管理，cpu qos, 内存qos, 磁盘扩容，网卡增删，（份额 预留 限制）</p>
 
-<h1 id="疑难问题">疑难问题：</h1>
+<h2 id="疑难问题">疑难问题：</h2>
 
 <ul>
 <li>1. 大数据4v特点：大量 高速  多样 低价值密度 volume velocity variety value</li>
