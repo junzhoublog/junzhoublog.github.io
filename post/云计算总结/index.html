@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2021-04-03T17:09:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-03T17:09:21&#43;08:00" />
-<meta itemprop="wordCount" content="15314">
+<meta itemprop="wordCount" content="15754">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2021-04-03 </span>
         
-          <span class="more-meta"> 约 15314 字 </span>
-          <span class="more-meta"> 预计阅读 31 分钟 </span>
+          <span class="more-meta"> 约 15754 字 </span>
+          <span class="more-meta"> 预计阅读 32 分钟 </span>
         
       </div>
     </header>
@@ -309,7 +309,204 @@ FusionCompute是云操作系统软件，主要负责硬件资源的虚拟化，�
 *   FusionCompute 技术指标: 管理容量, 主机规格, 虚拟机容量, 快照容量, 网络容量, 虚拟机规格.</p>
 
 <h3 id="实操命令部分">实操命令部分</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span><span class="lnt">96
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">1.ROOT 登陆不成功：
+vim /etc/ssh/sshd_config 
+PermitRootLogin no 中的 no 改为 yes
+systemctl  restart sshd 
 
+2.ip配置:
+cd  /etc/sysconfig/networ-scripts/
+ifconfig 检查网卡名
+ls
+vim ifcfg-eth0
+systemctl restart network 
+ip address
+
+3.vmtools 安装：
+先挂载tools
+mkdir  /mnt 新建光驱挂载点
+mount   /dev/sr0   /mnt  挂载光驱
+cd  /mnt  进入挂载点 
+ls 
+cp  vmtools-2.5xxx.tar.bz2  /root  安装包拷贝到/root 目录
+cd  ~
+tar  -xjvf  vmtools-2xxx.tar.bz2  解压
+ls 
+cd vmtools 
+./install
+reboot 
+vm上安装完成tools 后去fc 卸载tools
+
+4.配置共享盘：
+lsblk 
+mkfs.xfs  /dev/vdc
+mkdir /share 
+mount /dev/vdc  /share 
+umount /dev/vdc  
+另一台
+mkdir  /share 
+mount /dev/vdc  /share 
+cd /share
+ls
+ 
+5.lvm  配置：
+创一个普通磁盘
+lsblk
+fdisk  /dev/vdb  
+n  新建分区
+p  选择主分区
+3个回车 
+t 为新建分区分配id (8e)
+w
+pvcreate /dev/vdb  
+pvs 
+pvscan
+pvremove   
+
+vgcreate vgtest1  /dev/vdb
+vgs 
+vgscan
+vgremove  vgtest1 
+
+lvcreate -l 50g -n  test1  vgtest1
+lvs
+lvscan
+lvremove test1
+
+mkfs.ext4 /dev/vgtest1/test1 
+mkdir  /mnt/test
+mount -t ext4 /dev/vgtest1/test1  /mnt/test
+df
+
+vi /etc/fstab  
+i
+添加如下内容： /dev/vdb1   /root/disk   ext4  defaults 02 
+wq!
+
+lvextend -L +3g /dev/vgtest/lv_test1
+resize2fs /dev/vgtest/lv_test1
+df -hT
+
+6.操作系统管理账号密码重置：
+vnc  
+按e
+ro更改为rw init=/sysroot/bin/sh
+按ctrl+x
+/sysroot作为根命令：chroot /sysroot
+输入passwd
+exit 
+reboot 
+
+7.top 
+ps -aux
+ps –aux | grep python
+kill -9  1343
+systemctl
+systemctl status firewall
+systemctl stop firewalld
+systemctl status firewalld</pre></td></tr></table>
+</div>
+</div>
 <h1 id="虚拟化技术-iaas">虚拟化技术(iaas)</h1>
 
 <h2 id="计算虚拟化">计算虚拟化</h2>
