@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2021-04-03T17:09:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-03T17:09:21&#43;08:00" />
-<meta itemprop="wordCount" content="16838">
+<meta itemprop="wordCount" content="16836">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2021-04-03 </span>
         
-          <span class="more-meta"> 约 16838 字 </span>
+          <span class="more-meta"> 约 16836 字 </span>
           <span class="more-meta"> 预计阅读 34 分钟 </span>
         
       </div>
@@ -1141,19 +1141,25 @@ https://oos-cn.ctyunapi.cn/
 <h1 id="pon云专线-ipran云专线">pon云专线  ipran云专线</h1>
 
 <ul>
-<li>cn2: 传输骨干，采取mpls（多协议标签交换）实现vpn。云专网。
-接入：</li>
-<li>1. STN(智能传送网)业务是指以IP/MPLS协议及关键技术为基础，主要面向政企客户提供二层、三层通道类业务承载，由城域的A、B、ER等设备组成的端到端的业务承载网络，STN网络由接入层、汇聚层、城域核心层、省核心层组成，实现政来企业务点到点通道的业务承载。为保证网络以及承载业务的安全性，STN网络不能直接承载互联网业务。大型企业.</li>
-<li>2. pon云专线,小型企业.</li>
+<li>三层vpn:ipsec vpn、gre vpn在接入层用，mpls vpn 、BGP VPN在主干转发层用。两用户之间不同网段。</li>
+
+<li><p>二层vpn:vpws大企业通过WAN广域网互连。vpls小企业通过城域网互连。两用户之间同一网段。</p></li>
+
+<li><p>cn2: 传输骨干，采取mpls（多协议标签交换）实现vpn。云专网。
+接入：</p></li>
+
+<li><ol>
+<li>STN(智能传送网)业务是指以IP/MPLS协议及关键技术为基础，主要面向政企客户提供二层、三层通道类业务承载，由城域的A、B、ER等设备组成的端到端的业务承载网络，STN网络由接入层、汇聚层、城域核心层、省核心层组成，实现政来企业务点到点通道的业务承载。为保证网络以及承载业务的安全性，STN网络不能直接承载互联网业务。大型企业.</li>
+</ol></li>
+
+<li><ol>
+<li>pon云专线,小型企业.</li>
+</ol></li>
 
 <li><ol>
 <li>MSTP（电路）能够开展电信级的以太网业务，提供端到端的QoS保证，并具备网络的弹性；非常适合于提供政企客户业务。MSTP主要解决数据分组的高效传输问题，是对数据网进行优化和补充，可以根据业务需要取代接入层的部分数据路由设备.
 <br /></li>
 </ol></li>
-
-<li><p>三层vpn:ipsec vpn、gre vpn在接入层用，mpls vpn 、BGP VPN在主干转发层用。两用户之间不同网段。</p></li>
-
-<li><p>二层vpn:vpws大企业通过WAN广域网互连。vpls小企业通过城域网互连。两用户之间同一网段。</p></li>
 </ul>
 
     </div>
