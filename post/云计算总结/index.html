@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2021-04-03T17:09:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-03T17:09:21&#43;08:00" />
-<meta itemprop="wordCount" content="15622">
+<meta itemprop="wordCount" content="15450">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2021-04-03 </span>
         
-          <span class="more-meta"> 约 15622 字 </span>
-          <span class="more-meta"> 预计阅读 32 分钟 </span>
+          <span class="more-meta"> 约 15450 字 </span>
+          <span class="more-meta"> 预计阅读 31 分钟 </span>
         
       </div>
     </header>
@@ -664,53 +664,43 @@ NUMA 特性六。<br /></li>
 <h1 id="容器技术-paas">容器技术（paas）</h1>
 
 <ul>
-<li>容器轻量级虚拟化技术。Linux自带lxc项目容器。</li>
-<li>虚拟化：使得多个操作系统在单个系统上运行。</li>
-<li>docker(容器): 在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。解决了从开发环境到测试环境到运维环境直接拷贝就能用，针对同一套应用，用同样的各种库版本，用同样的环境变量，用同样的文件夹路径，配置文件就能保持一致。不需要安装全新的操作系统。</li>
-<li>k8s（docker)/puppet+Zabbix/ELK+Grafana+OpenStack+gitlab(nginx)<br />
-软件系统：nginx开源软件,网页服务器软件,GitLab 是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，并在此基础上搭建起来的web服务。gitlab 安装自带 nginx<br />
-k8s（docker）与puppet 有交集<br />
-监控与管理（加可视化）：<br />
-k8s（docker）+Zabbix+Grafana<br />
-Puppet+Zabbix+Grafana<br /></li>
-</ul>
+<li>虚拟化：使得多个操作系统在单个系统上运行。openstack把物理机联合起来做虚拟化。在OpenStack上可以创建新的虚拟机。这样就可以增加物理机的使用率。</li>
 
-<p>openstack&mdash;-把物理机联合起来做虚拟化。在OpenStack上可以创建新的虚拟机。这样就可以增加物理机的使用率，还可以从某种角度上降低风险。pass</p>
+<li><p>docker(容器): 在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。解决了从开发环境到测试环境到运维环境直接拷贝就能用，针对同一套应用，用同样的各种库版本，用同样的环境变量，用同样的文件夹路径，配置文件就能保持一致。不需要安装全新的操作系统。 容器轻量级虚拟化技术，Linux自带lxc项目容器。docker在一台机器上，无论是物理机还是虚拟机，部署docker。docker上可以部署多个应用，这些应用已经完成了编译。可以在docker的环境中运行。</p></li>
 
-<p>docker&ndash;在一台机器上，无论是物理机还是虚拟机，部署docker。docker上可以部署多个应用，这些应用已经完成了编译。可以在docker的环境中运行。build once，run anywhere。所以这是一种典型的Saas。sass的延伸pass.</p>
-
-<p>K8s（Kubernetes）叫K8s是因为中间有八个字母，还贼难背。因为docker很容易部署，docker上的应用也很多，所以大家都可以很轻松的布置多个docker应用。但应用多了之后就很难管理了。于是就有了K8s。顺便说一下，Kubernetes的意思是领航员</p>
-
-<p>利用K8S助力OpenStack<br />
+<li><p>k8s（docker)/puppet（编排，运维管理）+Zabbix/ELK（日志，运维监控）+Grafana（可视化视图）+OpenStack（虚拟化等）+gitlab(nginx开源软件,网页服务器软件,GitLab 是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，并在此基础上搭建起来的web服务。gitlab 安装自带 nginx)<br />
+利用K8S助力OpenStack<br />
 k8s上轻松部署GITLAB<br />
 利用puppet快速部署openstack<br />
-k8s（docker）+Zabbix+Grafana+OpenStack+gitlab<br />
-Puppet+Zabbix+Grafana+openstack<br />
-centos7.2<br />
-devops 开发运维的桥梁</p>
+devops 开发运维的桥梁<br />
+K8s（Kubernetes）叫K8s是因为中间有八个字母，还贼难背。因为docker很容易部署，docker上的应用也很多，所以大家都可以很轻松的布置多个docker应用。但应用多了之后就很难管理了。于是就有了K8s。顺便说一下，Kubernetes的意思是领航员</p></li>
 
-<ul>
-<li>IT基础<br /></li>
-<li>Redis是一个开源的、基于内存的数据结构存储器，可以用作数据库、缓存和消息中间件。</li>
-<li>Tomcat属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。<br /></li>
-<li>微服务是一种用于构建应用的架构方案。微服务架构有别于更为传统的单体式方案，可将应用拆分成多个核心功能。每个功能都被称为一项服务，可以单独构建和部署，这意味着各项服务在工作（和出现故障）时不会相互影响。</li>
-<li>自动化运维</li>
-<li>系统部署工具：kickstart, cobbler, spacewalk. 自动化安装系统。<br /></li>
-<li>运维管理者工具：Puppet、Chef、Ansible和SaltStack四大运维管理工具<br />
+<li><p>IT基础</p></li>
+
+<li><p>Redis是一个开源的、基于内存的数据结构存储器，可以用作数据库、缓存和消息中间件。</p></li>
+
+<li><p>Tomcat属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。</p></li>
+
+<li><p>微服务是一种用于构建应用的架构方案。微服务架构有别于更为传统的单体式方案，可将应用拆分成多个核心功能。每个功能都被称为一项服务，可以单独构建和部署，这意味着各项服务在工作（和出现故障）时不会相互影响。</p></li>
+
+<li><p>自动化运维</p></li>
+
+<li><p>系统部署工具：kickstart, cobbler, spacewalk. 自动化安装系统。</p></li>
+
+<li><p>运维管理者工具：Puppet、Chef、Ansible和SaltStack四大运维管理工具<br />
 Ansible适合100台以下到200这样服务器规模应用<br />
 SaltStack，适合几百台的规模！<br />
 puppet适合上千台和几万台的规模<br />
 chef国外用的多<br />
-chef和puppet是ruby系的，而salt和ansible是python系的<br /></li>
-<li>运维监控工具： 三大开源运维监控工具zabbix（企业用的多 Zabbix/ELK日志分析系统+Grafana）、nagios和open-falcon<br />
-<br /></li>
+chef和puppet是ruby系的，而salt和ansible是python系的</p></li>
+
+<li><p>运维监控工具： 三大开源运维监控工具zabbix（企业用的多 Zabbix/ELK日志分析系统+Grafana）、nagios和open-falcon</p></li>
 </ul>
 
 <h1 id="云迁移">云迁移</h1>
 
 <ul>
 <li>云迁移策略：1. Re-host（重新托管直接迁移）:p2v, v2v。2.re-platform(更换平台修补后迁移）：对环境进行云化处理。3. 重新购置（放弃后购买）：是指放弃使用原先的产品，改为采用新的替代产品。4. 重构/重新构建：进行云原生应用服务的实现。5. 保留：部分本地部署。</li>
-<li>云迁移方法论</li>
 <li>云迁移方案:ptv vtc</li>
 <li>云迁移之数据库迁移</li>
 </ul>
