@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2021-04-03T17:09:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-03T17:09:21&#43;08:00" />
-<meta itemprop="wordCount" content="16842">
+<meta itemprop="wordCount" content="17369">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2021-04-03 </span>
         
-          <span class="more-meta"> 约 16842 字 </span>
-          <span class="more-meta"> 预计阅读 34 分钟 </span>
+          <span class="more-meta"> 约 17369 字 </span>
+          <span class="more-meta"> 预计阅读 35 分钟 </span>
         
       </div>
     </header>
@@ -1142,15 +1142,22 @@ https://oos-cn.ctyunapi.cn/
 
 <ul>
 <li>三层vpn:ipsec vpn、gre vpn在接入层用，mpls vpn 、BGP VPN在主干转发层用。两用户之间不同网段。</li>
+<li>二层vpn:vpws大企业通过WAN广域网互连。vpls小企业通过城域网互连。两用户之间同一网段。</li>
+<li>MPLS ：位于链路层与网络层之间向ip层提供连接服务同时从链路层得到服务mpls以标签交换替代ip转发。解决路由转发速度 用在路由器上。ip路由技术与ATM技术的融合。mpls数据平面标签转发简单高效，控制平面协议复杂、扩展性差、部署运维困难。转发面ldp依赖于igp导致交互复杂，转发面rsvp-TE信令非常复杂，每个节点都需要维护一个庞大的链路信息数据库。</li>
+<li>mpls vpn: MPLS　VPN的网络采用标签交换，一个标签对应一个用户数据流，非常易于用户间数据的隔离，利用区分服务体系可以轻易地解决困扰传统IP网络的QoS/CoS问题，MPLS自身提供流量工程的能力，可以最大限度地优化配置网络资源，自动快速修复网络故障，提供高可用性和高可靠性。MPLS提供了电信、计算机、有线电视网络三网融合的基础，除了ATM，是唯一可以提供高质量的数据、语音和视频相融合的多业务传送、包交换的网络平台。</li>
 
-<li><p>二层vpn:vpws大企业通过WAN广域网互连。vpls小企业通过城域网互连。两用户之间同一网段。</p></li>
+<li><p>SR: 称为下一代MPLS，去掉rsvp用一种集中控制平台交互信息，去掉Ldp直接由igp分发标签  中间机场不需要知道行李从哪来，最终去往哪里，而只需要根据标签转发。{MEX; MAD; TXL}segment routing(分段路由)，ip&ndash;&gt;mpls&ndash;&gt; SR.</p></li>
 
-<li><p>cn2: 传输骨干，采取mpls（多协议标签交换）实现vpn。云专网。<br />
+<li><p>cn2，传输骨干，采取mpls（多协议标签交换,简化路由器的路由选择方式。）实现vpn。云专网。<br />
 接入：<br />
 1.STN(智能传送网)业务是指以IP/MPLS协议及关键技术为基础，主要面向政企客户提供二层、三层通道类业务承载，由城域的A、B、ER等设备组成的端到端的业务承载网络，STN网络由接入层、汇聚层、城域核心层、省核心层组成，实现政来企业务点到点通道的业务承载。为保证网络以及承载业务的安全性，STN网络不能直接承载互联网业务。大型企业.<br />
 2.pon云专线,小型企业.<br />
 3.MSTP（电路）能够开展电信级的以太网业务，提供端到端的QoS保证，并具备网络的弹性；非常适合于提供政企客户业务。MSTP主要解决数据分组的高效传输问题，是对数据网进行优化和补充，可以根据业务需要取代接入层的部分数据路由设备.</p></li>
 </ul>
+
+<p>ipran:
+<img src="/img/云计算/ipran.png" alt="云计算" />
+<img src="/img/云计算/IPRAN云网融合开通流程.png" alt="云计算" /></p>
 
     </div>
 
