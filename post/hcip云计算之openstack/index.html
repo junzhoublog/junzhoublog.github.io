@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-09-05T21:56:41&#43;08:00" />
 <meta itemprop="dateModified" content="2020-09-05T21:56:41&#43;08:00" />
-<meta itemprop="wordCount" content="1735">
+<meta itemprop="wordCount" content="2230">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-09-05 </span>
         
-          <span class="more-meta"> 约 1735 字 </span>
-          <span class="more-meta"> 预计阅读 4 分钟 </span>
+          <span class="more-meta"> 约 2230 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
     </header>
@@ -162,7 +162,118 @@
 <ul>
 <li>1.1 用户能够通过web界面、命令行或API接口配置。</li>
 <li>1.2 虚拟化是OpenStack的底层技术实现手段之一。</li>
-<li>1.3keystone 提供身份验证，认证与其他组件交互最多。horizon提供基于web的控制界面。glance镜像服务提供发现、注册和检索虚拟机镜像的功能。Nova，计算服务，调用其他服务。cinder块存储服务。swift对象存储服务，存储大量数据高效，安全。neutron 网络服务，二层交换，三层路由，负载均衡。heat编排服务为云应用程序编排OpenStack基础架构资源。</li>
+
+<li><p>1.3keystone 提供身份验证，认证与其他组件交互最多。horizon提供基于web的控制界面。glance镜像服务提供发现、注册和检索虚拟机镜像的功能。Nova，计算服务，调用其他服务。cinder块存储服务。swift对象存储服务，存储大量数据高效，安全。neutron 网络服务，二层交换，三层路由，负载均衡。heat编排服务为云应用程序编排OpenStack基础架构资源。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">1.lscpu     查看cpu,Socket(几个物理cpu),thread线程*core核数*socket=总线程数。
+
+2.egrep -c &#34;(svm|vmx)&#34;  /proc/cpuinfo   24   看svm和vmx 数，确定bios里面cpu虚拟化是否打开。
+cat  /proc/cpuinfo    看flags里面的vmx svm 
+
+3.systemctl  status  libivrtd  （管理工具服务确认启动状态active(runnig)）
+vim /usr/lib/systemd/system/libvirtd.service  看启动这个服务要启动那些基础服务
+vim /etc/fstab 准备挂载的文件
+mount -l  已经挂载的文件
+journalctl -nl  看日志 
+
+4.cd /etc/libvirt/  
+ls 
+vim libvirt.conf
+cd qemu/  (模拟io设备运行在用户空间)
+ls
+vim guest07.xml  （xml配置文件）
+cd networks
+ls
+vim default.xml
+ps -ef | grep dnsm  (dhcp dns )
+netstat -ltpn | grep 59  搜索vnc 监听端口为59 开始的 监听地址设为0.0.0.0
+
+6. file guest04.vol   看vol 是什么类型的文件，（vol 数据文件）
+
+7.virt-sysprep  -a rhe17.5.qcow2  模板
+guestfish  -a rhe17.5.qcow2  --network  
+
+8.rpm -qa | grep kvm 搜索一下装了那些软件包
+systemctl enable  libvirtd  
+
+9.  嵌套虚拟化，虚拟机里面装虚拟机， 
+vim    /etc/modprobe.d/kvm-nested.conf 打开嵌套虚拟化功能加如下：
+options  kvm-intel nested=1
+options kvm-intel enable_shadow_vmcs=1
+options kvm-intel enable_apicv=1
+options kvm-intel ept=1
+
+modprobe  -a  kvm-intel   添加
+modprobe  -r kvm-intel  移除 有正在运行的虚假机，移除失败
+
+history  | grep sys
+cat  /sys/module/kvm_intel/parameters/nested  
+
+10.openstack  部署方式：eg,puppet  ,ansible
+
+systemctl restart vsftpd 启动 ftp服务
+df -Th  看光盘是否挂载
+yum  install  openstack-packstack  安装
+rpm -qa | grep packstack   看包是否安装好
+packstack --gen-answer-file=/tmp/1.txt  生产自动应答文件
+vim  /tmp.1.txt  </pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 
 <p><strong>快速搭建OpenStack实验环境流程</strong></p>
