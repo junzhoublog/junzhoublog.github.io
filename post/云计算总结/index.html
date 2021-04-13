@@ -224,6 +224,8 @@ vmware esxi————&gt;vmware Esx————&gt;VMware vSphere.（逐渐升
 
 <h2 id="openstack">openstack</h2>
 
+<p><img src="/img/云计算/openstack组件图.png" alt="云计算" /></p>
+
 <ul>
 <li>1. openstack是云管理平台，其本身并不提供虚拟化功能，虚拟化是OpenStack的底层技术实现手段之一。真正的虚拟化能力是由底层的hypervisor（如KVM、Qemu、Xen等）提供。所谓管理平台，就是为了方便使用而已。用户能够通过web界面、命令行或API接口配置。如果没有openstack，一样可以通过virsh、virt-manager来实现创建虚拟机的操作，只不过敲命令行的方式需要一定的学习成本，对于普通用户不是很友好。</li>
 <li>2. OpenStack几乎支持所有的虚拟化管理程序，不论是开源的（Xen与KVM）还是厂商的（Hyper-V与VMware）。但在以前，OpenStack是基于KVM开发的，KVM常常成为默认的虚拟机管理程序。两者都使用相同的开放源理念与开发方法。<br /></li>
