@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-09-05T21:56:41&#43;08:00" />
 <meta itemprop="dateModified" content="2020-09-05T21:56:41&#43;08:00" />
-<meta itemprop="wordCount" content="2230">
+<meta itemprop="wordCount" content="2357">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2020-09-05 </span>
         
-          <span class="more-meta"> 约 2230 字 </span>
+          <span class="more-meta"> 约 2357 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         
       </div>
@@ -141,7 +141,10 @@
     <nav id="TableOfContents">
 <ul>
 <li><a href="#openstack概览">OpenStack概览</a></li>
-<li><a href="#openstack操作界面管理">OpenStack操作界面管理</a></li>
+<li><a href="#openstack操作界面管理">OpenStack操作界面管理</a>
+<ul>
+<li><a href="#实操">实操</a></li>
+</ul></li>
 <li><a href="#openstack认证管理">OpenStack认证管理</a></li>
 <li><a href="#openstack镜像管理">OpenStack镜像管理</a></li>
 <li><a href="#openstack计算管理">OpenStack计算管理</a></li>
@@ -218,6 +221,7 @@
 </span><span class="lnt">50
 </span><span class="lnt">51
 </span><span class="lnt">52
+</span><span class="lnt">53
 </span></pre></td>
 <td class="lntd">
 <pre class="chroma">1.lscpu     查看cpu,Socket(几个物理cpu),thread线程*core核数*socket=总线程数。
@@ -237,7 +241,8 @@ vim libvirt.conf
 cd qemu/  (模拟io设备运行在用户空间)
 ls
 vim guest07.xml  （xml配置文件）
-cd networks
+  
+5.cd networks
 ls
 vim default.xml
 ps -ef | grep dnsm  (dhcp dns )
@@ -327,7 +332,60 @@ done
 
 <ul>
 <li>2.1Horizon, 提供web界面，管理员admin账号登录与myuser功能区别。CLI时要先source。</li>
-<li>2.2使用OpenStack Dashboard方式发放虚拟机实例cirros, 1. 镜像image2.admin下flavor规格3.project下networks4.project 下instance中选1.2.3.</li>
+
+<li><p>2.2使用OpenStack Dashboard方式发放虚拟机实例cirros, 1. 镜像image2.admin下flavor规格3.project下networks4.project 下instance中选1.2.3.</p>
+
+<h2 id="实操">实操</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">ssh -p  2230 osbash@127.0.0.1  
+osbash
+
+admin	
+admin_user_secret
+
+myuser
+myuser_user_pass
+
+cirros 
+gocubsgo
+
+cat  admin-openrc.sh  查看
+. admin-openrc.sh  导入用户环境变量定义文件就进入管理员视图了
+cat demo-openrc.sh 查看
+. demo-openrc.sh 导入用户环境变量定义文件就进入普通成员视图了
+
+发放虚拟机：
+openstack image list
+openstack flavor  list
+openstack server create  --image cirros  --flavor flavor_web  cirros_cli   创建虚拟机
+openstack server list  查看发放的虚拟机</pre></td></tr></table>
+</div>
+</div></li>
 </ul>
 
 <h1 id="openstack认证管理">OpenStack认证管理</h1>
