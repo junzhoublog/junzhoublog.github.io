@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-09-05T21:56:41&#43;08:00" />
 <meta itemprop="dateModified" content="2020-09-05T21:56:41&#43;08:00" />
-<meta itemprop="wordCount" content="2357">
+<meta itemprop="wordCount" content="2698">
 
 
 
@@ -129,8 +129,8 @@
       <div class="post-meta">
         <span class="post-time"> 2020-09-05 </span>
         
-          <span class="more-meta"> 约 2357 字 </span>
-          <span class="more-meta"> 预计阅读 5 分钟 </span>
+          <span class="more-meta"> 约 2698 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         
       </div>
     </header>
@@ -360,6 +360,7 @@ done
 </span><span class="lnt">20
 </span><span class="lnt">21
 </span><span class="lnt">22
+</span><span class="lnt">23
 </span></pre></td>
 <td class="lntd">
 <pre class="chroma">ssh -p  2230 osbash@127.0.0.1  
@@ -374,6 +375,7 @@ myuser_user_pass
 cirros 
 gocubsgo
 
+*每次打开第一步*：
 cat  admin-openrc.sh  查看
 . admin-openrc.sh  导入用户环境变量定义文件就进入管理员视图了
 cat demo-openrc.sh 查看
@@ -396,9 +398,118 @@ openstack server list  查看发放的虚拟机</pre></td></tr></table>
 </ul>
 
 <p><em>发放token, 验证token, 通过policy.json实现权限控制</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">项目 组 用户 角色  ：一个用户可以在不同项目中担任不同的角色或者相同的角色 ，一个用户也可以同时在不同的组中。
+1.openstack  role  create role_cli
+openstack  role  list
 
+2.openstack user create  --domain  default  --project  admin --password-prompt user_cli
+openstack user list
+
+3.openstack role add --project admin --user user_cli  role_cli
+openstack role  assignment list --name| grep role_cli
+
+4.cp admin-openrc.sh  user-openrc.sh  
+vi user-openrc.sh
+. user-openrc.sh
+openstack project list
+
+5.openstack group create  --domain default group_cli
+ openstack group  list
+ openstack group add user group_cli user_web_01
+openstack group contains user  group_cli user_web_01
+openstack group remove user  group_cli user_web_01
+openstack group contains user  group_cli user_web_01
+
+
+6.openstack  user  set --disable  user_cli
+openstack user show user_cli
+openstack user set --enable user_cli
+openstack user  show  user_cli
+openstack user delete user_cli
+openstack user list
+
+
+7.openstack project  create  --domain default project_cli
+openstack project list
+openstack role add --project project_cli --user user_web_01  admin
+openstack role  assignment list  --name | grep user_web_01
+
+8.项目配额操作：
+openstack quota show project_cli
+openstack quota show project_cli | egrep &#34;instances|volumes|networks&#34;
+openstack quota  set  --instances  20 --volumes 20 --networks 200 project_cli
+openstack quota show project_cli | egrep &#34;instances|volumes|networks&#34;
+
+9.创建服务和端点（必须cli命令模式下才可创建）
+openstack service  create --name swift --description &#34;openstack object storage &#34; object-store
+openstack service list
+openstack endpoint list
+openstack endpoint  create --region Regionone  swift  public  http://controller:8080/v1
+ openstack endpoint  create --region Regionone  swift  admin http://controller:8080/v1
+openstack endpoint  create --region Regionone  swift  internal  http://controller:8080/v1</pre></td></tr></table>
+</div>
+</div>
 <h1 id="openstack镜像管理">OpenStack镜像管理</h1>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"></pre></td>
+<td class="lntd">
+<pre class="chroma"></pre></td></tr></table>
+</div>
+</div>
 <h1 id="openstack计算管理">OpenStack计算管理</h1>
 
 <h1 id="openstack存储管理">OpenStack存储管理</h1>
