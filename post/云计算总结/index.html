@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2021-04-03T17:09:21&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-03T17:09:21&#43;08:00" />
-<meta itemprop="wordCount" content="17749">
+<meta itemprop="wordCount" content="17765">
 
 
 
@@ -129,7 +129,7 @@
       <div class="post-meta">
         <span class="post-time"> 2021-04-03 </span>
         
-          <span class="more-meta"> 约 17749 字 </span>
+          <span class="more-meta"> 约 17765 字 </span>
           <span class="more-meta"> 预计阅读 36 分钟 </span>
         
       </div>
@@ -167,7 +167,12 @@
 <li><a href="#虚拟化特性介绍">虚拟化特性介绍</a></li>
 <li><a href="#疑难问题">疑难问题</a></li>
 </ul></li>
-<li><a href="#容器技术-paas">容器技术（paas）</a></li>
+<li><a href="#容器技术-paas">容器技术（paas）</a>
+<ul>
+<li><a href="#容器-镜像-仓库">容器、镜像、仓库</a></li>
+<li><a href="#容器网络">容器网络</a></li>
+<li><a href="#容器存储">容器存储</a></li>
+</ul></li>
 <li><a href="#云迁移">云迁移</a>
 <ul>
 <li><a href="#实操命令部分-1">实操命令部分</a>
@@ -724,8 +729,16 @@ NUMA 特性六。<br /></li>
 <ul>
 <li>虚拟化：使得多个操作系统在单个系统上运行。openstack把物理机联合起来做虚拟化。在OpenStack上可以创建新的虚拟机。这样就可以增加物理机的使用率。</li>
 
-<li><p>docker(容器): 在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。解决了从开发环境到测试环境到运维环境直接拷贝就能用，针对同一套应用，用同样的各种库版本，用同样的环境变量，用同样的文件夹路径，配置文件就能保持一致。不需要安装全新的操作系统。 容器轻量级虚拟化技术，Linux自带lxc项目容器。docker在一台机器上，无论是物理机还是虚拟机，部署docker。docker上可以部署多个应用，这些应用已经完成了编译。可以在docker的环境中运行。</p></li>
+<li><p>docker(容器): 在一个操作系统上共享内核，将应用进程与系统其它部分隔离开。解决了从开发环境到测试环境到运维环境直接拷贝就能用，针对同一套应用，用同样的各种库版本，用同样的环境变量，用同样的文件夹路径，配置文件就能保持一致。不需要安装全新的操作系统。 容器轻量级虚拟化技术，Linux自带lxc项目容器。docker在一台机器上，无论是物理机还是虚拟机，部署docker。docker上可以部署多个应用，这些应用已经完成了编译。可以在docker的环境中运行。</p>
 
+<h2 id="容器-镜像-仓库">容器、镜像、仓库</h2></li>
+</ul>
+
+<h2 id="容器网络">容器网络</h2>
+
+<h2 id="容器存储">容器存储</h2>
+
+<ul>
 <li><p>k8s（docker)/puppet（编排，运维管理）+Zabbix/ELK（日志，运维监控）+Grafana（可视化视图）+OpenStack（虚拟化等）+gitlab(nginx开源软件,网页服务器软件,GitLab 是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，并在此基础上搭建起来的web服务。gitlab 安装自带 nginx)<br />
 利用K8S助力OpenStack<br />
 k8s上轻松部署GITLAB<br />
